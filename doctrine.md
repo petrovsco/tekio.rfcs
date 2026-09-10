@@ -103,7 +103,7 @@ A roadmap brief in `docs/roadmap/` is not ready until it answers all five:
    `## Grounding` section before implementation. Run `/ground`; its Step 0 is
    the canonical trigger spec (including the three exemptions where a number
    moves but no new claim is made) —
-   [.claude/skills/ground/SKILL.md](../.claude/skills/ground/SKILL.md).
+   `.claude/skills/ground/SKILL.md`.
 
 ## 5. Ledger
 
@@ -111,7 +111,7 @@ Status of every surface as of 2026-08-26. This table is the shelf; keep it curre
 
 **This ledger records verdicts, not steps.** Five surfaces below are ruled out
 of the menu and all five still ship — the work that closes the gap is
-[roadmap/done/014-doctrine-ledger-execution.md](roadmap/done/014-doctrine-ledger-execution.md).
+[rfcs/done/0014-doctrine-ledger-execution.md](rfcs/done/0014-doctrine-ledger-execution.md).
 Pending work lives in `docs/roadmap/`, never in this file (house rule
 `pending-work-in-roadmap`).
 
@@ -136,7 +136,7 @@ Pending work lives in `docs/roadmap/`, never in this file (house rule
 section (roadmap 035), and `RECOVERY_WEIGHTS.habits` (0.10) was retired with
 the whole constant rather than dropped from it — the readiness number it fed
 measured adherence, not recovery. The sequencing and the grounding trap are in
-[roadmap/done/014-doctrine-ledger-execution.md](roadmap/done/014-doctrine-ledger-execution.md).
+[rfcs/done/0014-doctrine-ledger-execution.md](rfcs/done/0014-doctrine-ledger-execution.md).
 
 Resolved by the same decision: habit-derived *muscle* contributions go too. The
 muscle read counts logged sets only, which is the more honest answer anyway.
@@ -163,7 +163,7 @@ nowhere, because Home's body map counts every set whatever its rep band. It
 read correctly that morning only because power happened to be the one
 muscle-linked quality at zero. The austerity therefore holds. Record of the
 walk and the fix:
-[roadmap/done/051-exit-condition-walk.md](roadmap/done/051-exit-condition-walk.md).
+[rfcs/done/0051-exit-condition-walk.md](rfcs/done/0051-exit-condition-walk.md).
 
 **Re-walked 2026-09-07, the same evening — question 2 now passes.** Home
 prints the seven by name from the same coverage read as Adaptations — one
@@ -173,14 +173,14 @@ VO₂max. Short: strength, hypertrophy, muscular endurance, endurance.* All thre
 questions have now passed at source. The sentence above is a real five-second
 read, not a test run's, so the verdict is the reader's to record here;
 until that line says **met**, the austerity holds. Record:
-[roadmap/done/062-home-adaptations-one-screen.md](roadmap/done/062-home-adaptations-one-screen.md).
+[rfcs/done/0062-home-adaptations-one-screen.md](rfcs/done/0062-home-adaptations-one-screen.md).
 
 ## 7. What this doctrine does not cover
 
-- **Is the claim true?** → [`/ground`](../.claude/skills/ground/SKILL.md) + the
-  [`science-scout`](../.claude/agents/science-scout.md) subagent.
+- **Is the claim true?** → `/ground` (`.claude/skills/ground/SKILL.md`) + the
+  `science-scout` (`.claude/agents/science-scout.md`) subagent.
 - **Is the code clean?** → `/simplify`, `/code-review`.
 - **Did smoothness degrade?** → the measured perf budget.
 
-See [roadmap/done/009-feature-grounding.md](roadmap/done/009-feature-grounding.md) for how the
+See [rfcs/done/0009-feature-grounding.md](rfcs/done/0009-feature-grounding.md) for how the
 three fit together.

@@ -2,7 +2,7 @@
 
 Reference only: this file states what the evidence *is*. It holds the verbatim
 `## Grounding` blocks the science-scout runs of
-[roadmap 039](../roadmap/done/039-adaptations-read-grounding.md) returned — one
+[roadmap 039](../rfcs/done/0039-adaptations-read-grounding.md) returned — one
 `###` per run, S1–S12, in landing order — each pasted after its citations were
 checked through NCBI eutils or Crossref, and each closing with the **Decision**
 paragraph the run forced. What every decision changed is recorded in the brief
@@ -76,7 +76,7 @@ found 24 stimulus links at level 3, and roughly ten of them are real synergists
 (adductors in squats, upper back in rows, face pulls and reverse flys) that
 must move to level 2 before the tier can be zeroed, or the edit deletes real
 stimulus. The relabel is Peter's call on his own anatomy tags —
-[042](../roadmap/done/042-level-3-link-audit.md) carries the list and the proposed level per
+[0042](../rfcs/done/0042-level-3-link-audit.md) carries the list and the proposed level per
 link, and zeroing the tier lands there. The bookkeeping fork is settled by
 construction: one floor for every muscle means the discount sits on the *set*
 (Pelland), not on the *target* (Israetel's written landmarks).
@@ -422,7 +422,7 @@ list as labelled conventions. The matcher collision is real: a DB check the
 same day found **Cable Woodchop** matching `hop`, so its sets read as power
 and leave the hard-set total today — fixed in the S4 code unit (§6.7,
 v1.16.1), where `clapping` also joined the list: Galpin's list names clapping
-push-ups, [043](../roadmap/done/043-scout-named-exercises-catalogue.md) put the exercise
+push-ups, [0043](../rfcs/done/0043-scout-named-exercises-catalogue.md) put the exercise
 in the catalogue, and no other keyword caught it. The
 NSCA textbook line is tier-6 expert consensus with its tier named inline; the
 tag vocabulary has no slot for a professional body's table, so it stays as
@@ -584,7 +584,7 @@ Four forks; the first is the literature's own, the others are Tekiō's.
 
 **3. Rest: 30, 60 or 90 s.** Three conventions (NSCA, the card, ACSM), one trial (Schoenfeld 2016) in which the difference between 1 and 3 min did not reach the endurance outcome, and de Salles' indirect acute support for 20–60 s. Keep `< 60 s` and label it convention: it is the middle number, it matches the acute evidence, and it is what a circuit is.
 
-**4. Is endurance a quality or the top of hypertrophy's range?** Israetel folds 20–30-rep sets into hypertrophy; Galpin and the app give them a card. [019](../roadmap/done/019-adaptation-model-simplification.md) already answered for the app (seven qualities, endurance among them), and §6.0's overlap is the honest reconciliation: once S11 lands, a 20-rep set can count toward hypertrophy *and* endurance, so the card does not have to choose. Nothing to decide here; recorded so S11 knows the fork exists.
+**4. Is endurance a quality or the top of hypertrophy's range?** Israetel folds 20–30-rep sets into hypertrophy; Galpin and the app give them a card. [0019](../rfcs/done/0019-adaptation-model-simplification.md) already answered for the app (seven qualities, endurance among them), and §6.0's overlap is the honest reconciliation: once S11 lands, a 20-rep set can count toward hypertrophy *and* endurance, so the card does not have to choose. Nothing to decide here; recorded so S11 knows the fork exists.
 
 #### Caveats
 
@@ -616,7 +616,7 @@ the source comment (forks 3) and effort labelled as inherited from the trials'
 design. Fork 1 is settled by wording, not by a number: the comment states the
 claim as specificity ("you get better at repeating the load you practise")
 rather than "light loads build a separate quality", which is what survives
-both readings of the evidence. Fork 4 is [019](../roadmap/done/019-adaptation-model-simplification.md)'s
+both readings of the evidence. Fork 4 is [0019](../rfcs/done/0019-adaptation-model-simplification.md)'s
 and §6.0's, noted for S11. `weeklyMuscleTarget = 6` (011, convention) and
 `repRange [16, 999]` (S11) are not reopened. The reference card's attribution
 line stays until S10.
@@ -625,7 +625,7 @@ line stays until S10.
 
 ### S7 — ADAPTATIONS[anaerobic_capacity].rx (what an anaerobic-capacity effort is prescribed as)
 
-**Claim:** An anaerobic-capacity session is **all-out** efforts of **20 s–2 min**, **3–8 rounds**, with **incomplete rest at 1:2–1:4** work:rest, at **maximal** effort, cued as "brutal short intervals with partial recovery" (`rx`, row 3.7). Drives the prescription text the user reads before an anaerobic session; which logged cardio session *counts* as anaerobic (Garmin anaerobic training effect ≥ 2.0, rows 6.2–6.3) is [005](../roadmap/done/005-hr-zone-intensity-classification.md)'s classifier and untouched here.
+**Claim:** An anaerobic-capacity session is **all-out** efforts of **20 s–2 min**, **3–8 rounds**, with **incomplete rest at 1:2–1:4** work:rest, at **maximal** effort, cued as "brutal short intervals with partial recovery" (`rx`, row 3.7). Drives the prescription text the user reads before an anaerobic session; which logged cardio session *counts* as anaerobic (Garmin anaerobic training effect ≥ 2.0, rows 6.2–6.3) is [0005](../rfcs/done/0005-hr-zone-intensity-classification.md)'s classifier and untouched here.
 **Searched:** 2026-09-03 · **Verdict:** partially supported — the effort band and "all-out" are **supported** (anaerobic capacity, measured as the maximal accumulated oxygen deficit, rises after repeated 20-s, 30-s and 90-s efforts and not after moderate continuous work; anaerobic and aerobic energy supply are equal at ≈ 75 s–2 min); rounds and the rest ratio are **convention** — no located trial varied either against an anaerobic-capacity outcome — and the card's two floors sit outside every trial and both practitioner protocols: every protocol that moved the measure used **≥ 4 rounds**, and the two best-evidenced rested at **2:1** and **1:2**, not 1:2–1:4. Both floors move. The cue names nobody, so no attribution is owed.
 **Number to use:** field by field —
 - **load:** `All-out` — the definition of sprint-interval training: "supramaximal" efforts (MacInnis & Gibala 2017), "maximal or near maximal" (Weston 2014's inclusion rule); the trials ran at 170 % VO₂max (Tabata 1996) and 150–175 % of maximal aerobic speed (Hov 2023). Unchanged.
@@ -668,7 +668,7 @@ line stays until S10.
 
 **2. How much rest — the fork proper.** The card's 1:2–1:4 is one notch short of NSCA's 1:3–1:5 / 1:3–1:4 and excludes both Galpin protocols (1:1, 1:1.5) and the Tabata design (2:1). The evidence points two ways because it measures two things: *shorter* rest accumulates more O₂ deficit per session and is where the capacity measure rose most reliably (Tabata 1997 within-session; Tabata 1996 and Hov 2023 across weeks), while *longer* rest preserves power per rep (Hazell 2010) and raised capacity too in women, at the cost of injuries (Helgerud 2023). No trial held work constant and varied only the ratio. For a *capacity* card the honest band is "incomplete, from equal rest down to a quarter": move the floor to 1:1. 2:1 is a specific protocol, not a band; it goes in the source comment, not on the card.
 
-**3. Is it its own quality?** Hov 2023 and Helgerud 2023 answer this directly: 4 × 4 min raised VO₂max and not MAOD; 8 × 20 s raised MAOD and less VO₂max; Tabata 1996: continuous moderate work raised VO₂max and not MAOD. Anaerobic capacity is separately trainable, so [019](../roadmap/done/019-adaptation-model-simplification.md)'s split of anaerobic capacity from VO₂max stands. Attia's silence is a programming choice, not a contradiction.
+**3. Is it its own quality?** Hov 2023 and Helgerud 2023 answer this directly: 4 × 4 min raised VO₂max and not MAOD; 8 × 20 s raised MAOD and less VO₂max; Tabata 1996: continuous moderate work raised VO₂max and not MAOD. Anaerobic capacity is separately trainable, so [0019](../rfcs/done/0019-adaptation-model-simplification.md)'s split of anaerobic capacity from VO₂max stands. Attia's silence is a programming choice, not a contradiction.
 
 **4. Frequency.** The trials ran 3–5×/wk in 2–8-week blocks; Galpin says 1–2×/wk and warns against more; the card is silent and `weeklySessionTarget = 1` (011, convention) is not reopened here.
 
@@ -700,7 +700,7 @@ from `3–8 rounds` to **`4–8 rounds`** (fork 1, ledger D21) and `rx.rest` fro
 each recorded before the constant was edited. Load, effort length, effort and
 cue stay as shipped; the band is labelled **supported** and the two moved
 fields **convention** in the source comment. Fork 3 is settled in
-[019](../roadmap/done/019-adaptation-model-simplification.md)'s favour by Hov 2023 and
+[0019](../rfcs/done/0019-adaptation-model-simplification.md)'s favour by Hov 2023 and
 Helgerud 2023 and needs no change. `weeklySessionTarget = 1` (011, convention)
 and the Garmin classifier (005, rows 6.2–6.3) are not reopened. The cue names
 nobody, so acceptance box 3 owes nothing here.
@@ -709,7 +709,7 @@ nobody, so acceptance box 3 owes nothing here.
 
 ### S8 — ADAPTATIONS[vo2max].rx and the "classic 4×4" cue (what a VO₂max session is prescribed as)
 
-**Claim:** A VO₂max session is **3–8 min efforts** at **~90–100 % HRmax**, **4–6 sets**, **≈ 1:1** rest, at **maximal** effort, cued as "Classic 4×4 min at 90–95 % HRmax, 3 min easy between" (`rx`, row 3.8). Drives the prescription text the user reads before a VO₂max session; which logged session *counts* as VO₂max (Garmin aerobic training effect and zone split, rows 6.2–6.4) is [005](../roadmap/done/005-hr-zone-intensity-classification.md)'s classifier and untouched here.
+**Claim:** A VO₂max session is **3–8 min efforts** at **~90–100 % HRmax**, **4–6 sets**, **≈ 1:1** rest, at **maximal** effort, cued as "Classic 4×4 min at 90–95 % HRmax, 3 min easy between" (`rx`, row 3.8). Drives the prescription text the user reads before a VO₂max session; which logged session *counts* as VO₂max (Garmin aerobic training effect and zone split, rows 6.2–6.4) is [0005](../rfcs/done/0005-hr-zone-intensity-classification.md)'s classifier and untouched here.
 **Searched:** 2026-09-03 · **Verdict:** supported — intensity, interval length and the ≈ 1:1 rest each sit inside a band a meta-analysis or a randomised trial gives; sets is **convention** inside the literature's real constraint, total hard work per session (≥ 15 min); "Maximal" is the wrong word for a 4-min interval — every trial prescribes the hardest *even* pace you can repeat, not a sprint — and is reworded; the cue is **Helgerud et al. 2007's protocol verbatim** and now carries that name (acceptance box 3).
 **Number to use:** field by field —
 - **load:** `~90–100% max HR` — Helgerud's 4 × 4 ran at 90–95 % HRmax; Seiler's effort-matched sessions landed at 94 % HRpeak (4 × 4), 90 % (4 × 8) and 88 % (4 × 16); ≥ 90 % VO₂max is the "red zone" interval training targets (Buchheit & Laursen 2013 I); the greatest VO₂max gains come at 90–100 % VO₂max (Wenger & Bell 1986); trained runners need 95–100 % (Midgley 2006). Unchanged.
@@ -835,7 +835,7 @@ another; it is S10's to settle, noted for that run.
 - `[practitioner consensus]` "Volume is the primary driver in hypertrophy; intensity is the primary driver in speed, power, and strength" (Galpin, guest series pt 2, **25 Jan 2023**); "the primary driver of strength is intensity, not volume – we need high rest to offset the intensity demands", "true speed work is non-fatiguing — high rest, low fatigue" (Galpin, ep. 65, 2022). Israetel: strength is "move the most weight from point A to point B as efficiently as possible … the path of least resistance", hypertrophy "the highest possible stimulus for a target muscle … the path of most resistance", with the stimulus-to-fatigue ratio as the bookkeeping. Held by Galpin and Israetel, on the Zatsiorsky/NSCA lineage; the literature above agrees for power and hypertrophy and softens it for strength — [guest series pt 2 (notes)](https://podcastnotes.org/huberman-lab/guest-series-dr-andy-galpin-optimal-protocols-to-build-strength-grow-muscles-part-2-huberman-lab/), [episode page](https://www.hubermanlab.com/episode/dr-andy-galpin-optimal-protocols-to-build-strength-and-grow-muscles), [ep. 65 (notes)](https://podcastnotes.org/huberman-lab/episode-65-dr-andy-galpin-how-to-build-strength-muscle-size-endurance-huberman-lab/), [RP, Israetel 2025](https://rpstrength.com/blogs/videos/strength-training-vs-hypertrophy-the-key-difference), [RP hypertrophy guide (SFR)](https://rpstrength.com/blogs/articles/complete-hypertrophy-training-guide)
 - `[single-practitioner position]` Hypertrophy "to failure": ep. 65 — "working to a muscular failure somewhere between 5–30 reps"; guest series pt 2 — "stopping about 2 reps short of failure". Galpin only, two numbers a year apart; Israetel's working set is 0–4 RIR ([RP landmarks](https://rpstrength.com/blogs/articles/training-volume-landmarks-muscle-growth), cited S3); the metas say the difference is modest (Refalo 2023, Robinson 2024).
 - `[single-practitioner position]` Zone 2 is where "you can carry on a conversation and it feels a bit strained", 80 % of cardio time — Attia; Galpin's endurance card is nasal-breathing pace (S9). Neither puts easy cardio in a "push effort" camp — [peterattiamd.com](https://peterattiamd.com/how-to-find-your-zone-2-without-using-a-lactate-meter/), [The Drive #261 (notes)](https://podcastnotes.org/the-drive-with-dr-peter-attia/training-for-the-centenarian-decathlon-zone-2-vo2-max-stability-and-strength-the-drive-with-peter-attia-261/)
-- `[single-practitioner position]` The seven-quality **taxonomy** is Galpin's nine (skill, speed, power, strength, hypertrophy, muscular endurance, anaerobic power, VO₂max, long-endurance — guest series pt 1) minus the two [019](../roadmap/done/019-adaptation-model-simplification.md) dropped. Galpin only — [guest series pt 1 (notes)](https://podcastnotes.org/huberman-lab/guest-series-dr-andy-galpin-optimal-protocols-to-build-strength-grow-muscles-part-1-huberman-lab/). No roster member, no textbook and no located paper states a *two-camp* rule spanning all seven with the words "quality-driven / fatigue-driven"; that sentence exists only in `ADAPTATION_PRINCIPLE`.
+- `[single-practitioner position]` The seven-quality **taxonomy** is Galpin's nine (skill, speed, power, strength, hypertrophy, muscular endurance, anaerobic power, VO₂max, long-endurance — guest series pt 1) minus the two [0019](../rfcs/done/0019-adaptation-model-simplification.md) dropped. Galpin only — [guest series pt 1 (notes)](https://podcastnotes.org/huberman-lab/guest-series-dr-andy-galpin-optimal-protocols-to-build-strength-grow-muscles-part-1-huberman-lab/). No roster member, no textbook and no located paper states a *two-camp* rule spanning all seven with the words "quality-driven / fatigue-driven"; that sentence exists only in `ADAPTATION_PRINCIPLE`.
 
 #### Where they split
 **1. Failure for hypertrophy — Galpin's "to failure" vs Israetel's 0–4 RIR vs a modest slope.** The forks are between practitioners and inside Galpin's own two statements; the literature puts the truth on a load-conditioned slope (Lasevicius: light sets need failure, heavy sets do not). Tekiō's choice: "push effort" or "close to failure". Take **"close to failure"** — it is what every hypertrophy card and the volume floor (S3) assume, and it is not more precise than the evidence.
@@ -895,11 +895,11 @@ lineage, not evidence.
 
 ### S9 — ADAPTATIONS[endurance].rx (what an endurance session is prescribed as)
 
-**Claim:** An endurance session is trained at **Zone 2 ("conversational")** for **30 min to hours**, as **one continuous bout**, no rest, at **easy, sustainable** effort, cued as "nasal-breathing pace; builds mitochondria & fat oxidation" (`rx`, row 3.9). Drives the prescription text the user reads before a Zone 2 session. The weekly dose (150–240 min/wk, [011](../roadmap/done/011-adaptation-weekly-targets.md#grounding)) and the ≥25-min classifier ([005](../roadmap/done/005-hr-zone-intensity-classification.md)) are not reopened.
-**Boundary note (2026-09-07):** this section prescribes the *default* endurance session. What *counts* as one is [005](005-hr-zone-intensity-classification.md#grounding)'s: any steady aerobic session at aerobic Training Effect ≥ 2.0 credits endurance, tempo and lactate-threshold runs included (fork 1b, D34). The card below is unchanged.
+**Claim:** An endurance session is trained at **Zone 2 ("conversational")** for **30 min to hours**, as **one continuous bout**, no rest, at **easy, sustainable** effort, cued as "nasal-breathing pace; builds mitochondria & fat oxidation" (`rx`, row 3.9). Drives the prescription text the user reads before a Zone 2 session. The weekly dose (150–240 min/wk, [0011](../rfcs/done/0011-adaptation-weekly-targets.md#grounding)) and the ≥25-min classifier ([0005](../rfcs/done/0005-hr-zone-intensity-classification.md)) are not reopened.
+**Boundary note (2026-09-07):** this section prescribes the *default* endurance session. What *counts* as one is [0005](005-hr-zone-intensity-classification.md#grounding)'s: any steady aerobic session at aerobic Training Effect ≥ 2.0 credits endurance, tempo and lactate-threshold runs included (fork 1b, D34). The card below is unchanged.
 **Searched:** 2026-09-03 · **Verdict:** partially supported — the **intensity band is supported** (below the first lactate/ventilatory threshold; the talk test is the validated field proxy, and it is the *only* proxy on the card with validation behind it); the **30-min floor is convention only** (no human trial finds a per-bout threshold; the number is ACSM's daily-dose figure); cue claim 1 (**nasal-breathing pace**) is a `[single-practitioner position]` that the breathing literature does not validate as a Zone 2 marker — **reword**; cue claim 2 (**builds mitochondria & fat oxidation**) is true of Zone 2 but **not distinctive to it** — work-matched intervals build both at least as well — **reword** so the card stops implying exclusivity.
 **Number to use:** field by field —
-- **load:** `Zone 2 (conversational)` — unchanged. The anchor is *immediately below LT1/VT1* (Sitko 2025 expert consensus; Jamnick 2020), and the talk test approximates VT1 across modes and after VT is shifted (Persinger 2004, Foster 2008). **Do not print a %HRmax**: VT1 sits at 81 ± 4 % HRmax and Fatmax at 72 ± 6 % in trained cyclists (Meixner 2025) against ACSM's 64–76 % and Patrick's 60–70 % — a fixed percentage "may inaccurately reflect metabolic responses". If a number is ever needed, ~65–80 % HRmax is the honest band, and it is [005](../roadmap/done/005-hr-zone-intensity-classification.md)'s.
+- **load:** `Zone 2 (conversational)` — unchanged. The anchor is *immediately below LT1/VT1* (Sitko 2025 expert consensus; Jamnick 2020), and the talk test approximates VT1 across modes and after VT is shifted (Persinger 2004, Foster 2008). **Do not print a %HRmax**: VT1 sits at 81 ± 4 % HRmax and Fatmax at 72 ± 6 % in trained cyclists (Meixner 2025) against ACSM's 64–76 % and Patrick's 60–70 % — a fixed percentage "may inaccurately reflect metabolic responses". If a number is ever needed, ~65–80 % HRmax is the honest band, and it is [0005](../rfcs/done/0005-hr-zone-intensity-classification.md)'s.
 - **reps (bout length):** `30 min–hours` — unchanged, labelled **convention**. 30 is ACSM's ≥30 min·d⁻¹ (Garber 2011), sits above Galpin's 20–30-min steady-state floor and below Attia/San-Millán's ≥45 min; Murphy 2019 finds no bout-length effect on fitness at matched volume. Fork 2.
 - **sets:** `1 continuous` — unchanged; a default shape, not a requirement (experts accept continuous, variable or interval-type sessions — Sitko 2025; accumulated ≡ continuous — Murphy 2019).
 - **rest:** `—` — unchanged.
@@ -951,9 +951,9 @@ lineage, not evidence.
 
 #### Where they split
 
-**1. Threshold or percentage.** Attia and Galpin anchor on a physiological line (lactate ~1.8 mmol, breathing); Patrick and ACSM print a %HRmax (60–70, 64–76); the one study that measured both in trained adults puts VT1 at 81 % HRmax and Fatmax at 72 % with wide spread (Meixner 2025). The card should keep the talk test and print no percentage — a fixed %HRmax is the least valid anchor on the list (Jamnick 2020). The %HRmax question is [005](../roadmap/done/005-hr-zone-intensity-classification.md)'s classifier and stays there.
+**1. Threshold or percentage.** Attia and Galpin anchor on a physiological line (lactate ~1.8 mmol, breathing); Patrick and ACSM print a %HRmax (60–70, 64–76); the one study that measured both in trained adults puts VT1 at 81 % HRmax and Fatmax at 72 % with wide spread (Meixner 2025). The card should keep the talk test and print no percentage — a fixed %HRmax is the least valid anchor on the list (Jamnick 2020). The %HRmax question is [0005](../rfcs/done/0005-hr-zone-intensity-classification.md)'s classifier and stays there.
 
-**2. 20–30, 30, or 45.** Galpin's steady-state floor is 20–30 min; Attia/San-Millán's is ≥ 45 (60+ preferred) on a mechanism (fat mobilisation and lactate clearance need time — Purdom 2018's "> 2 h" and Sitko 2025's experts point the same way); the human literature has no per-bout threshold at all (Murphy 2019, Jakicic 2019) and the animal curve says the floor lengthens as intensity drops (Dudley 1982). The card's 30 is ACSM's *daily* dose borrowed as a *per-bout* floor — a convention on both sides of the fork. Keep it, label it, and keep the app's ≥ 25-min classifier as the separate question it is (011 D-endurance, [012](../roadmap/012-adaptation-target-shapes.md)); raising the card to 45 would print San-Millán's mechanism as a finding.
+**2. 20–30, 30, or 45.** Galpin's steady-state floor is 20–30 min; Attia/San-Millán's is ≥ 45 (60+ preferred) on a mechanism (fat mobilisation and lactate clearance need time — Purdom 2018's "> 2 h" and Sitko 2025's experts point the same way); the human literature has no per-bout threshold at all (Murphy 2019, Jakicic 2019) and the animal curve says the floor lengthens as intensity drops (Dudley 1982). The card's 30 is ACSM's *daily* dose borrowed as a *per-bout* floor — a convention on both sides of the fork. Keep it, label it, and keep the app's ≥ 25-min classifier as the separate question it is (011 D-endurance, [0012](../rfcs/0012-adaptation-target-shapes.md)); raising the card to 45 would print San-Millán's mechanism as a finding.
 
 **3. Nasal-breathing pace.** Huberman's proxy, Galpin's gear 1–2. The literature says nasal-only breathing is a *ventilation ceiling* that sits near the anaerobic threshold in the unadapted (Mapelli 2025) and at VO₂max in the adapted (Dallam 2018) — it caps intensity somewhere at or above Zone 2's upper edge, and where it caps depends on practice, so it cannot mark LT1. No study tests it against LT1/VT1. Decision: replace it with the validated proxy (talk test); nasal breathing may return as a Galpin-attributed "gear" note in 031's drawing, never as the load anchor.
 
@@ -963,7 +963,7 @@ lineage, not evidence.
 
 - Population mismatch: the threshold and talk-test samples are young healthy adults (Persinger n = 16, Foster's series, Mapelli n = 12) or experienced cyclists (Meixner n = 50, 31 y; Achten n = 55 trained men); the mitochondrial trials are small young-male groups (MacInnis n = 10, Granata n = 29) or 8 young women (Talanian); the MFO meta-analysis is overweight adults; the bout-duration curve is rats. **No located trial is in a 40-year-old recreational lifter who also trains weights and tennis.**
 - Every intensity anchor except the talk test needs a lab (lactate, gas exchange); the talk test is the only one the user can apply on a run, which is why it is the card's anchor and not a %HRmax.
-- Zone 2 has no duration field to act on at the card level: the card is guidance, the classifier (≥ 25 min) and Garmin's Training Effect decide what *counts*, and the weekly-minutes target that would make bout length a read is [012](../roadmap/012-adaptation-target-shapes.md)'s.
+- Zone 2 has no duration field to act on at the card level: the card is guidance, the classifier (≥ 25 min) and Garmin's Training Effect decide what *counts*, and the weekly-minutes target that would make bout length a read is [0012](../rfcs/0012-adaptation-target-shapes.md)'s.
 - What would move this number: a human trial varying bout length at matched weekly Zone 2 volume with mitochondrial or fat-oxidation outcomes (would settle fork 2 — none exists, as 011 already noted); a study of nasal-only breathing against LT1/VT1 (would decide whether fork 3's proxy is usable); a weekly-minutes target in the app (would make "30 min–hours" a read rather than a cue).
 
 #### Source comment
@@ -997,7 +997,7 @@ VO₂max card instead. Load, sets, rest and effort stay as shipped; `reps`
 ACSM 2011's daily dose used as a per-bout floor, no human trial finds a
 per-bout threshold (Murphy 2019; Jakicic 2019), and raising it to Attia's 45
 would print San-Millán's mechanism as a finding. No %HRmax is printed on
-purpose (fork 1) — that is [005](../roadmap/done/005-hr-zone-intensity-classification.md)'s
+purpose (fork 1) — that is [0005](../rfcs/done/0005-hr-zone-intensity-classification.md)'s
 classifier question. The block's 26 PMIDs + 1 DOI resolved through eutils /
 Crossref on receipt. `weeklySessionTarget = 2` (011) and the ≥ 25-min
 classifier (005) are not reopened.
@@ -1099,7 +1099,7 @@ purpose — a week of 6–8-rep work reads as a strength gap, and those sets kee
 their hypertrophy credit. Fork 3 (does a local-endurance adaptation exist at
 all): not settled and not needed — the endurance map is a specificity read
 ("trained at ≥ 15 reps"), which is how
-[031](../roadmap/done/031-adaptations-drill-down-read.md)'s drill-down should word
+[0031](../rfcs/done/0031-adaptations-drill-down-read.md)'s drill-down should word
 it, never "endurance improved". The hypertrophy lower edge (5) is the softest
 number in the block: a set-counting compromise between volume-matched parity
 at 3 RM and per-set under-delivery at 2–4 RM; singles and doubles count as

@@ -5,7 +5,7 @@ What a reviewer needs that is **not** already written down. Read this before
 
 Everything else lives elsewhere and is not repeated here: what the app is for and
 what may be built is [doctrine.md](doctrine.md); how the repo is laid out and how
-it ships is [CLAUDE.md](../CLAUDE.md); how work is tracked is the house rules.
+it ships is `CLAUDE.md`; how work is tracked is the house rules.
 This file is only the list of things a good generic React reviewer gets wrong
 here.
 
@@ -18,7 +18,7 @@ These look like defects on every first read and are all decisions:
 
 - **One hardcoded user.** `USER_ID` in `src/constants/app.ts`; every query
   filters by it; there is no sign-in. Multi-user is [roadmap
-  003](roadmap/003-rls-auth-v1.1.md), and opening the app to other people is the
+  003](rfcs/0003-rls-auth-v1.1.md), and opening the app to other people is the
   standing goal — so *new* code should not add fresh single-user shortcuts, but
   the existing ones are not bugs.
 - **RLS is wide open on purpose** — `USING (true)` while there is no auth. A
@@ -36,7 +36,7 @@ These look like defects on every first read and are all decisions:
   propose deleting rows by that tag.
 - **`EditModal.tsx` and `ProgramTab.tsx` are long** (800+ lines) and known.
   Splitting them is scheduled in
-  [roadmap 048](roadmap/done/048-simplification-candidates.md), so "this file is too
+  [roadmap 048](rfcs/done/0048-simplification-candidates.md), so "this file is too
   big" is not a new finding.
 
 ## 2. Where the real risk is
