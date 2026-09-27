@@ -1,22 +1,22 @@
 ---
-title: Every Garmin activity type lands somewhere, by rule
+title: Every Garmin activity type is decided, and a new one is noticed
 authors: [Peter Petrov]
 created: 2026-09-27
 last_updated: 2026-09-27
 status: planned
-status_note: Opened after volleyball sat unmapped for weeks; nothing blocks it.
+status_note: Opened after volleyball sat unmapped for weeks. The open questions were decided on 2026-09-27; nothing blocks it.
 label: feature
 ---
 
-# RFC 0073: Every Garmin activity type lands somewhere, by rule
+# RFC 0073: Every Garmin activity type is decided, and a new one is noticed
 
 ## Summary
 
 The activity sync maps Garmin types to app rows one key at a time
 (`CARDIO_TYPE_KEYS`, `SPORT_TYPE_KEYS`) and silently skips everything else.
-Turn that around: every activity Garmin records ends up as a cardio row, a
-sport row, or an explicit skip, and a type the sync has never seen is handled
-by a default rule and reported, not dropped.
+Turn that around: every activity type Garmin records is decided — a cardio
+row, a sport row, or a skip with a reason — and a type the sync has never seen
+is skipped *out loud*, with a warning on the run, instead of quietly.
 
 ## Motivation
 
@@ -40,8 +40,8 @@ played but not synced makes Home report a shortfall that isn't real.
 
 ## Goals
 
-- An unknown `typeKey` never vanishes. It either lands by a default rule or
-  makes the run visibly unhappy, whichever the decision below picks.
+- An unknown `typeKey` is skipped, never guessed at, but the run says so where
+  it will be seen.
 - The maps are completed from data: a full-history dry run
   (`days=3650`, `dry_run=true`) inventories every `typeKey` ever recorded, and
   each one is assigned cardio, sport or skip-by-decision.
@@ -53,29 +53,50 @@ played but not synced makes Home report a shortfall that isn't real.
   `sport_sessions`; a new table or section is out (doctrine R1).
 - Strength sets from Garmin. `strength_training` has no sets or reps in the
   summary and stays skipped for that reason.
-- Overturning the walking / hiking / skating decision of 2026-09-06 by default.
-  "All possible sessions" is read as *all training sessions*; whether those
-  three count is an unresolved question below, not an assumption.
+- Walking and hiking. They stay out, and the reason is corrected (see
+  Decisions): not that they are no stimulus, but that neither table fits them.
+
+## Decisions
+
+Taken 2026-09-27, answering the questions this RFC opened with.
+
+- **Walking — skip.** The 2026-09-06 exclusion stands, but its recorded reason
+  was wrong. Walking was left out because it fits neither table: it is not a
+  cardio session in the app's sense (no rowing / running / cycling / swimming
+  modality, no intervals) and it is not a sport either.
+- **Hiking — skip,** for the same reason as walking. It is the closer call of
+  the two; it comes back only with a reason stronger than "it was recorded."
+- **Skating — sport.** Garmin's `skating_ws` maps to a `Skating` sport type,
+  created by the sync if it does not exist, and is classified like any sport
+  from its Training Effect. One activity in the two-year window.
+- **Unknown types — skip.** No default rule guesses where a never-seen type
+  goes. It is skipped, and step 3 below makes the skip visible.
+- **Beach volleyball — a label on Volleyball, or its own sport type.** In two
+  years Garmin sent only `volleyball`, so the watch does not tell them apart.
+  The app already has a `Beach Volleyball` sport type. A Garmin volleyball
+  activity whose name contains "beach" lands under `Beach Volleyball`, the way a
+  HIIT activity's name picks its modality (RFC 0054); any other lands under
+  `Volleyball`. Either way the Garmin activity name is kept in `notes`, which is
+  the label if the name rule ever misfires. If a full-history inventory turns up
+  a separate Garmin key, that key maps to `Beach Volleyball` directly.
 
 ## Proposal
 
 1. **Inventory.** Run the full-history dry run (two years is already clean — see Motivation) and record the `typeKey` list
    with counts and date ranges (the dump's `analyze_dump.py` already does most of
    this).
-2. **Map what the inventory finds.** Endurance modalities go to
-   `CARDIO_TYPE_KEYS` under the four existing `activity_type` values or
-   `custom`. Ball, racket and team games go to `SPORT_TYPE_KEYS`, creating the
-   sport type if needed (`create_sport_type` already does). Everything else
-   is added to `SKIPPED_BY_DECISION` with its reason.
-3. **Default for the never-seen key.** Candidate: land it as a sport row named
-   after Garmin's own `typeKey` (title-cased). The app's sport classification
-   reads Garmin's Training Effect, not the sport's name, so an unknown sport is
-   still classified honestly. The alternative is to fail the run so the Actions
-   email is the notification.
-4. **Make skips visible on the daily run.** A non-zero count of unmapped
+2. **Apply the decisions.** `skating_ws` moves from `SKIPPED_BY_DECISION` to
+   `SPORT_TYPE_KEYS` as `Skating`. The volleyball name rule for beach is added.
+   `walking` and `hiking` keep their place in `SKIPPED_BY_DECISION` with the
+   corrected reason. Anything new the inventory finds is decided the same way:
+   an endurance modality to `CARDIO_TYPE_KEYS`, a game or sport to
+   `SPORT_TYPE_KEYS`, anything else to `SKIPPED_BY_DECISION` with its reason.
+3. **Make skips visible on the daily run.** A non-zero count of unmapped
    activities is a warning annotation (`::warning::`) on the run, so a new type
-   shows up on the Actions page without anyone opening a dry-run log.
-5. **Backfill** once, with the maps complete, over the full history. Hand-logged
+   shows up on the Actions page without anyone opening a dry-run log. The run
+   still succeeds; skipping is the decided behaviour, the warning is only the
+   notice that there is something new to decide.
+4. **Backfill** once, with the maps complete, over the full history. Hand-logged
    rows are claimed, not doubled (RFC 0041's claim rule).
 
 ## Doctrine checklist
@@ -99,24 +120,23 @@ played but not synced makes Home report a shortfall that isn't real.
 Mapping key by key was right while the sync was new: RFC 0041 mapped only keys
 seen on real activities so that the maps grew from data, not guesses. That
 still holds for choosing *where* a type goes. What fails is the discovery step,
-which depends on a human reading a log. A default rule plus a visible warning
-keeps the "from data" discipline without the silent loss.
+which depends on a human reading a log. Guessing a home for an unknown type
+would trade that silence for rows in the wrong place; a skip plus a visible
+warning keeps the "from data" discipline without the silent loss.
 
 ## Acceptance
 
 - [ ] A full-history dry run reports zero unmapped types
 - [ ] Every entry in `SKIPPED_BY_DECISION` carries its reason
-- [ ] A daily run that meets an unmapped type shows a warning on its Actions
-      page (or lands it by the default rule, per the decision below)
+- [ ] Skating syncs as a `Skating` sport; walking and hiking stay skipped with
+      the corrected reason
+- [ ] A Garmin volleyball activity named with "beach" lands under
+      `Beach Volleyball`, any other under `Volleyball`
+- [ ] A daily run that meets an unmapped type succeeds, skips it, and shows a
+      warning on its Actions page
 - [ ] The full-history backfill is run and claims hand-logged rows rather than
       doubling them
 
 ## Unresolved questions
 
-- **Walking, hiking, skating.** Excluded on 2026-09-06 as "not a stimulus the
-  app counts." Does "all sessions" reopen that, or does it stand?
-- **Default for an unknown type:** land it as a sport named after the Garmin
-  key, or fail the run?
-- **Beach volleyball.** The app keeps `Beach Volleyball` apart from
-  `Volleyball`. Whether Garmin has a separate key for it is unknown until the
-  inventory runs.
+None open. Hiking is the decision most likely to be revisited.
