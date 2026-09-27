@@ -27,6 +27,13 @@ skipped on every daily run until 2026-09-27, when a 30-day backfill printed
 with a dozen hand-logged rows already existed. It was mapped in code v2.0.96.
 The daily run never says this out loud, because a skip is a normal outcome.
 
+Once volleyball was mapped, a 730-day dry run (2026-09-27, 143 activities)
+found no unmapped type at all. The only skips were by decision:
+`strength_training` ×42 and `skating_ws` ×1. So the maps are complete for
+two years of history today. What this RFC fixes is that the *next* new type
+would go missing just as quietly, plus whatever lies further back than two
+years.
+
 Each missed session is a gap in the read the app exists for: the cardio
 adaptations and the muscle read are computed from what is logged, so a sport
 played but not synced makes Home report a shortfall that isn't real.
@@ -52,7 +59,7 @@ played but not synced makes Home report a shortfall that isn't real.
 
 ## Proposal
 
-1. **Inventory.** Run the full-history dry run and record the `typeKey` list
+1. **Inventory.** Run the full-history dry run (two years is already clean — see Motivation) and record the `typeKey` list
    with counts and date ranges (the dump's `analyze_dump.py` already does most of
    this).
 2. **Map what the inventory finds.** Endurance modalities go to
