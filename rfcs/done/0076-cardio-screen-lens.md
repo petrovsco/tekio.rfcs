@@ -84,5 +84,5 @@ the real components (no local database credentials):
 - The Sport lens drills to one sport, and the record shows for a sport that
   tracks a competitor.
 - The history and its filter follow the lens.
-- Typecheck, 233 tests, lint (0 errors), knip, perf budget and build are all
+- Typecheck, 232 tests, lint (0 errors), knip, perf budget and build are all
   green.
