@@ -2,9 +2,9 @@
 title: A mapped exercise catalogue, grounded by movement pattern
 authors: [Peter Petrov]
 created: 2026-09-27
-last_updated: 2026-09-27
+last_updated: 2026-09-29
 status: backlog
-status_note: Opened 2026-09-27 after a curl carried a Lats link that nobody could trace, and two new exercises were logged with no links at all. Needs its Grounding section before any code; the unresolved questions below are open.
+status_note: Opened 2026-09-27 after a curl carried a Lats link that nobody could trace, and two new exercises were logged with no links at all. Needs its Grounding section before any code; the unresolved questions below are open. 2026-09-29: four hand edits landed ahead of the catalogue (see §Hand edits before the catalogue); the audit starts from them.
 label: feature
 ---
 
@@ -153,6 +153,26 @@ A test in the code repo that reads the committed catalogue file and fails when
 an exercise has links that neither match its pattern nor carry a reason. It
 protects the file, not the live table; the provenance columns cover edits made
 in the app.
+
+## Hand edits before the catalogue (2026-09-29)
+
+Made on the shared database by Peter's call during a review of a day's new
+mappings. None of them is grounded by this RFC yet. §4's audit re-checks each
+against its pattern, and may reverse it.
+
+| Exercise → muscle | Was | Now | Why |
+|---|---|---|---|
+| Leg Press → Adductors | 3 | **2** | Same squat pattern as Back Squat, Goblet Squat and Bulgarian Split Squat, which [0042](done/0042-level-3-link-audit.md) rows 10–12 moved to 2. Leg Press was created after that audit. This is the "pending Leg Press mapping" in §3, done by hand rather than from the catalogue. |
+| Lateral Lunge → Quadriceps | 2 | **1** | The working knee flexes to about 90° under load, like a single-leg squat. Adductors stay at 1. |
+| Back Extension → split in two | Erectors 1, Glutes 2, Hamstrings 2 | two rows | The first variant override §2 anticipates. **Back Extension (flat-back)**: Glutes 1, Hamstrings 1, Erectors 2. The spine is held still and the hip moves. The existing row was renamed, so its sessions moved with it, and its aliases (plus the old name) point to it. **Back Extension (round-back)**: Erectors 1, Glutes 2, Hamstrings 2. The spine moves through its range. |
+
+**Found, not yet fixed:** *Lat Raises* was used for lat pulldowns (40–70 kg,
+five sessions 2026-03-11 → 08-11), yet it carries lateral-raise links (Lateral
+Deltoid 1, Anterior Deltoid 2), and the system aliases *Lateral Raises* and
+*Side Raises* point to it. A correctly mapped *Lat Pulldown* exists with no
+sessions, and a *Dumbbell Lateral Raise* was created on 2026-09-29. It is the
+same class of error as the curl-with-lats link in §Motivation: a name that reads
+two ways.
 
 ## Rationale
 
