@@ -3,8 +3,8 @@ title: The Garmin syncs start at 08:00, not whenever GitHub gets to them
 authors: [Peter Petrov]
 created: 2026-09-29
 last_updated: 2026-09-29
-status: blocked
-status_note: "pg_cron jobs and the dispatch function are live in the database (v2.0.104). Waiting on a GitHub token in Vault as `github_actions_dispatch_token`; until it is there the function warns and starts nothing, and the GitHub cron fallback is all that runs."
+status: in progress
+status_note: "Live since v2.0.104, token in Vault and proven on 2026-09-29: a dispatch from the database got `204` and started a dry run on GitHub at once. Closes after the first 08:00 run on its own."
 label: infra
 ---
 
@@ -78,7 +78,9 @@ read and write, inserted by hand. The steps are in the code repo's
 
 - [x] `cron.job` lists both jobs, active.
 - [x] `anon` and `authenticated` cannot execute `dispatch_garmin_sync`.
-- [ ] `github_actions_dispatch_token` is in Vault.
+- [x] `github_actions_dispatch_token` is in Vault, and a dispatch sent with it
+      from `net.http_post` got `204` and started a run (2026-09-29, 07:34 UTC,
+      `dry_run=true`).
 - [ ] On the next morning, `net._http_response` shows two `204`s, and
       `gh run list` shows a `workflow_dispatch` run of each sync started
       between 08:00 and 08:15 Sofia time.
