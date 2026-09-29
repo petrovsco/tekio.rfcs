@@ -18,6 +18,8 @@ the logo drawing itself: the arm curls from root to tip, each sucker opens just
 behind the brush, the macron is drawn left to right and `TEKIŌ` settles under
 it. It leaves as soon as the data is in.
 
+Since [0079](0079-mark-without-the-macron.md) the mark has no macron. Its slot in the sequence draws the far arm instead.
+
 ## Goals
 
 - Something on screen from the first paint, including the stretch before any

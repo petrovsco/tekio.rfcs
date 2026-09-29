@@ -77,6 +77,8 @@ announces itself with the black banner across the top of the screen, so a
 second signal in the tab would be duplicate work for no extra information. No
 build-time branching; `VITE_ENV` stays unused by the icon.
 
+**Superseded in part by [0079](0079-mark-without-the-macron.md)** (2026-09-29): the macron is gone and a far arm shows inside the ring, because a round O under a level bar is a registered mark in this market. The ring below is unchanged apart from being recentred on (50, 50).
+
 **The mark: an octopus arm written as the Ō of Tekiō.** One stroke wrapped into
 a ring — thick where it starts at half past one, thinning as it travels all the
 way round — with eight suckers punched through it and a macron drawn above with
