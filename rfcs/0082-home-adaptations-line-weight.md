@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-09-30
 last_updated: 2026-09-30
 status: in progress
-status_note: "Opened 2026-09-30 when Peter recorded the doctrine §6 verdict as not met: all three questions answer correctly at source, but the seven-quality line does not draw the eye inside five seconds. The change shipped the same day (v2.1.2): 12 px body text, untouched half semibold in ink, short half in ink-2, Home still one 900 px screen. What remains is Peter's cold re-walk of §6. That walk closes this RFC, and only it can record **met**."
+status_note: "Opened 2026-09-30 when Peter recorded the doctrine §6 verdict as not met: all three questions answer correctly at source, but the seven-quality line does not draw the eye inside five seconds. The change shipped the same day (v2.1.2, with the untouched names in the accent in v2.1.3): 12 px body text, untouched half semibold, short half in ink-2, Home still one 900 px screen. What remains is Peter's cold re-walk of §6. That walk closes this RFC, and only it can record **met**."
 label: feature
 release: 2.2.0
 ---
@@ -99,8 +99,13 @@ readiness verdict for the top of the screen.
 - [x] Verified in the browser. The app has one theme, so there is no second
       theme to check. The untouched half renders at 600 in ink `#1a1a1a`, and
       the short half at 400 in ink-2 `#6b6b6b`.
-- [x] `coverageParts` joins back to `coverageLine` exactly (tested), so Home
-      and the Adaptations header still print one sentence.
+- [x] The untouched names take the accent (v2.1.3, Peter's call the same day).
+      The label "Untouched:" stays ink, the names go `#c2410c`, and the period
+      stays ink. It is the same red that edges an untouched whole-body tile, so
+      the line and the tiles agree. design-system §1 lists it. Contrast is about
+      5:1, which passes AA at 12 px.
+- [x] `coverageLine` is built from `coverageParts` (tested), so Home and the
+      Adaptations header still print one sentence.
 
 ## Unresolved questions
 

@@ -18,7 +18,9 @@ every channel carries exactly one meaning:
 
 - **Accent `#c2410c`** = *action lives here / urgency*. It appears on: the
   verdict, the callout markers and major callout labels on the body map,
-  the edge of an untouched whole-body quality, and a stale-capture note.
+  the edge of an untouched whole-body quality, the untouched names in Home's
+  adaptations line (the names only, never their label), and a stale-capture
+  note.
   On a Hold day the verdict keeps the accent — it signals urgency, not
   mood. That is deliberate.
 - **Ink on the body map** = *stimulus, and nothing else*. A four-step grey
