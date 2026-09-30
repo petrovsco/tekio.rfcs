@@ -104,6 +104,9 @@ readiness verdict for the top of the screen.
       stays ink. It is the same red that edges an untouched whole-body tile, so
       the line and the tiles agree. design-system §1 lists it. Contrast is about
       5:1, which passes AA at 12 px.
+- [x] Both labels are the same ink semibold (v2.1.4, Peter's call). "Short:"
+      used to be grey with its names. Now only the names carry state: red for
+      untouched, ink-2 for short.
 - [x] `coverageLine` is built from `coverageParts` (tested), so Home and the
       Adaptations header still print one sentence.
 
