@@ -38,8 +38,10 @@ briefs, done one at a time:
 3. [0072](done/0072-link-checker-for-this-repo.md) — the link checker follows the
    docs to this repo, so step 1 of a release checks the RFCs again. **Done
    2026-09-30** (v2.1.7), with the code repo's `typecheck` fix folded in.
-4. [0073](0073-garmin-sync-every-activity-type.md) — every Garmin sport mapped
-   before it is played.
+4. [0073](done/0073-garmin-sync-every-activity-type.md) — every Garmin sport mapped
+   before it is played. **Done 2026-09-30** (v2.1.8–v2.1.9). Its yoga, pilates
+   and mobility skip opened [0083](0083-garmin-yoga-pilates-mobility-sync.md),
+   untagged.
 5. [0077](0077-garmin-sync-on-time.md) — the 08:00 Garmin syncs; live, closes
    after its first scheduled run.
 

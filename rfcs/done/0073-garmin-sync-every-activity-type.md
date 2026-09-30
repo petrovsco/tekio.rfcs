@@ -3,8 +3,8 @@ title: Every Garmin sport is mapped before it is ever played
 authors: [Peter Petrov]
 created: 2026-09-27
 last_updated: 2026-09-30
-status: planned
-status_note: Opened after volleyball sat unmapped for weeks. Scope set on 2026-09-27 to Garmin's whole catalogue, not the types seen so far; nothing blocks it.
+status: done
+status_note: "done 2026-09-30 (v2.1.8–v2.1.9): all 154 Garmin types decided in `activity_types.json`; the full-history backfill synced the one skating session and created `Skating`. Yoga, pilates and mobility went on to [0083](../0083-garmin-yoga-pilates-mobility-sync.md)."
 label: feature
 release: 2.2.0
 ---
@@ -141,23 +141,78 @@ Garmin adds later are the only gap, and the warning closes it.
 
 ## Acceptance
 
-- [ ] The catalogue is committed, and a test proves every key in it is in
+- [x] The catalogue is committed, and a test proves every key in it is in
       exactly one of the three maps
-- [ ] A catalogued sport never played before syncs on first play, creating its
+- [x] A catalogued sport never played before syncs on first play, creating its
       sport type
-- [ ] Skating syncs as a `Skating` sport; walking and hiking stay skipped with
+- [x] Skating syncs as a `Skating` sport; walking and hiking stay skipped with
       the corrected reason
-- [ ] A Garmin volleyball activity named with "beach" lands under
+- [x] A Garmin volleyball activity named with "beach" lands under
       `Beach Volleyball`, any other under `Volleyball`
-- [ ] A key missing from the catalogue is skipped, the run succeeds, and the
+- [x] A key missing from the catalogue is skipped, the run succeeds, and the
       run shows a warning
-- [ ] The full-history backfill is run and claims hand-logged rows rather than
+- [x] The full-history backfill is run and claims hand-logged rows rather than
       doubling them
 
 ## Unresolved questions
 
-- **Borderline endurance types.** Elliptical, stair stepper, ski erg,
-  cross-country skiing and similar fit none of the four cardio modalities. For
-  each: `custom` cardio, a sport, or skip? Decide during step 2, once the
-  catalogue shows which of them Garmin has.
-- **Hiking** is the decision most likely to be revisited.
+None open. The borderline endurance types were decided on 2026-09-30 (see
+*Outcome*). Hiking stays skipped and remains the call most likely to be
+revisited.
+
+## Outcome — 2026-09-30, v2.1.8–v2.1.9
+
+**The catalogue.** A manual run of the activity workflow gained a `catalogue`
+input (v2.1.8) that uploads `get_activity_types()` as an artifact, so the pull
+happened in CI, where the token is. Garmin returned **154 types** in 16 parent
+categories. They are committed, decided, as
+`scripts/garmin-sync/activity_types.json` in the code repo, plus the legacy
+`rowing` key Garmin no longer lists, so old activities in a backfill still map.
+
+**One file instead of three hand-kept maps.** Each type carries exactly one of
+`cardio`, `sport` or `skip`, and a skip names a written reason. The sync builds
+`CARDIO_TYPE_KEYS`, `SPORT_TYPE_KEYS` and `SKIPPED_BY_DECISION` from it, and so
+does `analyze_dump.py`, which had its own stale `{"tennis_v2"}`. The check lives
+in Vitest (`src/test/garminActivityTypes.test.ts`), so `npm run test`, which is
+release step 1, runs it. It checks four things: every type is decided exactly
+once; no type is listed twice; cardio lands only on a modality the app has; and
+every skip has a reason. A type added without a decision was shown to fail it,
+by name.
+
+**Decisions taken 2026-09-30** (Peter), on top of the 2026-09-27 ones:
+
+| Decision | Types |
+|---|---|
+| Cardio, existing modality | 9 running, 15 cycling, 3 swimming, 3 rowing variants (e.g. ultra run, track and enduro cycling, hand cycling) |
+| Cardio, `custom` (none of Running / Cycling / Swimming / Indoor Rowing) | 17: elliptical, stair and floor climbing, indoor, cross-country and skate skiing, backcountry skiing and snowboarding, jump rope, `indoor_cardio`, kayaking, paddling, SUP, wheelchair push-run, and both grinding types |
+| Sport | 47: every team and racket sport; board, water and gravity sports; golf, disc golf, archery, resort skiing and snowboarding, BMX and downhill biking, climbing, boxing, MMA, dance, horseback riding, sailing, whitewater; skating and inline skating both as `Skating` |
+| Skip | 60, under 8 reasons: walking-type (8 — the corrected reason), strength, mobility (yoga, pilates, mobility — to [0083](../0083-garmin-yoga-pilates-mobility-sync.md)), not training (31), safety alerts, catalogue categories, multisport containers and transitions, and Garmin's generic *Other* |
+
+**Grounding: no new claim.** A synced cardio row and a synced sport row both
+go through `classifyGarminIntensity` on their own Training Effect, and neither
+path reads the modality or the sport. So mapping a type to `custom` or to a
+sport changes where a session shows, not what it credits: `/ground` Step 0's
+exemption for a change that makes no new claim.
+
+**Beach volleyball** is decided by the name: `sport_name()` sends a
+`volleyball` activity whose name contains "beach" to `Beach Volleyball`. The
+catalogue has no separate beach key.
+
+**The warning.** A key in none of the maps is still skipped and listed, and the
+run now prints a `::warning::` annotation naming it. The run still succeeds.
+
+**Backfill.** A full-history dry run, then the real run (`days=3650`, 288
+activities from 2016-10-03): **one new row**, the skating session of
+2025-02-16, which created the `Skating` sport type. Checked in the database:
+`source = garmin`, with a Garmin id. Everything else was already synced (226
+cardio, 8 sport). There were no hand-logged rows to claim, and no unknown
+type came up.
+
+**What the evidence does and does not cover.** The beach rule, the unknown-key
+skip and first-play type creation for a *new* key were exercised offline, by
+calling the sync's routing on constructed activities; first-play creation was
+also seen live, with Skating. Two things were **not seen on a real run**,
+because the history holds no case of them: a beach-named volleyball activity,
+and an uncatalogued key (so the warning line has not yet appeared on the
+Actions page). The claim rule is 0041's, unchanged, and had nothing to claim
+here.

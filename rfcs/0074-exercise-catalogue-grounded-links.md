@@ -79,7 +79,7 @@ problems: a stranger will not open an Admin editor to map their exercises.
 
 - Inferring links from a name at runtime (by string match or a model). A
   catalogue is decided by a person and committed, the way
-  [0073](0073-garmin-sync-every-activity-type.md) commits Garmin's sport list.
+  [0073](done/0073-garmin-sync-every-activity-type.md) commits Garmin's sport list.
 - Cardio, sport and mobility movements. This is the weights catalogue;
   mobility links (the `recovery` contribution) keep their own model.
 - New weights for the levels. 7.1 is grounded and stays as it is.
