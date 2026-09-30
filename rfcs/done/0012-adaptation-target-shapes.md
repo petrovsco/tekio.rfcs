@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-08-26
 last_updated: 2026-09-30
 status: done
-status_note: "Done 2026-09-30 (v2.0.110). Endurance reads minutes, 150/week, with no per-bout floor (Galpin's side). Power reads sessions per muscle, 2/week. The unit follows the target in use. Two legacy DB values wait for the release sweep in [0080](../0080-release-2-1-0-schema-drops.md). The anaerobic open question moved to [0081](../0081-anaerobic-standing-target.md)."
+status_note: "Done 2026-09-30 (v2.0.110). Endurance reads minutes, 150/week, with no per-bout floor (Galpin's side). Power reads sessions per muscle, 2/week. The unit follows the target in use. Two legacy DB values wait for the release sweep in [0080](0080-release-2-1-0-schema-drops.md). The anaerobic open question moved to [0081](../0081-anaerobic-standing-target.md)."
 label: feature
 depends: [19]
 release: 2.1.0
@@ -55,7 +55,7 @@ minutes target to 150, and leaves power's `weekly_muscle_target = 6` and
 endurance's `weekly_session_target = 2` in place. Because of the shape order,
 `develop` never consults them, and `master` reads exactly what it read before.
 Zeroing them is contract work, queued in
-[0080](../0080-release-2-1-0-schema-drops.md). Verified by query after the
+[0080](0080-release-2-1-0-schema-drops.md). Verified by query after the
 migration:
 
 | adaptation | muscle | session | minutes |

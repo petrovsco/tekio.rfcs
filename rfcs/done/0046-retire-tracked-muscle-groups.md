@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-09-05
 last_updated: 2026-09-30
 status: done
-status_note: "Done 2026-09-30 (v2.0.108): the Profile card, the prefs field, both DB helpers and the `adaptationCoverage` argument are gone, and the column drop waits in [0080](../0080-release-2-1-0-schema-drops.md). Before that — 2.0.0 shipped 2026-09-05 and Peter committed the deletion to 2.1.0 the same day (\"we can retire it for now\"). The *need* behind it is expected back in [0040](../0040-adaptation-goals.md): focus belongs at the adaptation level, and Home and Adaptations must not punish a chosen focus — that is 040's job, not this setting's."
+status_note: "Done 2026-09-30 (v2.0.108): the Profile card, the prefs field, both DB helpers and the `adaptationCoverage` argument are gone, and the column drop waits in [0080](0080-release-2-1-0-schema-drops.md). Before that — 2.0.0 shipped 2026-09-05 and Peter committed the deletion to 2.1.0 the same day (\"we can retire it for now\"). The *need* behind it is expected back in [0040](../0040-adaptation-goals.md): focus belongs at the adaptation level, and Home and Adaptations must not punish a chosen focus — that is 040's job, not this setting's."
 label: feature
 release: 2.1.0
 ---
@@ -64,4 +64,4 @@ Delete it. The honest read is "every muscle the map draws".
 - [x] No "Adaptation tracking" card on Profile; no `tracked` reference in
       `src/` outside the migration history.
 - [x] `adaptationCoverage` judges every leaf; the 045 tests still pass.
-- [x] The column drop is queued — in [0080](../0080-release-2-1-0-schema-drops.md), since 025 is closed.
+- [x] The column drop is queued — in [0080](0080-release-2-1-0-schema-drops.md), since 025 is closed.

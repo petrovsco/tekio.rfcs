@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-08-30
 last_updated: 2026-09-30
 status: done
-status_note: "Done 2026-09-30 (v2.0.109). The policy is written in the code repo's `supabase/README.md` and summarised in its `CLAUDE.md`. Part 3 is restated rather than withdrawn: the release sweep removes the transitional schema that lets two builds share one database — never rows. Its first queue is [0080](../0080-release-2-1-0-schema-drops.md). Part 1 moved to [0037](0037-row-origin-tagging.md)."
+status_note: "Done 2026-09-30 (v2.0.109). The policy is written in the code repo's `supabase/README.md` and summarised in its `CLAUDE.md`. Part 3 is restated rather than withdrawn: the release sweep removes the transitional schema that lets two builds share one database — never rows. Its first queue is [0080](0080-release-2-1-0-schema-drops.md). Part 1 moved to [0037](0037-row-origin-tagging.md)."
 label: infra
 depends: [37]
 release: "2.1.0 — carried over: the policy is what makes a release safe on a shared database."
@@ -79,7 +79,7 @@ goes. **Data logged from the staging app stays.**
 
 This is the pattern [0025](0025-release-blocked-schema-drops.md) already ran for
 2.0.0; it now has a name and a home. Each release gets a schema-drops brief
-([0080](../0080-release-2-1-0-schema-drops.md) for 2.1.0), and step 6 of the
+([0080](0080-release-2-1-0-schema-drops.md) for 2.1.0), and step 6 of the
 release procedure runs it as one tracked migration.
 
 **The misreading, for the record.** The first version of this Part planned a
@@ -120,5 +120,5 @@ never rows; the app's own deletes on staging are accepted.
       point 5.
 - [x] The versioning rules in `CLAUDE.md` point at the migration policy as part
       of a major release. Ticked 2026-09-07 by
-      [0050](../0050-release-procedure.md): step 6 of the release checklist sends the
+      [0050](0050-release-procedure.md): step 6 of the release checklist sends the
       reader here and says `origin`-tagged rows are never deleted by tag.

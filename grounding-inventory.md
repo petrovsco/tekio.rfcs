@@ -116,7 +116,7 @@ wrong. Row 1.2 is now 2 sessions per muscle per week, still `convention`: the
 same exposure counter the old 6 sets encoded. Row 1.7's open question moved to
 [0081](rfcs/0081-anaerobic-standing-target.md). Row 1.11's DB shadow gained a
 `weekly_minutes_target` column, and keeps two legacy values for the `master`
-build until [0080](rfcs/0080-release-2-1-0-schema-drops.md) clears them.
+build until [0080](rfcs/done/0080-release-2-1-0-schema-drops.md) clears them.
 
 Rows still marked **†** are ones I would *not* spend a scout run *of their own*
 on — either nothing reads the number (4.14, 7.2) or the run that settles it lands

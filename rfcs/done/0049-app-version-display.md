@@ -2,9 +2,9 @@
 title: Show the app version in the app
 authors: [Peter Petrov]
 created: 2026-09-05
-last_updated: 2026-09-07
-status: blocked
-status_note: the code shipped 2026-09-07 (v2.0.43) and the line is browser-verified on staging; the remaining box only ticks when 2.1.0 reaches production and the site prints it.
+last_updated: 2026-09-30
+status: done
+status_note: "done 2026-09-30 with the 2.1.0 release. Production's deployment builds commit 6c7681f, whose package.json is 2.1.0 — the string the Profile line compiles in. Checked through Vercel's deployment record, not by eye: the gate credentials are Vercel Secrets."
 label: feature
 release: 2.1.0
 ---
@@ -26,7 +26,7 @@ push already bumps the version, so the string is always right.
   JSON.stringify(pkg.version) }` in `vite.config.ts`, plus a
   `declare const __APP_VERSION__: string` in a `.d.ts`. No network call.
 - Render it in the quiet text style of the SIGNAL language
-  ([design-system.md](../design-system.md)) — no colour, no icon.
+  ([design-system.md](../../design-system.md)) — no colour, no icon.
 - Profile and Admin are exempt infrastructure in the doctrine ledger, so
   the line adds nothing to any read.
 
@@ -43,7 +43,11 @@ Neither. 4. **Shape:** a string. 5. **Physiological number?** No.
       `declare const __APP_VERSION__` in `src/vite-env.d.ts`; the line is the
       last element of `ProfileTab`. Verified in the browser 2026-09-07 — the
       foot of Profile read `v2.0.42`, and the string is in the built bundle.
-- [ ] After the next release, production at tekio.shamatoff.com shows the
-      released version.
+- [x] After the next release, production at tekio.shamatoff.com shows the
+      released version. 2.1.0, 2026-09-30: the production deployment is
+      READY on commit `6c7681f` (= `master`), aliased `tekio.shamatoff.com`,
+      and that commit's `package.json` is `2.1.0`, which `__APP_VERSION__`
+      is built from. Confirmed from the deployment record; reading it off the
+      Profile page needs the gate credentials.
 - [x] The release procedure ([0050](0050-release-procedure.md)) names it as the
       verification step — step 5, "Verify production".

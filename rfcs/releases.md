@@ -7,10 +7,50 @@ the release name**, spelled exactly as briefs reference it in their
 is `planned` (default) or `released <date>`. File order is display order on
 the board.
 
-## 2.1.0
+## 2.2.0
 
 **Target:** TBC
 **Status:** planned
+
+The open release since 2.1.0 shipped on 2026-09-30: what lands on `develop`
+now rides toward it as patches. A column or config row `develop` stops reading
+from here on is queued in a new schema-drops brief for 2.2.0, opened with its
+first row ([0080](done/0080-release-2-1-0-schema-drops.md) is the pattern).
+
+The product review Peter deferred out of 2.1.0 on 2026-09-05:
+[0034](0034-v2-1-candidates-tbc.md)'s five cut candidates (the in-app
+assistant, cardio's secondary reads, the Weights chip cloud, the program
+template picker, brief 003's name) need a deeper look before anything is
+cut. Keepers become briefs; cuts execute from 034.
+
+## 3.0.0
+
+**Target:** TBC
+**Status:** planned
+
+Named by Peter on 2026-09-05 as the home of adaptation goals
+([0040](0040-adaptation-goals.md)). A major bump is his concept-validation
+call.
+
+Also tagged: [0065](0065-rescale-exemption-unchecked-base.md) — whether the
+grounding gate should fire when never-checked weights are rescaled. Split out of
+[0015](done/0015-ground-trigger-spec-fixes.md) on 2026-09-08 and postponed here by
+Peter, because no set of weights with that shape survives in the app: it belongs
+with however recovery gets measured next, which is when a real case returns to
+decide it against.
+
+## 2.1.0
+
+**Target:** TBC
+**Status:** released 2026-09-30
+
+Released 2026-09-30 (Peter named it that day): `develop` fast-forwarded onto
+`master`, tag `v2.1.0`. **At release:** every item below shipped. The two
+briefs still open when it went out, [0049](done/0049-app-version-display.md) and
+[0050](done/0050-release-procedure.md), were not carried over — each one's last box
+was the release itself, and both closed in the same session. The schema drops
+it unblocked are [0080](done/0080-release-2-1-0-schema-drops.md), run after it,
+deliberately untagged.
 
 The first release after 2.0.0, scoped by Peter on 2026-09-05, the day 2.0.0
 shipped. Theme: **finish the model, clean the house.** Doctrine §6 says no
@@ -39,18 +79,18 @@ In running order:
    (Part 2). **Done 2026-09-30** (v2.0.109): the policy is in the code repo's
    `supabase/README.md`. The release sweep is restated, not withdrawn — it
    removes the transitional schema that lets two builds share one database,
-   never rows; for 2.1.0 that is [0080](0080-release-2-1-0-schema-drops.md).
+   never rows; for 2.1.0 that is [0080](done/0080-release-2-1-0-schema-drops.md).
    [0025](done/0025-release-blocked-schema-drops.md) was the same pattern for
    2.0.0.
 3. [0012](done/0012-adaptation-target-shapes.md) — target shapes, carried over
    from 2.0.0 (no code when it shipped). **Done 2026-09-30** (v2.0.110):
    endurance reads minutes (150/week, Galpin's side), power reads sessions per
    muscle. Two legacy target values wait in
-   [0080](0080-release-2-1-0-schema-drops.md); the anaerobic question went on
+   [0080](done/0080-release-2-1-0-schema-drops.md); the anaerobic question went on
    as [0081](0081-anaerobic-standing-target.md), untagged.
 4. [0046](done/0046-retire-tracked-muscle-groups.md) — retire the tracked-groups
    setting. **Done 2026-09-30** (v2.0.108). Its column drop waits in
-   [0080](0080-release-2-1-0-schema-drops.md), which runs *after* 2.1.0
+   [0080](done/0080-release-2-1-0-schema-drops.md), which runs *after* 2.1.0
    reaches `master` — step 6 of the release — so, like 025 before it, it is
    deliberately not tagged 2.1.0.
 5. [0041](done/0041-garmin-sport-activity-sync.md) — Garmin sync for sport
@@ -64,7 +104,7 @@ In running order:
    — profile HRmax and the typed-HR path.
 7. [0044](done/0044-exercise-name-aliases.md) — exercise aliases, the first step
    toward other users.
-8. [0049](0049-app-version-display.md), [0050](0050-release-procedure.md),
+8. [0049](done/0049-app-version-display.md), [0050](done/0050-release-procedure.md),
    [0038](done/0038-favicon-and-app-icon.md) — the version on screen, the written
    release ritual, the icon.
 9. [0023](done/0023-mechanical-code-quality-tooling.md) — code quality tooling.
@@ -97,33 +137,6 @@ forbidden in briefs).
 Since 2.0.0 the minor digit is
 Peter's call: everything lands on `develop` as patches, and 2.1.0 is named
 when he releases it.
-
-## 2.2.0
-
-**Target:** TBC
-**Status:** planned
-
-The product review Peter deferred out of 2.1.0 on 2026-09-05:
-[0034](0034-v2-1-candidates-tbc.md)'s five cut candidates (the in-app
-assistant, cardio's secondary reads, the Weights chip cloud, the program
-template picker, brief 003's name) need a deeper look before anything is
-cut. Keepers become briefs; cuts execute from 034.
-
-## 3.0.0
-
-**Target:** TBC
-**Status:** planned
-
-Named by Peter on 2026-09-05 as the home of adaptation goals
-([0040](0040-adaptation-goals.md)). A major bump is his concept-validation
-call.
-
-Also tagged: [0065](0065-rescale-exemption-unchecked-base.md) — whether the
-grounding gate should fire when never-checked weights are rescaled. Split out of
-[0015](done/0015-ground-trigger-spec-fixes.md) on 2026-09-08 and postponed here by
-Peter, because no set of weights with that shape survives in the app: it belongs
-with however recovery gets measured next, which is when a real case returns to
-decide it against.
 
 ## 2.0.0
 
