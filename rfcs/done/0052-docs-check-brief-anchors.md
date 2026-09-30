@@ -36,7 +36,7 @@ a brief links a file and names the symbol (`adaptations.ts`,
 `npm run check:docs` ([0047](0047-docs-link-anchor-check.md)) verified every
 `path#L<n>` anchor in [grounding-inventory.md](../../grounding-inventory.md)
 and nothing else. Active briefs used the same anchor form — 17 on
-2026-09-05, for example [0046](../0046-retire-tracked-muscle-groups.md)
+2026-09-05, for example [0046](0046-retire-tracked-muscle-groups.md)
 pointed at `src/lib/db/user.ts#L37` for `tracked_muscle_group_ids` — and
 nothing checked those.
 

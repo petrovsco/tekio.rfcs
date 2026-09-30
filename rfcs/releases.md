@@ -41,8 +41,11 @@ In running order:
    its one run deleted real data (053).
 3. [0012](0012-adaptation-target-shapes.md) — target shapes, carried over
    from 2.0.0 (no code when it shipped).
-4. [0046](0046-retire-tracked-muscle-groups.md) — retire the tracked-groups
-   setting.
+4. [0046](done/0046-retire-tracked-muscle-groups.md) — retire the tracked-groups
+   setting. **Done 2026-09-30** (v2.0.108). Its column drop waits in
+   [0080](0080-release-2-1-0-schema-drops.md), which runs *after* 2.1.0
+   reaches `master` — step 6 of the release — so, like 025 before it, it is
+   deliberately not tagged 2.1.0.
 5. [0041](done/0041-garmin-sport-activity-sync.md) — Garmin sync for sport
    activities.
 6. [0005](done/0005-hr-zone-intensity-classification.md) — HR-based intensity

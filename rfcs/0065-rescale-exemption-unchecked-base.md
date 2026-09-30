@@ -89,7 +89,7 @@ Practically, this brief wakes up when any of these lands:
   (`src/lib/fusedRead.ts`) stops being a plain
   50/50 mean of sleep and HRV and needs weights.
 - Any new score is built from weighted sub-scores.
-- `LEVEL_WEIGHT` is restructured — e.g. by [0046](0046-retire-tracked-muscle-groups.md)
+- `LEVEL_WEIGHT` is restructured — e.g. by [0046](done/0046-retire-tracked-muscle-groups.md)
   or a successor that drops a tier.
 
 ## Which read does this sharpen?

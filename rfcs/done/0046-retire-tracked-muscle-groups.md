@@ -2,9 +2,9 @@
 title: Retire the tracked-muscle-groups setting
 authors: [Peter Petrov]
 created: 2026-09-05
-last_updated: 2026-09-05
-status: planned
-status_note: "2.0.0 shipped 2026-09-05 and Peter committed the deletion to 2.1.0 the same day (\"we can retire it for now\"). The *need* behind it is expected back in [0040](0040-adaptation-goals.md): focus belongs at the adaptation level, and Home and Adaptations must not punish a chosen focus — that is 040's job, not this setting's."
+last_updated: 2026-09-30
+status: done
+status_note: "Done 2026-09-30 (v2.0.108): the Profile card, the prefs field, both DB helpers and the `adaptationCoverage` argument are gone, and the column drop waits in [0080](../0080-release-2-1-0-schema-drops.md). Before that — 2.0.0 shipped 2026-09-05 and Peter committed the deletion to 2.1.0 the same day (\"we can retire it for now\"). The *need* behind it is expected back in [0040](../0040-adaptation-goals.md): focus belongs at the adaptation level, and Home and Adaptations must not punish a chosen focus — that is 040's job, not this setting's."
 label: feature
 release: 2.1.0
 ---
@@ -46,7 +46,7 @@ Delete it. The honest read is "every muscle the map draws".
   set becomes every leaf. Update the 045 test that passes `['shoulders']`.
 - The `tracked_muscle_group_ids` column stays until the release cleanup —
   a column drop is release-blocked because staging and production share the
-  database. [0025](done/0025-release-blocked-schema-drops.md) closed with the
+  database. [0025](0025-release-blocked-schema-drops.md) closed with the
   2.0.0 drops, so when this brief is picked up, queue the column in a new
   brief that follows 025's pattern (or reopen the queue in 024).
 
@@ -61,7 +61,7 @@ Delete it. The honest read is "every muscle the map draws".
 
 ## Acceptance
 
-- [ ] No "Adaptation tracking" card on Profile; no `tracked` reference in
+- [x] No "Adaptation tracking" card on Profile; no `tracked` reference in
       `src/` outside the migration history.
-- [ ] `adaptationCoverage` judges every leaf; the 045 tests still pass.
-- [ ] The column drop is listed in 025.
+- [x] `adaptationCoverage` judges every leaf; the 045 tests still pass.
+- [x] The column drop is queued — in [0080](../0080-release-2-1-0-schema-drops.md), since 025 is closed.
