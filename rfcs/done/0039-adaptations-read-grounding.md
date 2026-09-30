@@ -181,7 +181,7 @@ keeps that text — behind an icon, but still on the page.
 
 - **Target *values*** — 1.2–1.9 are already grounded or `convention` in
   [0011](0011-adaptation-weekly-targets.md); their *shapes* belong to
-  [0012](../0012-adaptation-target-shapes.md). Do not re-run the scout on them.
+  [0012](0012-adaptation-target-shapes.md). Do not re-run the scout on them.
 - ~~Rep-range boundaries and fuzzy classification — 001~~ **Pulled in
   2026-09-02** (§6.0): 001's question is decided by this brief.
 - **Cardio classifier thresholds** (rows 6.1–6.5, the ≥25/≥8 min heuristic, the

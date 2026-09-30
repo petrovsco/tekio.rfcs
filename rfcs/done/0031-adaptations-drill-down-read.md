@@ -164,7 +164,7 @@ Whether it survives as a hero or shrinks to a header line is a build decision.
 
 - **The numbers' meaning** — [0039](0039-adaptations-read-grounding.md). This brief
   draws what that one decides.
-- **Target values and shapes** — [0012](../0012-adaptation-target-shapes.md). If 012
+- **Target values and shapes** — [0012](0012-adaptation-target-shapes.md). If 012
   lands first the units shown here follow it; neither blocks the other's kickoff.
 - **User-set adaptation goals** — [0040](../0040-adaptation-goals.md), backlog.
 - **Classifier changes** — [0001](0001-cross-adaptation-rep-ranges.md)

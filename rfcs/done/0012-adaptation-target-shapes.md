@@ -2,9 +2,9 @@
 title: A weekly target is sets or sessions — never minutes
 authors: [Peter Petrov]
 created: 2026-08-26
-last_updated: 2026-09-08
-status: planned
-status_note: "kickoff-ready, no code. Unblocked 2026-09-01: 019 landed, so the seven qualities it reshapes are final. Carried over from 2.0.0 to 2.1.0 when 2.0.0 shipped on 2026-09-05."
+last_updated: 2026-09-30
+status: done
+status_note: "Done 2026-09-30 (v2.0.110). Endurance reads minutes, 150/week, with no per-bout floor (Galpin's side). Power reads sessions per muscle, 2/week. The unit follows the target in use. Two legacy DB values wait for the release sweep in [0080](../0080-release-2-1-0-schema-drops.md). The anaerobic open question moved to [0081](../0081-anaerobic-standing-target.md)."
 label: feature
 depends: [19]
 release: 2.1.0
@@ -12,9 +12,63 @@ release: 2.1.0
 
 # RFC 0012: A weekly target is sets or sessions — never minutes
 
-**Origin:** follow-ups #1, #2 and #3 of [0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md), promoted out of that brief's table so they do not get lost.
-**Covers inventory rows:** 1.1, 1.2, 1.7, 1.9 in [grounding-inventory.md](../grounding-inventory.md) — the *shape* of those four numbers, not their values.
+**Origin:** follow-ups #1, #2 and #3 of [0011-adaptation-weekly-targets.md](0011-adaptation-weekly-targets.md), promoted out of that brief's table so they do not get lost.
+**Covers inventory rows:** 1.1, 1.2, 1.7, 1.9 in [grounding-inventory.md](../../grounding-inventory.md) — the *shape* of those four numbers, not their values.
 ---
+
+## Outcome — 2026-09-30 (v2.0.110)
+
+Kickoff was on 2026-09-30, with Peter's go-ahead "provided everything is
+grounded". Everything that shipped is covered by the §6 exemptions. No new
+claim was written, so no scout ran.
+
+**The fork (§4): Galpin.** Endurance is `weeklyMinutesTarget: 150`, summed over
+every minute the classifier credits to endurance, with no per-bout floor. The
+reasons are the ones §4 gives: Murphy 2019 is the one piece of direct evidence,
+and it finds bout structure irrelevant at matched volume. The data the app
+holds fits it. And it ships under exemptions 2 and 3, while Attia's ≥45 min
+floor would have needed `/ground` for a contradicted single-practitioner claim.
+A session with no recorded duration adds no minutes. Every cardio and sport
+row in the 60 days before the change had one.
+
+**Power: per muscle, not whole-body.** This brief was written before 019 made
+power a muscle-linked quality, and §2 assumed `skill`'s whole-body session
+shape. After 019, doctrine P2 says power is what a specific muscle group
+produces, so a body-wide session count would be the beautiful lie P2 forbids.
+Power is now `weeklySessionTarget: 2` counted **per muscle**. Each day a muscle
+did power work counts once, at the highest link level it had that day (1 as a
+primary mover, 0.5 assisting), and the body map, the muscle list, the muscle
+sheet's quality mix and the "on target" count all read that number. It is the
+same claim the old `6` made ("2 sessions × 3 sets"), now in its own unit, which
+makes it exemption 2.
+
+**The shape rule.** `targetShape` in `src/lib/adaptations.ts` reads the first
+non-zero of minutes → sessions → sets, from the DB row if there is one and from
+the constant otherwise. `unit` on the coverage summary is that shape's unit,
+never the modality's. `sessionTarget` became `target`, in the same unit.
+
+**Two builds, one table.** The `adaptation_targets` rows win over the
+constants, and production still reads them. So the migration
+(`20260930105258_adaptation_targets_minutes_shape`) only expands: it adds
+`weekly_minutes_target`, sets power's session target to 2 and endurance's
+minutes target to 150, and leaves power's `weekly_muscle_target = 6` and
+endurance's `weekly_session_target = 2` in place. Because of the shape order,
+`develop` never consults them, and `master` reads exactly what it read before.
+Zeroing them is contract work, queued in
+[0080](../0080-release-2-1-0-schema-drops.md). Verified by query after the
+migration:
+
+| adaptation | muscle | session | minutes |
+|---|---|---|---|
+| power | 6 (legacy) | **2** | 0 |
+| endurance | 0 | 2 (legacy) | **150** |
+| the other five | unchanged | unchanged | 0 |
+
+**Seen on the live data** (local build, 14-day window): the endurance band read
+`382/300 min`, and the six credited sessions in its sheet sum to 382 by hand.
+Under the old target it would have read `6/4 sessions`. The power map reads
+`2 sessions/wk per muscle`, target 4 over the window, and the muscle sheet
+prints power's tile as `/4 sess`.
 
 ## The plain summary
 
@@ -37,7 +91,7 @@ them are questions about *what the number counts*. Fix the shape once and all
 four become answerable.
 
 **This brief does not pick the numbers.** They are already decided and sourced in
-[0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md). This brief is about
+[0011-adaptation-weekly-targets.md](0011-adaptation-weekly-targets.md). This brief is about
 the container they go in — with one exception, flagged in §6, where a real new
 decision hides.
 
@@ -88,7 +142,7 @@ But nothing else changes. `volume` is still counting sets, and `unit` still says
 `'sets'`. The result is an app that **compares a set count against a session
 target and prints the word "sets" next to it** — silently wrong, and worse than
 the ungrounded number it replaced. This is exactly why
-[0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md) refused to make the
+[0011-adaptation-weekly-targets.md](0011-adaptation-weekly-targets.md) refused to make the
 change as a constant edit. The door is open; there is no floor behind it.
 
 **What a real fix needs:** a way to count *sessions* for lifting adaptations
@@ -105,7 +159,7 @@ those rows **win** over the constants
 (the `targets` argument of `adaptationCoverage` in `src/lib/adaptations.ts`). A minutes target
 is therefore a migration too, not just a TypeScript change. Whatever shape is
 chosen has to land in both places in the same commit — the rule
-[0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md) already set.
+[0011-adaptation-weekly-targets.md](0011-adaptation-weekly-targets.md) already set.
 
 ---
 
@@ -123,7 +177,7 @@ The literature agrees on the unit, and it is not sets per muscle. It doses these
 qualities in **contacts or sprints per session, and sessions per week** — jump
 contacts per session and total touches across 2–4 sessions/week for plyometrics;
 maximal-velocity exposure for sprint work. The evidence and citations are already
-in [0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md) and are not
+in [0011-adaptation-weekly-targets.md](0011-adaptation-weekly-targets.md) and are not
 repeated here.
 
 **Target shape:** `weeklyMuscleTarget: 0` + `weeklySessionTarget: 2`, following
@@ -228,7 +282,7 @@ container to another without asserting anything new:
 
 | Change | Already grounded where | New claim? |
 |---|---|---|
-| speed, power → `weeklySessionTarget: 2` | named explicitly in the resistance scout block in [0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md) as the preferred shape | no |
+| speed, power → `weeklySessionTarget: 2` | named explicitly in the resistance scout block in [0011-adaptation-weekly-targets.md](0011-adaptation-weekly-targets.md) as the preferred shape | no |
 | endurance → weekly minutes | the cardio scout block gives WHO 150–300, Galpin 150–200, Attia 180–240 | no |
 | endurance floor of **150** | inside that grounded range — **exemption 3**, rounding inside an already-grounded range | no |
 | anaerobic → no standing target (`0`) | a `0` sentinel asserts nothing; inventory row 1.10 already treats the nine `0`s as ungated | no |
@@ -259,7 +313,7 @@ because it is part of the cost of choosing Attia.
 The **≥25 min endurance classification threshold**
 (`classifyCardioByDuration` in `src/lib/adaptations.ts`, inventory row 6.1, state
 *unknown*) belongs to
-[0005-hr-zone-intensity-classification.md](done/0005-hr-zone-intensity-classification.md) and is
+[0005-hr-zone-intensity-classification.md](0005-hr-zone-intensity-classification.md) and is
 **out of scope here**. But moving to minutes changes what it does, so it should
 not be forgotten: today it decides whether a session counts at all; under a
 minutes model it decides which adaptation a session's minutes are credited to. A
@@ -283,7 +337,7 @@ those four say something true.
 - Stop treating "2 endurance sessions" as a satisfied target when it represents
   about a third of every published minimum.
 - Retires follow-ups #1, #2 and #3 of
-  [0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md) in one change
+  [0011-adaptation-weekly-targets.md](0011-adaptation-weekly-targets.md) in one change
   instead of three.
 - Removes the reason the speed/power reshape was deferred, so those constants
   stop being "an exposure counter, not a dose".
@@ -329,9 +383,9 @@ before implementation.
 **Out:**
 - Anaerobic-capacity block periodisation (§5) — recorded as an open question.
 - The ≥25 min classification threshold (§6) — belongs to
-  [0005-hr-zone-intensity-classification.md](done/0005-hr-zone-intensity-classification.md).
+  [0005-hr-zone-intensity-classification.md](0005-hr-zone-intensity-classification.md).
 - Row 1.6, skill = 3 sessions/week — still blocked on the product decision in
-  [0006-skill-adaptation-data-source.md](done/0006-skill-adaptation-data-source.md).
+  [0006-skill-adaptation-data-source.md](0006-skill-adaptation-data-source.md).
 - Any change to the strength, hypertrophy or muscular-endurance targets. Their
   shape is already right.
 
@@ -339,33 +393,37 @@ before implementation.
 
 ## 9. Acceptance
 
-- [ ] The target model can express **minutes per week**, in the constants, the
-      type, and the `adaptation_targets` table.
-- [ ] A lifting adaptation using `weeklySessionTarget` is compared against a real
-      **session** count, not a set count.
-- [ ] `unit` reflects the target actually in use — no screen shows "sets" next to
-      a session or minutes target.
-- [ ] Speed and power read as sessions per week; the Adaptations tab and the body
-      map both agree.
-- [ ] Endurance reads as minutes per week, sourced from the duration the app
-      already stores.
-- [ ] The Attia/Galpin fork is **decided and recorded in this brief**, with the
-      reason.
-- [ ] If Attia's side was chosen, `/ground` has been run for the per-bout
-      duration floor **before** it was implemented (§6).
-- [ ] Constants and their `adaptation_targets` rows changed in the same commit
-      and verified by query — the rule set by
-      [0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md).
-- [ ] Inventory rows 1.1, 1.2, 1.7 and 1.9 updated to the new shapes.
-- [ ] Follow-ups #1, #2 and #3 in
-      [0011-adaptation-weekly-targets.md](done/0011-adaptation-weekly-targets.md) closed.
-
----
+- [x] The target model can express **minutes per week**, in the constants, the
+      type, and the `adaptation_targets` table. (`weeklyMinutesTarget`;
+      `weekly_minutes_target` column.)
+- [x] A lifting adaptation using `weeklySessionTarget` is compared against a real
+      **session** count, not a set count. (Per-muscle session-days; tests in
+      `adaptations.test.ts` and `fusedRead.test.ts`.)
+- [x] `unit` reflects the target actually in use. No screen shows "sets" next to
+      a session or minutes target: the spectrum, the muscle-linked header, the
+      muscle list, the body-map callouts, the quality mix, the quality sheet and
+      the admin editor all print the shape's unit.
+- [x] Power reads as sessions per week, per muscle (speed left the model in
+      019). The Adaptations tab and the body map agree, because both read
+      `targetShape`.
+- [x] Endurance reads as minutes per week, sourced from the stored duration.
+- [x] The Attia/Galpin fork is **decided and recorded in this brief**, with the
+      reason: Galpin (Outcome, above).
+- [x] ~~If Attia's side was chosen, `/ground` has been run~~ — Galpin's side was
+      chosen, so no new claim was made.
+- [x] Constants and their `adaptation_targets` rows changed in the same commit
+      and verified by query (Outcome, above). The legacy values stay until the
+      release sweep.
+- [x] Inventory rows 1.2, 1.7 and 1.9 updated to the new shapes (1.1 had
+      already been retired with speed).
+- [x] Follow-ups #1, #2 and #3 in
+      [0011-adaptation-weekly-targets.md](0011-adaptation-weekly-targets.md)
+      closed. #3 went on as [0081](../0081-anaerobic-standing-target.md).
 
 ## 10. Open questions carried forward
 
 | # | Question | Status |
 |---|---|---|
-| 1 | Attia vs Galpin — bout-length floor, or minutes accumulated any way? | **Decide at kickoff.** Evidence leans Galpin; choosing Attia additionally requires a `/ground` run. |
-| 2 | Should anaerobic capacity have a standing weekly target at all, or move to block periodisation? | **Open question, not a decision** (§5). Needs somewhere to store block state. |
+| 1 | Attia vs Galpin — bout-length floor, or minutes accumulated any way? | **Decided 2026-09-30: Galpin** (Outcome, above). |
+| 2 | Should anaerobic capacity have a standing weekly target at all, or move to block periodisation? | Moved to [0081](../0081-anaerobic-standing-target.md). |
 | 3 | Under a minutes model, should the ≥25 min classifier change? | Out of scope; named so it is not a surprise (§6). |

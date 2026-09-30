@@ -108,6 +108,16 @@ each says in one line why no research could settle it. Four keep `unknown`: 4.14
 7.2 (a classification, which §13.4 now gates), and 5.7 / 5.8 (deload dose, the
 boundary §13.2 draws itself). No value in the app moved.
 
+**Updated 2026-09-30 by [0012](rfcs/done/0012-adaptation-target-shapes.md)**
+(v2.0.110): two shape changes and no new claim, so no scout ran. Row 1.9 is
+now 150 minutes/week on Galpin's side of the fork, and it is `grounded`, because
+the minutes range was always the grounded part and only the session unit was
+wrong. Row 1.2 is now 2 sessions per muscle per week, still `convention`: the
+same exposure counter the old 6 sets encoded. Row 1.7's open question moved to
+[0081](rfcs/0081-anaerobic-standing-target.md). Row 1.11's DB shadow gained a
+`weekly_minutes_target` column, and keeps two legacy values for the `master`
+build until [0080](rfcs/0080-release-2-1-0-schema-drops.md) clears them.
+
 Rows still marked **†** are ones I would *not* spend a scout run *of their own*
 on — either nothing reads the number (4.14, 7.2) or the run that settles it lands
 on another row (5.7 and 5.8 derive from 5.1 and 5.3, which
@@ -206,14 +216,14 @@ weights").
 | # | Value | Where | Claim | Step 0 | State | Grounding brief |
 |---|---|---|---|---|---|---|
 | 1.1 | ~~`6`~~ | — | **Retired 2026-09-01.** Speed was dropped from the model (nine → seven, [done/0019](rfcs/done/0019-adaptation-model-simplification.md)). The constant is deleted, so the claim no longer ships. Its `convention` verdict stands as history in [011 §Grounding](rfcs/done/0011-adaptation-weekly-targets.md#grounding); the reasoning behind the value survives inside row 1.2 | — | — | — |
-| 1.2 | `6` | adaptations.ts:74 (`src/constants/adaptations.ts`) | Power needs 6 sets/muscle/week (was 4; raised to match the now-retired speed entry, which is why it is 6) | named | **convention** | adaptation-weekly-targets · **shape:** [adaptation-target-shapes](rfcs/0012-adaptation-target-shapes.md) |
+| 1.2 | `2` | `weeklySessionTarget` on power (`src/constants/adaptations.ts`) | Power needs 2 sessions/muscle/week. **Shape changed 2026-09-30:** was 6 sets/muscle/week, an exposure counter meaning the same thing (2 sessions × 3 sets); now counted in its own unit, per muscle (doctrine P2). Exemption 2, no new claim | named | **convention** | adaptation-weekly-targets · **shape:** [adaptation-target-shapes](rfcs/done/0012-adaptation-target-shapes.md) |
 | 1.3 | `6` | adaptations.ts:122 (`src/constants/adaptations.ts`) | Strength needs 6 sets/muscle/week (was 8) | named | **grounded** | adaptation-weekly-targets |
 | 1.4 | `10` | adaptations.ts:173 (`src/constants/adaptations.ts`) | Hypertrophy needs 10 sets/muscle/week | named | **grounded** | adaptation-weekly-targets |
 | 1.5 | `6` | adaptations.ts:203 (`src/constants/adaptations.ts`) | Muscular endurance needs 6 sets/muscle/week | named | **convention** | adaptation-weekly-targets |
 | 1.6 | ~~`3`~~ | — | **Retired 2026-09-01.** Skill was dropped from the model ([done/0019](rfcs/done/0019-adaptation-model-simplification.md)); its data source had already gone when sports were rerouted to cardio ([done/0006](rfcs/done/0006-skill-adaptation-data-source.md)). Never grounded, and now never shipped | — | — | — |
-| 1.7 | `1` | adaptations.ts:243 (`src/constants/adaptations.ts`) | Anaerobic capacity needs 1 session/week | named | **convention** | adaptation-weekly-targets · **shape:** [adaptation-target-shapes](rfcs/0012-adaptation-target-shapes.md) §5 (open question: should it have a standing target at all?) |
+| 1.7 | `1` | adaptations.ts:243 (`src/constants/adaptations.ts`) | Anaerobic capacity needs 1 session/week | named | **convention** | adaptation-weekly-targets · **open question:** [0081](rfcs/0081-anaerobic-standing-target.md) — should it have a standing target at all? |
 | 1.8 | `1` | adaptations.ts:282 (`src/constants/adaptations.ts`) | VO₂max needs 1 session/week | named | **grounded** | adaptation-weekly-targets |
-| 1.9 | `2` | adaptations.ts:322 (`src/constants/adaptations.ts`) | Endurance needs 2 sessions/week — **unit known wrong**, should be weekly minutes | named | **convention** | adaptation-weekly-targets · **shape:** [adaptation-target-shapes](rfcs/0012-adaptation-target-shapes.md) (carries the Attia/Galpin fork) |
+| 1.9 | `150` | `weeklyMinutesTarget` on endurance (`src/constants/adaptations.ts`) | Endurance needs 150 credited minutes/week, however they accumulate: no per-bout floor (Galpin's side of the fork, decided 2026-09-30). Was 2 sessions/week, the wrong unit, certifying ~50 min. 150 is the scout's default inside the grounded 150–240 range | named | **grounded** | adaptation-weekly-targets · **shape:** [adaptation-target-shapes](rfcs/done/0012-adaptation-target-shapes.md) |
 | 1.10 | `0` ×7 | `weeklyMuscleTarget` / `weeklySessionTarget` sentinels throughout `src/constants/adaptations.ts` | *Nothing.* `0` means "this axis does not apply to this adaptation" — a stand-in for `null`, read as a flag at lib/adaptations.ts:381 (`src/lib/adaptations.ts`). **Definitional** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): a flag carries no dose to test. §13.8 left the *gating* question open, not this one — the real fix is a proper `null`, which is a code change | ? | **n/a — definitional** | — |
 | 1.11 | all 14, duplicated | `adaptation_targets` (DB), 9 rows — 7 live, plus dead `speed` / `skill` rows nothing reads since 2026-09-01 | Identical values to 1.2–1.5 and 1.7–1.9, and **they win** — lib/adaptations.ts:385-386 (`src/lib/adaptations.ts`) prefers the DB row (`targets?.[meta.key]`) over the constant | named | **grounded** | adaptation-weekly-targets |
 | 1.12 | `14` / `14` / `28` d | app.ts:99-103 (`src/constants/app.ts`) | `QUALITY_STALENESS_DAYS` — a cardio quality untouched for longer than this is flagged stale: VO₂max 14 d, endurance 14 d, anaerobic 28 d. The flag means "you are now losing it" (detraining onset), not "you missed the weekly cadence" (D9). Sat in §12 as not-yet-built until 2026-09-05; it shipped with the fused Home (018 unit 4) | named | **grounded** | [010 §Grounding](rfcs/done/0010-home-fused-reads.md#grounding) |

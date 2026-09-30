@@ -48,7 +48,7 @@ Three reasons, and none of them is "it is hard":
   claim, grounded in [0011](done/0011-adaptation-weekly-targets.md). A goal says
   *what I am chasing*, which is intent and needs no grounding at all. Do not
   build the second by widening the first.
-- **Not [0012](0012-adaptation-target-shapes.md).** That fixes the *unit* a target
+- **Not [0012](done/0012-adaptation-target-shapes.md).** That fixes the *unit* a target
   is expressed in. Orthogonal.
 - **Not a new section** (R1). It would be a modifier on the Adaptations read and
   on Home's verdict, not a destination (P3).

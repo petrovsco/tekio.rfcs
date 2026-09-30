@@ -42,8 +42,12 @@ In running order:
    never rows; for 2.1.0 that is [0080](0080-release-2-1-0-schema-drops.md).
    [0025](done/0025-release-blocked-schema-drops.md) was the same pattern for
    2.0.0.
-3. [0012](0012-adaptation-target-shapes.md) — target shapes, carried over
-   from 2.0.0 (no code when it shipped).
+3. [0012](done/0012-adaptation-target-shapes.md) — target shapes, carried over
+   from 2.0.0 (no code when it shipped). **Done 2026-09-30** (v2.0.110):
+   endurance reads minutes (150/week, Galpin's side), power reads sessions per
+   muscle. Two legacy target values wait in
+   [0080](0080-release-2-1-0-schema-drops.md); the anaerobic question went on
+   as [0081](0081-anaerobic-standing-target.md), untagged.
 4. [0046](done/0046-retire-tracked-muscle-groups.md) — retire the tracked-groups
    setting. **Done 2026-09-30** (v2.0.108). Its column drop waits in
    [0080](0080-release-2-1-0-schema-drops.md), which runs *after* 2.1.0

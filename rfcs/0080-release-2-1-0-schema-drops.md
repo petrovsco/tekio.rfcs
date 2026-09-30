@@ -31,6 +31,23 @@ why). It removes schema, never rows.
 The column is `jsonb NOT NULL DEFAULT '[]'`, and `getOrCreateUser` never sends
 it, so it keeps filling itself in while it waits.
 
+### Legacy values in `adaptation_targets`
+
+Not a drop. These are two values that exist only so `master` keeps reading the
+old shapes ([0012](done/0012-adaptation-target-shapes.md)). `develop` reads a
+row by the first non-zero of minutes → sessions → sets, so it never consults
+them. `master` reads nothing else.
+
+| Row | Legacy value | What `develop` reads instead |
+|---|---|---|
+| `power` | `weekly_muscle_target = 6` | `weekly_session_target = 2` (per muscle) |
+| `endurance` | `weekly_session_target = 2` | `weekly_minutes_target = 150` |
+
+```sql
+update adaptation_targets set weekly_muscle_target = 0, updated_at = now() where adaptation = 'power';
+update adaptation_targets set weekly_session_target = 0, updated_at = now() where adaptation = 'endurance';
+```
+
 The migration, when it runs:
 
 ```sql
@@ -49,3 +66,4 @@ alter table user_profiles drop column tracked_muscle_group_ids;
 
 - [ ] 2.1.0 is on `master`, and production's `loadProfile` no longer selects the column.
 - [ ] The drop runs as a tracked migration, and the app's bootstrap is checked against the live schema afterwards.
+- [ ] The two legacy `adaptation_targets` values are zeroed in the same migration, and the Adaptations read still shows power in sessions and endurance in minutes.
