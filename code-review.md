@@ -72,7 +72,7 @@ first-paint cost from the numbers, never by eye.
 ## 4. Small house habits
 
 - Roadmap briefs name a **symbol**, never a line number; `#L<n>` anchors drift
-  and `npm run check:docs` catches them.
+  and `node scripts/check-links.mjs` in this repo catches them.
 - The repo has mixed line endings and no `.gitattributes`. Check a file before
   rewriting it whole, or a one-line edit becomes a whole-file diff.
 - Colour carries meaning in the SIGNAL language: deload, destructive actions and

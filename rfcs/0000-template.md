@@ -17,8 +17,8 @@ release:
 > `release` if they are empty, and delete this block.
 >
 > Sidecar material — diagrams, screenshots, inventories, long checklists — goes
-> in a sibling folder named `NNNN/` and is referenced with a relative path:
-> `![](NNNN/architecture.png)` or `[Inventory](NNNN/inventory.md)`.
+> in a sibling folder named `NNNN/` and is linked with a relative path, such as
+> `NNNN/architecture.png` or `NNNN/inventory.md`.
 
 ## Summary
 

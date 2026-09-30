@@ -35,8 +35,9 @@ briefs, done one at a time:
    tagging. **Done 2026-09-30** (v2.1.5).
 2. [0071](done/0071-retire-flat-exercises-fallback.md) — retire the flat-`exercises`
    fallback in the program tree. **Done 2026-09-30** (v2.1.6).
-3. [0072](0072-link-checker-for-this-repo.md) — the link checker follows the
-   docs to this repo, so step 1 of a release checks the RFCs again.
+3. [0072](done/0072-link-checker-for-this-repo.md) — the link checker follows the
+   docs to this repo, so step 1 of a release checks the RFCs again. **Done
+   2026-09-30** (v2.1.7), with the code repo's `typecheck` fix folded in.
 4. [0073](0073-garmin-sync-every-activity-type.md) — every Garmin sport mapped
    before it is played.
 5. [0077](0077-garmin-sync-on-time.md) — the 08:00 Garmin syncs; live, closes

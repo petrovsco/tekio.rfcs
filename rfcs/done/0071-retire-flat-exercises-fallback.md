@@ -142,4 +142,5 @@ so what they render for a real program is unchanged by construction.
 **Found on the way:** `npm run typecheck` checks nothing. It runs
 `tsc --noEmit` against the root `tsconfig.json`, which is `"files": []` plus
 project references, so it exits 0 whatever the code says; three test fixtures
-missing `blocks` passed it and failed `npm run build` (`tsc -b`). Not fixed here.
+missing `blocks` passed it and failed `npm run build` (`tsc -b`). Not fixed here;
+fixed in [0072](0072-link-checker-for-this-repo.md) (v2.1.7).

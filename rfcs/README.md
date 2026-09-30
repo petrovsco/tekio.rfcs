@@ -26,12 +26,22 @@ work, and `done/` holds both endings, `done` and `discarded`.
 
 ## The link checker
 
-`npm run check:docs` lives in the **code repo** and checked links under its
-`docs/` tree. Now that the RFCs and the reference docs are here, that check has
-to run here — see the open RFC on it. Until it does, nothing re-checks that a
-relative link still lands, and nothing catches a `#L<n>` line anchor, which
-RFC 0052 banned precisely because a line moves with every edit and no tool
-notices.
+`node scripts/check-links.mjs`, from the repository root, runs three checks in
+one pass and exits 1 if any fails:
+
+- every relative link in every `.md` here still lands on a file;
+- every line anchor in `grounding-inventory.md` still lands on its row's
+  identifier (RFC 0047) — there are none today, because links into the code
+  repo became code spans when the docs moved, but the check stands for the
+  next one;
+- no RFC outside `done/` carries a `#L<n>` line anchor (RFC 0052) — a line
+  moves with every edit and no tool notices.
+
+**Run it after retiring an RFC** and before committing anything that moves or
+renames a file here; it is also step 1 of a release, beside the code repo's
+`npm run check:docs`. There is no `package.json`: the script has no
+dependencies, and this repository holds no code. The code repo's
+`check:docs` checks only its own four README-shaped files.
 
 ## Retiring an RFC
 
