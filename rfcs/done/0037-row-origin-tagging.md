@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-09-01
 last_updated: 2026-09-10
 status: done
-status_note: "shipped and verified 2026-09-01. Split out of [0024](../0024-staging-shared-database-safety.md) on 2026-09-01 so the restyle train ([0026](0026-signal-chrome-and-primitives.md)) is not parked behind the whole of 024. This is 024's Part 1, unchanged in intent and widened in one place (see *Dev counts too*)."
+status_note: "shipped and verified 2026-09-01. Split out of [0024](0024-staging-shared-database-safety.md) on 2026-09-01 so the restyle train ([0026](0026-signal-chrome-and-primitives.md)) is not parked behind the whole of 024. This is 024's Part 1, unchanged in intent and widened in one place (see *Dev counts too*)."
 label: infra
 release: 2.0.0
 ---

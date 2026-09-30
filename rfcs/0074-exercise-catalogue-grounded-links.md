@@ -96,7 +96,7 @@ Add `origin` (the build tag every other user-written table carries, per
 `source` (`catalogue` | `editor` | `migration`) to `exercise_muscle_groups`.
 The Admin editor's `upsertExerciseMuscle` writes through `withOrigin` with
 `source = 'editor'`. This is additive and safe under the migration policy
-([0024](0024-staging-shared-database-safety.md)). Existing rows get
+([0024](done/0024-staging-shared-database-safety.md)). Existing rows get
 `source = 'migration'` and a null `created_at`: their history is unknown, and
 the column says so rather than inventing a date.
 

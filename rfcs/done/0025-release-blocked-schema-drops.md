@@ -13,7 +13,7 @@ label: infra
 ## Why this brief exists
 
 `develop` and `master` talk to **the same Supabase project** (see
-[0024-staging-shared-database-safety.md](../0024-staging-shared-database-safety.md)).
+[0024-staging-shared-database-safety.md](0024-staging-shared-database-safety.md)).
 That makes a whole class of cleanup impossible to finish inside the brief that
 creates it:
 

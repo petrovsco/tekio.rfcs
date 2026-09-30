@@ -69,7 +69,7 @@ data risk.
 preference-independent key, migrate `program_week_overrides`, thread the
 preference through all four sites, and check the change against a real week's
 overrides. Bigger, and it needs its own migration under
-[0024](0024-staging-shared-database-safety.md).
+[0024](done/0024-staging-shared-database-safety.md).
 
 A is the recommendation. B is only worth it if a user's week genuinely starting
 on Sunday should move their *training* week too — and that is a training

@@ -76,7 +76,7 @@ had created; with it, the row keeps the origin it was born with.
    public.preserve_origin()`. Additive and null-defaulted, so it cannot disturb
    an existing row. Track it the way the repo already tracks migrations
    (`supabase/migrations/`, mirrored server-side), under the policy in
-   [0024](0024-staging-shared-database-safety.md).
+   [0024](done/0024-staging-shared-database-safety.md).
 2. **One line** — `withOrigin(...)` around the upsert payload in
    `saveSleepEntry`.
 

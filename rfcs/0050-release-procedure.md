@@ -11,7 +11,7 @@ release: 2.1.0
 
 # RFC 0050: The release procedure, written down
 
-**Origin:** 2.0.0 was released by hand on 2026-09-05 from three files (`CLAUDE.md`, [0024](0024-staging-shared-database-safety.md), [0025](done/0025-release-blocked-schema-drops.md)) and memory. Every step turned out right, but nothing said the order, and two of them — the queued schema drops and the staging sweep (since withdrawn: its one run deleted real data, [0053](done/0053-recover-swept-staging-rows.md)) — were found only because those briefs happened to be open.
+**Origin:** 2.0.0 was released by hand on 2026-09-05 from three files (`CLAUDE.md`, [0024](done/0024-staging-shared-database-safety.md), [0025](done/0025-release-blocked-schema-drops.md)) and memory. Every step turned out right, but nothing said the order, and two of them — the queued schema drops and the staging sweep (misread as a row delete, and its one run deleted real data, [0053](done/0053-recover-swept-staging-rows.md); restated on 2026-09-30 as a sweep of transitional schema, [0024](done/0024-staging-shared-database-safety.md) Part 3) — were found only because those briefs happened to be open.
 
 ## The plain summary
 
@@ -39,10 +39,12 @@ without rediscovering anything.
    ([0049](0049-app-version-display.md), shipped) — the only check a person can
    do without Vercel.
 6. **Post-release:** unblock what depended on the release (025's pattern:
-   `blocked` → `planned`, first acceptance box ticked); run the 025 queue
-   as tracked migrations — and never a sweep of `origin`-tagged rows, which
-   are real data (024, Part 3); move finished briefs to `done/` and repoint
-   their links.
+   `blocked` → `planned`, first acceptance box ticked); run the release
+   sweep — the release's schema-drops queue ([0080](0080-release-2-1-0-schema-drops.md)
+   for 2.1.0) as one tracked migration, under the migration policy in the code
+   repo's `supabase/README.md` — and never a sweep of `origin`-tagged rows,
+   which are real data (024, Part 3); move finished briefs to `done/` and
+   repoint their links.
 7. **Open the next release** section in `releases.md`.
 
 ## Where it lives

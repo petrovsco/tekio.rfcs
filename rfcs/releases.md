@@ -35,10 +35,13 @@ In running order:
    muscle-linked quality). That miss was [0061](done/0061-home-names-missing-muscle-quality.md),
    discarded into 062 on 2026-09-07 (Peter's call) so the read ships as part
    of the redesigned shape rather than as a patch in front of it.
-2. [0024](0024-staging-shared-database-safety.md) — the migration policy
-   (Part 2). [0025](done/0025-release-blocked-schema-drops.md) closed on
-   2026-09-05; the release sweep 024 once carried is withdrawn, because
-   its one run deleted real data (053).
+2. [0024](done/0024-staging-shared-database-safety.md) — the migration policy
+   (Part 2). **Done 2026-09-30** (v2.0.109): the policy is in the code repo's
+   `supabase/README.md`. The release sweep is restated, not withdrawn — it
+   removes the transitional schema that lets two builds share one database,
+   never rows; for 2.1.0 that is [0080](0080-release-2-1-0-schema-drops.md).
+   [0025](done/0025-release-blocked-schema-drops.md) was the same pattern for
+   2.0.0.
 3. [0012](0012-adaptation-target-shapes.md) — target shapes, carried over
    from 2.0.0 (no code when it shipped).
 4. [0046](done/0046-retire-tracked-muscle-groups.md) — retire the tracked-groups

@@ -17,8 +17,10 @@ Its rule still stands: when `develop` stops reading a column, the code change
 ships at once, but the drop waits until `master` runs code that no longer
 selects it — staging and production share one database, and a `select` against
 a dropped column fails `bootstrap()` in production. This is where the next
-release's drops wait, run as step 6 of the release procedure in `CLAUDE.md`,
-under the migration policy in [0024](0024-staging-shared-database-safety.md).
+release's drops wait. Running them is **the release sweep** — step 6 of the
+release procedure in `CLAUDE.md`, under the migration policy in the code repo's
+`supabase/README.md` ([0024](done/0024-staging-shared-database-safety.md) says
+why). It removes schema, never rows.
 
 ## The queue
 

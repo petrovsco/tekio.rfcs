@@ -26,7 +26,7 @@ label: bug
 ## What happened
 
 On the evening of 2026-09-05, after 2.0.0 shipped, the release sweep from
-[0024](../0024-staging-shared-database-safety.md) Part 3 deleted every log row
+[0024](0024-staging-shared-database-safety.md) Part 3 deleted every log row
 tagged `origin = 'staging'`. The sweep assumed a staging row was a test row.
 It was not: the staging build is the daily app of the product's one user,
 precisely so it is tested in live conditions, so those were real sessions of
