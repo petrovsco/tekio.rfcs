@@ -183,7 +183,16 @@ door carried him to Adaptations for the rest. But it read thin, because the line
 is hard to spot, the smallest text on the screen. A read the eye does not reach
 in five seconds is not yet the five-second read, so the austerity holds. The
 fix, and the walk that can turn this line into **met**:
-[rfcs/0082-home-adaptations-line-weight.md](rfcs/0082-home-adaptations-line-weight.md).
+[rfcs/done/0082-home-adaptations-line-weight.md](rfcs/done/0082-home-adaptations-line-weight.md).
+
+**Met — 2026-09-30.** Peter's call, from a cold re-walk of v2.1.4 the same day.
+The adaptations line now reads at body size, with the untouched names in the
+accent, and Home still fits one 900 px screen. All three questions pass within
+five seconds, without a tap, and correct at source. The austerity above ends
+here: a new section may be proposed again. It still has to answer the §4
+checklist and fit under R1's cap of four menu sections, which leaves one slot
+today, and anything shelved still expires under R2. Record:
+[rfcs/done/0082-home-adaptations-line-weight.md](rfcs/done/0082-home-adaptations-line-weight.md).
 
 ## 7. What this doctrine does not cover
 

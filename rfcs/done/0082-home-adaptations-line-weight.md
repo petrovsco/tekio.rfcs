@@ -3,8 +3,8 @@ title: Home's adaptations line is right but hard to spot
 authors: [Peter Petrov]
 created: 2026-09-30
 last_updated: 2026-09-30
-status: in progress
-status_note: "Opened 2026-09-30 when Peter recorded the doctrine §6 verdict as not met: all three questions answer correctly at source, but the seven-quality line does not draw the eye inside five seconds. The change shipped the same day (v2.1.2, with the untouched names in the accent in v2.1.3): 12 px body text, untouched half semibold, short half in ink-2, Home still one 900 px screen. What remains is Peter's cold re-walk of §6. That walk closes this RFC, and only it can record **met**."
+status: done
+status_note: "Closed 2026-09-30. Opened that morning when Peter recorded the doctrine §6 verdict as not met, because the seven-quality line was correct but hard to spot. Shipped the same day in three steps: v2.1.2 moved it to 12 px with the untouched half leading, v2.1.3 put the untouched names in the accent, and v2.1.4 made both labels ink semibold. Home stays one 900 px screen. Peter re-walked §6 cold on v2.1.4 and recorded **met**."
 label: feature
 release: 2.2.0
 ---
@@ -88,8 +88,9 @@ readiness verdict for the top of the screen.
 
 ## Acceptance
 
-- [ ] Peter re-walks §6 cold on the build that ships this, and Q2 passes without
-      feeling thin. Only that walk can move §6 to **met**.
+- [x] Peter re-walks §6 cold on the build that ships this, and Q2 passes without
+      feeling thin. Only that walk can move §6 to **met**. Walked on v2.1.4 on
+      2026-09-30; verdict **met**, recorded in doctrine §6.
 - [x] Home fits one 900 px screen: local dev build, live database, 390 px
       wide, 2026-09-30. The line went from 21 px to 34 px tall (two lines). The
       card's top gap went from 12 px to 8 px, matching the cards below it, so the
@@ -112,5 +113,5 @@ readiness verdict for the top of the screen.
 
 ## Unresolved questions
 
-- If more weight still reads as thin on the next walk, the reason was not only
-  visual, and the Non-Goals above get reopened.
+- None. The walk passed, so the Non-Goals (magnitude, per-muscle breakdowns,
+  a today-action) were not needed.

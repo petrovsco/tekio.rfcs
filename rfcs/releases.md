@@ -23,9 +23,10 @@ assistant, cardio's secondary reads, the Weights chip cloud, the program
 template picker, brief 003's name) need a deeper look before anything is
 cut. Keepers become briefs; cuts execute from 034.
 
-[0082](0082-home-adaptations-line-weight.md): the §6 verdict was recorded
-**not met** on 2026-09-30, because Home's adaptations line is correct but hard to spot.
-Shipping it and re-walking §6 is the path to ending the austerity.
+[0082](done/0082-home-adaptations-line-weight.md) (done, v2.1.2–v2.1.4): the
+§6 verdict was recorded **not met** on 2026-09-30 because Home's adaptations line
+was correct but hard to spot. It was fixed and re-walked the same day, and
+doctrine §6 is now **met**, which ends the austerity.
 
 ## 3.0.0
 
