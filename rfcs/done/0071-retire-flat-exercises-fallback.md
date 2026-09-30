@@ -3,8 +3,8 @@ title: "Retire the flat-`exercises` fallback in the program tree"
 authors: [Peter Petrov]
 created: 2026-09-08
 last_updated: 2026-09-30
-status: planned
-status_note: "found on the way through [0048](done/0048-simplification-candidates.md), which expected this to need a backfill migration. It does not: the live database has **zero** rows to backfill (see *The migration 048 predicted is not needed*). Filed 2026-09-08."
+status: done
+status_note: "done 2026-09-30 (v2.1.6): `blocks` is required, `defaultProgram()` emits blocks, and every flat-list fallback is gone — seven sites, not the three read fallbacks listed; see *Outcome*."
 label: infra
 release: 2.2.0
 ---
@@ -92,10 +92,54 @@ plan" both render off this shape. Walk a program day in both, plus a fresh
 
 ## Acceptance
 
-- [ ] `ProgramDay.blocks` is required and `defaultProgram()` emits blocks
-- [ ] The three read fallbacks are gone and `npm run build` passes
-- [ ] A program created from `defaultProgram()`, an imported program and the
+- [x] `ProgramDay.blocks` is required and `defaultProgram()` emits blocks
+- [x] The three read fallbacks are gone and `npm run build` passes
+- [x] A program created from `defaultProgram()`, an imported program and the
       live enrolled program all render unchanged on the Program tab and in
       today's plan on Weights — checked in the browser, 0 console errors
-- [ ] `program_day_exercises` still holds no `block_id is null` row after the
+- [x] `program_day_exercises` still holds no `block_id is null` row after the
       change (re-run the count; it is one query)
+
+## Outcome — 2026-09-30, v2.1.6
+
+**The fallback had seven sites, not four.** The type change found none of the
+extra ones, because `blocks` was always present at runtime as an array — they
+were `blocks.length === 0` branches, not missing-field reads. All seven are gone:
+
+| Site | What it did |
+|---|---|
+| `lib/db/program.ts`, the day load | built the flat list from `block_id is null` rows |
+| `lib/db/program.ts`, `saveDayBlocks` | **wrote** a flat day as a synthetic weight block — the write-side twin, not in the table above |
+| `ProgramTab.tsx`, `flatToBlock` / `normalizeDays` | wrapped a blockless day for the editor |
+| `ProgramTab.tsx`, `DayBlocks` and `BlockTypeStrip` | rendered a blockless day's flat list; a day with no blocks is now a rest day |
+| `weights/TodaysPlan.tsx`, `weightSectionsFor` | read `day.exercises` when a day had no blocks |
+| `lib/assistant/executor.ts`, add / rename / remove | edited the flat list of a blockless day |
+
+The executor is the one that would have broken quietly. The assistant adding
+an exercise to a rest day pushed a name onto the flat list, and only
+`saveDayBlocks`' wrap turned it into a row; with the wrap gone the exercise
+would have vanished on save. It now opens a weight block itself — the shape the
+wrap used to write — and every assistant edit re-derives the flat view from the
+blocks once, so the in-memory day no longer goes stale after a block edit.
+
+`defaultProgram()` builds its five days through one `weightDay()` helper, and a
+test pins that each carries one weight block with the flat view derived from it.
+`getGrouped` now takes only the flat pair it reads, not a whole `ProgramDay`.
+
+**Walked in the browser** on `npm run dev`, 0 console errors: the
+5-Day template (`defaultProgram()`) opens in the editor with all five days and
+their supersets; an imported program with a warm-up block, a superset weight
+block and an empty rest day renders all three; the live Volleyball program's
+Progress list reads its exercises from the database's blocks. Nothing was
+saved. **Not walked:** today's plan on Weights and the Program tab's schedule
+list, because both render only for an *active* program and both enrolled
+programs are paused — resuming one to look would change the live database.
+The removed branches never ran for a live day (every stored day has blocks),
+so what they render for a real program is unchanged by construction.
+
+**Recount after:** `program_day_exercises` 95 rows, 0 with `block_id is null`.
+
+**Found on the way:** `npm run typecheck` checks nothing. It runs
+`tsc --noEmit` against the root `tsconfig.json`, which is `"files": []` plus
+project references, so it exits 0 whatever the code says; three test fixtures
+missing `blocks` passed it and failed `npm run build` (`tsc -b`). Not fixed here.

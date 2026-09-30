@@ -2,9 +2,9 @@
 title: Nutrition targets are an input, not a Tekiō surface
 authors: [Peter Petrov]
 created: 2026-09-10
-last_updated: 2026-09-10
-status: in progress
-status_note: grounded 2026-09-08. The product question (does anything ship inside Tekiō at all?) is still open.
+last_updated: 2026-09-30
+status: backlog
+status_note: "Not part of the v2.2. Well be taken into account later"
 label: feature
 ---
 

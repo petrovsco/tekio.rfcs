@@ -51,7 +51,7 @@ label: infra
   "found on the way" list held three facts with no ticket; each now has one
   ([0069](0069-sleep-logs-row-origin.md),
   [0070](../0070-week-start-day-program-week.md),
-  [0071](../0071-retire-flat-exercises-fallback.md)), and checking them against
+  [0071](0071-retire-flat-exercises-fallback.md)), and checking them against
   the code and the live database corrected two of the three claims.
 - **2026-09-08, v2.0.87 — Tier 3 closed, and the brief with it: C2**, one unit.
   Two `_shared/` modules under `supabase/functions/`, both edge functions
@@ -1485,7 +1485,7 @@ decision is the next step.
   (`normalizeDays` / `flatToBlock` in `ProgramTab`, the `day.exercises` branch
   in `TodaysPlan`, the `block_id === null` branch in `fetchDayDetails`), because
   `defaultProgram()` still ships days with no `blocks`. **Now filed as
-  [0071](../0071-retire-flat-exercises-fallback.md)**, which drops this entry's
+  [0071](0071-retire-flat-exercises-fallback.md)**, which drops this entry's
   prediction that removing them "needs a backfill migration": the live database
   holds 95 `program_day_exercises` rows and **every one has a `block_id`**
   (checked 2026-09-08), and `saveBlock` wraps a flat day into a synthetic block
@@ -1649,7 +1649,7 @@ Housekeeping:
       decision — 2026-09-08, v2.0.86. Five items, not four: sleep origin →
       [0069](0069-sleep-logs-row-origin.md), `weekStartDay` →
       [0070](../0070-week-start-day-program-week.md), flat `exercises` →
-      [0071](../0071-retire-flat-exercises-fallback.md), the 1RM estimator →
+      [0071](0071-retire-flat-exercises-fallback.md), the 1RM estimator →
       [0067](0067-ground-1rm-estimator.md) (filed earlier), and the `CYCLE`
       correction, which was a decision recorded in CLAUDE.md at the time. Two of
       the three new briefs correct the entry that spawned them: the sleep fix is

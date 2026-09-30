@@ -2,9 +2,9 @@
 title: Adaptation goals — declaring what I am chasing this cycle
 authors: [Peter Petrov]
 created: 2026-09-02
-last_updated: 2026-09-05
-status: planned
-status_note: "committed by Peter to 3.0.0 on 2026-09-05; the shaping happens at kickoff. The Adaptations read is rebuilt ([0031](done/0031-adaptations-drill-down-read.md)) and grounded ([0039](done/0039-adaptations-read-grounding.md)), and 2.1.0 retires the tracked-muscle-groups setting ([0046](done/0046-retire-tracked-muscle-groups.md)) — Peter's note: the need behind that setting returns here as focus on *adaptations*, and Home and Adaptations must not punish a chosen focus."
+last_updated: 2026-09-30
+status: backlog
+status_note: "We're working on v2.2 now (3 comes later)."
 label: feature
 depends: [31, 39]
 release: 3.0.0

@@ -33,8 +33,8 @@ briefs, done one at a time:
 
 1. [0069](done/0069-sleep-logs-row-origin.md) — `sleep_logs` joins row-origin
    tagging. **Done 2026-09-30** (v2.1.5).
-2. [0071](0071-retire-flat-exercises-fallback.md) — retire the flat-`exercises`
-   fallback in the program tree.
+2. [0071](done/0071-retire-flat-exercises-fallback.md) — retire the flat-`exercises`
+   fallback in the program tree. **Done 2026-09-30** (v2.1.6).
 3. [0072](0072-link-checker-for-this-repo.md) — the link checker follows the
    docs to this repo, so step 1 of a release checks the RFCs again.
 4. [0073](0073-garmin-sync-every-activity-type.md) — every Garmin sport mapped
@@ -140,7 +140,7 @@ In running order:
     sixteen units, `knip` reports zero, and the three findings it made on the
     way became [0069](done/0069-sleep-logs-row-origin.md),
     [0070](0070-week-start-day-program-week.md) and
-    [0071](0071-retire-flat-exercises-fallback.md), none of them tagged to a
+    [0071](done/0071-retire-flat-exercises-fallback.md), none of them tagged to a
     release yet.
 11. [0067](done/0067-ground-1rm-estimator.md) — the estimated 1RM Weights prints,
     either grounded or deleted. Added to the release on 2026-09-09 (Peter). It
