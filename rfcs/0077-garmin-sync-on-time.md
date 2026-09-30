@@ -2,10 +2,11 @@
 title: The Garmin syncs start at 08:00, not whenever GitHub gets to them
 authors: [Peter Petrov]
 created: 2026-09-29
-last_updated: 2026-09-29
+last_updated: 2026-09-30
 status: in progress
 status_note: "Live since v2.0.104, token in Vault and proven on 2026-09-29: a dispatch from the database got `204` and started a dry run on GitHub at once. Closes after the first 08:00 run on its own."
 label: infra
+release: 2.2.0
 ---
 
 # RFC 0077: The Garmin syncs start at 08:00, not whenever GitHub gets to them

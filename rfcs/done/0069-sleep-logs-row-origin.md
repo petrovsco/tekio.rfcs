@@ -2,10 +2,11 @@
 title: "`sleep_logs` was left out of row-origin tagging"
 authors: [Peter Petrov]
 created: 2026-09-08
-last_updated: 2026-09-10
-status: planned
-status_note: "found on the way through [0048](done/0048-simplification-candidates.md); filed 2026-09-08 with the fact corrected (see *048 called this a one-line fix; it is not*)."
+last_updated: 2026-09-30
+status: done
+status_note: "done 2026-09-30 (v2.1.5): tracked migration `20260930131450_sleep_logs_row_origin` plus `withOrigin` on the sleep upsert; the write-once check passed against the live database."
 label: bug
+release: 2.2.0
 ---
 
 # RFC 0069: `sleep_logs` was left out of row-origin tagging
@@ -14,7 +15,7 @@ label: bug
 
 Every root row a person writes from the app records which build wrote it —
 `dev`, `staging`, or null for production. That is
-[0037](done/0037-row-origin-tagging.md)'s guarantee, and it is what lets anyone
+[0037](0037-row-origin-tagging.md)'s guarantee, and it is what lets anyone
 looking at the training log later tell a row a user really logged from a row
 somebody created while trying something out.
 
@@ -28,7 +29,7 @@ it does.
 So a night logged from localhost or from stg-tekio.shamatoff.com lands looking
 exactly like a night typed on the real site. Nothing deletes it — the
 release sweep that used to read these tags was withdrawn on 2026-09-05 after it
-destroyed real data ([0053](done/0053-recover-swept-staging-rows.md)) — but the
+destroyed real data ([0053](0053-recover-swept-staging-rows.md)) — but the
 attribution is wrong, and attribution is the whole point of the column.
 
 ## Why it is worth fixing
@@ -45,7 +46,7 @@ disagree with each other.
 
 ## 048 called this a one-line fix; it is not
 
-[0048](done/0048-simplification-candidates.md)'s "found on the way" list says
+[0048](0048-simplification-candidates.md)'s "found on the way" list says
 *"One-line fix"* — add `withOrigin(...)` to the upsert. That is wrong, and
 acting on it would break every sleep save from dev and staging:
 
@@ -76,7 +77,7 @@ had created; with it, the row keeps the origin it was born with.
    public.preserve_origin()`. Additive and null-defaulted, so it cannot disturb
    an existing row. Track it the way the repo already tracks migrations
    (`supabase/migrations/`, mirrored server-side), under the policy in
-   [0024](done/0024-staging-shared-database-safety.md).
+   [0024](0024-staging-shared-database-safety.md).
 2. **One line** — `withOrigin(...)` around the upsert payload in
    `saveSleepEntry`.
 
@@ -107,11 +108,28 @@ writes are already correct.
 
 ## Acceptance
 
-- [ ] `sleep_logs` has an `origin` column and a `preserve_origin` trigger,
+- [x] `sleep_logs` has an `origin` column and a `preserve_origin` trigger,
       added by a tracked migration
-- [ ] `saveSleepEntry` writes through `withOrigin(...)`
-- [ ] A sleep entry saved from `npm run dev` lands with `origin = 'dev'`;
+- [x] `saveSleepEntry` writes through `withOrigin(...)`
+- [x] A sleep entry saved from `npm run dev` lands with `origin = 'dev'`;
       re-saving the same night from dev on a row that already exists leaves the
       original `origin` untouched (the write-once check)
-- [ ] The 048 entry is corrected in place so the "one-line fix" claim is not
+- [x] The 048 entry is corrected in place so the "one-line fix" claim is not
       read again as true
+
+## Outcome — 2026-09-30, v2.1.5
+
+- **Migration** `supabase/migrations/20260930131450_sleep_logs_row_origin.sql`,
+  applied with `apply_migration` and named after the version Supabase stamped.
+  Before it ran the live table had 41 rows, no `origin` column and no trigger;
+  `preserve_origin()` already existed, so nothing new was defined.
+- **The line** — `saveSleepEntry` wraps its upsert payload in `withOrigin(...)`.
+  `updateSleepEntry` stays untagged, as planned.
+- **The write-once check** was run against the live database through
+  PostgREST with the app's own payload shape, on a throwaway night
+  (2000-01-01): the first save came back `origin: "dev"`; a second save of the
+  same night carrying `origin: "staging"` updated the hours and came back
+  still `"dev"`. The row was then deleted by its id — a test row made for the
+  check, not a row judged by its tag.
+- **The 048 entry** had already been corrected in place when this brief was
+  filed on 2026-09-08; nothing more to change there.

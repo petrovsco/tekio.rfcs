@@ -49,7 +49,7 @@ label: infra
   per-domain setters are one `replaceLists`.
 - **2026-09-08, v2.0.86 — the three loose findings get briefs.** The
   "found on the way" list held three facts with no ticket; each now has one
-  ([0069](../0069-sleep-logs-row-origin.md),
+  ([0069](0069-sleep-logs-row-origin.md),
   [0070](../0070-week-start-day-program-week.md),
   [0071](../0071-retire-flat-exercises-fallback.md)), and checking them against
   the code and the live database corrected two of the three claims.
@@ -1466,7 +1466,7 @@ decision is the next step.
   cold insert below it in the same file does. A night logged first from dev or
   staging lands untagged, i.e. as production — a gap in 037's "every user-write
   root row" guarantee. **Now filed as
-  [0069](../0069-sleep-logs-row-origin.md)**, which corrects this entry: it is *not*
+  [0069](0069-sleep-logs-row-origin.md)**, which corrects this entry: it is *not*
   the "one-line fix" written here. `sleep_logs` has no `origin` column at all
   (checked against the live database, 2026-09-08 — fourteen tables have one and
   it is not among them), so `withOrigin` alone would send an unknown column and
@@ -1647,7 +1647,7 @@ Housekeeping:
 
 - [x] The four "found on the way" items each have a brief or a recorded
       decision — 2026-09-08, v2.0.86. Five items, not four: sleep origin →
-      [0069](../0069-sleep-logs-row-origin.md), `weekStartDay` →
+      [0069](0069-sleep-logs-row-origin.md), `weekStartDay` →
       [0070](../0070-week-start-day-program-week.md), flat `exercises` →
       [0071](../0071-retire-flat-exercises-fallback.md), the 1RM estimator →
       [0067](0067-ground-1rm-estimator.md) (filed earlier), and the `CYCLE`

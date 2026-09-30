@@ -2,10 +2,11 @@
 title: "Retire the flat-`exercises` fallback in the program tree"
 authors: [Peter Petrov]
 created: 2026-09-08
-last_updated: 2026-09-08
+last_updated: 2026-09-30
 status: planned
 status_note: "found on the way through [0048](done/0048-simplification-candidates.md), which expected this to need a backfill migration. It does not: the live database has **zero** rows to backfill (see *The migration 048 predicted is not needed*). Filed 2026-09-08."
 label: infra
+release: 2.2.0
 ---
 
 # RFC 0071: Retire the flat-`exercises` fallback in the program tree

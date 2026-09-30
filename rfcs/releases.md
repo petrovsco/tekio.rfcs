@@ -28,6 +28,20 @@ cut. Keepers become briefs; cuts execute from 034.
 was correct but hard to spot. It was fixed and re-walked the same day, and
 doctrine §6 is now **met**, which ends the austerity.
 
+Tagged by Peter on 2026-09-30, in running order — the unblocked, planned
+briefs, done one at a time:
+
+1. [0069](done/0069-sleep-logs-row-origin.md) — `sleep_logs` joins row-origin
+   tagging. **Done 2026-09-30** (v2.1.5).
+2. [0071](0071-retire-flat-exercises-fallback.md) — retire the flat-`exercises`
+   fallback in the program tree.
+3. [0072](0072-link-checker-for-this-repo.md) — the link checker follows the
+   docs to this repo, so step 1 of a release checks the RFCs again.
+4. [0073](0073-garmin-sync-every-activity-type.md) — every Garmin sport mapped
+   before it is played.
+5. [0077](0077-garmin-sync-on-time.md) — the 08:00 Garmin syncs; live, closes
+   after its first scheduled run.
+
 ## 3.0.0
 
 **Target:** TBC
@@ -124,7 +138,7 @@ In running order:
     became [0065](0065-rescale-exemption-unchecked-base.md) in 3.0.0. **048 closed
     2026-09-08** (v2.0.58–v2.0.87): all 30 simplification candidates landed in
     sixteen units, `knip` reports zero, and the three findings it made on the
-    way became [0069](0069-sleep-logs-row-origin.md),
+    way became [0069](done/0069-sleep-logs-row-origin.md),
     [0070](0070-week-start-day-program-week.md) and
     [0071](0071-retire-flat-exercises-fallback.md), none of them tagged to a
     release yet.

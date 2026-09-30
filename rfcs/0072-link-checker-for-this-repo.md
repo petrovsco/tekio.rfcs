@@ -2,10 +2,11 @@
 title: The link checker follows the docs it checked
 authors: [Peter Petrov]
 created: 2026-09-10
-last_updated: 2026-09-10
+last_updated: 2026-09-30
 status: planned
 status_note: Opened by the migration that created this repo; nothing blocks it.
 label: infra
+release: 2.2.0
 ---
 
 # RFC 0072: The link checker follows the docs it checked

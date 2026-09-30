@@ -2,10 +2,11 @@
 title: Every Garmin sport is mapped before it is ever played
 authors: [Peter Petrov]
 created: 2026-09-27
-last_updated: 2026-09-27
+last_updated: 2026-09-30
 status: planned
 status_note: Opened after volleyball sat unmapped for weeks. Scope set on 2026-09-27 to Garmin's whole catalogue, not the types seen so far; nothing blocks it.
 label: feature
+release: 2.2.0
 ---
 
 # RFC 0073: Every Garmin sport is mapped before it is ever played
