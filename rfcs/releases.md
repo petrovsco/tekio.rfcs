@@ -42,8 +42,8 @@ briefs, done one at a time:
    before it is played. **Done 2026-09-30** (v2.1.8–v2.1.9). Its yoga, pilates
    and mobility skip opened [0083](0083-garmin-yoga-pilates-mobility-sync.md),
    untagged.
-5. [0077](0077-garmin-sync-on-time.md) — the 08:00 Garmin syncs; live, closes
-   after its first scheduled run.
+5. [0077](done/0077-garmin-sync-on-time.md) — the 08:00 Garmin syncs. **Done
+   2026-09-30**: the first unattended morning dispatched both on time.
 
 ## 3.0.0
 

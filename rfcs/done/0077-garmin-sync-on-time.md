@@ -3,8 +3,8 @@ title: The Garmin syncs start at 08:00, not whenever GitHub gets to them
 authors: [Peter Petrov]
 created: 2026-09-29
 last_updated: 2026-09-30
-status: in progress
-status_note: "Live since v2.0.104, token in Vault and proven on 2026-09-29: a dispatch from the database got `204` and started a dry run on GitHub at once. Closes after the first 08:00 run on its own."
+status: done
+status_note: "done 2026-09-30: the first unattended morning started both syncs on time from the database — two `204`s at 08:00 and 08:10 Sofia, and a `workflow_dispatch` run of each two seconds later."
 label: infra
 release: 2.2.0
 ---
@@ -82,9 +82,14 @@ read and write, inserted by hand. The steps are in the code repo's
 - [x] `github_actions_dispatch_token` is in Vault, and a dispatch sent with it
       from `net.http_post` got `204` and started a run (2026-09-29, 07:34 UTC,
       `dry_run=true`).
-- [ ] On the next morning, `net._http_response` shows two `204`s, and
+- [x] On the next morning, `net._http_response` shows two `204`s, and
       `gh run list` shows a `workflow_dispatch` run of each sync started
-      between 08:00 and 08:15 Sofia time.
+      between 08:00 and 08:15 Sofia time. **2026-09-30:** `204` at 05:00:00
+      and 05:10:00 UTC (08:00 and 08:10 Sofia); the activity sync's dispatch
+      run started 05:00:02 and the sleep sync's 05:10:01, both successful.
+      The 06:00 and 06:10 UTC cron slots ran and sent nothing, as the
+      Sofia-hour gate intends. The GitHub schedule fallback still fired, at
+      07:48 UTC, and changed nothing (the sync is idempotent).
 
 ## Unresolved questions
 
