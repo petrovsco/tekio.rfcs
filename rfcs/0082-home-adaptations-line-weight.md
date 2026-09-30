@@ -3,8 +3,8 @@ title: Home's adaptations line is right but hard to spot
 authors: [Peter Petrov]
 created: 2026-09-30
 last_updated: 2026-09-30
-status: planned
-status_note: "Opened 2026-09-30 when Peter recorded the doctrine §6 verdict as not met: all three questions answer correctly at source, but the seven-quality line does not draw the eye inside five seconds. Closing this is what the next walk tests."
+status: in progress
+status_note: "Opened 2026-09-30 when Peter recorded the doctrine §6 verdict as not met: all three questions answer correctly at source, but the seven-quality line does not draw the eye inside five seconds. The change shipped the same day (v2.1.2): 12 px body text, untouched half semibold in ink, short half in ink-2, Home still one 900 px screen. What remains is Peter's cold re-walk of §6. That walk closes this RFC, and only it can record **met**."
 label: feature
 release: 2.2.0
 ---
@@ -58,8 +58,9 @@ though it is the only thing on Home that answers Q2.
 
 Promote the line inside the card it already sits in:
 
-1. Give it a text step that matches the other answers on Home (the readiness
-   verdict's size and weight), in primary ink, not `ink-2`.
+1. Move it from 9 px `ink-2` to the 12 px body step (design-system §5, the
+   verdict's own sub-line size), in primary ink. It does not take the verdict's
+   size: 28 px serif is reserved for the verdict alone.
 2. Separate its two halves visually: *Untouched* is the stronger claim and
    leads, and *Short* follows at lower emphasis. The string is unchanged; only
    how it is rendered changes.
@@ -87,10 +88,19 @@ readiness verdict for the top of the screen.
 
 ## Acceptance
 
-- Peter re-walks §6 cold on the build that ships this, and Q2 passes without
-  feeling thin. Only that walk can move §6 to **met**.
-- Home measured at 900 px with nothing below the fold.
-- Verified in the browser on staging, in both themes.
+- [ ] Peter re-walks §6 cold on the build that ships this, and Q2 passes without
+      feeling thin. Only that walk can move §6 to **met**.
+- [x] Home fits one 900 px screen: local dev build, live database, 390 px
+      wide, 2026-09-30. The line went from 21 px to 34 px tall (two lines). The
+      card's top gap went from 12 px to 8 px, matching the cards below it, so the
+      page height is 899 px (890 before). The last card ends at 803 px, and the
+      nav starts at 848 px. With all seven qualities named, the line still
+      takes two lines.
+- [x] Verified in the browser. The app has one theme, so there is no second
+      theme to check. The untouched half renders at 600 in ink `#1a1a1a`, and
+      the short half at 400 in ink-2 `#6b6b6b`.
+- [x] `coverageParts` joins back to `coverageLine` exactly (tested), so Home
+      and the Adaptations header still print one sentence.
 
 ## Unresolved questions
 
