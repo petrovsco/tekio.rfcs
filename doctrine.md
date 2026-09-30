@@ -175,6 +175,16 @@ read, not a test run's, so the verdict is the reader's to record here;
 until that line says **met**, the austerity holds. Record:
 [rfcs/done/0062-home-adaptations-one-screen.md](rfcs/done/0062-home-adaptations-one-screen.md).
 
+**Verdict recorded 2026-09-30 — not met.** Peter's call, from a cold read of
+the build carrying 0012's targets (sets, sessions, minutes). The muscles and
+push-or-rest questions pass, correct at source. The adaptations question passes
+on the letter: Home named which qualities were untouched and short, and the
+door carried him to Adaptations for the rest. But it read thin, because the line
+is hard to spot, the smallest text on the screen. A read the eye does not reach
+in five seconds is not yet the five-second read, so the austerity holds. The
+fix, and the walk that can turn this line into **met**:
+[rfcs/0082-home-adaptations-line-weight.md](rfcs/0082-home-adaptations-line-weight.md).
+
 ## 7. What this doctrine does not cover
 
 - **Is the claim true?** → `/ground` (`.claude/skills/ground/SKILL.md`) + the

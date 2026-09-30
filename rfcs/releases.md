@@ -23,6 +23,10 @@ assistant, cardio's secondary reads, the Weights chip cloud, the program
 template picker, brief 003's name) need a deeper look before anything is
 cut. Keepers become briefs; cuts execute from 034.
 
+[0082](0082-home-adaptations-line-weight.md): the §6 verdict was recorded
+**not met** on 2026-09-30, because Home's adaptations line is correct but hard to spot.
+Shipping it and re-walking §6 is the path to ending the austerity.
+
 ## 3.0.0
 
 **Target:** TBC
