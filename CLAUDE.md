@@ -2,13 +2,13 @@
 
 ## House rules
 
-@~/.claude/modus/rules/rfc-convention.md
-@~/.claude/modus/rules/no-personal-context.md
+The house rules are committed copies in `.claude/rules/modus/`, which Claude
+Code loads from the checkout, so they reach cloud sessions too. The modus plugin
+refreshes them at session start; edit a rule in modus, never here.
 
-*(The imports resolve to nothing without the modus plugin installed. The second
-one is stated here in full because this repo cannot afford to lose it: this repo
-holds product information, and nothing about the people who use it. No names,
-ages or relationships — use roles. No real body, health, money or employment
+*(`no-personal-context` is also stated here in full, because this repo cannot
+afford to lose it: this repo holds product information, and nothing about the
+people who use it. No names, ages or relationships — use roles. No real body, health, money or employment
 data — where a realistic figure is needed, invent one and mark it invented.
 State the shape a requirement has, never the instance. And this repo never
 names, links or paths to any private knowledge base.)*
