@@ -108,56 +108,43 @@ struck as retired, or changed state since the prose was written.
 
 ### 4. The design
 
-Mock: <https://claude.ai/artifact/9qCs6ppbGNwUjjNgfu1fHo>. Its example read
-is invented; every number and source in it is a real one from the inventory.
+First mock (superseded): <https://claude.ai/artifact/9qCs6ppbGNwUjjNgfu1fHo>.
+Every example athlete is invented; every number and source is a real one from
+the inventory.
 
 It wears the app's SIGNAL language (`design-system.md`) so the site and the
 app read as one product: paper ground, ink, one accent meaning *what's
 missing*, the serif only for the thesis line. One deliberate extension: the
 type scale goes up (17 px body instead of 12 px) because this is a page that
-is read, not a screen that is glanced at. Light and dark both.
+is read, not a screen that is glanced at. Light first, as the app is.
 
-**Revised 2026-10-01 after Peter's review of the first mock:**
+**Direction chosen 2026-10-01 (Peter): A + C, with B as its own page.** The
+first two mocks were rejected as static and, in the second, bolted on. The page
+keeps the app's SIGNAL language but gets its motion from the read itself.
+Storyboard: <https://claude.ai/artifact/SE4nkfDVnN3ZwGJkRoyN3z>.
 
-- **An octopus in the side rail** adapts as the reader scrolls. Its eight arms
-  start pale with an accent edge (the gaps), fill with the same four-step ink
-  ramp the body map uses as each section passes, and two of them carry the
-  recovery hatch in the push-or-hold section. A line under it names its state.
-  On a phone it shrinks to a corner badge. The ink is the metaphor: in the app
-  ink accumulates like work.
-- **The scroll is alive:** sections settle in as they enter, from a visible
-  resting state, and nothing moves under `prefers-reduced-motion`.
-- **The fill step has a working example:** a slider of credited sets against
-  hypertrophy's floor of 10 fills a muscle shape and names its ramp band.
-- **Power and anaerobic capacity are split** into what counts (grounded: the
-  load, effort and length of a session) and how often (convention), with why
-  power counts sessions rather than sets.
-- **The HRV score is explained in words and on a scale** (50 at your usual
-  level, 50 points per standard deviation, held between 0 and 100) instead of
-  as a formula.
+- **Act one, the read builds itself (A).** One stage stays fixed beside the
+  scrolling copy and shows the app's own body map (its real geometry from
+  `BodyMap.tsx`). Each scroll stop changes one thing on the stage, the step
+  the copy explains: an empty figure; one set credited 1 / 0.5 / 0; the rep
+  bands; a week of sets filling the ink ramp with numbered gap callouts; the
+  recovery hatch and the readiness number; and the verdict landing in serif.
+  At the end the stage is the Home screen.
+- **Act two, a week in ink (C).** The stage becomes scrubbable through an
+  invented seven days, so the reader watches gaps open and close and sees a
+  Hold day where the map stays the same and only the instruction changes.
+- **The science (B)** is a separate page at its own address: every inventory
+  number as a card, filterable by quality and by evidence state, opening into
+  claim, sources, where the evidence splits, and verdict.
+- **Verdict strings are the app's own** (`HomeTab.tsx`), and the week is run
+  through the app's fill rules at build time, so the stage cannot show a fill
+  the app would not.
 - **No developer doctrine on the page.** The section cap and the shelf expiry
-  are rules for building the app, not promises to the reader, so the
-  principles section keeps only what a user can feel.
+  are rules for building the app, so the page leaves them out.
+- **No mascot.** The octopus from the second mock was dropped.
 
-One page, in this order:
-
-1. **Thesis.** "Tekiō tells you what's missing," the three questions Home
-   answers in five seconds, and an invented Home read beside it.
-2. **Two reads.** Stimulus and recovery as two axes (P5); local versus
-   systemic; why the whole-body qualities do not go on the body map (P2).
-3. **How one set becomes a read.** Four numbered steps: the overlapping rep
-   bands (with a rep slider, the one interactive figure), the 1 / 0.5 / 0
-   credit by muscle role, the seven-day sum against a floor, and the ink ramp.
-   Each step carries its state badge and its sources.
-4. **The seven adaptations.** One table: weekly target, unit, state, key
-   source.
-5. **Push or hold.** The readiness formula, the threshold of 33, the 48-hour
-   local recovery window, blood donation as a readiness input.
-6. **The evidence.** How grounding works, counts, and the full reference
-   list.
-7. **The principles.** Four user-facing promises in one line each: the read
-   is the product, fold before you add, a number you can't act on isn't
-   shown, honest beats pretty.
+Next: Peter reviews the storyboard frames; then one act is built as a working
+prototype before the whole page.
 
 ## Rationale
 
