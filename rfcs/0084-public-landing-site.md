@@ -49,6 +49,9 @@ the app until it exists.
 - **No new claim.** The page restates grounded rows. Any sentence that would
   prescribe or classify beyond what a grounding block says goes through
   `/ground` first, like any other claim.
+- **No developer doctrine.** R1's section cap, R2's shelf expiry and other
+  rules about how the app is built stay in this repo; the page states only
+  what a user can feel.
 - **No live data.** The example read is invented and marked invented; the site
   never talks to Supabase.
 - **No change to the app**, its middleware, or its Vercel project, beyond
@@ -114,6 +117,28 @@ missing*, the serif only for the thesis line. One deliberate extension: the
 type scale goes up (17 px body instead of 12 px) because this is a page that
 is read, not a screen that is glanced at. Light and dark both.
 
+**Revised 2026-10-01 after Peter's review of the first mock:**
+
+- **An octopus in the side rail** adapts as the reader scrolls. Its eight arms
+  start pale with an accent edge (the gaps), fill with the same four-step ink
+  ramp the body map uses as each section passes, and two of them carry the
+  recovery hatch in the push-or-hold section. A line under it names its state.
+  On a phone it shrinks to a corner badge. The ink is the metaphor: in the app
+  ink accumulates like work.
+- **The scroll is alive:** sections settle in as they enter, from a visible
+  resting state, and nothing moves under `prefers-reduced-motion`.
+- **The fill step has a working example:** a slider of credited sets against
+  hypertrophy's floor of 10 fills a muscle shape and names its ramp band.
+- **Power and anaerobic capacity are split** into what counts (grounded: the
+  load, effort and length of a session) and how often (convention), with why
+  power counts sessions rather than sets.
+- **The HRV score is explained in words and on a scale** (50 at your usual
+  level, 50 points per standard deviation, held between 0 and 100) instead of
+  as a formula.
+- **No developer doctrine on the page.** The section cap and the shelf expiry
+  are rules for building the app, not promises to the reader, so the
+  principles section keeps only what a user can feel.
+
 One page, in this order:
 
 1. **Thesis.** "Tekiō tells you what's missing," the three questions Home
@@ -130,7 +155,9 @@ One page, in this order:
    local recovery window, blood donation as a readiness input.
 6. **The evidence.** How grounding works, counts, and the full reference
    list.
-7. **The rules.** Four doctrine principles in one line each.
+7. **The principles.** Four user-facing promises in one line each: the read
+   is the product, fold before you add, a number you can't act on isn't
+   shown, honest beats pretty.
 
 ## Rationale
 
