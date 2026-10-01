@@ -9,6 +9,8 @@ label: feature
 release: 2.2.0
 ---
 
+# RFC 0013: Ground the 6-week cycle and the week-6 deload
+
 ## Progress log
 
 - **2026-08-26** — created to carry inventory §5, the last domain with no brief.
@@ -20,8 +22,6 @@ release: 2.2.0
   and nothing reads the per-program columns, so Tekiō makes the claim itself.
   Three scout runs and the Grounding section below. Done, with no value moved
   and so no migration.
-
-# RFC 0013: Ground the 6-week cycle and the week-6 deload
 
 The de-duplication is already done (three bugs fixed 2026-08-26). What is left is
 the claim itself, which no one has ever checked: **a training block is 6 weeks,
