@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-01
 status: backlog
-status_note: "Opened 2026-10-01 at Peter's ask. Where it lives and how it is served are accepted; the direction is chosen (A + C, science as its own page) and a working prototype is linked in Proposal for his review. Depends on the apex tekio.fyi being free once the domain move lands."
+status_note: "Opened 2026-10-01 at Peter's ask. Where it lives and how it is served are accepted. The design is in its second round (whole-step scrolling, a seven-day act two, a release form) and its prototype is linked in Proposal; the science page waits until every number has its source. Depends on the apex tekio.fyi being free once the domain move lands."
 label: feature
 ---
 
@@ -13,14 +13,15 @@ label: feature
 ## Summary
 
 A small, public, indexable static site on the apex `tekio.fyi` that explains
-what Tekiō is for and how its numbers are computed: the purpose sentence, the
-two-dimensions principle, the path from one logged set to a muscle's fill,
-every weekly target with its evidence state (grounded, convention,
-definitional), the readiness gate, and the full reference list. It lives in a
-`site/` folder of the code repo and deploys as a second Vercel project with no
-cookie gate. Its numbers and references are read from this repo's grounding
-inventory and grounding blocks at build time, so the page cannot quietly
-disagree with what the app ships.
+what Tekiō is for and how its reads are computed: the purpose sentence, the
+path from one logged set to a muscle's fill, the rep bands, the two-week floor,
+the recovery hatch and the readiness gate, then an invented week read day by
+day. It ends on a release-notification form until the app is released. A
+science page with every number's evidence state and sources follows once every
+number it would show has its source. The site lives in a `site/` folder of the
+code repo and deploys as a second Vercel project with no cookie gate. Its
+numbers are read from this repo's grounding inventory at build time, so the
+page cannot quietly disagree with what the app ships.
 
 ## Motivation
 
@@ -34,9 +35,11 @@ the app until it exists.
 ## Goals
 
 - One public page a newcomer can read in a few minutes and come away knowing
-  what Tekiō answers, how each answer is computed, and how sure each number is.
-- Every number on the page is a number the app ships, with its inventory
-  state. Every source is one a grounding block cites.
+  what Tekiō answers and how each answer is computed.
+- Every number on the page is a number the app ships, and the example week is
+  run through the app's own rules.
+- Later, on the science page: how sure each number is, and the sources behind
+  it.
 - The build fails when the page cites an inventory row that was retired or
   whose state changed.
 - First paint stays small: static HTML and CSS, with script only for the one
@@ -44,16 +47,18 @@ the app until it exists.
 
 ## Non-Goals
 
-- **Not a sign-up or marketing funnel.** No pricing, no accounts, no waitlist,
-  no analytics beyond Vercel's own.
+- **Not a marketing funnel.** No pricing, no accounts, no analytics beyond
+  Vercel's own. The one exception is a release-notification form (Peter,
+  2026-10-01): it asks for an email and nothing else, and gives way to a link
+  to the app once the app is released.
 - **No new claim.** The page restates grounded rows. Any sentence that would
   prescribe or classify beyond what a grounding block says goes through
   `/ground` first, like any other claim.
 - **No developer doctrine.** R1's section cap, R2's shelf expiry and other
   rules about how the app is built stay in this repo; the page states only
   what a user can feel.
-- **No live data.** The example read is invented and marked invented; the site
-  never talks to Supabase.
+- **No live data.** The example athlete is invented and marked invented; the
+  site never reads the app's data.
 - **No change to the app**, its middleware, or its Vercel project, beyond
   excluding `site/` from the app's build trigger.
 - **Not the domain move.** DNS and the apex redirect belong to the domain move
@@ -104,7 +109,8 @@ Three inputs, one of them hand-written:
 
 The build clones this repository's `develop` (it is public) into a temporary
 folder. A check step fails the build when a cited row does not exist, is
-struck as retired, or changed state since the prose was written.
+struck as retired, or changed state since the prose was written. The
+references feed only the science page, which waits (§4).
 
 ### 4. The design
 
@@ -143,19 +149,42 @@ Storyboard: <https://claude.ai/artifact/SE4nkfDVnN3ZwGJkRoyN3z>.
   are rules for building the app, so the page leaves them out.
 - **No mascot.** The octopus from the second mock was dropped.
 
-**Working prototype, 2026-10-01:** <https://claude.ai/artifact/LKj9caKgU6FqD6EndqxQ3a>
-(both acts, with the science page linked from its foot). The stage runs the
-app's own rules on an invented repeating week: the 14-day muscle window
-against a target of 20 sets (`WEEKLY_SET_FLOOR` × 2), the 48 h recovery hatch,
-readiness as the mean of sleep and HRV against the push threshold, and the
-`HomeTab.tsx` verdict strings. The science page is generated from the
-inventory: 64 live numbers (32 grounded, 14 convention, 4 definitional, 14 not
-yet checked) and 235 distinct cited sources. Twenty-six rows get a
-hand-written public card (keyed by row id, so the build check in §3 applies);
-the other 38 are listed in a ledger table with their state, so no row is
-hidden.
+**Revised after the first prototype, 2026-10-01 (Peter).** This replaces the
+act two and science bullets above. Prototype, round two:
+<https://claude.ai/artifact/LKj9caKgU6FqD6EndqxQ3a>.
 
-Next: Peter reviews the prototype; then the real `site/` is built from it.
+- **The page moves in whole steps.** Every step is one screen tall and snaps
+  into place. One wheel gesture or key press moves exactly one step, and touch
+  uses the browser's own snapping. The stage animates inside a step; the page
+  never comes to rest between two steps.
+- **Act one** keeps its steps: credit, the rep bands, the two-week floor,
+  recovery and readiness, the answer. Its evidence labels and citations go
+  with the science page.
+- **Act two** opens with a full-screen title step, then gives each day of the
+  first week its own step: the session on the left, each exercise with its
+  sets, reps and weight; the read on the right. Each exercise is marked in
+  turn on both sides: its tile fills set by set, the muscles it credited are
+  outlined on the map with their share, and their fill and hatch change. After
+  the last exercise the read updates, as Home does when a session is logged.
+  Thursday's intervals fill a whole-body square and leave the map alone.
+  Saturday's planned session is held after a bad night, and the gap it was
+  meant to close is still named on Sunday.
+- **The last step** is a release-notification form while the app is not
+  released, and a link to the app once it is.
+- **The science page (B) is dropped for now,** until every number it would show
+  has its source. In round one it counted 64 live numbers: 32 grounded, 14
+  convention, 4 definitional and 14 not yet checked.
+- **The example week runs on the app's own rules,** transcribed from
+  `fusedRead.ts`, `adaptations.ts` and `HomeTab.tsx`: credit 1 / 0.5 by role;
+  the 14-day window against 20 sets; gaps ranked never trained first, then
+  fewest sets, then longest since, then name; a muscle recovering for two
+  calendar days; readiness as the mean of the sleep score and the
+  baseline-relative HRV score, against 33; the seven qualities and the
+  whole-body squares over the same 14 days. The athlete, the weights and the
+  nights are invented and labelled so. The verdict lines leave out the app's
+  `PLACEHOLDER` markers.
+
+Next: Peter reviews round two; then the real `site/` is built from it.
 
 ## Rationale
 
@@ -198,8 +227,12 @@ labelled, and nothing on it says whose app this was built around.
 - [ ] The build reads the inventory and grounding blocks from this repo and
       fails on a cited row that is missing, retired or changed state (shown
       by a deliberately broken citation)
-- [ ] Every number on the page traces to an inventory row and every reference
-      to a grounding block
+- [ ] Every number on the page traces to an inventory row, and the example
+      week reads the same as the app's own functions return for the same logs
+- [ ] One wheel gesture, key press or swipe moves exactly one step, at desktop
+      and phone sizes
+- [ ] The release form says what the address is used for, stores it where the
+      question below decides, and becomes a link to the app at release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
 - [ ] Pushing a change outside `site/` does not rebuild the landing, and a
@@ -209,6 +242,13 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Unresolved questions
 
+- **Where the release-notification addresses are kept.** The site is static
+  and has nowhere to send them yet. Proposed default: one insert-only table in
+  the existing Supabase project, where the public key may insert and nothing
+  else, unlike the app's open tables. It is read by hand on release day and
+  dropped once the email has gone out. Adding it is a migration, so it is a
+  production change and waits for Peter's go. A hosted form service is the
+  alternative.
 - **The voice.** The doctrine speaks in the first person ("tells me"); the mock
   uses "you". The public page probably wants "you".
 - **Production branch.** `master` keeps the page matched to the released app
