@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-01
 status: backlog
-status_note: "Opened 2026-10-01 at Peter's ask. Where it lives, how it is served and the design direction are proposed below and wait on his call; the design mock is linked in Proposal. Depends on the apex tekio.fyi being free once the domain move lands."
+status_note: "Opened 2026-10-01 at Peter's ask. Where it lives and how it is served are accepted; the direction is chosen (A + C, science as its own page) and a working prototype is linked in Proposal for his review. Depends on the apex tekio.fyi being free once the domain move lands."
 label: feature
 ---
 
@@ -143,8 +143,19 @@ Storyboard: <https://claude.ai/artifact/SE4nkfDVnN3ZwGJkRoyN3z>.
   are rules for building the app, so the page leaves them out.
 - **No mascot.** The octopus from the second mock was dropped.
 
-Next: Peter reviews the storyboard frames; then one act is built as a working
-prototype before the whole page.
+**Working prototype, 2026-10-01:** <https://claude.ai/artifact/LKj9caKgU6FqD6EndqxQ3a>
+(both acts, with the science page linked from its foot). The stage runs the
+app's own rules on an invented repeating week: the 14-day muscle window
+against a target of 20 sets (`WEEKLY_SET_FLOOR` × 2), the 48 h recovery hatch,
+readiness as the mean of sleep and HRV against the push threshold, and the
+`HomeTab.tsx` verdict strings. The science page is generated from the
+inventory: 64 live numbers (32 grounded, 14 convention, 4 definitional, 14 not
+yet checked) and 235 distinct cited sources. Twenty-six rows get a
+hand-written public card (keyed by row id, so the build check in §3 applies);
+the other 38 are listed in a ledger table with their state, so no row is
+hidden.
+
+Next: Peter reviews the prototype; then the real `site/` is built from it.
 
 ## Rationale
 
@@ -198,8 +209,6 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Unresolved questions
 
-- **Peter's call on the three decisions:** `site/` in the code repo, a second
-  Vercel project with Astro, and the mock's direction.
 - **The voice.** The doctrine speaks in the first person ("tells me"); the mock
   uses "you". The public page probably wants "you".
 - **Production branch.** `master` keeps the page matched to the released app
