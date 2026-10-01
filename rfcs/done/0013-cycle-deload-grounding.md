@@ -4,10 +4,22 @@ authors: [Peter Petrov]
 created: 2026-08-26
 last_updated: 2026-10-01
 status: done
-status_note: "done 2026-10-01, unparked by Peter. The 2026-09-05 parking assumed the cycle and deload were per-program choices, but every program, hand-built ones included, gets the app-wide constants and nothing reads the per-program columns, so Tekiō makes the claim itself. Three scout runs: CYCLE = 6 and the last-week placement are convention, the 0.7 rep factor is partially supported. No value moved, so no migration. Decisions D43–D45 in the inventory ledger."
+status_note: "shipped 2026-10-01: the 6-week block and the last-week deload are convention, the 0.7 rep factor is partially supported, and no value moved. Decisions D43–D45 in the inventory ledger."
 label: feature
 release: 2.2.0
 ---
+
+## Progress log
+
+- **2026-08-26** — created to carry inventory §5, the last domain with no brief.
+- **2026-09-05** — parked by Peter. The cycle and the deload were taken to be
+  properties of a program, so they would be grounded only if Tekiō shipped them
+  as its default program.
+- **2026-10-01** — unparked by Peter. The parking premise did not hold in the
+  code: every program, hand-built ones included, gets the app-wide constants,
+  and nothing reads the per-program columns, so Tekiō makes the claim itself.
+  Three scout runs and the Grounding section below. Done, with no value moved
+  and so no migration.
 
 # RFC 0013: Ground the 6-week cycle and the week-6 deload
 
