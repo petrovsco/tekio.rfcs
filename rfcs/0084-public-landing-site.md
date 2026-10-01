@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-01
 status: backlog
-status_note: "Opened 2026-10-01 at Peter's ask. Where it lives and how it is served are accepted. The design is in its second round (whole-step scrolling, a seven-day act two, a release form) and its prototype is linked in Proposal; the science page waits until every number has its source. Depends on the apex tekio.fyi being free once the domain move lands."
+status_note: "Opened 2026-10-01 at Peter's ask. Where it lives and how it is served are accepted. The design is in its third round (a map that holds still, the verdict beside readiness, a larger map on desktop) and its prototype is linked in Proposal; the science page waits until every number has its source. Depends on the apex tekio.fyi being free once the domain move lands."
 label: feature
 ---
 
@@ -184,7 +184,24 @@ act two and science bullets above. Prototype, round two:
   nights are invented and labelled so. The verdict lines leave out the app's
   `PLACEHOLDER` markers.
 
-Next: Peter reviews round two; then the real `site/` is built from it.
+**Revised after round two, 2026-10-01 (Peter).** The same prototype link now
+shows round three.
+
+- **The map holds still.** The stage has fixed rows: a head, a top row, the
+  map, a bottom row. Whatever a step shows, the map keeps one size and place
+  for the whole act. A control a step needs sits in the copy beside it, so the
+  reps slider moved there and the stage only shows what it changes.
+- **The top row has two columns, as on Home:** the verdict beside the
+  readiness card, which shows sleep and HRV under its number. The line of
+  qualities and the whole-body squares sit under the map.
+- **The map is larger on desktop.** The page is up to 1400 px wide and the
+  stage takes 60 % of it. At 1360 × 900 the map is a third taller than in
+  round two.
+- **Phones stack the two sides:** the stage is pinned over the top half of the
+  screen and the copy sits under it. The top row keeps its two columns; the
+  bottom row keeps only the squares, and the map's labels are set larger.
+
+Next: Peter reviews round three; then the real `site/` is built from it.
 
 ## Rationale
 
@@ -231,6 +248,8 @@ labelled, and nothing on it says whose app this was built around.
       week reads the same as the app's own functions return for the same logs
 - [ ] One wheel gesture, key press or swipe moves exactly one step, at desktop
       and phone sizes
+- [ ] The map keeps the same size and position on every step of an act, at
+      desktop and phone sizes
 - [ ] The release form says what the address is used for, stores it where the
       question below decides, and becomes a link to the app at release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
