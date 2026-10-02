@@ -3,8 +3,8 @@ title: Remove Program, to rebuild it later
 authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-02
-status: in progress
-status_note: "Peter's call on 2026-10-02 in the 0034 review. The code is built and tested as v2.1.17 on the working branch claude/project-thread-85re9p and waits for his OK to land on develop. The table drops wait for the 2.2.0 release sweep (0088)."
+status: done
+status_note: "Peter's call on 2026-10-02 in the 0034 review; landed on develop as v2.1.17 the same day. The table drops wait for the 2.2.0 release sweep (0088)."
 label: feature
 release: 2.2.0
 ---
@@ -28,7 +28,7 @@ the whole program concept for now and rebuild it later. Nothing ran on it at
 the time — both stored programs were paused, so Home already printed "No
 active program" — and the reads that make the product (Home, Adaptations)
 never depended on it: their windows are `MUSCLE_WINDOW_DAYS`, by decision since
-[0039 §6.6](done/0039-adaptations-read-grounding.md).
+[0039 §6.6](0039-adaptations-read-grounding.md).
 
 Kept, it costs a tab, a bottom-nav slot, ~5 000 lines with the assistant,
 and the reading load of a cycle model that shapes nothing on screen.
@@ -41,14 +41,14 @@ and the reading load of a cycle model that shapes nothing on screen.
   went: both programs as JSON and as a page, day by day with every block and
   prescription.
 - No row is deleted here. The tables stay until `master` no longer reads them,
-  and what happens to them then is [0088](0088-release-2-2-0-schema-drops.md)'s question.
+  and what happens to them then is [0088](../0088-release-2-2-0-schema-drops.md)'s question.
 
 ## Non-Goals
 
 - Designing the rebuilt Program. That gets its own RFC when Peter asks for it,
   starting from the export and from doctrine §4.
 - Deleting rows. Program rows are real data; the release sweep removes schema
-  only, and only through [0088](0088-release-2-2-0-schema-drops.md).
+  only, and only through [0088](../0088-release-2-2-0-schema-drops.md).
 - Supersets in history. Logged supersets keep showing and stay editable; only
   the way to *start* one goes, because the program was its only entry point.
 
@@ -69,9 +69,9 @@ Code (tekio, v2.1.17):
 - Export and import stop carrying a program.
 
 Plan (tekio.rfcs): doctrine §5 ledger row Program → deleted; inventory §5
-rows retired; [0070](done/0070-week-start-day-program-week.md) discarded;
-[0086](0086-readiness-brings-deload-forward.md) waits on the rebuild; the
-tables queued in [0088](0088-release-2-2-0-schema-drops.md).
+rows retired; [0070](0070-week-start-day-program-week.md) discarded;
+[0086](../0086-readiness-brings-deload-forward.md) waits on the rebuild; the
+tables queued in [0088](../0088-release-2-2-0-schema-drops.md).
 
 The export lives in the project's shared files, never in either repository,
 because it is one person's training plan (house rule `no-personal-context`).
@@ -94,7 +94,7 @@ because it is one person's training plan (house rule `no-personal-context`).
 - [x] `npm run build`, `npm run test` (198 passed), `npm run lint` (no errors)
   and `npm run knip` (nothing reported) green on v2.1.17
 - [x] Doctrine ledger, inventory §5, 0070 and 0086 updated in the same session
-- [ ] v2.1.17 on `develop`, with Peter's OK
+- [x] v2.1.17 on `develop`, with Peter's OK (2026-10-02)
 
 ## Unresolved questions
 

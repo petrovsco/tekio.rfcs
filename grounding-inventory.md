@@ -305,7 +305,7 @@ the sharpest debt in the app because they read as settled fact.
 
 ## 5. Cycle length & deload
 
-**Retired 2026-10-02 with Program** ([0087](rfcs/0087-remove-program.md)).
+**Retired 2026-10-02 with Program** ([0087](rfcs/done/0087-remove-program.md)).
 Every live row below left the code in 2.1.17: the cycle, the deload week and
 the deload dose belonged to a program, and Program was removed to be rebuilt
 later. The grounding stays on record for that rebuild
@@ -324,15 +324,15 @@ block and the last-week placement are `convention`, the 0.7 rep factor is
 
 | # | Value | Where | Claim | Step 0 | State | Grounding brief |
 |---|---|---|---|---|---|---|
-| 5.1 | ~~`CYCLE = 6`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/0087-remove-program.md)). A training block is 6 weeks | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.1 | ~~`CYCLE = 6`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/done/0087-remove-program.md)). A training block is 6 weeks | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
 | 5.2 | ~~`CYCLE = 6`~~ | — | **Fixed 2026-08-26** — `utils.ts` imports `CYCLE` from `constants/app` | — | — | — |
-| 5.3 | ~~`DELOAD_WEEK = CYCLE`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/0087-remove-program.md)). **Week 6 is the deload week** — deload placement. Named as of 2026-08-26; still ungrounded | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
-| 5.4 | ~~`DELOAD_REP_FACTOR = 0.7`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/0087-remove-program.md)). Deload = 70% of last reps, load unchanged. **Fixed 2026-08-26** — was three implementations, two of which disagreed | named | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.3 | ~~`DELOAD_WEEK = CYCLE`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/done/0087-remove-program.md)). **Week 6 is the deload week** — deload placement. Named as of 2026-08-26; still ungrounded | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.4 | ~~`DELOAD_REP_FACTOR = 0.7`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/done/0087-remove-program.md)). Deload = 70% of last reps, load unchanged. **Fixed 2026-08-26** — was three implementations, two of which disagreed | named | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
 | 5.5 | ~~`× 0.7`~~ ×2 | — | **Fixed 2026-08-26.** `VolumeRow` previewed a deload scaling *weight and reps* that the app could never apply — `ExPlan`'s button, `ExPlan`'s exported helper and `programs.deload_strategy` all say reps-only. The preview was the outlier and now calls `deloadSets` | — | — | — |
-| 5.6 | ~~`Deload` badge + `70% reps`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/0087-remove-program.md)). The label the user reads — the percentage is computed from 5.4 (`DELOAD_REP_FACTOR × 100`) and says *what* is at 70%; the ⚠️ went with the chrome emoji (033) **Grounded 2026-10-01 with 5.4**, of which it is the printed form | named | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
-| 5.7 | ~~`cycle_length_weeks: CYCLE`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/0087-remove-program.md)). **Fixed 2026-08-26** — was hardcoded `6`; now derives from 5.1. Still write-only. **Stays `unknown`** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): §13.2 names this exact boundary — "a block is 6 weeks" is a dose claim, not a definition. The run that settles it lands on 5.1 **Convention 2026-10-01**, settled by the run on 5.1 | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
-| 5.8 | ~~`deload_week: DELOAD_WEEK`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/0087-remove-program.md)). **Fixed 2026-08-26** — was hardcoded `6`; now derives from 5.3. Still write-only. **Stays `unknown`** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): deload *placement* is the dose claim §13.2 draws the line against; the run lands on 5.3 **Convention 2026-10-01**, settled by the run on 5.3 | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
-| 5.9 | ~~`factor: DELOAD_REP_FACTOR`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/0087-remove-program.md)). **Fixed 2026-08-26** — the write now derives from 5.4. The **jsonb column default** still carries a literal `0.7`, and nothing reads either **Grounded 2026-10-01 with 5.4**; the column default's literal `0.7` agrees with it, so nothing moved | unnamed | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.6 | ~~`Deload` badge + `70% reps`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/done/0087-remove-program.md)). The label the user reads — the percentage is computed from 5.4 (`DELOAD_REP_FACTOR × 100`) and says *what* is at 70%; the ⚠️ went with the chrome emoji (033) **Grounded 2026-10-01 with 5.4**, of which it is the printed form | named | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.7 | ~~`cycle_length_weeks: CYCLE`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/done/0087-remove-program.md)). **Fixed 2026-08-26** — was hardcoded `6`; now derives from 5.1. Still write-only. **Stays `unknown`** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): §13.2 names this exact boundary — "a block is 6 weeks" is a dose claim, not a definition. The run that settles it lands on 5.1 **Convention 2026-10-01**, settled by the run on 5.1 | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.8 | ~~`deload_week: DELOAD_WEEK`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/done/0087-remove-program.md)). **Fixed 2026-08-26** — was hardcoded `6`; now derives from 5.3. Still write-only. **Stays `unknown`** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): deload *placement* is the dose claim §13.2 draws the line against; the run lands on 5.3 **Convention 2026-10-01**, settled by the run on 5.3 | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.9 | ~~`factor: DELOAD_REP_FACTOR`~~ | — | **Removed 2026-10-02** with Program ([0087](rfcs/done/0087-remove-program.md)). **Fixed 2026-08-26** — the write now derives from 5.4. The **jsonb column default** still carries a literal `0.7`, and nothing reads either **Grounded 2026-10-01 with 5.4**; the column default's literal `0.7` agrees with it, so nothing moved | unnamed | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
 | 5.10 | ~~`4`~~ | — | **Fixed 2026-08-26** (migration `20260826144439`). The `program_phases.duration_weeks` default asserted a 4-week phase against `CYCLE = 6`; default dropped, so a missing value is now `NULL` — which the type already allowed. No number replaced it | — | — | — |
 
 ## 6. Cardio & sport classification
@@ -381,14 +381,14 @@ block and the last-week placement are `convention`, the 0.7 rep factor is
 ## 9. Progression
 
 **Retired 2026-10-02.** All four rows lived in the program plan preview on
-Weights, removed with Program ([0087](rfcs/0087-remove-program.md)).
+Weights, removed with Program ([0087](rfcs/done/0087-remove-program.md)).
 
 | # | Value | Where | Claim | Step 0 | State | Grounding brief |
 |---|---|---|---|---|---|---|
-| 9.1 | ~~`7.5`~~ | — | **Removed 2026-10-02** with the program plan preview ([0087](rfcs/0087-remove-program.md)). Default weekly volume increase is +7.5% | unnamed | unknown | **(no brief)** |
-| 9.2 | ~~`min 5 / max 10`~~ | — | **Removed 2026-10-02** with the program plan preview ([0087](rfcs/0087-remove-program.md)). The defensible weekly-progression band is 5–10% | unnamed | unknown | **(no brief)** |
-| 9.3 | ~~`0 / +2.5 / +5 kg`~~ | — | **Removed 2026-10-02** with the program plan preview ([0087](rfcs/0087-remove-program.md)). The three load-jump options offered. **Definitional** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): plate granularity again — 2.5 kg is the smallest whole pair on the rack and 5 kg the next. Three columns to compare, none recommended and none highlighted; the progression dose is 9.1 / 9.2, which stay `unknown` | unnamed | **n/a — definitional** | — |
-| 9.4 | ~~`r05` — round to `0.5`~~ | — | **Removed 2026-10-02** with the program plan preview ([0087](rfcs/0087-remove-program.md)). Plate granularity. **Definitional** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): rounding a computed weight to the nearest 0.5 kg fixes the unit the app prints — the canonical case in §13.2's own text | no | **n/a — definitional** | — |
+| 9.1 | ~~`7.5`~~ | — | **Removed 2026-10-02** with the program plan preview ([0087](rfcs/done/0087-remove-program.md)). Default weekly volume increase is +7.5% | unnamed | unknown | **(no brief)** |
+| 9.2 | ~~`min 5 / max 10`~~ | — | **Removed 2026-10-02** with the program plan preview ([0087](rfcs/done/0087-remove-program.md)). The defensible weekly-progression band is 5–10% | unnamed | unknown | **(no brief)** |
+| 9.3 | ~~`0 / +2.5 / +5 kg`~~ | — | **Removed 2026-10-02** with the program plan preview ([0087](rfcs/done/0087-remove-program.md)). The three load-jump options offered. **Definitional** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): plate granularity again — 2.5 kg is the smallest whole pair on the rack and 5 kg the next. Three columns to compare, none recommended and none highlighted; the progression dose is 9.1 / 9.2, which stay `unknown` | unnamed | **n/a — definitional** | — |
+| 9.4 | ~~`r05` — round to `0.5`~~ | — | **Removed 2026-10-02** with the program plan preview ([0087](rfcs/done/0087-remove-program.md)). Plate granularity. **Definitional** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): rounding a computed weight to the nearest 0.5 kg fixes the unit the app prints — the canonical case in §13.2's own text | no | **n/a — definitional** | — |
 
 ## 10. Hydration & blood donation
 

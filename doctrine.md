@@ -124,7 +124,7 @@ Pending work lives in `docs/roadmap/`, never in this file (house rule
 | Weights | **Core — capture** | Primary stimulus source. |
 | Cardio | **Core — capture** | Endurance / VO₂max / anaerobic stimulus. |
 | Mobility | **Core — capture** | Recovery-axis input with its own volume model. |
-| Program | **Deleted 2026-10-02** | Was Core — plan: the cycle and today's plan. Removed on Peter's call in the 0034 review, to be rebuilt later in a better way ([rfcs/0087-remove-program.md](rfcs/0087-remove-program.md)). Nothing ran on it, and Home and Adaptations never read it. A rebuilt Program comes back through §4 like any new surface. |
+| Program | **Deleted 2026-10-02** | Was Core — plan: the cycle and today's plan. Removed on Peter's call in the 0034 review, to be rebuilt later in a better way ([rfcs/0087-remove-program.md](rfcs/done/0087-remove-program.md)). Nothing ran on it, and Home and Adaptations never read it. A rebuilt Program comes back through §4 like any new surface. |
 | Recovery | **Core — read, Home-only** | Systemic readiness only (P5). Local recovery fuses into the muscle read rather than living here. Already has no tab — the precedent the folds follow. |
 | Sports | **Fold → Cardio** | Already classifies into cardio adaptations; a sport session is a cardio session with a name and a quality rating. UI folds first; the DB merge is its own brief. |
 | Water | **Fold → Recovery** | Hydration is an FRS sub-score, not a destination. |

@@ -3,8 +3,8 @@ title: Product questions the screen survey raised — decide keep or cut
 authors: [Peter Petrov]
 created: 2026-09-01
 last_updated: 2026-10-02
-status: in progress
-status_note: "Reviewed with Peter on 2026-10-02: all five decided (see Verdicts). The cuts are built as v2.1.17 on the working branch claude/project-thread-85re9p and wait for his OK to land on develop."
+status: done
+status_note: "Reviewed with Peter on 2026-10-02: all five decided (see Verdicts). The cuts landed on develop as v2.1.17 the same day, on his OK."
 label: feature
 release: 2.2.0
 ---
@@ -47,7 +47,7 @@ Decided by Peter, one at a time, in the review session.
    edited setup (exercises, muscle links, program days). The button, panel,
    settings card and both edge functions' source go in v2.1.17. Its table and
    the two deployed functions wait for the release sweep
-   ([0088](0088-release-2-2-0-schema-drops.md)).
+   ([0088](../0088-release-2-2-0-schema-drops.md)).
 2. **Cardio secondary reads — the frequency chart is cut, the chips stay.**
    The type chips keep Progress on one pace scale, so they are load-bearing.
    The Sessions per week bars go: Home already reads sessions against their
@@ -63,24 +63,24 @@ Decided by Peter, one at a time, in the review session.
    in a better way. Bigger than the question asked, so it has its own RFC:
    [0087](0087-remove-program.md). Both stored programs were exported first.
 5. **0003's stale name — renamed** to
-   [0003-lock-the-database.md](0003-lock-the-database.md), links repointed.
+   [0003-lock-the-database.md](../0003-lock-the-database.md), links repointed.
 
 ## Acceptance
 
 - [x] Each of the five has a verdict (above)
 - [x] The cuts are built, tested and walked in a browser (v2.1.17)
-- [ ] v2.1.17 is on `develop`
+- [x] v2.1.17 is on `develop` (2026-10-02)
 
 ## What does not belong here
 
 Ideas that already have parked briefs stay in them:
-[0001](done/0001-cross-adaptation-rep-ranges.md) (fuzzy rep ranges — decided and shipped inside 039),
-[0005](done/0005-hr-zone-intensity-classification.md) (HR zones),
-[0020](0020-skill-recommendations-per-exercise.md) (skill recommendations),
-[0022](0022-companion-service-live-sync.md) (companion service).
+[0001](0001-cross-adaptation-rep-ranges.md) (fuzzy rep ranges — decided and shipped inside 039),
+[0005](0005-hr-zone-intensity-classification.md) (HR zones),
+[0020](../0020-skill-recommendations-per-exercise.md) (skill recommendations),
+[0022](../0022-companion-service-live-sync.md) (companion service).
 
 Nor do the two dropped on 2026-09-01:
-[0007](done/0007-nutrition-food-recovery-score.md) (nutrition FRS) and
-[0008](done/0008-garmin-recovery-load-axis.md) (Garmin daily readiness). They are
+[0007](0007-nutrition-food-recovery-score.md) (nutrition FRS) and
+[0008](0008-garmin-recovery-load-axis.md) (Garmin daily readiness). They are
 not parked awaiting a slot — reviving either means a new brief that argues for
 its surface first, because the surface both targeted no longer exists.

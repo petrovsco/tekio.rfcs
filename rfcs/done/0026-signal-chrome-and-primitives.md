@@ -81,7 +81,7 @@ What is old today, even on Home:
   nothing consumes them.
 - Any IA change: no tab moves, no read changes, no capture-flow redesigns.
   This is a re-skin. (Product questions found during the survey are parked in
-  [0034](../0034-v2-1-candidates-tbc.md).)
+  [0034](0034-v2-1-candidates-tbc.md).)
 
 ## Doctrine check (§4)
 

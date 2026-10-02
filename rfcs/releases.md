@@ -18,14 +18,14 @@ from here on is queued in a new schema-drops brief for 2.2.0, opened with its
 first row ([0080](done/0080-release-2-1-0-schema-drops.md) is the pattern).
 
 The product review Peter deferred out of 2.1.0 on 2026-09-05:
-[0034](0034-v2-1-candidates-tbc.md)'s five cut candidates (the in-app
+[0034](done/0034-v2-1-candidates-tbc.md)'s five cut candidates (the in-app
 assistant, cardio's secondary reads, the Weights chip cloud, the program
 template picker, brief 003's name) need a deeper look before anything is
 cut. Keepers become briefs; cuts execute from 034.
 
 **Reviewed 2026-10-02**: the assistant deleted, Cardio's frequency chart cut,
 the Weights chips capped to the 8 most recent, 003 renamed, and Program removed
-entirely to be rebuilt later ([0087](0087-remove-program.md)). Built as
+entirely to be rebuilt later ([0087](done/0087-remove-program.md)). Built as
 v2.1.17; the tables it leaves behind are queued in
 [0088](0088-release-2-2-0-schema-drops.md), this release's schema-drops brief.
 

@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-09-08
 last_updated: 2026-10-02
 status: discarded
-status_note: "Discarded 2026-10-02: Program was removed ([0087](../0087-remove-program.md)), and with it the program week and the stored key this was about. A rebuilt Program designs its own week."
+status_note: "Discarded 2026-10-02: Program was removed ([0087](0087-remove-program.md)), and with it the program week and the stored key this was about. A rebuilt Program designs its own week."
 label: backlog
 ---
 

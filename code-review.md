@@ -51,7 +51,7 @@ These look like defects on every first read and are all decisions:
   is not.
 - **Reads must not run on a program cycle.** Home and Adaptations answer
   "what is missing" over their own grounded 14-day window. Program and its
-  6-week cycle were removed in 2.1.17 ([0087](rfcs/0087-remove-program.md)); when
+  6-week cycle were removed in 2.1.17 ([0087](rfcs/done/0087-remove-program.md)); when
   a rebuilt Program brings a cycle back, it is a property of the user's plan,
   not of the read, and unifying the two is a correctness bug.
 - **Doctrine caps bind proposals.** At most 4 menu sections (3 used, 1 spare);

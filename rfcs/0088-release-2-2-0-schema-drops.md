@@ -42,9 +42,9 @@ production. So the code change ships at once and the drop waits here.
 
 | Schema | Stopped being read | Still read by | Safe to drop once |
 |---|---|---|---|
-| `programs`, `program_phases`, `program_days`, `program_day_blocks`, `program_day_exercises`, `program_day_sets`, `program_supersets`, `program_goal_links`, `program_cycles`, `program_week_overrides`, `user_programs`, `progression_adjustments` | v2.1.17 ([0087](0087-remove-program.md)): Program removed | `master`'s `loadProgramData` at bootstrap | `master` runs 2.2.0 or later, and Peter has said the stored programs may go |
+| `programs`, `program_phases`, `program_days`, `program_day_blocks`, `program_day_exercises`, `program_day_sets`, `program_supersets`, `program_goal_links`, `program_cycles`, `program_week_overrides`, `user_programs`, `progression_adjustments` | v2.1.17 ([0087](done/0087-remove-program.md)): Program removed | `master`'s `loadProgramData` at bootstrap | `master` runs 2.2.0 or later, and Peter has said the stored programs may go |
 | `training_sessions.user_program_id`, `training_sessions.program_day_id` | v2.1.17 (0087); both columns are null on every row (checked 2026-10-02) | nothing reads them; their foreign keys point at the program tables | together with the program tables |
-| `assistant_settings` | v2.1.17: the in-app assistant was deleted ([0034](0034-v2-1-candidates-tbc.md)) | `master`'s two deployed edge functions `assistant-chat` and `assistant-settings` | `master` runs 2.2.0, and the two functions are deleted from the Supabase project first |
+| `assistant_settings` | v2.1.17: the in-app assistant was deleted ([0034](done/0034-v2-1-candidates-tbc.md)) | `master`'s two deployed edge functions `assistant-chat` and `assistant-settings` | `master` runs 2.2.0, and the two functions are deleted from the Supabase project first |
 
 **Rows go with the program tables.** Unlike a column drop, dropping these
 tables deletes what they hold: two paused programs, exported on 2026-10-02 to
