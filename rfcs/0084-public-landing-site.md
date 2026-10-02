@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.3, served at stg.tekio.fyi behind the app's sign-in, which opens with the staging login; master is the production branch, kept from deploying until the site's first release. Next: the Apps Script and, at the site's first release, the apex."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.4, served at stg.tekio.fyi behind the app's sign-in, and its release form works: the script runs in the owner's Workspace and its address is set for staging and production. master is the production branch, kept from deploying until the site's first release. Next: the site goes public on tekio.fyi, on Peter's word."
 label: feature
 ---
 
@@ -98,6 +98,20 @@ label: feature
   Peter then signed in there with the app's staging login and the site
   opened. That was the gate's first signed-in run outside the local
   stand-in, so the staging box is ticked: 12 of 15.
+- **2026-10-02** — the release form works. Peter chose to deploy the script
+  with clasp, Google's Apps Script CLI, from the site's repository (§5), and
+  signed it in. `tekio.site` 0.1.4 commits the script's manifest and a
+  `setup()` the owner runs once in the editor to allow it. The script lives in
+  a new Sheet in the owner's Drive, and its web app address is the site's
+  `PUBLIC_SIGNUP_URL` for Preview and Production; staging was rebuilt with it.
+  Posted to from a device session: a test address landed as the Sheet's one
+  row and was then deleted with the Google Sheets connector; a filled honeypot
+  and a malformed address landed nothing; the reply carries
+  `access-control-allow-origin: *`. The page's side was checked in a browser
+  on a local build pointed at a stand-in: the form says what the address is
+  for, posts a plain form-encoded request, and shows its thanks and both error
+  lines. The box's last clause, the form becoming a link to the app, can only
+  happen when the app opens, so it is now its own box: 13 of 16.
 
 ## Summary
 
@@ -365,9 +379,13 @@ Sheet is read by hand, the email goes out, and the Sheet is deleted.
 
 The script's address is public, as any form's endpoint is, so the form carries
 a hidden honeypot field and the script drops a submission that fills it.
-Deploying the script needs the owner signed in. If the domain's sharing
-settings keep files inside it, the web app cannot be opened to anyone until an
-admin allows it in the Workspace Admin console.
+Deploying the script needs the owner signed in. It is deployed from the
+site's repository with clasp, Google's Apps Script CLI (Peter's call,
+2026-10-02), so a later change keeps the same address. Its manifest lets it
+touch only its own Sheet, which the owner allows once by running its `setup`
+in the editor. If the domain's sharing settings keep files inside it, the web
+app cannot be opened to anyone until an admin allows it in the Workspace Admin
+console.
 
 ## Rationale
 
@@ -435,10 +453,10 @@ labelled, and nothing on it says whose app this was built around.
 - [x] Act two says it is an example week, not a program, on its title step and
       on every day's stage
 - [x] The page speaks to the reader as "you" throughout
-- [ ] The release form says what the address is used for; a test address
-      lands as a row in the Workspace Sheet (and is then deleted), a filled
-      honeypot lands nowhere, and the form becomes a link to the app at
-      release
+- [x] The release form says what the address is used for; a test address
+      lands as a row in the Workspace Sheet (and is then deleted), and a
+      filled honeypot lands nowhere
+- [ ] When the app opens, the form becomes a link to the app
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
 - [x] `https://stg.tekio.fyi` serves the `develop` build behind the app's
