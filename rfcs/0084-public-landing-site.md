@@ -2,13 +2,28 @@
 title: A public landing site on tekio.fyi that explains how the reads are computed and cites their evidence
 authors: [Peter Petrov]
 created: 2026-10-01
-last_updated: 2026-10-01
+last_updated: 2026-10-02
 status: backlog
-status_note: "Opened 2026-10-01 at Peter's ask. Where it lives and how it is served are accepted. The design is in its third round (a map that holds still, the verdict beside readiness, a larger map on desktop) and its prototype is linked in Proposal; the science page waits until every number has its source. Depends on the apex tekio.fyi being free once the domain move lands."
+status_note: "Where it lives and how it is served are accepted; the design is in its fourth round, with the prototype linked in Proposal. Next is Peter's review of round four, then the real site/ is built from it."
 label: feature
 ---
 
 # RFC 0084: A public landing site on tekio.fyi that explains how the reads are computed and cites their evidence
+
+## Progress log
+
+- **2026-10-01** — opened at Peter's ask. A `site/` folder in the code repo,
+  served as a second Vercel project, accepted.
+- **2026-10-01** — the first two mocks rejected as static and bolted on;
+  direction A + C chosen, with the science as its own page.
+- **2026-10-01** — round two: whole-step scrolling, a seven-day act two, a
+  release form. The science page waits until every number has its source.
+- **2026-10-01** — round three: the map holds still, the verdict sits beside
+  readiness, a larger map on desktop.
+- **2026-10-02** — round four: readiness without its number or the line at 33,
+  both convention; act two labelled an example week; the floor's pour slowed.
+  Whether the app's own line should change went to
+  [0085](0085-push-gate-own-baseline.md).
 
 ## Summary
 
@@ -201,7 +216,26 @@ shows round three.
   screen and the copy sits under it. The top row keeps its two columns; the
   bottom row keeps only the squares, and the map's labels are set larger.
 
-Next: Peter reviews round three; then the real `site/` is built from it.
+**Revised after round three, 2026-10-02 (Peter).** The same link now shows
+round four.
+
+- **Readiness without its number.** The card shows the two inputs, last
+  night's sleep score and HRV against the athlete's own baseline, and a state,
+  OK or Low. The page prints neither the 0–100 number nor the line at 33 it is
+  held against: both are `convention` (inventory rows 4.11 and 4.12), and
+  Peter doubted that anyone at 33 is fit to push. HRV's bar runs from a tick at
+  the athlete's baseline, the part of the method that is grounded (row 4.17),
+  and the copy says what a Low day means: train easy, not stop (D7). Every day
+  of the example week gets the same call from the app's rule and from the
+  baseline-relative rule the evidence supports (D8), so the page does not lean
+  on 33. Whether the app's own gate should change is
+  [0085](0085-push-gate-own-baseline.md).
+- **Act two is an example week, not a program.** Its title step says so, and
+  the stage head reads "Example week" on every day.
+- **The floor pours slower:** 650 ms a day instead of 300, so each day's label
+  can be read.
+
+Next: Peter reviews round four; then the real `site/` is built from it.
 
 ## Rationale
 
@@ -250,6 +284,10 @@ labelled, and nothing on it says whose app this was built around.
       and phone sizes
 - [ ] The map keeps the same size and position on every step of an act, at
       desktop and phone sizes
+- [ ] Readiness appears as its inputs and a state, never as a number or a line,
+      while inventory rows 4.11 and 4.12 are `convention`
+- [ ] Act two says it is an example week, not a program, on its title step and
+      on every day's stage
 - [ ] The release form says what the address is used for, stores it where the
       question below decides, and becomes a link to the app at release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
