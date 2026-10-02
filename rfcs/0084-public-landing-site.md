@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
 status: backlog
-status_note: "Where it lives and how it is served are accepted; the design is in its fourth round, with the prototype linked in Proposal. Next is Peter's review of round four, then the real site/ is built from it."
+status_note: "Where it lives, how it is served and the design are accepted; Peter approved round four of the prototype, linked in Proposal. Building the real site/ waits on the three unresolved questions: where release addresses are kept, the voice, and the production branch."
 label: feature
 ---
 
@@ -24,6 +24,9 @@ label: feature
   both convention; act two labelled an example week; the floor's pour slowed.
   Whether the app's own line should change went to
   [0085](0085-push-gate-own-baseline.md).
+- **2026-10-02** — Peter approved round four as it stands. The app is moving
+  to three readiness bands ([0085](0085-push-gate-own-baseline.md)), so the
+  real site's card shows Low, Moderate or OK, read from the app's rules.
 
 ## Summary
 
@@ -235,7 +238,7 @@ round four.
 - **The floor pours slower:** 650 ms a day instead of 300, so each day's label
   can be read.
 
-Next: Peter reviews round four; then the real `site/` is built from it.
+Next: the real `site/` is built from round four.
 
 ## Rationale
 
