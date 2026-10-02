@@ -152,7 +152,9 @@ repo and the app's (§3).
 
 - New project in `bubolazi-projects`, connected to `petrovsco/tekio.site`,
   framework Astro, static output.
-- Production branch `master`; `develop` gets a preview URL, as the app's does.
+- Production branch `master`. `develop` is served at `stg.tekio.fyi` (Peter,
+  2026-10-02), as the app's is at `stg-app.tekio.fyi`: a DNS-only CNAME in the
+  `tekio.fyi` Cloudflare zone, attached to the project's `develop` branch.
 - `develop`'s preview sits behind the app's staging sign-in gate (Peter,
   2026-10-02): the site carries its own copy of the app's `middleware.ts`,
   switched on by `BASIC_AUTH_ENABLED` with the app's staging login in
@@ -403,8 +405,8 @@ labelled, and nothing on it says whose app this was built around.
       release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
-- [ ] The `develop` preview answers with the app's sign-in page until signed
-      in with the app's staging login
+- [ ] `https://stg.tekio.fyi` serves the `develop` build behind the app's
+      sign-in page, which the app's staging login opens
 - [x] Readable at 400 px wide, in the app's one light theme; first paint
       under 50 kB compressed
 - [x] The example read is marked invented and no personal data is on the page
