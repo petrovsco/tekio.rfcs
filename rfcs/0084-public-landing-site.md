@@ -3,8 +3,8 @@ title: A public landing site on tekio.fyi that explains how the reads are comput
 authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
-status: backlog
-status_note: "Where it lives, how it is served and the design are accepted; Peter approved round four of the prototype, linked in Proposal. Building the real site/ waits on the three unresolved questions: where release addresses are kept, the voice, and the production branch."
+status: in progress
+status_note: "Being built from the approved round-four prototype, now that Peter settled the last open questions on 2026-10-02. Its repository, petrovsco/tekio.site, is created by hand on GitHub, since this integration cannot create repositories in the organization."
 label: feature
 ---
 
@@ -29,6 +29,12 @@ label: feature
   ([0085](0085-push-gate-own-baseline.md): inputs ranked by evidence, then
   three bands), so the real site's card takes its inputs and states from the
   app's rules as they stand when it is built.
+- **2026-10-02** — Peter moved the site out of the code repo into a
+  repository of its own, `petrovsco/tekio.site`, for clearer versioning and
+  maintenance, and settled the questions left open: the page speaks to the
+  reader as "you", describes the released app, and sends release addresses to
+  a Sheet in his Google Workspace rather than the app's database. §1 to §3
+  are rewritten for the move, and §5 is new.
 
 ## Summary
 
@@ -38,10 +44,11 @@ path from one logged set to a muscle's fill, the rep bands, the two-week floor,
 the recovery hatch and the readiness gate, then an invented week read day by
 day. It ends on a release-notification form until the app is released. A
 science page with every number's evidence state and sources follows once every
-number it would show has its source. The site lives in a `site/` folder of the
-code repo and deploys as a second Vercel project with no cookie gate. Its
-numbers are read from this repo's grounding inventory at build time, so the
-page cannot quietly disagree with what the app ships.
+number it would show has its source. The site lives in a repository of its
+own, `petrovsco/tekio.site`, with its own versions, and deploys as its own
+Vercel project with no cookie gate. Its numbers are read from this repo's
+grounding inventory at build time, so the page cannot quietly disagree with
+what the app ships.
 
 ## Motivation
 
@@ -79,35 +86,44 @@ the app until it exists.
   what a user can feel.
 - **No live data.** The example athlete is invented and marked invented; the
   site never reads the app's data.
-- **No change to the app**, its middleware, or its Vercel project, beyond
-  excluding `site/` from the app's build trigger.
+- **No change to the app.** Its repository, middleware and Vercel project are
+  untouched.
 - **Not the domain move.** DNS and the apex redirect belong to the domain move
   thread; this RFC only takes the apex over once the site exists.
 
 ## Proposal
 
-### 1. Where it lives: `site/` in the code repo
+### 1. Where it lives: its own repository, `petrovsco/tekio.site`
 
-A `site/` folder in `petrovsco/tekio` with its own `package.json`, not a new
-repository. It is code, so it does not belong here (this repo holds none). A
-third repository would split the release and versioning rules across three
-places for one page. The app's root `package.json` is untouched; `knip`,
-`lint` and `perf` are pointed away from `site/`.
+A public repository that holds the site and nothing else, named like this one.
+Peter moved the site there on 2026-10-02, out of the `site/` folder first
+accepted, for clearer versioning and maintenance: it keeps its own history,
+version and deploys, so a landing edit neither bumps the app's version nor
+travels with the app's releases, and the app's `lint`, `knip` and `perf` never
+meet it. It is code, so it does not live in this repo either.
 
-Edits to `site/` follow the code repo's rules: they land on `develop` and bump
-the patch version like every other push.
+Its `CLAUDE.md` carries the code repo's conventions, scaled to one page: work
+lands on `develop`, which deploys a preview; `master` is the public page and
+moves only when a site version is released; every push bumps the patch digit
+of its own `package.json`, and the minor and major digits move only when Peter
+names a release. The house rules travel with it as committed copies in
+`.claude/rules/modus/`, as in the other two repositories.
+
+The move does not change where the page's claims come from: its numbers, and
+the rules its example week runs on, are still read at build time from this
+repo and the app's (§3).
 
 ### 2. How it is served: a second Vercel project
 
-- New project in `bubolazi-projects`, root directory `site/`, framework Astro,
-  static output.
-- Production branch `master`, so the public page describes the numbers the
-  production app uses; `develop` gets a preview URL.
-- The app's `middleware.ts` sits at the repo root, outside the project root, so
-  the gate never applies. The page is indexable: no `noindex`, a `sitemap.xml`
-  and `robots.txt`.
-- Ignored Build Step on both projects so each rebuilds only when its own files
-  change (`site/` for the landing, everything else for the app).
+- New project in `bubolazi-projects`, connected to `petrovsco/tekio.site`,
+  framework Astro, static output.
+- Production branch `master`; `develop` gets a preview URL, as the app's does.
+- The app's `middleware.ts` belongs to another repository and another Vercel
+  project, so the gate never applies here. The page is indexable: no
+  `noindex`, a `sitemap.xml` and `robots.txt`.
+- Each project builds only from its own repository, so neither rebuilds the
+  other. The site also redeploys when the app releases (§3), since that is
+  when its numbers change.
 - Domains: `tekio.fyi` (with `www` redirecting to it) moves from the
   temporary redirect onto this project when the site first ships.
 
@@ -119,18 +135,28 @@ keeps the page honest.
 
 ### 3. Where the content comes from
 
-Three inputs, one of them hand-written:
+Four inputs, one of them hand-written:
 
 | Input | Source | How |
 |---|---|---|
-| Narrative prose | `site/src/content/*.md` | Hand-written for a newcomer. Cites inventory rows by id (`row 2.2`) |
+| Narrative prose | `src/content/*.md` in `tekio.site` | Hand-written for a newcomer. Cites inventory rows by id (`row 2.2`) |
 | Numbers and states | `grounding-inventory.md` in this repo | Parsed at build time; the page prints the value and state from the row, never a copy |
+| The example week's rules | the app's read functions, `src/lib/fusedRead.ts` and `src/lib/adaptations.ts` in `petrovsco/tekio` | The invented week's logs run through the app's own functions at build time, so the stage cannot show a fill the app would not |
 | References | `[literature]` bullets in `grounding/` and in done briefs' `## Grounding` sections | Parsed at build time, de-duplicated by URL, grouped by the read they support |
 
-The build clones this repository's `develop` (it is public) into a temporary
-folder. A check step fails the build when a cited row does not exist, is
-struck as retired, or changed state since the prose was written. The
-references feed only the science page, which waits (§4).
+**The page describes the released app** (Peter, 2026-10-02), so a visitor
+reads what the app they would open does. The build shallow-clones both
+repositories (both are public) into a temporary folder at the last release:
+the app at its newest `vX.Y.Z` tag, and this repo at the tag of the same name.
+This repo has no tags yet, so the release procedure gains a step: tag this
+repo at the registry commit (step 2) with the release's name. 2.1.0 is tagged
+here after the fact, at the commit that marked it released. The site
+redeploys when the app's release tag is pushed: a workflow in the app's
+repository calls the site project's deploy hook.
+
+A check step fails the build when a cited row does not exist, is struck as
+retired, or changed state since the prose was written. The references feed
+only the science page, which waits (§4).
 
 ### 4. The design
 
@@ -240,7 +266,27 @@ round four.
 - **The floor pours slower:** 650 ms a day instead of 300, so each day's label
   can be read.
 
-Next: the real `site/` is built from round four.
+**The page speaks to the reader as "you"** (Peter, 2026-10-02): "Tekiō tells
+you what's missing." A visitor is reading about their own training, and "you"
+puts them in it; the doctrine's first person stays in the doctrine.
+
+Next: the real site is built from round four in `petrovsco/tekio.site`.
+
+### 5. Where the release addresses go: a Sheet in Google Workspace
+
+Peter's call, 2026-10-02, in place of a table in the app's database. The form
+posts the address to a short Google Apps Script deployed as a web app under
+the owner's Workspace account. The script checks that it looks like an
+address and appends it, with the date, to a Google Sheet in that account; it
+can also email the owner each sign-up as it arrives. No migration, no outside
+form service, and the app's tables never see an address. On release day the
+Sheet is read by hand, the email goes out, and the Sheet is deleted.
+
+The script's address is public, as any form's endpoint is, so the form carries
+a hidden honeypot field and the script drops a submission that fills it.
+Deploying the script needs the owner signed in. If the domain's sharing
+settings keep files inside it, the web app cannot be opened to anyone until an
+admin allows it in the Workspace Admin console.
 
 ## Rationale
 
@@ -264,25 +310,40 @@ Next: the real `site/` is built from round four.
 
 **Alternatives considered.**
 
-- *A new repository.* Rejected: a third place for release and version rules,
-  for one page.
+- *A `site/` folder in the code repo.* The first choice, on 2026-10-01, and
+  reversed by Peter on 2026-10-02: one repository would carry two products'
+  versions, so every landing edit would bump the app's version and travel
+  with its releases, and the app's `lint`, `knip` and `perf` would need
+  pointing away from it. The cost of the move is a third set of conventions,
+  kept small by copying the code repo's.
 - *Inside this repo, beside the content.* Rejected: this repo holds no code
   and has no `package.json`, on purpose.
 - *A route inside the app.* Rejected: the gate covers its whole host, the app
   is `noindex`, and the page would join the app's first-paint budget.
-- *Copying the numbers into the page.* Rejected: a copied spec disagrees with
-  itself within a week, which is the code repo's own rule about RFCs.
+- *Copying the numbers or the app's rules into the site.* Rejected: a copied
+  spec disagrees with itself within a week, which is the code repo's own rule
+  about RFCs. The build reads both where they live.
+- *Describing `develop` instead of the released app.* Rejected by Peter on
+  2026-10-02: the page would promise numbers the app a visitor opens does not
+  have yet.
+- *Keeping release addresses in the app's database, or with a hosted form
+  service.* Set aside by Peter on 2026-10-02 for his own Google Workspace: no
+  migration, and no third party holding the addresses.
 
 **No personal context.** The page is public. The example read is invented and
 labelled, and nothing on it says whose app this was built around.
 
 ## Acceptance
 
-- [ ] `site/` builds with `npm run build` inside it, and the app's `npm run
-      build`, `lint`, `knip` and `perf` are unchanged by its presence
+- [ ] `petrovsco/tekio.site` builds with `npm run build`, carries its own
+      version, and its `CLAUDE.md` states its branch and version rules
 - [ ] The build reads the inventory and grounding blocks from this repo and
       fails on a cited row that is missing, retired or changed state (shown
       by a deliberately broken citation)
+- [ ] The build reads both repositories at the last release's tag; this repo
+      carries `v2.1.0`, and the release procedure tags it at every release
+- [ ] Pushing the app's release tag redeploys the site, and no other push to
+      the app does
 - [ ] Every number on the page traces to an inventory row, and the example
       week reads the same as the app's own functions return for the same logs
 - [ ] One wheel gesture, key press or swipe moves exactly one step, at desktop
@@ -293,26 +354,18 @@ labelled, and nothing on it says whose app this was built around.
       while inventory rows 4.11 and 4.12 are `convention`
 - [ ] Act two says it is an example week, not a program, on its title step and
       on every day's stage
-- [ ] The release form says what the address is used for, stores it where the
-      question below decides, and becomes a link to the app at release
+- [ ] The page speaks to the reader as "you" throughout
+- [ ] The release form says what the address is used for; a test address
+      lands as a row in the Workspace Sheet (and is then deleted), a filled
+      honeypot lands nowhere, and the form becomes a link to the app at
+      release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
-- [ ] Pushing a change outside `site/` does not rebuild the landing, and a
-      change inside it does not rebuild the app
 - [ ] Readable at 400 px wide and in both themes; first paint under 50 kB
 - [ ] The example read is marked invented and no personal data is on the page
 
 ## Unresolved questions
 
-- **Where the release-notification addresses are kept.** The site is static
-  and has nowhere to send them yet. Proposed default: one insert-only table in
-  the existing Supabase project, where the public key may insert and nothing
-  else, unlike the app's open tables. It is read by hand on release day and
-  dropped once the email has gone out. Adding it is a migration, so it is a
-  production change and waits for Peter's go. A hosted form service is the
-  alternative.
-- **The voice.** The doctrine speaks in the first person ("tells me"); the mock
-  uses "you". The public page probably wants "you".
-- **Production branch.** `master` keeps the page matched to the released app
-  but means landing edits wait for a release. `develop` would ship them at
-  once, at the cost of describing unreleased numbers.
+None. The four still open on 2026-10-02 were settled by Peter that day: the
+repository and its name (§1), which app the page describes (§3), the voice
+(§4), and where release addresses go (§5).
