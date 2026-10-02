@@ -120,9 +120,17 @@ build until [0080](rfcs/done/0080-release-2-1-0-schema-drops.md) clears them.
 
 Rows still marked **†** are ones I would *not* spend a scout run *of their own*
 on — either nothing reads the number (4.14, 7.2) or the run that settles it lands
-on another row (5.7 and 5.8 derive from 5.1 and 5.3, which
-[0013](rfcs/0013-cycle-deload-grounding.md) owns). A row that resolved to
+on another row. 5.7 and 5.8 lost theirs on 2026-10-01, when
+[0013](rfcs/done/0013-cycle-deload-grounding.md#grounding) ran on 5.1 and 5.3. A row that resolved to
 `n/a — definitional` drops the dagger: its state now says what the marker said.
+
+**Updated 2026-10-01 by [0013](rfcs/done/0013-cycle-deload-grounding.md#grounding)**:
+§5 is no longer `unknown`. Three scout runs, one per question: rows 5.1, 5.3,
+5.7 and 5.8 are `convention` (no trial compares deload frequency or placement;
+6 weeks and the last week are the centre of reported practice), and rows 5.4,
+5.6 and 5.9 are `grounded` (a ~30% volume cut at held load sits in the
+low-to-moderate band of the strength-taper and deload literature). No value in
+the app moved.
 
 **Step 0** records whether the trigger spec in
 `.claude/skills/ground/SKILL.md` catches the
@@ -207,6 +215,9 @@ briefs). `/ground` Step 3 adds a row here whenever a run's block lands.
 | D40 | Tekiō drops **its own average of Epley and Brzycki** and names one estimator: Brzycki, the conservative of the two below 10 reps. No study tests any averaged rep-max equation, and the averaging did its largest work (3.7–3.9 % of the load) precisely inside the 2–5 rep window the app now uses — the two are algebraically identical at 10 reps, where it does nothing (2026-09-09) | [LeSuer 1997](https://journals.lww.com/nsca-jscr/abstract/1997/11000/the_accuracy_of_prediction_equations_for.1.aspx); [Reynolds 2006](https://pubmed.ncbi.nlm.nih.gov/16937972/); the absence of any averaging study | [067 §Grounding](rfcs/done/0067-ground-1rm-estimator.md#grounding) |
 | D41 | The rep ceiling **stays at 5 although the evidence would allow 8** — Peter's rule is that the window narrows on evidence and never widens. Recorded as a deliberate disagreement with the literature rather than an oversight; the cost is refusing usable 6–8 rep sets (2026-09-09) | Dohoney 2002 (4–6); [Roberts 2025](https://pubmed.ncbi.nlm.nih.gov/39495260/) (4–10); Galpin (3–8, `[single-practitioner position]`) | [067 §Grounding](rfcs/done/0067-ground-1rm-estimator.md#grounding) |
 | D42 | The estimate is **asked for, never computed at rest**, and only from a set the lifter confirms was taken to failure — every validation study measured reps to fatigue, so an unconfirmed set feeds the formula an input it was never validated on. The PR badge is measured instead of estimated: a set is a best when nothing logged matched its load at its reps (2026-09-09) | [Roberts 2025](https://pubmed.ncbi.nlm.nih.gov/39495260/); [Nuzzo 2024](https://pmc.ncbi.nlm.nih.gov/articles/PMC10933212/) (between-individual SD 2.51 reps at 80 % 1RM); [Niewiadomski 2008](https://johk.pl/wp-content/uploads/2023/02/10.2478_v10078-008-0008-8.pdf) | [067 §Grounding](rfcs/done/0067-ground-1rm-estimator.md#grounding) |
+| D43 | **The deload stays on the calendar, not on readiness** — `CYCLE = 6` and `DELOAD_WEEK = CYCLE` are kept as a fixed schedule. The real fork in the literature is fixed against fatigue-triggered, not 6 against some other number, and no trial favours either side. Most coaches run a hybrid, where the scheduled week is a checkpoint. A triggered or early deload would be a readiness *input*, never a different `CYCLE`, and it needs its own brief (2026-10-01) | [Bell 2023](https://link.springer.com/article/10.1186/s40798-023-00633-0) (Delphi); [Rogerson 2024](https://shura.shu.ac.uk/33446/1/s40798-024-00691-y.pdf) (n = 246, 5.6 ± 2.3 wk); [Bell 2022](https://pmc.ncbi.nlm.nih.gov/articles/PMC9811819/) | [0013 §Grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| D44 | **The deload holds load and cuts volume** (`type: 'reps'`, factor 0.7), on the strength-taper side of the fork, although most athletes drop load too (84%) and Galpin cuts both. Holding load is the better-supported side for keeping strength (2026-10-01) | [Travis 2020](https://www.mdpi.com/2075-4663/8/9/125); [Pritchard 2015](https://research.bond.edu.au/en/publications/effects-and-mechanisms-of-tapering-in-maximizing-muscular-strengt/); [Bosquet 2007](https://pubmed.ncbi.nlm.nih.gov/17762369/); [Coleman 2024](https://peerj.com/articles/16777/) | [0013 §Grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| D45 | **Reps per set stays the lever, with its two artifacts recorded rather than fixed.** The muscle read counts sets, so a reps-only deload week reads as full stimulus. Rounding barely deloads low-rep work (5 → 4 is 20%, 1 → 1 is nothing). Cutting sets is equally endorsed and is the commoner practice (79% vs 53%). Changing the lever is a design decision, not a grounding one (2026-10-01) | [Bell 2023](https://link.springer.com/article/10.1186/s40798-023-00633-0); [Bell 2025](https://doras.dcu.ie/31501/1/a_practical_approach_to_deloading__recommendations.203(2).pdf); [Rogerson 2024](https://shura.shu.ac.uk/33446/1/s40798-024-00691-y.pdf) | [0013 §Grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
 
 ## 1. Adaptation targets — what Home calls "missing"
 
@@ -297,20 +308,22 @@ the sharpest debt in the app because they read as settled fact.
 **Three bugs here were fixed 2026-08-26** (struck-through rows). What remains is
 the claim itself: a 6-week block, deloading in week 6, at 70% of reps.
 **Resolved 2026-08-26** — this was the one domain with nowhere for a block to
-land; [rfcs/0013-cycle-deload-grounding.md](rfcs/0013-cycle-deload-grounding.md) was
-created to carry it.
+land; [rfcs/done/0013-cycle-deload-grounding.md](rfcs/done/0013-cycle-deload-grounding.md) was
+created to carry it. **Grounded 2026-10-01** by three scout runs: the 6-week
+block and the last-week placement are `convention`, the 0.7 rep factor is
+`grounded` (partially supported). No value moved. Decisions D43–D45.
 
 | # | Value | Where | Claim | Step 0 | State | Grounding brief |
 |---|---|---|---|---|---|---|
-| 5.1 | `CYCLE = 6` | app.ts:13 (`src/constants/app.ts`) | A training block is 6 weeks | named | unknown | [cycle-deload-grounding](rfcs/0013-cycle-deload-grounding.md) |
+| 5.1 | `CYCLE = 6` | app.ts:13 (`src/constants/app.ts`) | A training block is 6 weeks | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
 | 5.2 | ~~`CYCLE = 6`~~ | — | **Fixed 2026-08-26** — `utils.ts` imports `CYCLE` from `constants/app` | — | — | — |
-| 5.3 | `DELOAD_WEEK = CYCLE` | app.ts:24 (`src/constants/app.ts`), used at utils.ts:108 (`src/lib/utils.ts`), :115 (`src/lib/utils.ts`) | **Week 6 is the deload week** — deload placement. Named as of 2026-08-26; still ungrounded | named | unknown | [cycle-deload-grounding](rfcs/0013-cycle-deload-grounding.md) |
-| 5.4 | `DELOAD_REP_FACTOR = 0.7` | app.ts:31 (`src/constants/app.ts`), applied by `deloadSets` at utils.ts:123 (`src/lib/utils.ts`) | Deload = 70% of last reps, load unchanged. **Fixed 2026-08-26** — was three implementations, two of which disagreed | named | unknown | [cycle-deload-grounding](rfcs/0013-cycle-deload-grounding.md) |
+| 5.3 | `DELOAD_WEEK = CYCLE` | app.ts:24 (`src/constants/app.ts`), used at utils.ts:108 (`src/lib/utils.ts`), :115 (`src/lib/utils.ts`) | **Week 6 is the deload week** — deload placement. Named as of 2026-08-26; still ungrounded | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.4 | `DELOAD_REP_FACTOR = 0.7` | app.ts:31 (`src/constants/app.ts`), applied by `deloadSets` at utils.ts:123 (`src/lib/utils.ts`) | Deload = 70% of last reps, load unchanged. **Fixed 2026-08-26** — was three implementations, two of which disagreed | named | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
 | 5.5 | ~~`× 0.7`~~ ×2 | — | **Fixed 2026-08-26.** `VolumeRow` previewed a deload scaling *weight and reps* that the app could never apply — `ExPlan`'s button, `ExPlan`'s exported helper and `programs.deload_strategy` all say reps-only. The preview was the outlier and now calls `deloadSets` | — | — | — |
-| 5.6 | `Deload` badge + `70% reps` | VolumeRow.tsx:32-33 (`src/components/tabs/weights/VolumeRow.tsx`) | The label the user reads — the percentage is computed from 5.4 (`DELOAD_REP_FACTOR × 100`) and says *what* is at 70%; the ⚠️ went with the chrome emoji (033) | named | unknown | [cycle-deload-grounding](rfcs/0013-cycle-deload-grounding.md) |
-| 5.7 | `cycle_length_weeks: CYCLE` | db/program.ts:299 (`src/lib/db/program.ts`) + `programs` column default `6` | **Fixed 2026-08-26** — was hardcoded `6`; now derives from 5.1. Still write-only. **Stays `unknown`** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): §13.2 names this exact boundary — "a block is 6 weeks" is a dose claim, not a definition. The run that settles it lands on 5.1 | named | unknown † | [cycle-deload-grounding](rfcs/0013-cycle-deload-grounding.md) |
-| 5.8 | `deload_week: DELOAD_WEEK` | db/program.ts:300 (`src/lib/db/program.ts`) | **Fixed 2026-08-26** — was hardcoded `6`; now derives from 5.3. Still write-only. **Stays `unknown`** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): deload *placement* is the dose claim §13.2 draws the line against; the run lands on 5.3 | named | unknown † | [cycle-deload-grounding](rfcs/0013-cycle-deload-grounding.md) |
-| 5.9 | `factor: DELOAD_REP_FACTOR` | db/program.ts:301 (`src/lib/db/program.ts`) + `programs.deload_strategy` column default | **Fixed 2026-08-26** — the write now derives from 5.4. The **jsonb column default** still carries a literal `0.7`, and nothing reads either | unnamed | unknown | [cycle-deload-grounding](rfcs/0013-cycle-deload-grounding.md) |
+| 5.6 | `Deload` badge + `70% reps` | VolumeRow.tsx:32-33 (`src/components/tabs/weights/VolumeRow.tsx`) | The label the user reads — the percentage is computed from 5.4 (`DELOAD_REP_FACTOR × 100`) and says *what* is at 70%; the ⚠️ went with the chrome emoji (033) **Grounded 2026-10-01 with 5.4**, of which it is the printed form | named | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.7 | `cycle_length_weeks: CYCLE` | db/program.ts:299 (`src/lib/db/program.ts`) + `programs` column default `6` | **Fixed 2026-08-26** — was hardcoded `6`; now derives from 5.1. Still write-only. **Stays `unknown`** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): §13.2 names this exact boundary — "a block is 6 weeks" is a dose claim, not a definition. The run that settles it lands on 5.1 **Convention 2026-10-01**, settled by the run on 5.1 | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.8 | `deload_week: DELOAD_WEEK` | db/program.ts:300 (`src/lib/db/program.ts`) | **Fixed 2026-08-26** — was hardcoded `6`; now derives from 5.3. Still write-only. **Stays `unknown`** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): deload *placement* is the dose claim §13.2 draws the line against; the run lands on 5.3 **Convention 2026-10-01**, settled by the run on 5.3 | named | convention | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
+| 5.9 | `factor: DELOAD_REP_FACTOR` | db/program.ts:301 (`src/lib/db/program.ts`) + `programs.deload_strategy` column default | **Fixed 2026-08-26** — the write now derives from 5.4. The **jsonb column default** still carries a literal `0.7`, and nothing reads either **Grounded 2026-10-01 with 5.4**; the column default's literal `0.7` agrees with it, so nothing moved | unnamed | grounded | [cycle-deload-grounding](rfcs/done/0013-cycle-deload-grounding.md#grounding) |
 | 5.10 | ~~`4`~~ | — | **Fixed 2026-08-26** (migration `20260826144439`). The `program_phases.duration_weeks` default asserted a 4-week phase against `CYCLE = 6`; default dropped, so a missing value is now `NULL` — which the type already allowed. No number replaced it | — | — | — |
 
 ## 6. Cardio & sport classification

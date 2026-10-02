@@ -45,6 +45,12 @@ briefs, done one at a time:
 5. [0077](done/0077-garmin-sync-on-time.md) — the 08:00 Garmin syncs. **Done
    2026-09-30**: the first unattended morning dispatched both on time.
 
+Picked up outside the tagged list, at Peter's call on 2026-10-01:
+[0013](done/0013-cycle-deload-grounding.md), which grounds the 6-week cycle and
+the week-6 deload. It had been left out of 2.1.0 until a default program existed.
+It was unparked because the app applies those numbers to every program. **Done
+2026-10-01**: two rows are convention, one is grounded, and no value moved.
+
 ## 3.0.0
 
 **Target:** TBC
@@ -153,7 +159,7 @@ In running order:
 
 Left out on purpose: 003, 020 and 022 (stay in backlog — Peter, 2026-09-05),
 013 (cycle grounding — a program property, grounded only if it ships as the
-default program), 021 (waits on Peter's inputs, no release), 034 (→ 2.2.0),
+default program; picked up for 2.2.0 instead), 021 (waits on Peter's inputs, no release), 034 (→ 2.2.0),
 040 (→ 3.0.0), 052 (shipped as a patch on 2026-09-05: line anchors are
 forbidden in briefs).
 Since 2.0.0 the minor digit is

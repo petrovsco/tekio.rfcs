@@ -1,8 +1,8 @@
 # The RFCs
 
 **The convention is not written here.** It is the modus house rule
-`rfc-convention`, imported by this repo's `CLAUDE.md`: file naming, the
-frontmatter fields, the six statuses, the four labels, the eight sections,
+`rfc-convention`, committed here as `.claude/rules/modus/rfc-convention.md`:
+file naming, the frontmatter fields, the six statuses, the four labels, the eight sections,
 releases and assets. A second copy would disagree with the first inside a week.
 
 This file holds only what is specific to tekio.

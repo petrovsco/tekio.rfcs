@@ -52,7 +52,7 @@ count drifted through the 036 and 039 sweeps). **They do not all qualify**, and
 | 4.14 | the 80 °C / 10 °C sauna and cold-plunge form hints | §13.8 also left this ambiguous — stored, never scored. Decide or leave | **stays `unknown`** — the quick-log *writes* 80 / 10 into the row, so it is an assumed fact about a real session, and heat exposure has a dose literature. Arguable → `unknown` |
 | 7.2 | `level === 1 → primary` on write | A **classification**, and §13.4 has since gated those. Probably stays `unknown` | **stays `unknown`** — as expected. Write-only, so it earns no run of its own, and it keeps the dagger |
 | 5.7 | `cycle_length_weeks: CYCLE` | **Stays `unknown`.** §13.2 names this exact boundary: *"a block is 6 weeks with a deload at week 6"* is a dose claim about deload frequency | **stays `unknown`** — the run lands on 5.1 |
-| 5.8 | `deload_week: DELOAD_WEEK` | **Stays `unknown`**, same reason — it waits on [0013](../0013-cycle-deload-grounding.md) | **stays `unknown`** — the run lands on 5.3 |
+| 5.8 | `deload_week: DELOAD_WEEK` | **Stays `unknown`**, same reason — it waits on [0013](0013-cycle-deload-grounding.md) | **stays `unknown`** — the run lands on 5.3 |
 
 So at least two of the nine must keep their current state, and three more are
 genuine calls. That is why this is a pass and not a substitution.
@@ -82,7 +82,7 @@ value in the app stays exactly as it is; only the label on the row moves.
   `n/a — definitional` with a one-line reason, or left `unknown` with the reason
   it is arguable.
 - [x] 5.7 and 5.8 still read `unknown` — the deload dose is a claim, and
-  [0013](../0013-cycle-deload-grounding.md) still owns it.
+  [0013](0013-cycle-deload-grounding.md) still owns it.
 - [x] The footnote explaining `†` matches what the rows now say — it lists which
   five resolved and why the four that kept the dagger keep it.
 - [x] No verdict outside the four the scout returns plus this one inventory

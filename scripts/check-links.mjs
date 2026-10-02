@@ -45,7 +45,9 @@ const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 // text is optional so a bare `](target)` still counts, and it excludes newlines
 // so the match stays on the line that holds the target.
 const LINK_RE = /(?:\[([^[\]\n]*))?\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g;
-const SKIP_DIRS = new Set(['node_modules', '.git']);
+// .claude holds the modus house rules, copies managed from the modus repo: their
+// example links are written for an RFC's folder, not for this one.
+const SKIP_DIRS = new Set(['node_modules', '.git', '.claude']);
 
 const rel = (p) => path.relative(REPO, p).split(path.sep).join('/');
 const lineOf = (txt, index) => txt.slice(0, index).split('\n').length;
