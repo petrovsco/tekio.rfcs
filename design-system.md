@@ -198,6 +198,7 @@ question a tap just asked, it is T2. Everything else is T3.
 Every number that claims physiological meaning and has not passed
 `/ground` is marked PLACEHOLDER on the boards and in code comments —
 currently the cycle target (60 sets), the recovery window (2 days), the
-per-quality staleness windows, and the blood-donation windows. The rule is:
-the mark stays visible until the number is grounded. The grounding work
-itself is tracked in the roadmap (018), not here.
+push threshold, the per-quality staleness windows, and the blood-donation
+windows. The rule is: the mark stays visible until the number is
+grounded. The grounding work itself is tracked in the roadmap (018), not
+here.

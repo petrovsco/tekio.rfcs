@@ -1,14 +1,14 @@
 ---
-title: The push gate — three readiness bands, Hold, Steady and Push
+title: Readiness — inputs ranked by evidence, then three bands on top
 authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-02
-status: in progress
-status_note: "Built and grounded (convention only) on a working branch, not yet on develop. Waiting on Peter's call on the lines: keep 33 / 66, or move them now that the grounding shows a night at baseline HRV needs a sleep score of 83 to push."
+status: backlog
+status_note: "Parked by Peter on 2026-10-02 for its own task: rank the candidate readiness inputs by evidence and choose them first, then set the bands on top. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
 label: feature
 ---
 
-# RFC 0085: The push gate — three readiness bands, Hold, Steady and Push
+# RFC 0085: Readiness — inputs ranked by evidence, then three bands on top
 
 ## Progress log
 
@@ -21,17 +21,36 @@ label: feature
   Steady is the working name for the middle verdict until he picks Steady, Go
   or Train.
 - **2026-10-02** — `/ground` ran on the bands: **convention only** for both
-  lines (D46), and the middle band's instruction is the trials' middle tier
-  (D47). The block is below. It found the lines sit high on this blend: a night
-  at baseline HRV needs a sleep score of 83 to push. The app change is built
-  with 33 / 66 and tested; whether the lines stay is Peter's call (Unresolved
-  question 3).
+  lines, and the middle band's instruction is the trials' middle tier. The
+  block is below; the inventory and ledger rows it produced wait in
+  [0085/inventory-rows.md](0085/inventory-rows.md) until the code lands. It
+  found the lines sit high on this blend: a night at baseline HRV needs a sleep
+  score of 83 to push. The app change is built with 33 / 66 and tested;
+  whether the lines stay is Peter's call (Unresolved question 3).
+- **2026-10-02** — Peter widened it. Readiness should rest on the
+  best-evidenced inputs, not on a blend nobody validated: if HRV is the most
+  proven, use it. Research the candidate metrics (HRV, morning or resting heart
+  rate, and any others), rank them from the most evidence down, and choose a
+  few. One is the default and the user can change it. A person without a
+  wearable gets an input they can type, marked as less certain and pointing to
+  better ones. Garmin is one source among several, and integrations are
+  separate work.
+- **2026-10-02** — Parked for its own task, so the landing thread can return to
+  the site. The bands stay on the working branch (Proposal, part 2) until the
+  inputs are chosen, and the two choices put to Peter that day (the lines, and
+  Steady, Go or Train) wait with them.
 
 ## Summary
 
-Home's push-or-hold call compared one readiness number with one line. The
+Two decisions, in order. First, what readiness rests on: the candidate inputs
+ranked by evidence, a few chosen, one default the user can change, and a typed
+input for people without a wearable. Second, the three bands read on top of the
+number those inputs make. The bands are built; the inputs are not researched
+yet.
+
+Home's push-or-hold call compares one readiness number with one line. The
 number is 0–100, the mean of last night's sleep score and a baseline-relative
-HRV score; below 33 held the day, and everything from 33 up pushed. It now
+HRV score; below 33 holds the day, and everything from 33 up pushes. Part 2
 reads the number in three bands:
 
 | Readiness | Band | Verdict |
@@ -40,33 +59,45 @@ reads the number in three bands:
 | 34–66 | Moderate | **Steady** — the plan, lighter: no intervals or max efforts |
 | 67–100 | OK | **Push** — close the gaps |
 
-The readiness card prints the band beside the number. The blend underneath is
-unchanged.
+The readiness card prints the band beside the number. The bands are built over
+today's blend, which the first decision may replace.
 
 ## Motivation
 
-- **One line was too blunt.** A 34 and a 95 got the same instruction, and a
-  33 was told to push. Peter doubted anyone at 33 would feel fit to do anything.
-- **Push now needs both inputs.** The number is the mean of the two, so 67
-  needs a sum of 133: an HRV score of 0 caps even a perfect night at 50, which
-  is Steady, and a sleep score of 0 does the same to the best HRV. With one line
-  at 33, either input could carry the other over it.
-- **The app marked the old line as unfinished.** Home's hold banner printed
+- **The blend is unexamined.** Readiness averages last night's device sleep
+  score with a baseline-relative HRV score, 50/50 (row 4.11). 0010 chose that
+  as a convention, and no study validates a composite readiness score
+  (Doherty 2025, in the block below). Peter's rule is to prefer the most
+  evidenced method.
+- **Without a wearable there is no readiness.** It reads only synced data: a
+  typed night writes duration and quality, never the sleep score, HRV or
+  resting heart rate (`src/lib/db/recovery.ts`). Resting heart rate is already
+  synced and read nowhere.
+- **One line is too blunt.** A 34 and a 95 get the same instruction, and a 33
+  is told to push. Peter doubted anyone at 33 would feel fit to do anything.
+- **Under the bands, Push needs both inputs.** The number is the mean of the
+  two, so 67 needs a sum of 133: an HRV score of 0 caps even a perfect night at
+  50, which is Steady, and a sleep score of 0 does the same to the best HRV.
+  With one line at 33, either input can carry the other over it.
+- **The app marks the line as unfinished.** Home's hold banner prints
   `(PLACEHOLDER)` after "the push threshold" (`HomeTab.tsx`). The mark goes
   once the number has passed `/ground` (`design-system.md` §11).
 
 ## Goals
 
+- Readiness rests on the best-evidenced inputs a person can supply, ranked by
+  `/ground`, with one default and a choice the user can change.
+- A person without a wearable can type an input, and the app says it is less
+  certain and which better input they could add.
 - Home's verdict has three instructions, set by the band, and the readiness
   card names the band.
-- The bands carry a `## Grounding` block, and inventory row 4.12 says so.
+- The bands carry a `## Grounding` block, and inventory row 4.12 says so once
+  the code lands.
 
 ## Non-Goals
 
-- **The blend.** Sleep and HRV stay 50/50 (row 4.11). The bands read the
-  number the app already has.
-- **The baseline-relative rule (D8).** Considered and not chosen; see
-  Rationale.
+- **Device integrations.** Which devices feed an input (Garmin sync today) is
+  separate work. This RFC decides which metrics count, not how they arrive.
 - **The local recovery flag** (row 4.15) and **donation suppression** (row
   4.16). An acute donation still holds the day, whatever the band.
 - **The landing page.** It already shows readiness as a state, not a number
@@ -74,6 +105,25 @@ unchanged.
   bands when its real site is built.
 
 ## Proposal
+
+### 1. Readiness inputs (not started)
+
+- A `/ground` run ranks the candidate inputs from the most evidence down: HRV
+  against the person's own baseline (the method every trial used, D8), morning
+  or resting heart rate, sleep, self-reported wellness, and any others the
+  search turns up. For each it says what the input needs (a wearable, a phone
+  camera, a hand count, a questionnaire) and how reliable that route is.
+- Peter chooses a few from the ranking. One is the default, and the user can
+  change it (Unresolved question 4).
+- A person without a wearable types an input. The app says it is less certain
+  and names the better input they could add.
+- The bands in part 2 are then checked against the number those inputs make
+  (Unresolved question 3).
+
+### 2. Three bands (built, on a working branch)
+
+Built and tested on the branch `claude/project-thread-g3kirn` of
+`petrovsco/tekio` (commit 0556b9b, v2.1.15), not on develop.
 
 - `READINESS_BANDS = { low: 33, moderate: 66 }` in `src/constants/app.ts`
   replaces `PUSH_THRESHOLD = 33`. Each value is the top of its band, inclusive.
@@ -87,6 +137,11 @@ unchanged.
   `(PLACEHOLDER)`.
 - Tests at 33, 34, 66 and 67, and the crashed-HRV case.
 - The `/ground` skill's gated table names `READINESS_BANDS` and `STEADY_NOTE`.
+- In the same change that brings the code onto develop: inventory row 4.12, a
+  new row 4.18 for the Steady line, two decisions-ledger rows and design-system
+  §11's PLACEHOLDER list, as prepared in
+  [0085/inventory-rows.md](0085/inventory-rows.md). Until then both documents
+  describe the line at 33, because that is what develop runs.
 
 Measured on invented data at 390 × 900 against develop: a Push day is
 unchanged, a Steady day's verdict is one line longer (17 px), and a Low day's
@@ -102,7 +157,7 @@ banner is one line shorter (14 px), because it lost `(PLACEHOLDER)`.
   score (25 and up as planned, 1–24 lighter, 0 easy), which retires both
   constants and needs a rule of its own for sleep.
 - **Fixed bands on a composite are a vendor convention,** the same side of the
-  split the line at 33 was on (D46). 33 / 66 are one vendor's thirds taken
+  split the line at 33 was on. 33 / 66 are one vendor's thirds taken
   whole; a spliced pair such as 40 / 60 or 33 / 50 is a position nobody holds.
   The bands at least make Push need both inputs, which one line did not
   (Motivation).
@@ -113,7 +168,7 @@ banner is one line shorter (14 px), because it lost `(PLACEHOLDER)`.
   recovery. Garmin's lines taken whole (Hold at 24 and under, Push from 50) are
   the alternative that lets a baseline-HRV night push, as the HRV-only trials
   did.
-- **The middle band borrows the trials' middle tier** (D47): the planned
+- **The middle band borrows the trials' middle tier**: the planned
   session, lighter, never rest and never a different session. Home shows no
   percentage, because each trial's 25% was its chosen step, not a tested dose.
 - **One-sided, a recorded departure.** Both three-tier trials read HRV above
@@ -249,13 +304,21 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
 
 ## Acceptance
 
-- [x] `/ground` ran on the bands; its block is above and its verdict is in row
-      4.12
+- [ ] `/ground` has ranked the candidate readiness inputs, and its block is
+      linked here
+- [ ] Peter has chosen the inputs and the default, recorded here
+- [ ] A person without a wearable can type an input, and the app marks it less
+      certain and names a better one
+- [ ] The band lines and the middle verdict's name are confirmed on the chosen
+      inputs (Unresolved question 3)
+- [x] `/ground` ran on the bands, and its block is above
+- [ ] Its inventory and ledger rows land with the code
+      ([0085/inventory-rows.md](0085/inventory-rows.md))
 - [x] `fusedVerdict()` holds, steadies or pushes by band, tested at 33, 34, 66
       and 67
 - [x] Home's card names the band, a Steady day has its own verdict, and the
       hold banner has no `(PLACEHOLDER)`: seen in the browser on invented data,
-      all three bands, no console errors
+      all three bands, no console errors (on the working branch)
 - [ ] It lands on develop and the staging app shows it
 
 ## Unresolved questions
@@ -272,4 +335,16 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
    push. Put to him on 2026-10-02: keep them, take Garmin's lines whole (Hold
    at 24 and under, Push from 50), or move the tiers onto HRV (option (b)). A
    count of how often each band would have come up over the last 60 nights
-   would inform it; it needs the live data and has not run.
+   would inform it; it needs the live data and has not run. Postponed with
+   this RFC: the lines sit on whatever number the inputs make, so they are
+   decided after part 1, together with the middle verdict's name (Steady, Go
+   or Train).
+4. **A choice the user can change, and P4.** Doctrine P4 says configurability
+   is not a decision. The default should follow what a person can measure, the
+   best-evidenced input they have, so the choice exists for a different
+   device, not a different taste. Which inputs a user may switch between is
+   decided with the ranking.
+5. **How much a typed input is worth.** The working assumption is that it is
+   the weakest. 0010's grounding found self-reported wellness tracked training
+   load with better sensitivity and consistency than objective measures,
+   HRV included (Saw 2016), so the ranking may place it higher than expected.

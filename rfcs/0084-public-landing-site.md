@@ -24,9 +24,11 @@ label: feature
   both convention; act two labelled an example week; the floor's pour slowed.
   Whether the app's own line should change went to
   [0085](0085-push-gate-own-baseline.md).
-- **2026-10-02** — Peter approved round four as it stands. The app is moving
-  to three readiness bands ([0085](0085-push-gate-own-baseline.md)), so the
-  real site's card shows Low, Moderate or OK, read from the app's rules.
+- **2026-10-02** — Peter approved round four as it stands. The app's
+  readiness is being reworked in its own task
+  ([0085](0085-push-gate-own-baseline.md): inputs ranked by evidence, then
+  three bands), so the real site's card takes its inputs and states from the
+  app's rules as they stand when it is built.
 
 ## Summary
 
