@@ -3,8 +3,8 @@ title: A public landing site on tekio.fyi that explains how the reads are comput
 authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
-status: in progress
-status_note: "Being built from the approved round-four prototype, now that Peter settled the last open questions on 2026-10-02. Its repository, petrovsco/tekio.site, is created by hand on GitHub, since this integration cannot create repositories in the organization."
+status: blocked
+status_note: "Built from the approved round-four prototype at 0.1.0 and checked in a browser at desktop and phone sizes. Its first push waits on the repository petrovsco/tekio.site, which Peter creates by hand on GitHub, since this integration cannot create repositories in the organization."
 label: feature
 ---
 
@@ -35,6 +35,22 @@ label: feature
   reader as "you", describes the released app, and sends release addresses to
   a Sheet in his Google Workspace rather than the app's database. §1 to §3
   are rewritten for the move, and §5 is new.
+- **2026-10-02** — built in `tekio.site` at 0.1.0; its first push waits for
+  the repository. It reads the app at `v2.1.0` and this repo at the commit that
+  marked 2.1.0 released, until the tag exists. The build stops when a cited row
+  is missing, retired or re-graded, when the app ships a value the copy was not
+  written against, when a verdict sentence on Home changes, or when a day's
+  copy stops matching what that morning's read names. Walked in Chromium at
+  1360 × 900 and 390 × 664: one key press per step, the map in one box for each
+  act, no console errors, and the form's success path. First paint is 23 kB
+  compressed. Three sentences of the approved copy said more than the app does
+  and were narrowed: the hero's muscles "short this week" became muscles that
+  "need more work", because the read is a rolling 14 days; the floor is no
+  longer "the least weekly work that still produces it", which the three
+  convention targets cannot claim; and the hatch marks "a set today or
+  yesterday", which is what the app counts (calendar days, any set), rather
+  than "a hard set in the last 48 hours". The acceptance now asks for the
+  app's one light theme rather than two, and for 50 kB compressed.
 
 ## Summary
 
@@ -139,23 +155,26 @@ Four inputs, one of them hand-written:
 
 | Input | Source | How |
 |---|---|---|
-| Narrative prose | `src/content/*.md` in `tekio.site` | Hand-written for a newcomer. Cites inventory rows by id (`row 2.2`) |
-| Numbers and states | `grounding-inventory.md` in this repo | Parsed at build time; the page prints the value and state from the row, never a copy |
+| Narrative prose | `src/pages/index.astro` in `tekio.site`, and each example day's copy in `src/lib/story.ts` | Hand-written for a newcomer. A day's copy is checked against what that morning's read names |
+| Numbers | the app's constants at the release tag, each cited to its row of `grounding-inventory.md` in this repo (`src/lib/cite.ts` in `tekio.site`) | Read from the app at build time, never typed into the page. The check holds the row's state and its Value cell against what the app ships |
 | The example week's rules | the app's read functions, `src/lib/fusedRead.ts` and `src/lib/adaptations.ts` in `petrovsco/tekio` | The invented week's logs run through the app's own functions at build time, so the stage cannot show a fill the app would not |
 | References | `[literature]` bullets in `grounding/` and in done briefs' `## Grounding` sections | Parsed at build time, de-duplicated by URL, grouped by the read they support |
 
 **The page describes the released app** (Peter, 2026-10-02), so a visitor
 reads what the app they would open does. The build shallow-clones both
-repositories (both are public) into a temporary folder at the last release:
+repositories (both are public) into a git-ignored `.sources/` folder at the
+last release:
 the app at its newest `vX.Y.Z` tag, and this repo at the tag of the same name.
 This repo has no tags yet, so the release procedure gains a step: tag this
 repo at the registry commit (step 2) with the release's name. 2.1.0 is tagged
-here after the fact, at the commit that marked it released. The site
+here after the fact, at the commit that marked it released; until it is, a
+build sets `RFCS_REF` to that commit, and so must the Vercel project. The site
 redeploys when the app's release tag is pushed: a workflow in the app's
 repository calls the site project's deploy hook.
 
 A check step fails the build when a cited row does not exist, is struck as
-retired, or changed state since the prose was written. The references feed
+retired, or changed state since the prose was written, and when the app ships
+a value other than the one the prose was written against. The references feed
 only the science page, which waits (§4).
 
 ### 4. The design
@@ -270,7 +289,8 @@ round four.
 you what's missing." A visitor is reading about their own training, and "you"
 puts them in it; the doctrine's first person stays in the doctrine.
 
-Next: the real site is built from round four in `petrovsco/tekio.site`.
+The real site was built from round four in `petrovsco/tekio.site` on
+2026-10-02.
 
 ### 5. Where the release addresses go: a Sheet in Google Workspace
 
@@ -361,7 +381,8 @@ labelled, and nothing on it says whose app this was built around.
       release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
-- [ ] Readable at 400 px wide and in both themes; first paint under 50 kB
+- [ ] Readable at 400 px wide, in the app's one light theme; first paint
+      under 50 kB compressed
 - [ ] The example read is marked invented and no personal data is on the page
 
 ## Unresolved questions
