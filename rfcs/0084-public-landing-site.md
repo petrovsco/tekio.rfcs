@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
 status: in progress
-status_note: "Pushed to petrovsco/tekio.site at 0.1.0 and checked in a browser at desktop and phone sizes. The v2.1.0 tag here, the Vercel project, the release-day redeploy, the Apps Script and the apex each wait on Peter's word."
+status_note: "Pushed to petrovsco/tekio.site at 0.1.1, with the app's sign-in gate on its staging preview, and checked in a browser at desktop and phone sizes. The v2.1.0 tag here, the Vercel project, the release-day redeploy, the Apps Script and the apex each wait on Peter's word."
 label: feature
 ---
 
@@ -61,6 +61,14 @@ label: feature
   the science page, which waits. How a release redeploys the site went back to
   Peter (Unresolved questions): §3's workflow would sit in the app's
   repository, which the Non-Goals keep untouched.
+- **2026-10-02** — Peter asked for the site's staging to be protected as the
+  app's is. `tekio.site` 0.1.1 carries the app's sign-in gate in its own
+  `middleware.ts`, driven by the same three variables, which the site's Vercel
+  project sets for Preview only, with the app's staging login (§2). It differs
+  from the app's copy twice: the cookie holds a hash of the credentials rather
+  than the credentials, and a gate switched on without credentials lets nobody
+  in. Walked through a local stand-in for Vercel at both sizes: the sign-in
+  page, a wrong password turned away, then the site with its cookie.
 
 ## Summary
 
@@ -145,9 +153,12 @@ repo and the app's (§3).
 - New project in `bubolazi-projects`, connected to `petrovsco/tekio.site`,
   framework Astro, static output.
 - Production branch `master`; `develop` gets a preview URL, as the app's does.
-- The app's `middleware.ts` belongs to another repository and another Vercel
-  project, so the gate never applies here. The page is indexable: no
-  `noindex`, a `sitemap.xml` and `robots.txt`.
+- `develop`'s preview sits behind the app's staging sign-in gate (Peter,
+  2026-10-02): the site carries its own copy of the app's `middleware.ts`,
+  switched on by `BASIC_AUTH_ENABLED` with the app's staging login in
+  `BASIC_AUTH_USER` and `BASIC_AUTH_PASSWORD`, all three set for Preview only.
+  Production never sets them, so the public page has no gate. It is
+  indexable: no `noindex`, a `sitemap.xml` and `robots.txt`.
 - Each project builds only from its own repository, so neither rebuilds the
   other. The site also redeploys when the app releases (§3), since that is
   when its numbers change.
@@ -392,6 +403,8 @@ labelled, and nothing on it says whose app this was built around.
       release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
+- [ ] The `develop` preview answers with the app's sign-in page until signed
+      in with the app's staging login
 - [x] Readable at 400 px wide, in the app's one light theme; first paint
       under 50 kB compressed
 - [x] The example read is marked invented and no personal data is on the page
