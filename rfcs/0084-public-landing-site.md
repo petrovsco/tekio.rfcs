@@ -3,8 +3,8 @@ title: A public landing site on tekio.fyi that explains how the reads are comput
 authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
-status: blocked
-status_note: "Built from the approved round-four prototype at 0.1.0 and checked in a browser at desktop and phone sizes. Its first push waits on the repository petrovsco/tekio.site, which Peter creates by hand on GitHub, since this integration cannot create repositories in the organization."
+status: in progress
+status_note: "Pushed to petrovsco/tekio.site at 0.1.0 and checked in a browser at desktop and phone sizes. The v2.1.0 tag here, the Vercel project, the release-day redeploy, the Apps Script and the apex each wait on Peter's word."
 label: feature
 ---
 
@@ -51,6 +51,16 @@ label: feature
   yesterday", which is what the app counts (calendar days, any set), rather
   than "a hard set in the last 48 hours". The acceptance now asks for the
   app's one light theme rather than two, and for 50 kB compressed.
+- **2026-10-02** — pushed to `develop` in `petrovsco/tekio.site` once Peter
+  created the repository. Against the acceptance: a wheel notch or a key press
+  moves one step at 1360 × 900, and a swipe moves one step at 390 × 664 (a drag
+  shorter than half a screen snaps back, the browser's own snapping, and a hard
+  fling still stops at the next step); act two's map keeps one box over all
+  seven days at both sizes; the page's data carries no readiness number. The
+  second box now asks for the inventory only, since the grounding blocks feed
+  the science page, which waits. How a release redeploys the site went back to
+  Peter (Unresolved questions): §3's workflow would sit in the app's
+  repository, which the Non-Goals keep untouched.
 
 ## Summary
 
@@ -102,8 +112,9 @@ the app until it exists.
   what a user can feel.
 - **No live data.** The example athlete is invented and marked invented; the
   site never reads the app's data.
-- **No change to the app.** Its repository, middleware and Vercel project are
-  untouched.
+- **No change to the app.** Its code, middleware and Vercel project are
+  untouched. Its repository gains only what releasing the site needs: the
+  release procedure's step that tags this repo (§3).
 - **Not the domain move.** DNS and the apex redirect belong to the domain move
   thread; this RFC only takes the apex over once the site exists.
 
@@ -169,8 +180,9 @@ This repo has no tags yet, so the release procedure gains a step: tag this
 repo at the registry commit (step 2) with the release's name. 2.1.0 is tagged
 here after the fact, at the commit that marked it released; until it is, a
 build sets `RFCS_REF` to that commit, and so must the Vercel project. The site
-redeploys when the app's release tag is pushed: a workflow in the app's
-repository calls the site project's deploy hook.
+redeploys at each app release; whether a workflow in the app's repository does
+it on the release tag or the release procedure does it is open (Unresolved
+questions).
 
 A check step fails the build when a cited row does not exist, is struck as
 retired, or changed state since the prose was written, and when the app ships
@@ -357,36 +369,43 @@ labelled, and nothing on it says whose app this was built around.
 
 - [ ] `petrovsco/tekio.site` builds with `npm run build`, carries its own
       version, and its `CLAUDE.md` states its branch and version rules
-- [ ] The build reads the inventory and grounding blocks from this repo and
-      fails on a cited row that is missing, retired or changed state (shown
-      by a deliberately broken citation)
+- [x] The build reads the inventory from this repo and fails on a cited row
+      that is missing, retired or changed state (shown by a deliberately
+      broken citation)
 - [ ] The build reads both repositories at the last release's tag; this repo
       carries `v2.1.0`, and the release procedure tags it at every release
-- [ ] Pushing the app's release tag redeploys the site, and no other push to
-      the app does
-- [ ] Every number on the page traces to an inventory row, and the example
+- [ ] Each app release redeploys the site, and no other push to the app does
+- [x] Every number on the page traces to an inventory row, and the example
       week reads the same as the app's own functions return for the same logs
-- [ ] One wheel gesture, key press or swipe moves exactly one step, at desktop
+- [x] One wheel gesture, key press or swipe moves exactly one step, at desktop
       and phone sizes
-- [ ] The map keeps the same size and position on every step of an act, at
+- [x] The map keeps the same size and position on every step of an act, at
       desktop and phone sizes
-- [ ] Readiness appears as its inputs and a state, never as a number or a line,
+- [x] Readiness appears as its inputs and a state, never as a number or a line,
       while inventory rows 4.11 and 4.12 are `convention`
-- [ ] Act two says it is an example week, not a program, on its title step and
+- [x] Act two says it is an example week, not a program, on its title step and
       on every day's stage
-- [ ] The page speaks to the reader as "you" throughout
+- [x] The page speaks to the reader as "you" throughout
 - [ ] The release form says what the address is used for; a test address
       lands as a row in the Workspace Sheet (and is then deleted), a filled
       honeypot lands nowhere, and the form becomes a link to the app at
       release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
-- [ ] Readable at 400 px wide, in the app's one light theme; first paint
+- [x] Readable at 400 px wide, in the app's one light theme; first paint
       under 50 kB compressed
-- [ ] The example read is marked invented and no personal data is on the page
+- [x] The example read is marked invented and no personal data is on the page
 
 ## Unresolved questions
 
-None. The four still open on 2026-10-02 were settled by Peter that day: the
-repository and its name (§1), which app the page describes (§3), the voice
-(§4), and where release addresses go (§5).
+- **How a release redeploys the site.** §3 planned a workflow in the app's
+  repository that calls the site's deploy hook when the release tag is pushed.
+  It needs the hook stored as a GitHub secret, and it puts a file in a
+  repository the Non-Goals keep untouched. The alternative is one more line in
+  the release step that already tags this repo: redeploy the site through the
+  Vercel connector, as step 5 already reads production through it. Put to
+  Peter on 2026-10-02.
+
+The four questions open earlier that day were settled by Peter: the repository
+and its name (§1), which app the page describes (§3), the voice (§4), and
+where release addresses go (§5).
