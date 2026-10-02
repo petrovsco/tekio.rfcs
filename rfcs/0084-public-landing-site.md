@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.1 and builds plainly at the v2.1.0 tags; release redeploys go through the release procedure. Next: the Vercel project and staging at stg.tekio.fyi, then the Apps Script and, at the site's first release, the apex."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.1 and builds plainly at the v2.1.0 tags; its Vercel project tekio-site exists, with nothing deployed. Next: the staging login and which branch Vercel builds as production (Unresolved questions), then stg.tekio.fyi, the Apps Script and, at the site's first release, the apex."
 label: feature
 ---
 
@@ -76,6 +76,13 @@ label: feature
   at the commit that marked 2.1.0 released (pushed from a device session,
   since a cloud session's git proxy refused the tag), and the site builds with
   a plain `npm run build`, reading both repositories at `v2.1.0`.
+- **2026-10-02** — the Vercel project `tekio-site` exists in
+  `bubolazi-projects`, linked to `petrovsco/tekio.site` as Astro, with nothing
+  deployed. Vercel will not name `master` the production branch before the
+  branch exists, so the project holds `develop` for now, and every deployment
+  sits behind Vercel's own login until that is settled (Unresolved
+  questions). `BASIC_AUTH_ENABLED` is set for Preview; the staging user and
+  password are entered by hand rather than copied out of the app's project.
 
 ## Summary
 
@@ -422,7 +429,15 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Unresolved questions
 
-None. The five questions open on 2026-10-02 were settled by Peter that day:
+One, asked 2026-10-02: which branch Vercel builds as production until the
+site's first release. Vercel names `master` only once it exists, and holding
+`develop` would publish every `develop` push with no gate. Either `master` is
+created now at `develop`'s commit with its deployments switched off, so
+staging gets the sign-in page today and the first release switches them on;
+or every deployment stays behind Vercel's own login until that release, and
+`stg.tekio.fyi` cannot show the sign-in page before it.
+
+The five questions open earlier on 2026-10-02 were settled by Peter that day:
 the repository and its name (§1), which app the page describes (§3), the voice
 (§4), where release addresses go (§5), and how a release redeploys the site
 (§3).
