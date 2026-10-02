@@ -18,7 +18,7 @@ These look like defects on every first read and are all decisions:
 
 - **One hardcoded user.** `USER_ID` in `src/constants/app.ts`; every query
   filters by it; there is no sign-in. Multi-user is [roadmap
-  003](rfcs/0003-rls-auth-v1.1.md), and opening the app to other people is the
+  003](rfcs/0003-lock-the-database.md), and opening the app to other people is the
   standing goal — so *new* code should not add fresh single-user shortcuts, but
   the existing ones are not bugs.
 - **RLS is wide open on purpose** — `USING (true)` while there is no auth. A
@@ -27,17 +27,16 @@ These look like defects on every first read and are all decisions:
   Router; it was removed in 2.0.58 for carrying zero routes.
 - **The database client is a `PostgrestClient`**, not `supabase-js`. Only
   `.from()` and `.rpc()` exist — `supabase.auth`, `.storage`, `.channel()` and
-  `.functions` do not. Edge functions go through `fetch` in
-  `src/lib/assistant/client.ts`.
+  `.functions` do not. There are no edge functions since the assistant was
+  deleted (2.1.17).
 - **`any` at the database edge.** Supabase rows arrive untyped and are narrowed
   at the boundary. ESLint warns rather than errors on purpose.
 - **Staging writes to the production database.** A row tagged
   `origin = 'staging'` is a real training session, not a test fixture. Never
   propose deleting rows by that tag.
-- **`EditModal.tsx` and `ProgramTab.tsx` are long** (800+ lines) and known.
-  Splitting them is scheduled in
-  [roadmap 048](rfcs/done/0048-simplification-candidates.md), so "this file is too
-  big" is not a new finding.
+- **`EditModal.tsx` is long** (800+ lines) and known. Splitting it is
+  scheduled in [roadmap 048](rfcs/done/0048-simplification-candidates.md), so
+  "this file is too big" is not a new finding.
 
 ## 2. Where the real risk is
 
@@ -50,10 +49,11 @@ These look like defects on every first read and are all decisions:
   reviewer who "corrects" a rep range from memory has broken the product's one
   promise. Tidying the code *around* such a constant is fine; moving the value
   is not.
-- **Reads must not run on the program cycle.** Home and Adaptations answer
-  "what is missing" over their own grounded 14-day window. `CYCLE` is a property
-  of the user's *program*, not of the read. Unifying the two looks like a
-  simplification and is a correctness bug.
+- **Reads must not run on a program cycle.** Home and Adaptations answer
+  "what is missing" over their own grounded 14-day window. Program and its
+  6-week cycle were removed in 2.1.17 ([0087](rfcs/0087-remove-program.md)); when
+  a rebuilt Program brings a cycle back, it is a property of the user's plan,
+  not of the read, and unifying the two is a correctness bug.
 - **Doctrine caps bind proposals.** At most 4 menu sections (3 used, 1 spare);
   a new signal is an input to an existing read before it is a destination; and
   "the user can turn it off" is never a justification. A review that suggests a

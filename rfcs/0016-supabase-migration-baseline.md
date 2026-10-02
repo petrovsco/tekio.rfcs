@@ -2,7 +2,7 @@
 title: Baseline the Supabase schema into the repo
 authors: [Peter Petrov]
 created: 2026-08-26
-last_updated: 2026-08-30
+last_updated: 2026-10-02
 status: blocked
 status_note: "**needs Peter to run it.** Requires the project access token and the DB password, so an agent cannot do this half."
 label: infra
@@ -60,7 +60,7 @@ itself is safe. The thing to watch is the commit afterwards: the generated
 baseline may include RLS policies that are deliberately wide open
 (`USING(true)`), which is the current intentional MVP posture and must not be
 "tidied up" on sight. That posture changes in
-[0003-rls-auth-v1.1.md](0003-rls-auth-v1.1.md), not here.
+[0003-lock-the-database.md](0003-lock-the-database.md), not here.
 
 ## Acceptance
 

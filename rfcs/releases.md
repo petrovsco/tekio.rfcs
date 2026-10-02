@@ -23,6 +23,12 @@ assistant, cardio's secondary reads, the Weights chip cloud, the program
 template picker, brief 003's name) need a deeper look before anything is
 cut. Keepers become briefs; cuts execute from 034.
 
+**Reviewed 2026-10-02**: the assistant deleted, Cardio's frequency chart cut,
+the Weights chips capped to the 8 most recent, 003 renamed, and Program removed
+entirely to be rebuilt later ([0087](0087-remove-program.md)). Built as
+v2.1.17; the tables it leaves behind are queued in
+[0088](0088-release-2-2-0-schema-drops.md), this release's schema-drops brief.
+
 [0082](done/0082-home-adaptations-line-weight.md) (done, v2.1.2–v2.1.4): the
 §6 verdict was recorded **not met** on 2026-09-30 because Home's adaptations line
 was correct but hard to spot. It was fixed and re-walked the same day, and
@@ -148,7 +154,7 @@ In running order:
     2026-09-08** (v2.0.58–v2.0.87): all 30 simplification candidates landed in
     sixteen units, `knip` reports zero, and the three findings it made on the
     way became [0069](done/0069-sleep-logs-row-origin.md),
-    [0070](0070-week-start-day-program-week.md) and
+    [0070](done/0070-week-start-day-program-week.md) and
     [0071](done/0071-retire-flat-exercises-fallback.md), none of them tagged to a
     release yet.
 11. [0067](done/0067-ground-1rm-estimator.md) — the estimated 1RM Weights prints,

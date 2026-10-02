@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-02
 status: backlog
-status_note: "Recorded on Peter's call, 2026-10-02, from 0013's grounding. Not kickoff-ready: the Unresolved questions below need answers first."
+status_note: "Recorded on Peter's call, 2026-10-02, from 0013's grounding. The same day Program and its cycle were removed ([0087](0087-remove-program.md)), so there is no deload to bring forward until a rebuilt Program brings one back. The Unresolved questions below stand."
 label: backlog
 ---
 

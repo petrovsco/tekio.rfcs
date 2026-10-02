@@ -9,6 +9,8 @@ Amended 2026-08-29: nine adaptations → seven — Speed and Skill dropped,
 Power reclassified as muscle-linked (execution: roadmap 019).
 Amended 2026-09-05: Habits deleted a month before its R2 expiry — a deliberate
 call, not the calendar's (execution: roadmap 035).
+Amended 2026-10-02: Program deleted, to be rebuilt later; the in-app assistant
+deleted (execution: RFCs 0087 and 0034).
 
 ---
 
@@ -122,14 +124,14 @@ Pending work lives in `docs/roadmap/`, never in this file (house rule
 | Weights | **Core — capture** | Primary stimulus source. |
 | Cardio | **Core — capture** | Endurance / VO₂max / anaerobic stimulus. |
 | Mobility | **Core — capture** | Recovery-axis input with its own volume model. |
-| Program | **Core — plan** | Cycle + today's plan; the thing that closes gaps. |
+| Program | **Deleted 2026-10-02** | Was Core — plan: the cycle and today's plan. Removed on Peter's call in the 0034 review, to be rebuilt later in a better way ([rfcs/0087-remove-program.md](rfcs/0087-remove-program.md)). Nothing ran on it, and Home and Adaptations never read it. A rebuilt Program comes back through §4 like any new surface. |
 | Recovery | **Core — read, Home-only** | Systemic readiness only (P5). Local recovery fuses into the muscle read rather than living here. Already has no tab — the precedent the folds follow. |
 | Sports | **Fold → Cardio** | Already classifies into cardio adaptations; a sport session is a cardio session with a name and a quality rating. UI folds first; the DB merge is its own brief. |
 | Water | **Fold → Recovery** | Hydration is an FRS sub-score, not a destination. |
 | Donations | **Fold → Recovery** | Not training, but real: full-blood donation suppresses endurance performance for weeks, and eligibility windows are already tracked. A readiness input. |
 | Body Weight | **Fold → Home stat** | A trend, not a stimulus or readiness signal. Inline logging on Home; FRS needs the number anyway. |
 | Habits | **Deleted 2026-09-05** | Shelved 2026-08-26; deleted a month before the R2 date on Peter's call (roadmap 035). A checklist is an adherence tool; the app tells me what's missing, it does not make me do it. Sauna/cold/mobility/sleep are captured directly, so habits was a duplicate capture path. The table drops wait for the release in roadmap 025. |
-| Profile / Admin / Assistant settings | **Exempt** | Infrastructure, not sections. Not counted against R1. |
+| Profile / Admin | **Exempt** | Infrastructure, not sections. Not counted against R1. |
 
 **Two conditions attached to the Habits shelf**, and both are met:
 `ExerciseMuscleEditor.tsx` moved to Admin rather than being deleted with the

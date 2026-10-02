@@ -2,9 +2,9 @@
 title: Product questions the screen survey raised — decide keep or cut
 authors: [Peter Petrov]
 created: 2026-09-01
-last_updated: 2026-09-08
-status: planned
-status_note: "committed to 2.2.0 by Peter on 2026-09-05: \"we need to review more deeply before cut\". The work is the review session itself; keepers graduate into their own briefs and cuts execute from this one. Raised by the 2026-09-01 screen survey."
+last_updated: 2026-10-02
+status: in progress
+status_note: "Reviewed with Peter on 2026-10-02: all five decided (see Verdicts). The cuts are built as v2.1.17 on the working branch claude/project-thread-85re9p and wait for his OK to land on develop."
 label: feature
 release: 2.2.0
 ---
@@ -35,9 +35,41 @@ scope creep.
 4. **Program template picker.** A single enrolled user sees "Start a
    program" templates on every Program visit. Worth its screen, or does it
    collapse behind an action?
-5. **Brief 003's stale name.** `003-rls-auth-v1.1.md` predates the 2.0.0
+5. **Brief 003's stale name.** `003-rls-auth-v1.1.md` (now `0003-lock-the-database.md`) predates the 2.0.0
    versioning world — the "v1.1" in the slug and title no longer means
    anything. Rename (ID stays 003) and repoint links, or leave it.
+
+## Verdicts (2026-10-02)
+
+Decided by Peter, one at a time, in the review session.
+
+1. **The in-app assistant — deleted.** It read none of the training; it only
+   edited setup (exercises, muscle links, program days). The button, panel,
+   settings card and both edge functions' source go in v2.1.17. Its table and
+   the two deployed functions wait for the release sweep
+   ([0088](0088-release-2-2-0-schema-drops.md)).
+2. **Cardio secondary reads — the frequency chart is cut, the chips stay.**
+   The type chips keep Progress on one pace scale, so they are load-bearing.
+   The Sessions per week bars go: Home already reads sessions against their
+   targets. The win/loss record, the one thing that card held that nothing
+   else shows, moves into Progress and appears once a sport with a competitor
+   is picked.
+3. **Weights chip cloud — kept, capped to the 8 most recent.** The chips are
+   the one-tap start when no program runs; the concern was the count growing
+   without bound. Picking a name from the autocomplete now fills its last sets
+   the way a chip does (the history is already in memory, so no loader).
+   Reopened once on Peter's word after a first "cut it".
+4. **Program template picker — Program removed entirely**, to be rebuilt later
+   in a better way. Bigger than the question asked, so it has its own RFC:
+   [0087](0087-remove-program.md). Both stored programs were exported first.
+5. **0003's stale name — renamed** to
+   [0003-lock-the-database.md](0003-lock-the-database.md), links repointed.
+
+## Acceptance
+
+- [x] Each of the five has a verdict (above)
+- [x] The cuts are built, tested and walked in a browser (v2.1.17)
+- [ ] v2.1.17 is on `develop`
 
 ## What does not belong here
 
