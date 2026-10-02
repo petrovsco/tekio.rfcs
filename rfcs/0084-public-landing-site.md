@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
 status: in progress
-status_note: "Pushed to petrovsco/tekio.site at 0.1.1, with the app's sign-in gate on its staging preview, and checked in a browser at desktop and phone sizes. The v2.1.0 tag here, the Vercel project, the release-day redeploy, the Apps Script and the apex each wait on Peter's word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.1 and builds plainly at the v2.1.0 tags; release redeploys go through the release procedure. Next: the Vercel project and staging at stg.tekio.fyi, then the Apps Script and, at the site's first release, the apex."
 label: feature
 ---
 
@@ -69,6 +69,13 @@ label: feature
   than the credentials, and a gate switched on without credentials lets nobody
   in. Walked through a local stand-in for Vercel at both sizes: the sign-in
   page, a wrong password turned away, then the site with its cookie.
+- **2026-10-02** — Peter settled how a release redeploys the site: through the
+  release procedure, not a workflow and deploy hook in the app's repository.
+  The app's `CLAUDE.md` (v2.1.15 on `develop`) now tags this repo at step 2
+  and redeploys the site's production at step 4. This repo carries `v2.1.0`
+  at the commit that marked 2.1.0 released (pushed from a device session,
+  since a cloud session's git proxy refused the tag), and the site builds with
+  a plain `npm run build`, reading both repositories at `v2.1.0`.
 
 ## Summary
 
@@ -121,8 +128,9 @@ the app until it exists.
 - **No live data.** The example athlete is invented and marked invented; the
   site never reads the app's data.
 - **No change to the app.** Its code, middleware and Vercel project are
-  untouched. Its repository gains only what releasing the site needs: the
-  release procedure's step that tags this repo (§3).
+  untouched. Its repository gains only what releasing the site needs: two
+  lines in its release procedure, one tagging this repo and one redeploying
+  the site (§3). No workflow and no secret.
 - **Not the domain move.** DNS and the apex redirect belong to the domain move
   thread; this RFC only takes the apex over once the site exists.
 
@@ -189,13 +197,14 @@ reads what the app they would open does. The build shallow-clones both
 repositories (both are public) into a git-ignored `.sources/` folder at the
 last release:
 the app at its newest `vX.Y.Z` tag, and this repo at the tag of the same name.
-This repo has no tags yet, so the release procedure gains a step: tag this
-repo at the registry commit (step 2) with the release's name. 2.1.0 is tagged
-here after the fact, at the commit that marked it released; until it is, a
-build sets `RFCS_REF` to that commit, and so must the Vercel project. The site
-redeploys at each app release; whether a workflow in the app's repository does
-it on the release tag or the release procedure does it is open (Unresolved
-questions).
+So the release procedure tags this repo at the registry commit (step 2) with
+the release's name; 2.1.0 was tagged after the fact, at the commit that marked
+it released. The site redeploys at each app release through the same
+procedure (Peter, 2026-10-02): once both tags exist, step 4 redeploys the
+site's production through the Vercel connector's `create_deployment` or
+`vercel redeploy`. A workflow in the app's repository calling a deploy hook
+was the alternative, and was not taken: it would have put a file and a secret
+in a repository the Non-Goals keep untouched.
 
 A check step fails the build when a cited row does not exist, is struck as
 retired, or changed state since the prose was written, and when the app ships
@@ -380,12 +389,12 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Acceptance
 
-- [ ] `petrovsco/tekio.site` builds with `npm run build`, carries its own
+- [x] `petrovsco/tekio.site` builds with `npm run build`, carries its own
       version, and its `CLAUDE.md` states its branch and version rules
 - [x] The build reads the inventory from this repo and fails on a cited row
       that is missing, retired or changed state (shown by a deliberately
       broken citation)
-- [ ] The build reads both repositories at the last release's tag; this repo
+- [x] The build reads both repositories at the last release's tag; this repo
       carries `v2.1.0`, and the release procedure tags it at every release
 - [ ] Each app release redeploys the site, and no other push to the app does
 - [x] Every number on the page traces to an inventory row, and the example
@@ -413,14 +422,7 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Unresolved questions
 
-- **How a release redeploys the site.** §3 planned a workflow in the app's
-  repository that calls the site's deploy hook when the release tag is pushed.
-  It needs the hook stored as a GitHub secret, and it puts a file in a
-  repository the Non-Goals keep untouched. The alternative is one more line in
-  the release step that already tags this repo: redeploy the site through the
-  Vercel connector, as step 5 already reads production through it. Put to
-  Peter on 2026-10-02.
-
-The four questions open earlier that day were settled by Peter: the repository
-and its name (§1), which app the page describes (§3), the voice (§4), and
-where release addresses go (§5).
+None. The five questions open on 2026-10-02 were settled by Peter that day:
+the repository and its name (§1), which app the page describes (§3), the voice
+(§4), where release addresses go (§5), and how a release redeploys the site
+(§3).
