@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-02
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.3, served at stg.tekio.fyi behind the sign-in; master is the production branch, kept from deploying until the site's first release. Next: one real sign-in on staging, then the Apps Script and, at the site's first release, the apex."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.3, served at stg.tekio.fyi behind the app's sign-in, which opens with the staging login; master is the production branch, kept from deploying until the site's first release. Next: the Apps Script and, at the site's first release, the apex."
 label: feature
 ---
 
@@ -94,9 +94,10 @@ label: feature
   hand, and nothing else in the zone changed. Vercel's own login is off, as on
   the app, so the sign-in page is the only door. The address answers 401 with
   that page and a valid certificate, checked from a device session (a cloud
-  session's proxy cannot reach it). `tekio.site` 0.1.3 names the address. The
-  staging box stays open until one real sign-in shows the app's staging login
-  opens it: the gate's signed-in path has run only on a local stand-in.
+  session's proxy cannot reach it). `tekio.site` 0.1.3 names the address.
+  Peter then signed in there with the app's staging login and the site
+  opened. That was the gate's first signed-in run outside the local
+  stand-in, so the staging box is ticked: 12 of 15.
 
 ## Summary
 
@@ -440,7 +441,7 @@ labelled, and nothing on it says whose app this was built around.
       release
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
-- [ ] `https://stg.tekio.fyi` serves the `develop` build behind the app's
+- [x] `https://stg.tekio.fyi` serves the `develop` build behind the app's
       sign-in page, which the app's staging login opens
 - [x] Readable at 400 px wide, in the app's one light theme; first paint
       under 50 kB compressed
