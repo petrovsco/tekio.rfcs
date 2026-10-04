@@ -29,6 +29,10 @@ entirely to be rebuilt later ([0087](done/0087-remove-program.md)). Built as
 v2.1.17; the tables it leaves behind are queued in
 [0088](0088-release-2-2-0-schema-drops.md), this release's schema-drops brief.
 
+**Second round, 2026-10-04**: water logging removed, the Weights chips removed,
+and blood moved off the readiness card ([0089](0089-remove-water-and-weights-chips.md)),
+as v2.1.18; `water_logs` joins 0088's queue.
+
 [0082](done/0082-home-adaptations-line-weight.md) (done, v2.1.2–v2.1.4): the
 §6 verdict was recorded **not met** on 2026-09-30 because Home's adaptations line
 was correct but hard to spot. It was fixed and re-walked the same day, and

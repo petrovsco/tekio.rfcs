@@ -128,7 +128,7 @@ number are commented in the file itself.
 
 - **Chips**: 11px / 600, 3px radius, 5px×10px padding, 1px `#1a1a1a`
   border. Two tones with distinct meanings: **outline** (white) = an
-  immediate increment that logs on tap (water +250 ml); **solid ink**
+  immediate increment that logs on tap (sauna +10 min); **solid ink**
   (`#1a1a1a` on white text) = the confirm that commits an entry (log
   weight, record a donation).
 - **The stepper**: capture of a continuous daily number (body weight)

@@ -11,6 +11,7 @@ Amended 2026-09-05: Habits deleted a month before its R2 expiry — a deliberate
 call, not the calendar's (execution: roadmap 035).
 Amended 2026-10-02: Program deleted, to be rebuilt later; the in-app assistant
 deleted (execution: RFCs 0087 and 0034).
+Amended 2026-10-04: Water deleted (execution: RFC 0089).
 
 ---
 
@@ -127,7 +128,7 @@ Pending work lives in `docs/roadmap/`, never in this file (house rule
 | Program | **Deleted 2026-10-02** | Was Core — plan: the cycle and today's plan. Removed on Peter's call in the 0034 review, to be rebuilt later in a better way ([rfcs/0087-remove-program.md](rfcs/done/0087-remove-program.md)). Nothing ran on it, and Home and Adaptations never read it. A rebuilt Program comes back through §4 like any new surface. |
 | Recovery | **Core — read, Home-only** | Systemic readiness only (P5). Local recovery fuses into the muscle read rather than living here. Already has no tab — the precedent the folds follow. |
 | Sports | **Fold → Cardio** | Already classifies into cardio adaptations; a sport session is a cardio session with a name and a quality rating. UI folds first; the DB merge is its own brief. |
-| Water | **Fold → Recovery** | Hydration is an FRS sub-score, not a destination. |
+| Water | **Deleted 2026-10-04** | Was Fold → Recovery. Removed on Peter's call ([rfcs/0089-remove-water-and-weights-chips.md](rfcs/0089-remove-water-and-weights-chips.md)): a capture asked for several times a day that no verdict read. It may return when the app can remind, through §4. |
 | Donations | **Fold → Recovery** | Not training, but real: full-blood donation suppresses endurance performance for weeks, and eligibility windows are already tracked. A readiness input. |
 | Body Weight | **Fold → Home stat** | A trend, not a stimulus or readiness signal. Inline logging on Home; FRS needs the number anyway. |
 | Habits | **Deleted 2026-09-05** | Shelved 2026-08-26; deleted a month before the R2 date on Peter's call (roadmap 035). A checklist is an adherence tool; the app tells me what's missing, it does not make me do it. Sauna/cold/mobility/sleep are captured directly, so habits was a duplicate capture path. The table drops wait for the release in roadmap 025. |

@@ -392,16 +392,17 @@ Weights, removed with Program ([0087](rfcs/done/0087-remove-program.md)).
 
 ## 10. Hydration & blood donation
 
-Both fold into Recovery per the doctrine ledger, so their grounding follows the
-fold.
+Both folded into Recovery per the doctrine ledger. Water logging was removed
+on 2026-10-04 ([0089](rfcs/0089-remove-water-and-weights-chips.md)), so 10.1
+and 10.5 are retired; blood donation stays.
 
 | # | Value | Where | Claim | Step 0 | State | Grounding brief |
 |---|---|---|---|---|---|---|
-| 10.1 | `2500` ml | app.ts:33 (`src/constants/app.ts`) | Daily hydration target | unnamed | unknown | home-fused-reads **(due — folding)** |
+| 10.1 | ~~`2500` ml~~ | — | **Removed 2026-10-04** with water logging ([0089](rfcs/0089-remove-water-and-weights-chips.md)). Daily hydration target | unnamed | unknown | — |
 | 10.2 | `56` days | app.ts:78 (`src/constants/app.ts`) | Full-blood donation interval | unnamed | **convention** | [010 §Grounding](rfcs/done/0010-home-fused-reads.md#grounding) — service rule, not physiology; calendar only |
 | 10.3 | `14` days | app.ts:79 (`src/constants/app.ts`) | Plasma donation interval | unnamed | **convention** | [010 §Grounding](rfcs/done/0010-home-fused-reads.md#grounding) — service rule, not physiology; calendar only |
 | 10.4 | ~~`56 * 86400000`~~ | — | **Fixed 2026-08-31.** The literal went with OverviewTab when the fused Home shipped (018 unit 4); `donationStatus` reads `DONATION_ELIGIBILITY_DAYS` (fusedRead.ts:448 (`src/lib/fusedRead.ts`)), so 10.2 is the one copy | — | — | — |
-| 10.5 | `[100, 250, 500]` | FoldSheet.tsx:44 (`src/components/tabs/home/FoldSheet.tsx`) | Quick-add water increments — UI affordance. **Definitional** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): three cup and bottle sizes to tap, chosen so any total is reachable in a few taps. The hydration dose is 10.1, which stays `unknown` | no | **n/a — definitional** | — |
+| 10.5 | ~~`[100, 250, 500]`~~ | — | **Removed 2026-10-04** with water logging ([0089](rfcs/0089-remove-water-and-weights-chips.md)). Quick-add water increments — UI affordance. **Definitional** (2026-09-08, [0066](rfcs/done/0066-inventory-definitional-rows.md)): three cup and bottle sizes to tap, chosen so any total is reachable in a few taps. The hydration dose is 10.1, which stays `unknown` | no | **n/a — definitional** | — |
 
 ## 11. Correctly not gated
 
