@@ -3,8 +3,8 @@ title: Readiness method in Profile — choose how readiness is measured, connect
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
-status: blocked
-status_note: "Direction approved by Peter 2026-10-04 and grounded. Waits only on 0085 landing on develop, which brings the calculator interface and the hooks this RFC builds on."
+status: in progress
+status_note: "Direction approved by Peter and grounded 2026-10-04. 0085 landed on develop (tekio v2.1.26); building on its calculator interface now."
 label: feature
 depends: [85]
 ---
@@ -54,7 +54,7 @@ A user picks in Profile how their readiness is measured: overnight HRV from a
 wearable, a 1-minute HRV reading typed each morning, or a how-you-feel
 check-in. Picking a method that needs a device asks them to connect it.
 Each method has its own calculator, built on the interface
-[0085](0085-push-gate-own-baseline.md) lands, and two notes, resting heart rate
+[0085](done/0085-push-gate-own-baseline.md) lands, and two notes, resting heart rate
 and a short night, print beside the verdict without moving it.
 
 ## Motivation
@@ -90,7 +90,7 @@ and a short night, print beside the verdict without moving it.
   own RFCs ([0022](0022-companion-service-live-sync.md) is the live-sync idea).
   This RFC only shows the connection state and where to connect.
 - **The overnight HRV rung and the bands.** They are
-  [0085](0085-push-gate-own-baseline.md).
+  [0085](done/0085-push-gate-own-baseline.md).
 - **Mixing methods within a day.** A verdict comes from one method.
 
 ## Proposal

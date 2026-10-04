@@ -2,7 +2,7 @@
 
 Reference only: this file states what the evidence *is*. It holds the verbatim
 `## Grounding` block the science-scout run for part 1 of
-[RFC 0085](../rfcs/0085-push-gate-own-baseline.md) returned on 2026-10-04: the
+[RFC 0085](../rfcs/done/0085-push-gate-own-baseline.md) returned on 2026-10-04: the
 candidate readiness inputs ranked from the most evidence down. The bands' own
 block (part 2) stays in the RFC. What the ranking changes, and which inputs
 were chosen, is recorded in the RFC and in the
@@ -42,7 +42,7 @@ were read here or in the 0010 and 0085 blocks.
   - Oura Gen 4 CCC 0.99 (MAPE 6.0%), Oura Gen 3 0.97 (7.2%), WHOOP 4.0 0.94 (8.2%), Garmin Fenix 6 0.87 (10.5%), Polar Grit X Pro 0.82 (16.3%).
   - Nocturnal resting HR CCC 0.86–0.98, MAPE 1.7–3.0%.
   - Design: validation study, 13 healthy adults (6 F), 536 nights, ECG reference. Abstract read via DOAJ — [Dial et al. 2025, Physiol Rep](https://physoc.onlinelibrary.wiley.com/doi/10.14814/phy2.70527) ([abstract](https://doaj.org/article/ea55c9e4369549a0a56e576a581224a4))
-- `[literature]` HRV-guided training gives performance equal to fixed plans, and fewer high-intensity days. Meta-analyses (Düking 2021; Manresa-Rocamora 2021; Medellín Ruiz 2020, 8 RCTs, n = 190) and RCTs (Vesterinen 2016; DeBlauw 2021; Kiviniemi 2007). Every decision rule is baseline-relative (Buchheit 2014). Carried from the 0010 and 0085 blocks, not re-fetched — [0085 #grounding](../rfcs/0085-push-gate-own-baseline.md#grounding)
+- `[literature]` HRV-guided training gives performance equal to fixed plans, and fewer high-intensity days. Meta-analyses (Düking 2021; Manresa-Rocamora 2021; Medellín Ruiz 2020, 8 RCTs, n = 190) and RCTs (Vesterinen 2016; DeBlauw 2021; Kiviniemi 2007). Every decision rule is baseline-relative (Buchheit 2014). Carried from the 0010 and 0085 blocks, not re-fetched — [0085 #grounding](../rfcs/done/0085-push-gate-own-baseline.md#grounding)
 - `[literature]` **Both HRV routes have prescribed training in trials.** A 1-min smartphone-camera reading on waking (DeBlauw 2021, RCT, n = 55) and nocturnal HRV from a wearable (Nuuttila 2022, RCT, n = 40/30). No trial compares the two routes. Carried from 0085.
 - `[literature]` Morning and nocturnal HR/HRV were compared head to head during intensified training in recreational runners. **Title and abstract not read this run** (fetch refused), so the finding and n are unverified — [Nuuttila et al. 2024, Sports Med Open](https://pubmed.ncbi.nlm.nih.gov/39503915/)
 - `[literature]` A smartphone-camera HRV reading was validated against a Polar H7 strap and ECG for LnRMSSD, and agreement is usually reported as near-perfect. Validation study in athletes. **Abstract not read this run**, so n and the agreement statistics are unverified — [Plews et al. 2017, IJSPP](https://journals.humankinetics.com/view/journals/ijspp/12/10/article-p1324.xml)
