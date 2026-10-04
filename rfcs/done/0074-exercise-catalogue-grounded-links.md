@@ -3,8 +3,8 @@ title: A mapped exercise catalogue, grounded by movement pattern
 authors: [Peter Petrov]
 created: 2026-09-27
 last_updated: 2026-10-04
-status: in progress
-status_note: The database steps are live (provenance columns, 31 pattern rows, the audit) and the code is v2.1.34 on the work branch. Two boxes wait on a real first log on staging, read back from the database.
+status: done
+status_note: Shipped in tekio v2.1.34 on develop. Provenance columns, 31 grounded patterns and the audit are live; a first log of a catalogue lift writes its row, its pattern and tagged links, checked against the real database on staging.
 label: feature
 ---
 
@@ -13,11 +13,11 @@ label: feature
 ## Progress log
 
 - 2026-10-04: picked as the next task. Admin left the app the same day in
-  v2.1.19 ([0090](done/0090-admin-out-mobility-in.md)), so this RFC no longer
+  v2.1.19 ([0090](0090-admin-out-mobility-in.md)), so this RFC no longer
   leans on an in-app mapping editor: the catalogue is now the only way a new
   exercise gets links without a hand-written SQL edit. Four `/ground` runs
   (lower body, upper push, upper pull, trunk and carries) landed in
-  [grounding/0074-exercise-catalogue.md](../grounding/0074-exercise-catalogue.md):
+  [grounding/0074-exercise-catalogue.md](../../grounding/0074-exercise-catalogue.md):
   31 patterns, ten forks with a default each. Peter took all ten defaults
   the same morning (inventory D48–D57); row 7.6 now reads partially
   supported. The movement patterns and the first 60 catalogue rows (every
@@ -49,6 +49,15 @@ label: feature
   v2.1.33 makes a first log write `origin` and `source` (`catalogue` or
   `editor`) on its links and set the lift's pattern. The inventory decisions
   became D48–D57, after 0085 took D46 and D47 on develop.
+- 2026-10-04: landed on develop on Peter's "Land it" (tekio v2.1.34). Peter
+  logged one set of *Hack Squat*, a catalogue lift not yet on file, on
+  staging; read back from the live database it is a new row tagged `staging`
+  on the squat pattern, with five links (Glutes 1, Quadriceps 1, Adductors 2,
+  Erectors 3, Hamstrings 3), each `source = catalogue`, `origin = staging` and
+  a `created_at`. The map reads those links on save; the map moving was seen
+  in the stand-in check, not re-watched on staging. A name already on file
+  (*Bulgarian Split Squat*) logged onto its existing row, as intended. All
+  boxes ticked; moved to `done/`.
 
 ## Summary
 
@@ -77,7 +86,7 @@ showed up in a single session on 2026-09-27:
    Extension*) was logged with no links, and *Leg Press* had sat unmapped since
    it was first logged nine days earlier. Every set on an unmapped exercise
    counts for nothing on the muscle read, and nothing says so — the map just
-   reads as a shortfall. [0043](done/0043-scout-named-exercises-catalogue.md)
+   reads as a shortfall. [0043](0043-scout-named-exercises-catalogue.md)
    fixed fourteen of these on 2026-09-03; they come back with every new name.
 
 Both scale badly. The catalogue today is 112 exercises, 102 of them mapped with
@@ -85,8 +94,8 @@ Both scale badly. The catalogue today is 112 exercises, 102 of them mapped with
 "179 rows, **unknown**, no brief". Every link is a claim ("this exercise trains
 this muscle at this level"), and none of them has been checked against a source.
 The level *weights* are grounded (7.1: level 1 = 1 set, level 2 = 0.5, level 3 =
-0, [0042](done/0042-level-3-link-audit.md)); what those weights are applied to is
-not. And the product goal in [0044](done/0044-exercise-name-aliases.md) — other
+0, [0042](0042-level-3-link-audit.md)); what those weights are applied to is
+not. And the product goal in [0044](0044-exercise-name-aliases.md) — other
 users, typing names the catalogue did not anticipate — multiplies both
 problems: a stranger will not open an Admin editor to map their exercises.
 
@@ -102,7 +111,7 @@ problems: a stranger will not open an Admin editor to map their exercises.
 5. *Does it write a number claiming physiological meaning?* **Yes** — every
    link is a classification claim ("a leg press trains the adductors at level
    2"), gated on the same terms as a coefficient since
-   [0066](done/0066-inventory-definitional-rows.md). It needs `/ground` before
+   [0066](0066-inventory-definitional-rows.md). It needs `/ground` before
    implementation; see Proposal §2.
 
 ## Goals
@@ -119,7 +128,7 @@ problems: a stranger will not open an Admin editor to map their exercises.
 
 - Inferring links from a name at runtime (by string match or a model). A
   catalogue is decided by a person and committed, the way
-  [0073](done/0073-garmin-sync-every-activity-type.md) commits Garmin's sport list.
+  [0073](0073-garmin-sync-every-activity-type.md) commits Garmin's sport list.
 - Cardio, sport and mobility movements. This is the weights catalogue;
   mobility links (the `recovery` contribution) keep their own model.
 - New weights for the levels. 7.1 is grounded and stays as it is.
@@ -132,14 +141,14 @@ problems: a stranger will not open an Admin editor to map their exercises.
 ### 1. Provenance on links (small, first, independent)
 
 Add `origin` (the build tag every other user-written table carries, per
-[0037](done/0037-row-origin-tagging.md)), `created_at default now()` and
+[0037](0037-row-origin-tagging.md)), `created_at default now()` and
 `source` (`catalogue` | `editor` | `migration`) to `exercise_muscle_groups`.
 Admin and its editor left the app in v2.1.19
-([0090](done/0090-admin-out-mobility-in.md)); whatever writes a link from the
+([0090](0090-admin-out-mobility-in.md)); whatever writes a link from the
 app (the first-log create flow, §3) writes through `withOrigin` with
 `source = 'catalogue'` or, for an answered movement question, `'editor'`, and a hand-written SQL edit
 uses `source = 'migration'`. This is additive and safe under the migration policy
-([0024](done/0024-staging-shared-database-safety.md)). Existing rows get
+([0024](0024-staging-shared-database-safety.md)). Existing rows get
 `source = 'migration'` and a null `created_at`: their history is unknown, and
 the column says so rather than inventing a date.
 
@@ -159,7 +168,7 @@ changes:
   flexion. The final list is a Grounding output, not a guess here.
 - **Each pattern gets one grounded link set**: which muscles at which level,
   with sources in a `## Grounding` block produced by `/ground`
-  (`science-scout`), in the same shape as [0042](done/0042-level-3-link-audit.md).
+  (`science-scout`), in the same shape as [0042](0042-level-3-link-audit.md).
   Roughly twenty patterns to scout instead of several hundred rows.
 
 An exercise inherits its pattern's links. Where a variant really differs (a
@@ -172,7 +181,7 @@ reviewed like any other claim.
 A committed list in the code repo (`src/constants/exerciseCatalogue.ts`) of the
 common barbell, dumbbell, cable, machine and bodyweight lifts, each with
 canonical name, pattern, links (inherited or overridden with a reason) and alias
-spellings for the [0044](done/0044-exercise-name-aliases.md) resolver.
+spellings for the [0044](0044-exercise-name-aliases.md) resolver.
 
 **The app reads the file; there is no seed** (Peter's call, 2026-10-04). The
 Weights picker offers catalogue lifts after the user's own. The first time one
@@ -211,7 +220,7 @@ against its pattern, and may reverse it.
 
 | Exercise → muscle | Was | Now | Why |
 |---|---|---|---|
-| Leg Press → Adductors | 3 | **2** | Same squat pattern as Back Squat, Goblet Squat and Bulgarian Split Squat, which [0042](done/0042-level-3-link-audit.md) rows 10–12 moved to 2. Leg Press was created after that audit. This is the "pending Leg Press mapping" in §3, done by hand rather than from the catalogue. |
+| Leg Press → Adductors | 3 | **2** | Same squat pattern as Back Squat, Goblet Squat and Bulgarian Split Squat, which [0042](0042-level-3-link-audit.md) rows 10–12 moved to 2. Leg Press was created after that audit. This is the "pending Leg Press mapping" in §3, done by hand rather than from the catalogue. |
 | Lateral Lunge → Quadriceps | 2 | **1** | The working knee flexes to about 90° under load, like a single-leg squat. Adductors stay at 1. |
 | Back Extension → split in two | Erectors 1, Glutes 2, Hamstrings 2 | two rows | The first variant override §2 anticipates. **Back Extension (flat-back)**: Glutes 1, Hamstrings 1, Erectors 2. The spine is held still and the hip moves. The existing row was renamed, so its sessions moved with it, and its aliases (plus the old name) point to it. **Back Extension (round-back)**: Erectors 1, Glutes 2, Hamstrings 2. The spine moves through its range. |
 
@@ -245,7 +254,7 @@ Four science-scout runs on 2026-10-04, one decision each: L (lower body), P
 (upper push and shoulder isolation), U (upper pull), T (trunk, carries and
 Olympic lifts). The verbatim blocks, the consolidated table of 31 pattern link
 sets and the ten forks live in
-[grounding/0074-exercise-catalogue.md](../grounding/0074-exercise-catalogue.md#grounding);
+[grounding/0074-exercise-catalogue.md](../../grounding/0074-exercise-catalogue.md#grounding);
 grounding blocks travel there and are never copied here.
 
 **Verdicts.** Supported: squat, hip thrust, knee extension and flexion, calf
@@ -272,7 +281,7 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
 
 ## Acceptance
 
-- [ ] `exercise_muscle_groups` has `origin`, `created_at` and `source`; every
+- [x] `exercise_muscle_groups` has `origin`, `created_at` and `source`; every
       path that writes a link sets all three (verified by reading back a row
       the seed wrote and, if the create flow writes links, one it wrote).
 - [x] A `## Grounding` section in this RFC covers every movement pattern's link
@@ -281,7 +290,7 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
 - [x] Every lift in the database has a `movement_pattern_id` (mobility and power drills are out of scope, listed in the audit); every link
       either matches its pattern or carries a written reason. The audit's diff
       is recorded in a sidecar (`0074/audit.md`).
-- [ ] Typing a catalogue name or one of its aliases in the Weights picker
+- [x] Typing a catalogue name or one of its aliases in the Weights picker
       offers the lift, and logging it the first time writes its row and links
       and moves the Home map (verified in the browser against the real
       database, not only a stand-in).
@@ -296,7 +305,7 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
   links, Peter's call on 2026-10-04. Saving without an answer still works and
   leaves the lift unmapped.
 - ~~**Pattern granularity.**~~ Settled by the scout runs: 31 patterns, see
-  [the grounding file](../grounding/0074-exercise-catalogue.md#pattern-link-sets).
+  [the grounding file](../../grounding/0074-exercise-catalogue.md#pattern-link-sets).
 - ~~**Where the catalogue lives.**~~ Read by the app from the committed file,
   a lift becoming a row on first log, Peter's call on 2026-10-04.
 - ~~**The movement question's shape.**~~ Two taps: Legs, Push, Pull, Arms or

@@ -37,7 +37,7 @@ and `goals` reads like [0040](../0040-adaptation-goals.md) already exists.
 - Anything a build still reads, including the program tables and `water_logs`
   that [0088](../0088-release-2-2-0-schema-drops.md) queues for the 2.2.0 sweep.
 - `movement_patterns`. It is out of this RFC for good: the exercise catalogue
-  ([0074](../0074-exercise-catalogue-grounded-links.md)) makes it live, with the
+  ([0074](0074-exercise-catalogue-grounded-links.md)) makes it live, with the
   grounded patterns every lift will point at.
 - `sport_types` and `sport_sessions`, which the sport sync and Cardio read.
 - `user_profiles`, which `develop` reads.

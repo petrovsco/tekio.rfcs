@@ -2,7 +2,7 @@
 
 Reference only: this file states what the evidence *is*. It holds the verbatim
 `## Grounding` blocks of the four science-scout runs for
-[RFC 0074](../rfcs/0074-exercise-catalogue-grounded-links.md), run in parallel
+[RFC 0074](../rfcs/done/0074-exercise-catalogue-grounded-links.md), run in parallel
 on 2026-10-04 — L (lower body), P (upper push and shoulder isolation),
 U (upper pull) and T (trunk, carries, Olympic lifts). Above them sits the one
 table the catalogue is built from: every movement pattern with its link set.
