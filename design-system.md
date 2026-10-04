@@ -55,7 +55,7 @@ Two states asked for one and were refused, so the rule has teeth:
 | Card | `#ffffff`, 1px `#e2e2e0` border, 3px radius |
 | Hairline inside a card | `#eeeeec` |
 | Chrome hairline (nav border) | `#d6d6d4` |
-| Sheet / modal | `#ffffff`, 2px `#1a1a1a` border, 6px radius |
+| Sheet / modal | `#ffffff`, 6px radius; on a phone a 1px `#1a1a1a` top edge (the scrim says it is a sheet), as a centred card a 2px `#1a1a1a` border |
 | Scrim under a sheet | `rgba(26,26,26,0.34)` |
 | Page gutter | 16px; card padding 7–10px |
 

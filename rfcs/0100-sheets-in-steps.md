@@ -4,8 +4,9 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: in progress
-status_note: The muscle sheet, the map tap and the draggable handle are on tekio branch claude/recovery-sheet-review-haueyj (v2.1.27), checked in emulation. Still open are a check on the owner's phone and the recovery sheet, which waits for 0092.
+status_note: The muscle sheet, map tap, draggable handle and the owner's first review fixes are on tekio branch claude/recovery-sheet-review-haueyj (v2.1.29), checked in emulation. Still open are the owner's phone check, in-sheet catalogue search (after 0074) and the recovery sheet (after 0092).
 label: feature
+depends: [74, 92]
 release: 2.2.0
 ---
 
@@ -56,8 +57,7 @@ measured the following
 
 - No change to what any read computes, and no new number on screen.
 - Weights tab (owned by 0074 while it is in flight). Searching the full
-  exercise catalogue inside the sheet waits for 0074 to land; until then the
-  sheet searches the exercises already known to the app.
+  exercise catalogue inside the sheet waits for 0074 to land (Proposal 6).
 - RecoverySheet.tsx until 0085 and then 0092 have landed on `develop`, because
   both change that file.
 - The desktop centred-card layout keeps no handle and no drag.
@@ -89,7 +89,17 @@ measured the following
    now says the mark lives in code comments and RFCs, never in the UI. The
    numbers it sat beside on screen (the 48 h recovery window and the blood
    windows) already carry their grounding in 0010.
-5. **Recovery sheet**, after 0085 and 0092 land: the same pattern. The read
+5. **Owner's review, 2026-10-04**: the sheet's top edge on a phone is 1px
+   rather than 2px, because the dimmed page above already says it is a
+   sheet. The verdict's plus glyph becomes a ring, so the footer button is
+   the only thing that looks like an action. "Same again" becomes "Add a
+   set", because the copy is only a starting point. The door to Adaptations
+   says where it leads.
+6. **Search inside the sheet** covers only the exercises the app already
+   links to the muscle until 0074 lands. After that it searches the whole
+   catalogue, and a new name gets 0074's movement question in the sheet,
+   so logging never leaves for Weights.
+7. **Recovery sheet**, after 0085 and 0092 land: the same pattern. The read
    comes first, then rows for Sauna, Cold and Sleep, then one input per step,
    ending in Undo.
 
@@ -125,6 +135,7 @@ the read and should not change.
 - [x] Every control in the muscle sheet's log steps is at least 44 px tall
 - [x] PLACEHOLDER is not visible on any screen
 - [x] The handle drags the sheet: down past a quarter closes, up opens full screen when the content needs it and springs back when it does not
+- [ ] Search inside the sheet covers the full catalogue, with the movement question for a new name (after 0074)
 - [ ] Recovery sheet in the same steps, after 0085 and 0092 land
 - [ ] Verified on the owner's phone
 
