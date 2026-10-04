@@ -3,8 +3,8 @@ title: Remove water logging and the Weights chips
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
-status: in progress
-status_note: "Peter's call on 2026-10-04. Built and browser-checked as v2.1.18 on the working branch claude/project-thread-85re9p; waits for his OK to land on develop. The water_logs drop waits for the 2.2.0 sweep (0088)."
+status: done
+status_note: "Peter's call on 2026-10-04; landed on develop as v2.1.18 the same day. The water_logs drop waits for the 2.2.0 sweep (0088)."
 label: feature
 release: 2.2.0
 ---
@@ -13,7 +13,7 @@ release: 2.2.0
 
 ## Summary
 
-A second round of cuts after [0034](done/0034-v2-1-candidates-tbc.md). Water
+A second round of cuts after [0034](0034-v2-1-candidates-tbc.md). Water
 logging leaves the app entirely: the readiness card's WATER column, the WATER
 tile on Home, the water capture in both sheets, its edit form, the store and
 its database file. The Weights chips go too, now that an autocomplete pick
@@ -46,7 +46,7 @@ readiness card: it keeps its tile beside bodyweight at the foot of Home.
 
 - Moving or changing blood donation's capture, its eligibility or its hold.
 - Deleting water rows. `water_logs` is queued in
-  [0088](0088-release-2-2-0-schema-drops.md), which needs Peter's word because
+  [0088](../0088-release-2-2-0-schema-drops.md), which needs Peter's word because
   a table drop takes its rows.
 
 ## Proposal
@@ -76,7 +76,7 @@ gains `water_logs`.
 - [x] `npm run build`, `npm run test` (193 passed), `npm run lint` (no errors),
   `npm run knip` (nothing reported) green on v2.1.18
 - [x] Doctrine ledger, inventory §10 and 0088 updated in the same session
-- [ ] v2.1.18 on `develop`, with Peter's OK
+- [x] v2.1.18 on `develop`, with Peter's OK (2026-10-04)
 
 ## Unresolved questions
 
