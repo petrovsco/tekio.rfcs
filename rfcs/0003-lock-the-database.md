@@ -2,7 +2,7 @@
 title: Lock the database — real logins, and rows only their owner can read
 authors: [Peter Petrov]
 created: 2026-07-08
-last_updated: 2026-09-08
+last_updated: 2026-10-02
 status: backlog
 status_note: explicitly post-MVP; nothing starts it before the general-use launch. Left in backlog at the 2.1.0 planning (Peter, 2026-09-05).
 label: infra

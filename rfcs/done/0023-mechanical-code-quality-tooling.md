@@ -2,7 +2,7 @@
 title: Mechanical code quality — ESLint, dead-code detection, perf budget
 authors: [Peter Petrov]
 created: 2026-08-30
-last_updated: 2026-09-08
+last_updated: 2026-10-02
 status: done
 status_note: "all five scope items landed 2026-09-08, v2.0.58 to v2.0.62: first paint 552 kB → 324 kB with the 500 kB warning gone, `npm run lint` and `npm run knip` green, [docs/code-review.md](../../code-review.md) written and pointed at from `CLAUDE.md`, and `npm run perf` failing on a bundle delta against a committed baseline that also holds the first startup number (1490 ms to the Home read). Spun out of [0009-feature-grounding.md](0009-feature-grounding.md) on 2026-08-30 so that brief holds only the grounding back-fill it still tracks. Committed to 2.1.0 by Peter on 2026-09-05."
 label: infra
@@ -129,7 +129,7 @@ monday → sunday survived a full page reload, then went back to monday, and
 `user_profiles` was checked in the database afterwards to confirm it is
 `monday` with `hr_max_override` and `birth_date` untouched.
 
-**What this re-opens:** [003 — RLS + auth](../0003-rls-auth-v1.1.md). When sign-in
+**What this re-opens:** [003 — RLS + auth](../0003-lock-the-database.md). When sign-in
 lands, `@supabase/auth-js` returns; it should return *lazily*, on the sign-in
 path, rather than back into the chunk that paints Home.
 

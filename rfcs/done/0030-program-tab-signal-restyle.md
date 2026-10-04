@@ -45,7 +45,7 @@ ink weight or an uppercase label.
   a restyle.
 - Any change to cycle math, auto-advance, or program data.
 - Whether the template picker earns its screen — parked in
-  [0034](../0034-v2-1-candidates-tbc.md).
+  [0034](0034-v2-1-candidates-tbc.md).
 
 ## Doctrine check (§4)
 

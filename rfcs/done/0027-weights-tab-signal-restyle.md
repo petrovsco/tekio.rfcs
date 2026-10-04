@@ -22,7 +22,7 @@ is what 028 (Cardio) and 029 (Mobility) copy.
   "+ Add set" indigo link.
 - **Exercise chip cloud** — 30+ white pill chips in the old geometry. Re-skin
   per §8 only; whether the cloud is the right capture control at all is a
-  product question, parked in [0034](../0034-v2-1-candidates-tbc.md).
+  product question, parked in [0034](0034-v2-1-candidates-tbc.md).
 - **PROGRESS card** — Recharts line in indigo with dashed grid, indigo
   1RM/Volume toggle; deload dots need the `signal` treatment from the chart
   spec.
@@ -95,4 +95,4 @@ doctrine §1).
   the six block types. 028–032 should reuse them rather than add near-duplicates.
 - **The exercise chip cloud was only re-skinned.** Whether a 30-chip cloud is
   the right capture control at all stays parked in
-  [0034](../0034-v2-1-candidates-tbc.md).
+  [0034](0034-v2-1-candidates-tbc.md).

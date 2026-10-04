@@ -2,9 +2,9 @@
 title: "The program week ignores \"Week starts on\""
 authors: [Peter Petrov]
 created: 2026-09-08
-last_updated: 2026-09-08
-status: backlog
-status_note: "needs Peter's decision between the two shapes below. Found on the way through [0048](done/0048-simplification-candidates.md); filed 2026-09-08 with the stored-key problem that 048 had not spotted."
+last_updated: 2026-10-02
+status: discarded
+status_note: "Discarded 2026-10-02: Program was removed ([0087](0087-remove-program.md)), and with it the program week and the stored key this was about. A rebuilt Program designs its own week."
 label: backlog
 ---
 
@@ -34,7 +34,7 @@ variant choice made that morning is filed under a Monday six days back.
 **Today this costs nothing.** The stored preference is `monday`, which is what
 Peter wants (Europe, ISO weeks), so every site agrees by accident. It becomes
 real the moment the preference is flipped — and it becomes unavoidable under
-the [general-use objective](0003-rls-auth-v1.1.md), when someone whose
+the [general-use objective](../0003-lock-the-database.md), when someone whose
 week starts on Sunday opens the app.
 
 ## Why "just thread the preference through" is the wrong fix
@@ -69,7 +69,7 @@ data risk.
 preference-independent key, migrate `program_week_overrides`, thread the
 preference through all four sites, and check the change against a real week's
 overrides. Bigger, and it needs its own migration under
-[0024](done/0024-staging-shared-database-safety.md).
+[0024](0024-staging-shared-database-safety.md).
 
 A is the recommendation. B is only worth it if a user's week genuinely starting
 on Sunday should move their *training* week too — and that is a training

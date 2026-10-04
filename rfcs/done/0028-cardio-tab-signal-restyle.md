@@ -36,7 +36,7 @@ green chips can't survive as-is; ink-weight or count can carry the same fact.
 
 Whether the per-type Progress filter and the per-sport Sessions-per-week
 chart earn their screen at all is a product question — parked in
-[0034](../0034-v2-1-candidates-tbc.md). This brief re-skins what is there.
+[0034](0034-v2-1-candidates-tbc.md). This brief re-skins what is there.
 
 ## Non-Goals
 
@@ -92,4 +92,4 @@ grounding, R1 untouched.
   `SSBadge` and `DeloadBadge`.
 - **The per-type Progress filter and the per-sport Sessions-per-week card were
   re-skinned, not questioned.** Whether either earns its screen stays parked in
-  [0034](../0034-v2-1-candidates-tbc.md).
+  [0034](0034-v2-1-candidates-tbc.md).

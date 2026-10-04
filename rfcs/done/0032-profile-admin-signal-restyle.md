@@ -47,7 +47,7 @@ re-skin must not make them slower to use.
 
 - Any settings behaviour change; the drag-reorder logic; the assistant's
   functionality (its product question is parked in
-  [0034](../0034-v2-1-candidates-tbc.md)).
+  [0034](0034-v2-1-candidates-tbc.md)).
 - `ExerciseMuscleEditor`'s move from Habits into Admin — that belongs to the
   Habits expiry work ([0035](0035-habits-expiry-deletion.md)), not the restyle. If it has
   already moved by kickoff, restyle it here like everything else.

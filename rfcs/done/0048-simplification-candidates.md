@@ -2,7 +2,7 @@
 title: "Simplification candidates — a ranked list for `/simplify`"
 authors: [Peter Petrov]
 created: 2026-09-05
-last_updated: 2026-09-10
+last_updated: 2026-10-02
 status: done
 status_note: all 30 candidates landed across v2.0.58 → v2.0.87, in sixteen units; the progress log below has them. Committed to 2.1.0 by Peter on 2026-09-05 as spare-time units.
 label: infra
@@ -50,7 +50,7 @@ label: infra
 - **2026-09-08, v2.0.86 — the three loose findings get briefs.** The
   "found on the way" list held three facts with no ticket; each now has one
   ([0069](0069-sleep-logs-row-origin.md),
-  [0070](../0070-week-start-day-program-week.md),
+  [0070](0070-week-start-day-program-week.md),
   [0071](0071-retire-flat-exercises-fallback.md)), and checking them against
   the code and the live database corrected two of the three claims.
 - **2026-09-08, v2.0.87 — Tier 3 closed, and the brief with it: C2**, one unit.
@@ -1476,7 +1476,7 @@ decision is the next step.
   (`toggleWeekVariant` in the store, the `weekStartDate` default in
   `lib/db/program.ts`, and the `weekStart` in `ProgramTab` and `TodaysPlan`),
   while four other screens honour it. A behaviour decision, not a cleanup.
-  **Now filed as [0070](../0070-week-start-day-program-week.md)** (backlog — it needs
+  **Now filed as [0070](0070-week-start-day-program-week.md)** (backlog — it needs
   Peter's choice between two shapes), which adds the thing this entry had not
   spotted: `week_start_date` is half of a stored upsert key, so simply threading
   the preference through would make an existing week's variant choices
@@ -1648,7 +1648,7 @@ Housekeeping:
 - [x] The four "found on the way" items each have a brief or a recorded
       decision — 2026-09-08, v2.0.86. Five items, not four: sleep origin →
       [0069](0069-sleep-logs-row-origin.md), `weekStartDay` →
-      [0070](../0070-week-start-day-program-week.md), flat `exercises` →
+      [0070](0070-week-start-day-program-week.md), flat `exercises` →
       [0071](0071-retire-flat-exercises-fallback.md), the 1RM estimator →
       [0067](0067-ground-1rm-estimator.md) (filed earlier), and the `CYCLE`
       correction, which was a decision recorded in CLAUDE.md at the time. Two of

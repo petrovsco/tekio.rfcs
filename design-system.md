@@ -40,7 +40,9 @@ Two states asked for one and were refused, so the rule has teeth:
 - **Deload week** is a fact about the cycle, not an urgency, so it never
   recolours the header or a card. It is stated instead — an outlined micro
   label, `DELOAD · WK 6` (§5, 8px uppercase, tracked). The old amber
-  `dl-*` tokens carried no meaning in this system.
+  `dl-*` tokens carried no meaning in this system. The label left with
+  Program in 2.1.17; the ruling stands for any fact stated the same way, such
+  as `SS` and `PR`.
 - **Destructive controls** do not get a warning colour either. What makes a
   delete safe is the confirmation step, not a red button; the weight in §6
   carries the emphasis instead (§8).
@@ -53,7 +55,7 @@ Two states asked for one and were refused, so the rule has teeth:
 | Card | `#ffffff`, 1px `#e2e2e0` border, 3px radius |
 | Hairline inside a card | `#eeeeec` |
 | Chrome hairline (nav border) | `#d6d6d4` |
-| Sheet / modal | `#ffffff`, 2px `#1a1a1a` border, 6px radius |
+| Sheet / modal | `#ffffff`, 6px radius; on a phone a 1px `#1a1a1a` top edge (the scrim says it is a sheet), as a centred card a 2px `#1a1a1a` border |
 | Scrim under a sheet | `rgba(26,26,26,0.34)` |
 | Page gutter | 16px; card padding 7–10px |
 
@@ -128,7 +130,7 @@ number are commented in the file itself.
 
 - **Chips**: 11px / 600, 3px radius, 5px×10px padding, 1px `#1a1a1a`
   border. Two tones with distinct meanings: **outline** (white) = an
-  immediate increment that logs on tap (water +250 ml); **solid ink**
+  immediate increment that logs on tap (sauna +10 min); **solid ink**
   (`#1a1a1a` on white text) = the confirm that commits an entry (log
   weight, record a donation).
 - **The stepper**: capture of a continuous daily number (body weight)
@@ -170,8 +172,8 @@ marks the one thing being pointed at. It never becomes a second palette.
   as a filled muscle. The emphasised bar goes ink.
 - **A second series** is `#c9c9c7`. There is no third: three series in one
   frame is the moment to draw two charts (P2).
-- **The accent** marks single points, never a series — a deload session, a
-  stale capture, the value the card is about.
+- **The accent** marks single points, never a series — a stale capture, the
+  value the card is about.
 - **Reference lines** (a target, a cap): `#c9c9c7`, 1px, dashed. This is the
   only dash in the system.
 - **Tooltip**: white, 1px `#e2e2e0`, 3px radius, 11px, no shadow.
@@ -198,7 +200,11 @@ question a tap just asked, it is T2. Everything else is T3.
 Every number that claims physiological meaning and has not passed
 `/ground` is marked PLACEHOLDER on the boards and in code comments —
 currently the cycle target (60 sets), the recovery window (2 days), the
-push threshold, the per-quality staleness windows, and the blood-donation
-windows. The rule is: the mark stays visible until the number is
+per-quality staleness windows, and the blood-donation windows. The rule is: the mark stays until the number is
 grounded. The grounding work itself is tracked in the roadmap (018), not
 here.
+
+The mark never reaches the app's screens. It is a note for whoever builds
+the app, and a user has no use for it: the screen prints the number alone,
+and the mark lives in the code comment beside the constant and in the RFC
+that grounds it (owner's call, 2026-10-04, RFC 0100).
