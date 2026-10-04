@@ -139,6 +139,11 @@ D46). Row 4.17's calculator reads ln HRV, keeps the current week out of the
 baseline and waits for 14 nights. Row 4.18 is new: the instruction a moderate
 band gives the day.
 
+**Updated 2026-10-04 by [0092](rfcs/0092-readiness-method-in-profile.md#grounding)**: the two typed rungs and
+two notes. Row 4.17's math now also reads a typed morning HRV, on its own
+baseline. Rows 4.19–4.21 are new: the check-in's lines, the resting heart rate
+note and the short-night note.
+
 **Step 0** records whether the trigger spec in
 `.claude/skills/ground/SKILL.md` catches the
 number, and how cleanly:
@@ -312,6 +317,9 @@ the sharpest debt in the app because they read as settled fact.
 | 4.16 | `48` h / `21` d | app.ts:135 (`src/constants/app.ts`), read at fusedRead.ts:454-455 (`src/lib/fusedRead.ts`) | `DONATION_SUPPRESSION`: a full-blood donation gates a Hold for 48 h and dims the two aerobic reads for 21 d; strength and anaerobic never dim; plasma gets nothing (D11). Shipped with the fused Home, indexed here since 2026-09-05 | named | **grounded** | [010 §Grounding](rfcs/done/0010-home-fused-reads.md#grounding) |
 | 4.17 | `7` d rolling / `60` d baseline / `14` nights / ln / `50 + 50 × z` | fusedRead.ts:393-397 (`src/lib/fusedRead.ts`), :402 (`src/lib/fusedRead.ts`) | The overnight HRV calculator: the 7-night rolling mean of ln HRV placed against the 60 nights before that week, in SD units; no reading before 14 baseline nights. Log, because every trial read LnRMSSD; the current week stays out of the baseline so a bad week does not lower its own bar (both since 2026-10-04, 0085). The 0–100 score is 50 at baseline, 0 one SD or more below. A rolling window against the individual's own baseline is the method every trial used (Vesterinen 2016; Buchheit 2014; DeBlauw 2021); the 60-day window and the 0–100 scale are conventions. `HRV_LN_SD_FLOOR = 0.05` is a guard, not a claim | unnamed | method **grounded**, scale **convention** | [010 §Grounding](rfcs/done/0010-home-fused-reads.md#grounding); [0085 inputs](grounding/0085-readiness-inputs.md#grounding) |
 | 4.18 | *(none)* | HomeTab.tsx:46 (`src/components/tabs/home/HomeTab.tsx`) | `STEADY_NOTE`, the instruction a moderate band gives the day: "Lighter today: no intervals or max efforts." The plan, lighter, never rest and never a different session, as in the middle tier of both three-tier trials. No percentage, because each trial's 25% was its chosen step, not a tested dose (D46) | named | **grounded** (partially supported) | [0085 §Grounding](rfcs/done/0085-push-gate-own-baseline.md#grounding) |
+| 4.19 | `−1` / `−2` SD, floors `2` / `4` points, `28` d, `14` entries | app.ts:78 (`src/constants/app.ts`), applied at fusedRead.ts:483 (`src/lib/fusedRead.ts`) | `CHECK_IN_BAND`: the check-in (five items 1–5, summed to 5–25) drops to moderate below the person's own 28-day mean − 1 SD and at least 2 points under it, and to low below − 2 SD and at least 4 points under; no verdict before 14 earlier check-ins. The five-item 1–5 form is McLean 2010's; wellness tracks load (Saw 2016) but no trial prescribed training from it alone, so the lines are by analogy to the HRV trials' own-baseline reading. Marked less certain on Home | named | **convention** (form from the literature) | [0092 grounding](grounding/0092-readiness-method.md) |
+| 4.20 | `+1` SD and `≥ 5` bpm, `30` d, `14` nights | app.ts:89 (`src/constants/app.ts`), applied at fusedRead.ts:549 (`src/lib/fusedRead.ts`) | `RESTING_HR_NOTE`: last night's resting HR at least 1 SD and 5 bpm above the person's own 30-night mean prints a note beside the verdict and never moves the band. Resting HR is weak alone (Bosquet 2008), which is why it is a note | named | **convention** | [0092 grounding](grounding/0092-readiness-method.md) |
+| 4.21 | `6` h | app.ts:96 (`src/constants/app.ts`), applied at fusedRead.ts:549 (`src/lib/fusedRead.ts`) | `SHORT_NIGHT_HOURS`: under 6 h of device-measured sleep prints a note beside the verdict and never moves the band. Acute sleep loss impairs performance (Craven 2022) and 6-h nights accrue deficits (Van Dongen 2003); the exact cut is convention. Device duration only, as typed duration overestimates (Lauderdale 2008) | named | **partially supported** | [0092 grounding](grounding/0092-readiness-method.md) |
 
 ## 5. Cycle length & deload
 

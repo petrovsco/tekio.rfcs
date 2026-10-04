@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: in progress
-status_note: "Direction approved by Peter and grounded 2026-10-04. 0085 landed on develop (tekio v2.1.26); building on its calculator interface now."
+status_note: "Built and tested on tekio branch claude/readiness-method-profile-g89a32 (v2.1.27). Lands on develop once Peter applies the readiness_inputs migration."
 label: feature
 depends: [85]
 ---
@@ -45,6 +45,14 @@ depends: [85]
   `fusedRead.ts`. Since v2.1.26 `ReadinessReading.normal` and
   `SystemicReadiness.normal` are a range `{ low, high }` in the method's unit
   (baseline ± 0.5 SD), shown as "your normal"; each new calculator fills it.
+- **2026-10-04** — Built on tekio branch `claude/readiness-method-profile-g89a32`
+  (v2.1.27): the Profile card, the morning HRV and check-in calculators, the
+  fallback rule, the two notes, the typed captures in the readiness sheet, and
+  Home naming the method. Tests for each calculator; walked in the browser on
+  invented data for every method, no console errors. Needs one migration
+  (`supabase/migrations/20261004113000_readiness_inputs.sql`: a nullable
+  `user_profiles.readiness_method` and a new `readiness_inputs` table), put to
+  Peter before landing. Inventory rows 4.19–4.21 added.
 - **2026-10-04** — Peter chose "Go" on the direction: the picks below stand.
   Kickoff-ready; the build waits only on 0085 landing on develop.
 
@@ -155,19 +163,19 @@ its title this run; re-verify before quoting a figure.
 
 ## Acceptance
 
-- [ ] Profile shows the readiness method and lets the user change it; the
+- [x] Profile shows the readiness method and lets the user change it; the
       default is the highest rung they supply
-- [ ] Choosing a method whose source is not connected says so and how to
+- [x] Choosing a method whose source is not connected says so and how to
       connect it
-- [ ] The morning HRV calculator has its own baseline and tests
-- [ ] The check-in calculator has its own tests, and its band lines have a
+- [x] The morning HRV calculator has its own baseline and tests
+- [x] The check-in calculator has its own tests, and its band lines have a
       `/ground` block or are labelled convention
-- [ ] Resting heart rate and short-night notes have their own calculations and
+- [x] Resting heart rate and short-night notes have their own calculations and
       tests, are grounded, and never change the band
-- [ ] Profile's readiness card opens directly from Home's explanation link
-- [ ] Home names the method behind the verdict, marks a less certain one, and
+- [x] Profile's readiness card opens directly from Home's explanation link
+- [x] Home names the method behind the verdict, marks a less certain one, and
       names the rung above
-- [ ] Seen in the browser on invented data for each method, no console errors
+- [x] Seen in the browser on invented data for each method, no console errors
 - [ ] It lands on develop and the staging app shows it
 
 ## Unresolved questions
