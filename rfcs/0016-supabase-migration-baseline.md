@@ -2,9 +2,9 @@
 title: Baseline the Supabase schema into the repo
 authors: [Peter Petrov]
 created: 2026-08-26
-last_updated: 2026-10-02
+last_updated: 2026-10-04
 status: blocked
-status_note: "**needs Peter to run it.** Requires the project access token and the DB password, so an agent cannot do this half."
+status_note: "**needs Peter to run it.** Requires the project access token and the DB password, so an agent cannot do this half. As of 2026-10-04 tuxedo has no Supabase CLI: `npm i -g supabase`, `supabase login` and the DB password come first."
 label: infra
 ---
 
@@ -69,3 +69,15 @@ baseline may include RLS policies that are deliberately wide open
 - [ ] The two data migrations are either committed as files or explicitly recorded as
   server-only, and the README's "Applied this session" section is reduced to a
   pointer.
+
+## Found 2026-10-04: two files out of step with the server
+
+Two migration files carry a different version from the one the server recorded,
+so `migration list` and `db pull` will report them out of sync until the files
+are renamed to the server's versions (or `supabase migration repair` is run):
+
+| File | Server version |
+|---|---|
+| `20260909121125_cardio_work_distance_km.sql` | `20260909121142` |
+| `20260929080000_garmin_sync_dispatch_cron.sql` | `20260929071908` |
+

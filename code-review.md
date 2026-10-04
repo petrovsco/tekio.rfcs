@@ -10,7 +10,7 @@ This file is only the list of things a good generic React reviewer gets wrong
 here.
 
 Reference-only, like the docs beside it: it states what *is*. A follow-up it
-suggests goes to `docs/roadmap/`, never into this file.
+suggests goes to `rfcs/`, never into this file.
 
 ## 1. Deliberate, so not findings
 
@@ -75,6 +75,6 @@ first-paint cost from the numbers, never by eye.
   and `node scripts/check-links.mjs` in this repo catches them.
 - The repo has mixed line endings and no `.gitattributes`. Check a file before
   rewriting it whole, or a one-line edit becomes a whole-file diff.
-- Colour carries meaning in the SIGNAL language: deload, destructive actions and
-  ratings deliberately take none. Adding a red "danger" tint is a regression,
-  not a polish.
+- Colour carries meaning in the SIGNAL language: stated facts (a superset, a
+  personal best), destructive actions and ratings deliberately take none.
+  Adding a red "danger" tint is a regression, not a polish.
