@@ -57,7 +57,7 @@ label: feature
   Added to Proposal part 1, with an acceptance box per calculator.
 - **2026-10-04** — Peter split the work: the method choice in Profile,
   connecting a source, and the other rungs go to
-  [0092](../0092-readiness-method-in-profile.md). This RFC finishes the overnight
+  [0092](0092-readiness-method-in-profile.md). This RFC finishes the overnight
   HRV rung and the bands.
 - **2026-10-04** — Peter chose the trial tiers. Built: the calculator
   interface, the overnight HRV calculator with the three fixes, HRV alone,
@@ -78,7 +78,7 @@ label: feature
 Two decisions, in order. First, what readiness rests on: the candidate inputs
 ranked by evidence (HRV against the person's own baseline came first), as a
 ladder of methods with one calculator each. This RFC builds the first rung,
-overnight HRV, and the rest is [0092](../0092-readiness-method-in-profile.md).
+overnight HRV, and the rest is [0092](0092-readiness-method-in-profile.md).
 Second, three bands read on that HRV distance, the tiers the trials used:
 
 | HRV week vs own baseline | Band | Verdict |
@@ -190,7 +190,7 @@ the band beside its 0–100 number (50 = the person's own normal).
   the first rung, overnight HRV, which the app already syncs, with the three
   fixes, and drops the sleep score from the number. The typed morning HRV, the
   check-in, the two notes, the method choice in Profile and connecting a
-  source move to [0092](../0092-readiness-method-in-profile.md).
+  source move to [0092](0092-readiness-method-in-profile.md).
 - The bands in part 2 are then checked against the HRV score (Unresolved
   question 3).
 
@@ -215,7 +215,7 @@ branch `claude/readiness-inputs-b9o2ks`, v2.1.22 to v2.1.26:
   Tapping the card opens the readiness sheet (`RecoverySheet.tsx`), which leads
   with where the band came from: the method, how far this week sits from the
   person's own normal, the band rule, and a link to Profile, where
-  [0092](../0092-readiness-method-in-profile.md) adds the method choice.
+  [0092](0092-readiness-method-in-profile.md) adds the method choice.
   A Steady day leads with "Steady." and its first fact is `STEADY_NOTE`:
   *Lighter today: no intervals or max efforts.* Only a Low day inverts the card
   and shows the banner, which lost `(PLACEHOLDER)`. Sleep still shows on the
@@ -419,7 +419,7 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
 
 1. **Sleep's place.** *Answered 2026-10-04:* the device sleep score leaves
    the number. A short night returns only as a note beside the verdict, in
-   [0092](../0092-readiness-method-in-profile.md).
+   [0092](0092-readiness-method-in-profile.md).
 2. **An HRV override.** Should a 7-day HRV mean more than 0.5 SD under
    baseline hold the day whatever the band (D8 as an override)? Under the bands
    alone it can read Steady, while the trials prescribed easy training there.
@@ -435,5 +435,5 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
    this RFC: the lines sit on whatever number the inputs make, so they are
    decided after part 1, together with the middle verdict's name (Steady, Go
    or Train).
-4. *Moved to [0092](../0092-readiness-method-in-profile.md):* the choice in
+4. *Moved to [0092](0092-readiness-method-in-profile.md):* the choice in
    Profile and P4, and how much a typed input is worth.

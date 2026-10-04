@@ -3,8 +3,8 @@ title: Readiness method in Profile — choose how readiness is measured, connect
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
-status: in progress
-status_note: "Built and tested on tekio branch claude/readiness-method-profile-g89a32 (v2.1.27). Lands on develop once Peter applies the readiness_inputs migration."
+status: done
+status_note: "Shipped on develop as tekio v2.1.27, with the readiness_inputs migration applied to the shared database (20261004145037)."
 label: feature
 depends: [85]
 ---
@@ -23,7 +23,7 @@ depends: [85]
   button opens a how-to until a connect flow exists. Waiting on his word.
 - **2026-10-04** — `/ground` ran on the check-in lines and the two notes
   (search only, no page opened, so every source rests on its title):
-  [grounding/0092-readiness-method.md](../grounding/0092-readiness-method.md).
+  [grounding/0092-readiness-method.md](../../grounding/0092-readiness-method.md).
   Check-in: Steady below own mean − 1 SD and 2 points, Hold below − 2 SD and
   4 points, 28-day baseline, 14 entries first, all convention. Resting HR note:
   ≥ own 30-day mean + 1 SD and ≥ 5 bpm, convention. Short night: under 6 h
@@ -50,11 +50,15 @@ depends: [85]
   fallback rule, the two notes, the typed captures in the readiness sheet, and
   Home naming the method. Tests for each calculator; walked in the browser on
   invented data for every method, no console errors. Needs one migration
-  (`supabase/migrations/20261004113000_readiness_inputs.sql`: a nullable
+  (`supabase/migrations/20261004145037_readiness_inputs.sql`: a nullable
   `user_profiles.readiness_method` and a new `readiness_inputs` table), put to
   Peter before landing. Inventory rows 4.19–4.21 added.
 - **2026-10-04** — Peter chose "Go" on the direction: the picks below stand.
   Kickoff-ready; the build waits only on 0085 landing on develop.
+- **2026-10-04** — On Peter's word the migration went through the Supabase
+  connector (stamped 20261004145037; column, table, RLS and origin trigger
+  checked). tekio v2.1.27 fast-forwarded onto develop and deployed to
+  staging. Done.
 
 ## Summary
 
@@ -62,7 +66,7 @@ A user picks in Profile how their readiness is measured: overnight HRV from a
 wearable, a 1-minute HRV reading typed each morning, or a how-you-feel
 check-in. Picking a method that needs a device asks them to connect it.
 Each method has its own calculator, built on the interface
-[0085](done/0085-push-gate-own-baseline.md) lands, and two notes, resting heart rate
+[0085](0085-push-gate-own-baseline.md) lands, and two notes, resting heart rate
 and a short night, print beside the verdict without moving it.
 
 ## Motivation
@@ -73,7 +77,7 @@ and a short night, print beside the verdict without moving it.
 - **The ranking says what else works.** `/ground` placed a typed morning HRV
   reading on the same trialled method as overnight HRV, and a how-you-feel
   check-in second, as the evidenced input a person can give with nothing but
-  the app ([grounding/0085-readiness-inputs.md](../grounding/0085-readiness-inputs.md)).
+  the app ([grounding/0085-readiness-inputs.md](../../grounding/0085-readiness-inputs.md)).
 - **Peter, 2026-10-04:** each input needs its own calculation, the user should
   select their method in Profile, and a method that needs a device should ask
   them to connect it.
@@ -95,10 +99,10 @@ and a short night, print beside the verdict without moving it.
 ## Non-Goals
 
 - **Building device integrations.** Garmin sync exists; new sources are their
-  own RFCs ([0022](0022-companion-service-live-sync.md) is the live-sync idea).
+  own RFCs ([0022](../0022-companion-service-live-sync.md) is the live-sync idea).
   This RFC only shows the connection state and where to connect.
 - **The overnight HRV rung and the bands.** They are
-  [0085](done/0085-push-gate-own-baseline.md).
+  [0085](0085-push-gate-own-baseline.md).
 - **Mixing methods within a day.** A verdict comes from one method.
 
 ## Proposal
@@ -153,7 +157,7 @@ and a short night, print beside the verdict without moving it.
 ## Grounding
 
 The blocks are in
-[grounding/0092-readiness-method.md](../grounding/0092-readiness-method.md)
+[grounding/0092-readiness-method.md](../../grounding/0092-readiness-method.md)
 (2026-10-04). In short: the check-in's form is McLean's 5 × 1–5 and its lines
 are **convention** (own mean − 1 SD → Steady, − 2 SD → Hold, with 2- and
 4-point floors, 28-day baseline, 14 entries first); the resting HR note is
@@ -176,7 +180,7 @@ its title this run; re-verify before quoting a figure.
 - [x] Home names the method behind the verdict, marks a less certain one, and
       names the rung above
 - [x] Seen in the browser on invented data for each method, no console errors
-- [ ] It lands on develop and the staging app shows it
+- [x] It lands on develop and the staging app shows it
 
 ## Unresolved questions
 
@@ -189,4 +193,4 @@ None. Settled 2026-10-04 when Peter approved the direction:
 3. **"Connected":** a source that delivered a night in the last 3 days.
    Garmin is the only one today; others list as "Not yet".
 4. **The connect button:** opens a short how-to; an in-app connect flow
-   belongs to the live-sync RFC ([0022](0022-companion-service-live-sync.md)).
+   belongs to the live-sync RFC ([0022](../0022-companion-service-live-sync.md)).

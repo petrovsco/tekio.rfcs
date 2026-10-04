@@ -2,7 +2,7 @@
 
 Reference only: this file states what the evidence *is*. It holds the
 `## Grounding` blocks the science-scout run for
-[RFC 0092](../rfcs/0092-readiness-method-in-profile.md) returned on
+[RFC 0092](../rfcs/done/0092-readiness-method-in-profile.md) returned on
 2026-10-04: the check-in's band lines, the resting heart rate note and the
 short-night note. What was chosen from them is recorded in the RFC. Pending
 work never lives here; it goes to the RFC.
