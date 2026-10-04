@@ -40,7 +40,9 @@ Two states asked for one and were refused, so the rule has teeth:
 - **Deload week** is a fact about the cycle, not an urgency, so it never
   recolours the header or a card. It is stated instead — an outlined micro
   label, `DELOAD · WK 6` (§5, 8px uppercase, tracked). The old amber
-  `dl-*` tokens carried no meaning in this system.
+  `dl-*` tokens carried no meaning in this system. The label left with
+  Program in 2.1.17; the ruling stands for any fact stated the same way, such
+  as `SS` and `PR`.
 - **Destructive controls** do not get a warning colour either. What makes a
   delete safe is the confirmation step, not a red button; the weight in §6
   carries the emphasis instead (§8).
@@ -170,8 +172,8 @@ marks the one thing being pointed at. It never becomes a second palette.
   as a filled muscle. The emphasised bar goes ink.
 - **A second series** is `#c9c9c7`. There is no third: three series in one
   frame is the moment to draw two charts (P2).
-- **The accent** marks single points, never a series — a deload session, a
-  stale capture, the value the card is about.
+- **The accent** marks single points, never a series — a stale capture, the
+  value the card is about.
 - **Reference lines** (a target, a cap): `#c9c9c7`, 1px, dashed. This is the
   only dash in the system.
 - **Tooltip**: white, 1px `#e2e2e0`, 3px radius, 11px, no shadow.
