@@ -229,10 +229,10 @@ branch `claude/readiness-inputs-b9o2ks`, v2.1.22 to v2.1.26:
   PLACEHOLDER list.
 
 Seen on invented data at 412 × 900, all three bands, no console errors:
-[Push](/mnt/project-files/readiness/0085-home-push.png),
-[Steady](/mnt/project-files/readiness/0085-home-steady.png),
-[Hold](/mnt/project-files/readiness/0085-home-hold.png) (project files, not
-in this repo).
+Home [Push](0085/home-push.png), [Steady](0085/home-steady.png),
+[Hold](0085/home-hold.png); the readiness sheet
+[Push](0085/sheet-push.png), [Steady](0085/sheet-steady.png),
+[Hold](0085/sheet-hold.png).
 
 ## Rationale
 
