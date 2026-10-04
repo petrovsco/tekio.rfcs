@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-09-27
 last_updated: 2026-10-04
 status: in progress
-status_note: Grounded (31 patterns, ten forks decided), catalogue written (270 lifts, v2.1.21), audit drafted. Waiting on Peter for where the catalogue lives, the movement question's shape, and a go for the database steps.
+status_note: Weights reads the 270-lift catalogue and asks a new name's movement in two taps (v2.1.22, on the work branch). Waiting on Peter's go for the database steps: provenance columns, pattern rows and the audit.
 label: feature
 ---
 
@@ -30,6 +30,13 @@ label: feature
   inherited from the answer. Two follow-up calls are with him: whether the
   catalogue is read from the committed file or copied into the database, and
   the shape of the movement question.
+- 2026-10-04: Peter chose **the app's file** and **two taps**. v2.1.22 wires
+  both into Weights: the picker offers catalogue lifts after the user's own,
+  the first log of one creates its row with the catalogue's links, and a name
+  nothing knows asks a body area then a movement. Checked in a browser against
+  a stand-in database (this container cannot reach the real one): the rows and
+  links written were the ones expected, and Home's map moved after the save.
+  Links written before the provenance columns exist carry no `source` yet.
 
 ## Summary
 
@@ -117,8 +124,8 @@ Add `origin` (the build tag every other user-written table carries, per
 `source` (`catalogue` | `editor` | `migration`) to `exercise_muscle_groups`.
 Admin and its editor left the app in v2.1.19
 ([0090](done/0090-admin-out-mobility-in.md)); whatever writes a link from the
-app later (the create flow, if Unresolved question 2 lands that way) writes
-through `withOrigin` with `source = 'editor'`, and a hand-written SQL edit
+app (the first-log create flow, §3) writes through `withOrigin` with
+`source = 'catalogue'` or, for an answered movement question, `'editor'`, and a hand-written SQL edit
 uses `source = 'migration'`. This is additive and safe under the migration policy
 ([0024](done/0024-staging-shared-database-safety.md)). Existing rows get
 `source = 'migration'` and a null `created_at`: their history is unknown, and
@@ -150,13 +157,19 @@ reviewed like any other claim.
 
 ### 3. The catalogue
 
-A committed list — the source of truth is a file in the code repo, seeded by a
-tracked data migration — of the common barbell, dumbbell, cable, machine and
-bodyweight lifts, each with canonical name, pattern, links (inherited or
-overridden with a reason) and alias spellings for the
-[0044](done/0044-exercise-name-aliases.md) resolver. Rows are `is_system = true`,
-`user_id null`, `source = 'catalogue'`. The picker already reads the catalogue
-(0043), so nothing new is needed on screen.
+A committed list in the code repo (`src/constants/exerciseCatalogue.ts`) of the
+common barbell, dumbbell, cable, machine and bodyweight lifts, each with
+canonical name, pattern, links (inherited or overridden with a reason) and alias
+spellings for the [0044](done/0044-exercise-name-aliases.md) resolver.
+
+**The app reads the file; there is no seed** (Peter's call, 2026-10-04). The
+Weights picker offers catalogue lifts after the user's own. The first time one
+is logged, the resolver creates the user's row and writes the entry's links
+with `source = 'catalogue'`. A name the catalogue does not know asks which
+movement it is, in two taps (a body area, then a plain movement name with a
+lift it is like), and the row inherits that pattern's links with
+`source = 'editor'`. Skipping the question still saves, unmapped. A row that
+already exists is never relinked; §4 is what corrects those.
 
 The pending *Leg Press* mapping lands here as the first Squat-pattern row,
 rather than as an ungrounded hand edit.
@@ -256,9 +269,10 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
 - [ ] Every lift in the database has a `movement_pattern_id` (mobility and power drills are out of scope, listed in the audit); every link
       either matches its pattern or carries a written reason. The audit's diff
       is recorded in a sidecar (`0074/audit.md`).
-- [ ] The committed catalogue is seeded by a tracked migration; typing a
-      catalogue name or one of its aliases in the Weights picker offers the
-      mapped row, and logging it moves the Home map (verified in the browser).
+- [ ] Typing a catalogue name or one of its aliases in the Weights picker
+      offers the lift, and logging it the first time writes its row and links
+      and moves the Home map (verified in the browser against the real
+      database, not only a stand-in).
 - [ ] *Leg Press* is mapped from the Squat pattern.
 - [x] The standing check exists and fails on a planted bad link.
 
@@ -271,8 +285,7 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
   leaves the lift unmapped.
 - ~~**Pattern granularity.**~~ Settled by the scout runs: 31 patterns, see
   [the grounding file](../grounding/0074-exercise-catalogue.md#pattern-link-sets).
-- **Where the catalogue lives.** Copied into the database as rows (this RFC's
-  original §3), or read by the app from the committed file, a lift becoming a
-  row on first log. With Peter.
-- **The movement question's shape.** Two taps through body areas, one long
-  list, or "like an exercise". With Peter.
+- ~~**Where the catalogue lives.**~~ Read by the app from the committed file,
+  a lift becoming a row on first log, Peter's call on 2026-10-04.
+- ~~**The movement question's shape.**~~ Two taps: Legs, Push, Pull, Arms or
+  Core, then a plain movement name. Peter's call on 2026-10-04.
