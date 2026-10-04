@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: in progress
-status_note: Muscle sheet, map tap, draggable handle, recovery sheet in steps and the owner's review fixes landed on develop as tekio v2.1.30 (staging). Open are the owner's phone check and in-sheet catalogue search, which waits for 0074.
+status_note: On develop as tekio v2.1.35, with the owner's second review (close buttons on the gutter, an emptied number field stays empty). 0074 has landed, so in-sheet catalogue search is next; the owner's phone check is open.
 label: feature
 depends: [74]
 release: 2.2.0
@@ -96,6 +96,9 @@ measured the following
    set", because the copy is only a starting point. The door to Adaptations
    is removed: it reopened the same sheet over Adaptations, and the sheet
    already shows the four qualities. Home keeps its own link to Adaptations.
+   His second pass, the same day: the close glyph on the menu, sheets and
+   modals moves in to the 16px gutter, and an emptied kg or reps field stays
+   empty instead of becoming 0 and putting a 0 in front of the next digit.
 6. **Search inside the sheet** covers only the exercises the app already
    links to the muscle until 0074 lands. After that it searches the whole
    catalogue, and a new name gets 0074's movement question in the sheet,
