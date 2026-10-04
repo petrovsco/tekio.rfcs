@@ -53,6 +53,8 @@ label: feature
   default, the device sleep score leaves the number, and the typed
   how-you-feel check-in is the rung for people without a wearable. Next: the
   band lines on the HRV score (Unresolved question 3).
+- **2026-10-04** — Peter asked for a separate calculation for each input.
+  Added to Proposal part 1, with an acceptance box per calculator.
 
 ## Summary
 
@@ -155,6 +157,22 @@ today's blend, which the first decision may replace.
   as `systemicReadiness()` does today, plus: read the log of HRV (LnRMSSD, as
   every trial did); no verdict before 14 nights (today 7); and keep the current
   week out of the baseline, so a bad week does not lower its own bar.
+- **One calculation per input** (Peter, 2026-10-04: "every other is a
+  different thing"). Each rung has its own calculator, and every calculator
+  returns the same thing, a band (Push, Steady or Hold) or nothing, so the
+  verdict never knows which input made it and a new input is a new calculator.
+  1. *Overnight HRV:* the calculation above.
+  2. *Morning HRV, typed:* the same math on its own baseline. Morning and
+     overnight readings are different numbers and are never mixed; changing
+     route starts a new 14-night baseline.
+  3. *How-you-feel check-in:* four or five items (fatigue, soreness, sleep
+     quality, stress, mood), each 1–5, summed, and read against the person's
+     own usual total. Its band lines need their own `/ground` run (Nuuttila
+     used a fixed cut, > 5 of 7; Saw 2016 favours the own norm) and are labelled
+     convention until then.
+  4. *Notes, not inputs:* resting heart rate against its own baseline, and a
+     short night under a set number of hours, each with a small calculation of
+     its own. They print a line beside the verdict and never move the band.
 - Peter chooses a few from the ranking. One is the default, and the user can
   change it (Unresolved question 4).
 - A person without a wearable types an input. The app says it is less certain
@@ -353,6 +371,12 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
       linked here
 - [x] Peter has chosen the inputs and the default, recorded here (2026-10-04:
       the three-rung ladder, HRV first)
+- [ ] Each rung has its own calculator returning a band or nothing, with its
+      own tests: overnight HRV, typed morning HRV, how-you-feel check-in
+- [ ] The two notes (resting heart rate, short night) have their own
+      calculations and tests, and never change the band
+- [ ] The check-in's band lines have their own `/ground` run, or are labelled
+      convention
 - [ ] A person without a wearable can type an input, and the app marks it less
       certain and names a better one
 - [ ] The band lines and the middle verdict's name are confirmed on the chosen
