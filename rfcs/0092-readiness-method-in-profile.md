@@ -42,7 +42,9 @@ depends: [85]
   `onOpenProfile` prop (opens Profile at the top today; wire it to this card).
   Extend `METHOD_NAME` and `BAND_WORD` there, and `ReadinessMethod` (only
   `overnight_hrv`), `ReadinessReading`, `SystemicReadiness.method` / `.z` in
-  `fusedRead.ts`.
+  `fusedRead.ts`. Since v2.1.26 `ReadinessReading.normal` and
+  `SystemicReadiness.normal` are a range `{ low, high }` in the method's unit
+  (baseline ± 0.5 SD), shown as "your normal"; each new calculator fills it.
 - **2026-10-04** — Peter chose "Go" on the direction: the picks below stand.
   Kickoff-ready; the build waits only on 0085 landing on develop.
 
