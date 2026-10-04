@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: in progress
-status_note: On develop as tekio v2.1.35, with the owner's second review (close buttons on the gutter, an emptied number field stays empty). 0074 has landed, so in-sheet catalogue search is next; the owner's phone check is open.
+status_note: Everything but the owner's phone check is on develop as tekio v2.1.36, including in-sheet catalogue search with 0074's movement question.
 label: feature
 depends: [74]
 release: 2.2.0
@@ -99,10 +99,12 @@ measured the following
    His second pass, the same day: the close glyph on the menu, sheets and
    modals moves in to the 16px gutter, and an emptied kg or reps field stays
    empty instead of becoming 0 and putting a 0 in front of the next digit.
-6. **Search inside the sheet** covers only the exercises the app already
-   links to the muscle until 0074 lands. After that it searches the whole
-   catalogue, and a new name gets 0074's movement question in the sheet,
-   so logging never leaves for Weights.
+6. **Search inside the sheet**, after 0074 landed: the pick list offers the
+   catalogue's lifts for the muscle after the ones logged and linked. Search
+   covers every catalogue lift and everything on file, by any spelling, and a
+   match that does not train the muscle says so. A name nothing knows is logged
+   as a new exercise in the sheet, with 0074's movement question at thumb
+   size, so logging never leaves for Weights; the "open Weights" escape is gone.
 7. **Recovery sheet**, after 0085 and 0092 landed: the read, then a LOG list
    (morning HRV or check-in when that is the chosen method, then Sauna, Cold
    and Sleep), then one capture per step ending in "… saved · Undo". Sauna
@@ -143,7 +145,7 @@ the read and should not change.
 - [x] Every control in the muscle sheet's log steps is at least 44 px tall
 - [x] PLACEHOLDER is not visible on any screen
 - [x] The handle drags the sheet: down past a quarter closes, up opens full screen when the content needs it and springs back when it does not
-- [ ] Search inside the sheet covers the full catalogue, with the movement question for a new name (after 0074)
+- [x] Search inside the sheet covers the full catalogue, with the movement question for a new name (after 0074)
 - [x] Recovery sheet in the same steps, after 0085 and 0092 land
 - [ ] Verified on the owner's phone
 
