@@ -150,6 +150,11 @@ today's blend, which the first decision may replace.
   rate and a short night are not rungs: they can show as notes beside the
   verdict and never move it. This answers Unresolved question 4: the default
   follows what a person can measure, which is not a matter of taste (P4).
+- **The HRV rung's calculation, proposed with three fixes** (explained to Peter
+  2026-10-04): distance = (7-night mean − own baseline mean) / own baseline SD,
+  as `systemicReadiness()` does today, plus: read the log of HRV (LnRMSSD, as
+  every trial did); no verdict before 14 nights (today 7); and keep the current
+  week out of the baseline, so a bad week does not lower its own bar.
 - Peter chooses a few from the ranking. One is the default, and the user can
   change it (Unresolved question 4).
 - A person without a wearable types an input. The app says it is less certain
