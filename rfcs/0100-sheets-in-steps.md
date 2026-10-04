@@ -35,8 +35,8 @@ measured the following
   The rep and kg boxes are 26 px tall. Only the three exercises that already
   fed the muscle are offered. "Something else" closes the sheet and opens an
   empty Weights form that has forgotten the muscle.
-- **Copy:** the marker "PLACEHOLDER" is printed on screen, twice in the muscle
-  sheet and more on Home. It is there on purpose (design-system §11).
+- **Copy:** the developer mark "PLACEHOLDER" is printed on screen, twice in
+  the muscle sheet and more on Home.
 - **Recovery sheet:** 19 of 20 controls are under 44 px. One tap logs a session
   with no confirmation and no undo, and a double tap logs twice. Nothing on
   screen confirms that a log worked.
@@ -84,9 +84,11 @@ measured the following
    sheet full screen when its content is taller than the panel. When the
    content already fits, the panel springs back, because full screen would
    only add empty space. Existing callers are unchanged.
-4. **Copy**: not changed here. Design-system §11 keeps the PLACEHOLDER mark
-   visible until a number is grounded, so taking it off screen is the owner's
-   call (see Unresolved questions).
+4. **Copy**: the PLACEHOLDER mark leaves every screen (Home, the muscle sheet
+   and the blood sheet), on the owner's call on 2026-10-04. Design-system §11
+   now says the mark lives in code comments and RFCs, never in the UI. The
+   numbers it sat beside on screen (the 48 h recovery window and the blood
+   windows) already carry their grounding in 0010.
 5. **Recovery sheet**, after 0085 and 0092 land: the same pattern. The read
    comes first, then rows for Sauna, Cold and Sleep, then one input per step,
    ending in Undo.
@@ -121,13 +123,11 @@ the read and should not change.
 - [x] A second tap on Save cannot write a second copy
 - [x] Save is on screen without scrolling once an exercise is picked
 - [x] Every control in the muscle sheet's log steps is at least 44 px tall
+- [x] PLACEHOLDER is not visible on any screen
 - [x] The handle drags the sheet: down past a quarter closes, up opens full screen when the content needs it and springs back when it does not
 - [ ] Recovery sheet in the same steps, after 0085 and 0092 land
 - [ ] Verified on the owner's phone
 
 ## Unresolved questions
 
-- Should the PLACEHOLDER mark leave the screen? Design-system §11 says it
-  stays visible until the number is grounded, while the owner has asked that
-  developer concepts never show to users. This does not block the rest of the
-  RFC; the owner decides.
+None.

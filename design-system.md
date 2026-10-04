@@ -200,6 +200,11 @@ question a tap just asked, it is T2. Everything else is T3.
 Every number that claims physiological meaning and has not passed
 `/ground` is marked PLACEHOLDER on the boards and in code comments —
 currently the cycle target (60 sets), the recovery window (2 days), the
-per-quality staleness windows, and the blood-donation windows. The rule is: the mark stays visible until the number is
+per-quality staleness windows, and the blood-donation windows. The rule is: the mark stays until the number is
 grounded. The grounding work itself is tracked in the roadmap (018), not
 here.
+
+The mark never reaches the app's screens. It is a note for whoever builds
+the app, and a user has no use for it: the screen prints the number alone,
+and the mark lives in the code comment beside the constant and in the RFC
+that grounds it (owner's call, 2026-10-04, RFC 0100).
