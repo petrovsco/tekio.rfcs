@@ -46,6 +46,9 @@ label: feature
   rate weak alone; the device sleep score and the 50/50 blend convention only.
   Only one source was opened this run, so the lines marked unread are titles,
   not findings. Put to Peter: which inputs, and the default.
+- **2026-10-04** — Peter asked for a chain: use the most efficient input a
+  person has, and offer the easiest one when they have nothing. Proposed as a
+  three-rung ladder (Proposal, part 1), waiting on his word.
 
 ## Summary
 
@@ -127,6 +130,22 @@ today's blend, which the first decision may replace.
   duration acceptable, device score convention) · 5 jump height · 6 orthostatic
   test · 7 vendor readiness scores (convention). No study shows a combination
   beats one input.
+- **Proposed 2026-10-04, from Peter's question:** the inputs form a ladder,
+  and each person reads from the highest rung they can supply.
+  1. Overnight HRV synced from a wearable: no daily effort, the most evidence.
+  2. A 1-min HRV reading on waking (phone camera or chest strap), typed: the
+     same trialled method, one minute a day.
+  3. A how-you-feel check-in (fatigue, soreness, stress, mood; four or five
+     taps): anyone can give it, marked less certain.
+
+  Each rung reads against the person's own baseline and needs about 14 days
+  of its own data before it gives a verdict. So the rung is chosen per person,
+  by what they supply, never mixed day to day. A missed night falls back to a
+  lower rung only when that rung has its own baseline, otherwise the day has
+  no verdict, as today. The app always names the rung above. Resting heart
+  rate and a short night are not rungs: they can show as notes beside the
+  verdict and never move it. This answers Unresolved question 4: the default
+  follows what a person can measure, which is not a matter of taste (P4).
 - Peter chooses a few from the ranking. One is the default, and the user can
   change it (Unresolved question 4).
 - A person without a wearable types an input. The app says it is less certain
