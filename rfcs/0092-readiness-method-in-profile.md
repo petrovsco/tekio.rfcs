@@ -28,6 +28,13 @@ depends: [85]
   4 points, 28-day baseline, 14 entries first, all convention. Resting HR note:
   ≥ own 30-day mean + 1 SD and ≥ 5 bpm, convention. Short night: under 6 h
   device sleep, partially supported.
+- **2026-10-04** — Peter, in the 0085 thread: the scores beside the band
+  confuse; the words alone are enough, and one tap from the verdict must show
+  what it was worked out from and where in Profile to change it, above all on
+  a less certain method. Split agreed through the coordinator: 0085 builds the
+  word-only verdict and the one-tap explanation on Home; this RFC builds the
+  Profile card, which that explanation links to, so the card must open
+  directly (Profile scrolled to Readiness). Direction redrawn without scores.
 
 ## Summary
 
@@ -62,6 +69,8 @@ and a short night, print beside the verdict without moving it.
   own baseline, and their own tests.
 - Home names the method a verdict came from, says when a method is less
   certain, and names the rung above.
+- The readiness card in Profile can be opened directly, so Home's
+  explanation (built in 0085) links straight to it.
 
 ## Non-Goals
 
@@ -143,6 +152,7 @@ its title this run; re-verify before quoting a figure.
       `/ground` block or are labelled convention
 - [ ] Resting heart rate and short-night notes have their own calculations and
       tests, are grounded, and never change the band
+- [ ] Profile's readiness card opens directly from Home's explanation link
 - [ ] Home names the method behind the verdict, marks a less certain one, and
       names the rung above
 - [ ] Seen in the browser on invented data for each method, no console errors
