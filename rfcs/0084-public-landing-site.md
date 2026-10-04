@@ -2,7 +2,7 @@
 title: A public landing site on tekio.fyi that explains how the reads are computed and cites their evidence
 authors: [Peter Petrov]
 created: 2026-10-01
-last_updated: 2026-10-02
+last_updated: 2026-10-04
 status: in progress
 status_note: "The site is on petrovsco/tekio.site develop at 0.1.4, served at stg.tekio.fyi behind the app's sign-in, and its release form works: the script runs in the owner's Workspace and its address is set for staging and production. master is the production branch, kept from deploying until the site's first release. Next: the site goes public on tekio.fyi, on Peter's word."
 label: feature
@@ -23,10 +23,10 @@ label: feature
 - **2026-10-02** — round four: readiness without its number or the line at 33,
   both convention; act two labelled an example week; the floor's pour slowed.
   Whether the app's own line should change went to
-  [0085](0085-push-gate-own-baseline.md).
+  [0085](done/0085-push-gate-own-baseline.md).
 - **2026-10-02** — Peter approved round four as it stands. The app's
   readiness is being reworked in its own task
-  ([0085](0085-push-gate-own-baseline.md): inputs ranked by evidence, then
+  ([0085](done/0085-push-gate-own-baseline.md): inputs ranked by evidence, then
   three bands), so the real site's card takes its inputs and states from the
   app's rules as they stand when it is built.
 - **2026-10-02** — Peter moved the site out of the code repo into a
@@ -354,7 +354,7 @@ round four.
   of the example week gets the same call from the app's rule and from the
   baseline-relative rule the evidence supports (D8), so the page does not lean
   on 33. Whether the app's own gate should change is
-  [0085](0085-push-gate-own-baseline.md).
+  [0085](done/0085-push-gate-own-baseline.md).
 - **Act two is an example week, not a program.** Its title step says so, and
   the stage head reads "Example week" on every day.
 - **The floor pours slower:** 650 ms a day instead of 300, so each day's label
