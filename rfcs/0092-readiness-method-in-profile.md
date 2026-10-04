@@ -35,6 +35,14 @@ depends: [85]
   word-only verdict and the one-tap explanation on Home; this RFC builds the
   Profile card, which that explanation links to, so the card must open
   directly (Profile scrolled to Readiness). Direction redrawn without scores.
+- **2026-10-04** — Hooks 0085 leaves for this RFC (tekio branch
+  `claude/readiness-inputs-b9o2ks`, v2.1.23, not on develop yet): Home's
+  card shows only the band word and opens `RecoverySheet.tsx`, whose
+  ReadinessSource block links "Readiness method · Profile →" through HomeTab's
+  `onOpenProfile` prop (opens Profile at the top today; wire it to this card).
+  Extend `METHOD_NAME` and `BAND_WORD` there, and `ReadinessMethod` (only
+  `overnight_hrv`), `ReadinessReading`, `SystemicReadiness.method` / `.z` in
+  `fusedRead.ts`.
 
 ## Summary
 
