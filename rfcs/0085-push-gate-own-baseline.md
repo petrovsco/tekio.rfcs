@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-04
 status: in progress
-status_note: "Part 1 started 2026-10-04: /ground is ranking the candidate readiness inputs by evidence, then Peter picks. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
+status_note: "Part 1: the inputs are ranked (2026-10-04) and wait on Peter's pick: HRV first, typed wellness second, the device sleep score a convention. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
 label: feature
 ---
 
@@ -39,6 +39,13 @@ label: feature
   the site. The bands stay on the working branch (Proposal, part 2) until the
   inputs are chosen, and the two choices put to Peter that day (the lines, and
   Steady, Go or Train) wait with them.
+- **2026-10-04** — Part 1 started. `/ground` ranked the candidate inputs
+  ([grounding/0085-readiness-inputs.md](../grounding/0085-readiness-inputs.md)):
+  baseline-relative HRV first, the only input trials prescribed training from;
+  typed wellness second, the evidenced input without a wearable; resting heart
+  rate weak alone; the device sleep score and the 50/50 blend convention only.
+  Only one source was opened this run, so the lines marked unread are titles,
+  not findings. Put to Peter: which inputs, and the default.
 
 ## Summary
 
@@ -106,13 +113,20 @@ today's blend, which the first decision may replace.
 
 ## Proposal
 
-### 1. Readiness inputs (not started)
+### 1. Readiness inputs (ranked, waiting on the pick)
 
 - A `/ground` run ranks the candidate inputs from the most evidence down: HRV
   against the person's own baseline (the method every trial used, D8), morning
   or resting heart rate, sleep, self-reported wellness, and any others the
   search turns up. For each it says what the input needs (a wearable, a phone
   camera, a hand count, a questionnaire) and how reliable that route is.
+- **Ranked 2026-10-04**, the block is in
+  [grounding/0085-readiness-inputs.md](../grounding/0085-readiness-inputs.md):
+  1 HRV against own baseline (overnight, or a 1-min phone-camera reading on
+  waking) · 2 self-reported wellness · 3 resting heart rate · 4 sleep (device
+  duration acceptable, device score convention) · 5 jump height · 6 orthostatic
+  test · 7 vendor readiness scores (convention). No study shows a combination
+  beats one input.
 - Peter chooses a few from the ranking. One is the default, and the user can
   change it (Unresolved question 4).
 - A person without a wearable types an input. The app says it is less certain
@@ -192,6 +206,9 @@ banner is one line shorter (14 px), because it lost `(PLACEHOLDER)`.
    was committed.
 
 ## Grounding
+
+Part 1, the inputs ranked: [grounding/0085-readiness-inputs.md](../grounding/0085-readiness-inputs.md#grounding)
+(2026-10-04). Part 2, the bands, follows.
 
 **Claim:** Two cut points on Tekiō's 0–100 systemic readiness composite. The composite is the mean of last night's device sleep score and an HRV score of 50 + 50 × z, where z is the 7-day rolling overnight HRV against the person's own 60-day baseline in SD units, clamped to 0–100. The bands:
 - **≤ 33 Hold:** walk or mobility only.
@@ -304,7 +321,7 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
 
 ## Acceptance
 
-- [ ] `/ground` has ranked the candidate readiness inputs, and its block is
+- [x] `/ground` has ranked the candidate readiness inputs, and its block is
       linked here
 - [ ] Peter has chosen the inputs and the default, recorded here
 - [ ] A person without a wearable can type an input, and the app marks it less
