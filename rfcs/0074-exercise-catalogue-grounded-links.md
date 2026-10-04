@@ -2,13 +2,23 @@
 title: A mapped exercise catalogue, grounded by movement pattern
 authors: [Peter Petrov]
 created: 2026-09-27
-last_updated: 2026-09-29
-status: backlog
-status_note: Opened 2026-09-27 after a curl carried a Lats link that nobody could trace, and two new exercises were logged with no links at all. Needs its Grounding section before any code; the unresolved questions below are open. 2026-09-29: four hand edits landed ahead of the catalogue (see §Hand edits before the catalogue); the audit starts from them.
+last_updated: 2026-10-04
+status: in progress
+status_note: Picked as the next task on 2026-10-04. The four scout runs are in (31 patterns, see §Grounding); waiting on Peter for the catalogue size, what an unknown name does, and the fork defaults. Then provenance columns, the catalogue file and the audit.
 label: feature
 ---
 
 # RFC 0074: A mapped exercise catalogue, grounded by movement pattern
+
+## Progress log
+
+- 2026-10-04: picked as the next task. Admin left the app the same day in
+  v2.1.19 ([0090](done/0090-admin-out-mobility-in.md)), so this RFC no longer
+  leans on an in-app mapping editor: the catalogue is now the only way a new
+  exercise gets links without a hand-written SQL edit. Four `/ground` runs
+  (lower body, upper push, upper pull, trunk and carries) landed in
+  [grounding/0074-exercise-catalogue.md](../grounding/0074-exercise-catalogue.md):
+  31 patterns, ten forks with a default each.
 
 ## Summary
 
@@ -83,8 +93,8 @@ problems: a stranger will not open an Admin editor to map their exercises.
 - Cardio, sport and mobility movements. This is the weights catalogue;
   mobility links (the `recovery` contribution) keep their own model.
 - New weights for the levels. 7.1 is grounded and stays as it is.
-- A new surface, setting or admin screen (doctrine R1, R3). The existing Admin
-  mapping editor stays the one way to edit a link.
+- A new surface, setting or admin screen (doctrine R1, R3). Admin left in
+  v2.1.19 and comes back only through its own RFC.
 - A per-user override layer. With one user, a link is fixed in place.
 
 ## Proposal
@@ -94,8 +104,11 @@ problems: a stranger will not open an Admin editor to map their exercises.
 Add `origin` (the build tag every other user-written table carries, per
 [0037](done/0037-row-origin-tagging.md)), `created_at default now()` and
 `source` (`catalogue` | `editor` | `migration`) to `exercise_muscle_groups`.
-The Admin editor's `upsertExerciseMuscle` writes through `withOrigin` with
-`source = 'editor'`. This is additive and safe under the migration policy
+Admin and its editor left the app in v2.1.19
+([0090](done/0090-admin-out-mobility-in.md)); whatever writes a link from the
+app later (the create flow, if Unresolved question 2 lands that way) writes
+through `withOrigin` with `source = 'editor'`, and a hand-written SQL edit
+uses `source = 'migration'`. This is additive and safe under the migration policy
 ([0024](done/0024-staging-shared-database-safety.md)). Existing rows get
 `source = 'migration'` and a null `created_at`: their history is unknown, and
 the column says so rather than inventing a date.
@@ -190,11 +203,42 @@ two ways.
 - **Provenance first** because it costs one migration, needs no grounding, and
   would have answered "how did Lats get onto a curl?" on the day it was asked.
 
+## Grounding
+
+Four science-scout runs on 2026-10-04, one decision each: L (lower body), P
+(upper push and shoulder isolation), U (upper pull), T (trunk, carries and
+Olympic lifts). The verbatim blocks, the consolidated table of 31 pattern link
+sets and the ten forks live in
+[grounding/0074-exercise-catalogue.md](../grounding/0074-exercise-catalogue.md#grounding);
+grounding blocks travel there and are never copied here.
+
+**Verdicts.** Supported: squat, hip thrust, knee extension and flexion, calf
+raise, horizontal push, elbow extension and flexion. Partially supported:
+hinges, vertical push, raises, fly, both pulls, rear-delt work, straight-arm
+pulldown, crunch, leg raise, plank. Convention only: lunge, hip abduction and
+adduction, front raise, shrug, dips, rotation, side plank, carries, Olympic
+lifts.
+
+**What it changes on live rows** (each lands through §4's audit, not by hand):
+Back Squat, lunges and Hip Thrust Hamstrings 2 → 3 (hamstrings did not grow in
+squat or hip-thrust trials); Leg Press Glutes 2 → 1 (+15 % glute max in the
+one MRI trial); Leg Curl Calves 2 → 3; Deadlift Erectors 1 → 2; Dips Triceps 1
+→ 2; Bench Dip Chest 2 → 3; rows' Rhomboids and Upper Back / Traps 2 → 1 and
+Posterior Deltoid added at 2; Face Pulls Rotator Cuff 1 → 2 with Posterior
+Deltoid 2 → 1; Decline Sit Ups Hip Flexors 2 → 1; Woodchop and Pallof Rectus
+Abdominis 2 → 3; Snatch Anterior Deltoid 2 → 3. *Machine Curl* and every other
+curl carry no back link: the lats do not cross the elbow.
+
+**Found on the way:** *PJR Pullover / Cable Extension* names two different
+lifts (a lying triceps extension and a straight-arm pulldown) on one row, the
+same class of error as *Lat Raises*; the audit splits it by its sessions.
+*Crossbody Pronated Curl* is an elbow-flexion lift, not wrist work.
+
 ## Acceptance
 
-- [ ] `exercise_muscle_groups` has `origin`, `created_at` and `source`; the
-      Admin editor writes all three (verified by editing a link in the browser
-      and reading the row back).
+- [ ] `exercise_muscle_groups` has `origin`, `created_at` and `source`; every
+      path that writes a link sets all three (verified by reading back a row
+      the seed wrote and, if the create flow writes links, one it wrote).
 - [ ] A `## Grounding` section in this RFC covers every movement pattern's link
       set, produced by `/ground`, and `grounding-inventory.md` row 7.6 is
       updated from it.
