@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-09-27
 last_updated: 2026-10-04
 status: in progress
-status_note: Picked as the next task on 2026-10-04. Grounded (31 patterns, fork defaults taken); waiting on Peter for the catalogue size, what an unknown name does, and a go for the provenance migration.
+status_note: Grounded (31 patterns, ten forks decided), catalogue written (270 lifts, v2.1.21), audit drafted. Waiting on Peter for where the catalogue lives, the movement question's shape, and a go for the database steps.
 label: feature
 ---
 
@@ -24,6 +24,12 @@ label: feature
   lift already in the database) are committed in the code repo with the
   standing check; the audit diff is in [0074/audit.md](0074/audit.md), not yet
   applied.
+- 2026-10-04: Peter settled both open questions on decision cards: the
+  catalogue is **about 250** lifts (270 committed, v2.1.21), and a name the
+  catalogue does not know gets **one movement question** on Weights, links
+  inherited from the answer. Two follow-up calls are with him: whether the
+  catalogue is read from the committed file or copied into the database, and
+  the shape of the movement question.
 
 ## Summary
 
@@ -258,12 +264,15 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
 
 ## Unresolved questions
 
-- **Catalogue size.** Around 150 common lifts is a guess. Too small and new
-  names still arrive unmapped; too large and the review costs more than it
-  saves. Decide before the seed is written.
-- **What happens to a name that is still not in the catalogue.** Options: it
-  stays unmapped (today), or the create flow asks for the pattern — one tap,
-  links inherited. The second is a new control on a capture screen (doctrine
-  §1: capture is overhead), so it needs its own decision.
-- **Pattern granularity.** The joint-action split above is a proposal; the
-  scout may find some patterns need to split further (grip or plane) or merge.
+- ~~**Catalogue size.**~~ About 250, Peter's call on 2026-10-04.
+- ~~**What happens to a name that is still not in the catalogue.**~~ Weights
+  asks once which movement it is and the exercise inherits that pattern's
+  links, Peter's call on 2026-10-04. Saving without an answer still works and
+  leaves the lift unmapped.
+- ~~**Pattern granularity.**~~ Settled by the scout runs: 31 patterns, see
+  [the grounding file](../grounding/0074-exercise-catalogue.md#pattern-link-sets).
+- **Where the catalogue lives.** Copied into the database as rows (this RFC's
+  original §3), or read by the app from the committed file, a lift becoming a
+  row on first log. With Peter.
+- **The movement question's shape.** Two taps through body areas, one long
+  list, or "like an exercise". With Peter.
