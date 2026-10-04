@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-04
 status: in progress
-status_note: "Built 2026-10-04 on tekio branch claude/readiness-inputs-b9o2ks (v2.1.25): readiness is overnight HRV alone, in three bands on the distance from the own baseline. One box left: landing on develop."
+status_note: "Built 2026-10-04 on tekio branch claude/readiness-inputs-b9o2ks (v2.1.26): readiness is overnight HRV alone, in three bands on the distance from the own baseline. One box left: landing on develop."
 label: feature
 ---
 
@@ -67,6 +67,9 @@ label: feature
   tap should show where the state came from and where to change it. The card
   shows the band word only; the readiness sheet explains it and links to
   Profile (v2.1.23), cut to two lines and the link (v2.1.24): the band and method, then HRV this week against the normal in ms (v2.1.25).
+- **2026-10-04** — Peter: the normal should be a range, not one value. The
+  sheet shows it as the baseline ± the moderate line (0.5 SD), in ms: below
+  the range reads Steady or Hold, inside or above it Push (v2.1.26).
 
 ## Summary
 
@@ -194,14 +197,14 @@ the band beside its 0–100 number (50 = the person's own normal).
 The first build (2026-10-02, tekio branch `claude/project-thread-g3kirn`,
 0556b9b) drew 33 / 66 on the sleep + HRV blend and is superseded. Peter chose
 the trial tiers on 2026-10-04 (the grounding's option (b)). Built on tekio
-branch `claude/readiness-inputs-b9o2ks`, v2.1.22 to v2.1.25:
+branch `claude/readiness-inputs-b9o2ks`, v2.1.22 to v2.1.26:
 
 - `HRV_BAND_Z = { moderate: -0.5, low: -1 }` in `src/constants/app.ts`
   replaces `PUSH_THRESHOLD = 33`: z ≥ −0.5 ok (Push), −1 ≤ z < −0.5 moderate
   (Steady), z < −1 low (Hold). One-sided: HRV above baseline never lowers the
   band, the recorded departure below.
 - `src/lib/fusedRead.ts`: `ReadinessReading` is what every calculator returns
-  (method, band, 0–100 score, z); `overnightHrvReading()` is the first
+  (method, band, 0–100 score, z, the recent value and the normal range in ms); `overnightHrvReading()` is the first
   calculator (ln HRV, 7-night mean against the 60 nights before that week,
   14 baseline nights before a reading); `systemicReadiness()` reads it and
   no longer blends the sleep score; `fusedVerdict()` takes the band.
