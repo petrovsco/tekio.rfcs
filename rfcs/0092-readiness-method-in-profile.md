@@ -11,6 +11,17 @@ depends: [85]
 
 # RFC 0092: Readiness method in Profile — choose how readiness is measured, connect its source, and the rungs without a wearable
 
+## Progress log
+
+- **2026-10-04** — Direction drawn for Peter before building, on invented
+  data: a Readiness card in Profile above Max heart rate (three rows, best
+  first), a not-connected note in place, the typed rungs in the recovery
+  sheet opened from the readiness card, and the method named on Home. Picks
+  proposed for the open questions: a check-in gives the same three verdicts
+  with a "less certain" line; typed fields live in the recovery sheet; a source
+  is connected when it delivered a night in the last 3 days; the connect
+  button opens a how-to until a connect flow exists. Waiting on his word.
+
 ## Summary
 
 A user picks in Profile how their readiness is measured: overnight HRV from a
