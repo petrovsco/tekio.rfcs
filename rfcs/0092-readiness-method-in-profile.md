@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: blocked
-status_note: "Split out of 0085 on 2026-10-04 at Peter's request. Waits on 0085, which builds the calculator interface and the overnight HRV rung this RFC adds rungs beside."
+status_note: "Direction approved by Peter 2026-10-04 and grounded. Waits only on 0085 landing on develop, which brings the calculator interface and the hooks this RFC builds on."
 label: feature
 depends: [85]
 ---
@@ -43,6 +43,8 @@ depends: [85]
   Extend `METHOD_NAME` and `BAND_WORD` there, and `ReadinessMethod` (only
   `overnight_hrv`), `ReadinessReading`, `SystemicReadiness.method` / `.z` in
   `fusedRead.ts`.
+- **2026-10-04** — Peter chose "Go" on the direction: the picks below stand.
+  Kickoff-ready; the build waits only on 0085 landing on develop.
 
 ## Summary
 
@@ -168,10 +170,13 @@ its title this run; re-verify before quoting a figure.
 
 ## Unresolved questions
 
-1. **How much a typed input is worth.** The ranking puts the check-in second
-   on Saw 2016, but no trial prescribed training from it alone. Does Home show
-   its verdict with the same weight as an HRV one, or softer?
-2. **Where the typed fields live.** On Home beside the readiness card, or a
-   morning prompt? Capture is overhead (doctrine §1), so the fewest taps win.
-3. **What "connected" means per source.** Garmin is the only sync today;
-   which other sources count is the integrations' call.
+None. Settled 2026-10-04 when Peter approved the direction:
+
+1. **A check-in verdict's weight:** the same three words as HRV, with a grey
+   "less certain" line that names the rung above. No cap at Steady.
+2. **Where the typed fields live:** the recovery sheet, opened from Home's
+   readiness card. No separate morning prompt.
+3. **"Connected":** a source that delivered a night in the last 3 days.
+   Garmin is the only one today; others list as "Not yet".
+4. **The connect button:** opens a short how-to; an in-app connect flow
+   belongs to the live-sync RFC ([0022](0022-companion-service-live-sync.md)).
