@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-09-27
 last_updated: 2026-10-04
 status: in progress
-status_note: Weights reads the 270-lift catalogue and asks a new name's movement in two taps (v2.1.22, on the work branch). Waiting on Peter's go for the database steps: provenance columns, pattern rows and the audit.
+status_note: The database steps are live (provenance columns, 31 pattern rows, the audit) and the code is v2.1.34 on the work branch. Two boxes wait on a real first log on staging, read back from the database.
 label: feature
 ---
 
@@ -19,7 +19,7 @@ label: feature
   (lower body, upper push, upper pull, trunk and carries) landed in
   [grounding/0074-exercise-catalogue.md](../grounding/0074-exercise-catalogue.md):
   31 patterns, ten forks with a default each. Peter took all ten defaults
-  the same morning (inventory D46–D55); row 7.6 now reads partially
+  the same morning (inventory D48–D57); row 7.6 now reads partially
   supported. The movement patterns and the first 60 catalogue rows (every
   lift already in the database) are committed in the code repo with the
   standing check; the audit diff is in [0074/audit.md](0074/audit.md), not yet
@@ -37,6 +37,18 @@ label: feature
   a stand-in database (this container cannot reach the real one): the rows and
   links written were the ones expected, and Home's map moved after the save.
   Links written before the provenance columns exist carry no `source` yet.
+- 2026-10-04: the three migrations were applied to the live database from the
+  owner's machine on Peter's typed yes, stamped 20261004152251
+  (provenance), 20261004152357 (patterns) and 20261004152427 (audit), and
+  filed under those versions after the 0016 baseline. Read back: 31 keyed
+  patterns, 61 lifts tagged, 55 links marked `catalogue`, 253 older links
+  `migration`, none null; *Lat Raises* gone with its 5 sessions on *Lat
+  Pulldown* and both aliases on *Dumbbell Lateral Raise*; *PJR Pullover*
+  renamed with no Lats link; *Leg Press* on the squat pattern. Every untagged
+  lift is a mobility drill, a power drill or a sport, as the audit lists.
+  v2.1.33 makes a first log write `origin` and `source` (`catalogue` or
+  `editor`) on its links and set the lift's pattern. The inventory decisions
+  became D48–D57, after 0085 took D46 and D47 on develop.
 
 ## Summary
 
@@ -266,14 +278,14 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
 - [x] A `## Grounding` section in this RFC covers every movement pattern's link
       set, produced by `/ground`, and `grounding-inventory.md` row 7.6 is
       updated from it.
-- [ ] Every lift in the database has a `movement_pattern_id` (mobility and power drills are out of scope, listed in the audit); every link
+- [x] Every lift in the database has a `movement_pattern_id` (mobility and power drills are out of scope, listed in the audit); every link
       either matches its pattern or carries a written reason. The audit's diff
       is recorded in a sidecar (`0074/audit.md`).
 - [ ] Typing a catalogue name or one of its aliases in the Weights picker
       offers the lift, and logging it the first time writes its row and links
       and moves the Home map (verified in the browser against the real
       database, not only a stand-in).
-- [ ] *Leg Press* is mapped from the Squat pattern.
+- [x] *Leg Press* is mapped from the Squat pattern.
 - [x] The standing check exists and fails on a planted bad link.
 
 ## Unresolved questions

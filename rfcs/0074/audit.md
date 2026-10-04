@@ -1,7 +1,7 @@
 # RFC 0074 — audit of the live links against their patterns
 
 Run 2026-10-04 against `exercise_muscle_groups`, after Peter took the ten fork
-defaults (inventory D46–D55). Each lift was given a pattern in the committed
+defaults (inventory D48–D57). Each lift was given a pattern in the committed
 catalogue (`src/constants/exerciseCatalogue.ts` in the code repo), and its live
 links were diffed against what the catalogue writes. **Nothing below has been
 applied to the database yet**; it lands with the catalogue seed, on Peter's
@@ -18,17 +18,17 @@ are listed apart: they only record that the muscle was considered.
 | Hip Thrust, Glute Bridge | Hamstrings | 2 | 3 | Hamstrings grew negligibly from hip thrusts (L) |
 | Leg Press | Glutes | 2 | 1 | Glute max +15 % in the one leg-press MRI trial (L) |
 | Leg Curl | Calves | 2 | 3 | Gastrocnemius growth never measured (L) |
-| Deadlift | Erectors | 1 | 2 | D47 |
-| Dips | Triceps | 1 | 2 | D49 |
+| Deadlift | Erectors | 1 | 2 | D49 |
+| Dips | Triceps | 1 | 2 | D51 |
 | Bench Dip | Chest | 2 | 3 | Override reason in the catalogue (P) |
 | Dumbbell Shoulder Press | Upper Back / Traps | — | 2 | Matches its pattern, as Overhead Press already did (P) |
-| Rows, Low Row, Single-Arm DB Row | Rhomboids, Upper Back / Traps | 2 | 1 | D51 |
+| Rows, Low Row, Single-Arm DB Row | Rhomboids, Upper Back / Traps | 2 | 1 | D53 |
 | Rows, Low Row, Single-Arm DB Row | Posterior Deltoid | — | 2 | Rear delts work as a synergist in rows (U) |
-| Face Pulls | Posterior Deltoid | 2 | 1 | D52 |
-| Face Pulls | Rotator Cuff | 1 | 2 | D52 |
+| Face Pulls | Posterior Deltoid | 2 | 1 | D54 |
+| Face Pulls | Rotator Cuff | 1 | 2 | D54 |
 | Hanging Leg Raises | Obliques | — | 2 | Matches its pattern (T) |
 | Decline Sit Ups | Hip Flexors | 2 | 1 | A sit-up is hip flexion; the psoas grows (T) |
-| Cable Woodchop, Pallof Press | Rectus Abdominis | 2 | 3 | Bracing rule, D53 |
+| Cable Woodchop, Pallof Press | Rectus Abdominis | 2 | 3 | Bracing rule, D55 |
 | Snatch | Anterior Deltoid | 2 | 3 | The overhead receive is a hold (T) |
 | Crossbody Pronated Curl | Biceps | — | 1 | It is a curl, filed as wrist work (U) |
 | Crossbody Pronated Curl | Forearms | 1 | 2 | Brachioradialis in a pronated grip (U) |
