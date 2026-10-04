@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-04
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.4, served at stg.tekio.fyi behind the app's sign-in, and its release form works: the script runs in the owner's Workspace and its address is set for staging and production. master is the production branch, kept from deploying until the site's first release. Next: the site goes public on tekio.fyi, on Peter's word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.5, served at stg.tekio.fyi behind the app's sign-in, and its release form keeps addresses in a Sheet in the company folder of the owner's Drive, a bounded number at a time. Two of Peter's 2026-10-04 asks wait on him (Unresolved questions): the app's philosophy as the page's first screen, and whether the form adds a human check; then the site goes public on tekio.fyi on his word."
 label: feature
 ---
 
@@ -112,6 +112,19 @@ label: feature
   for, posts a plain form-encoded request, and shows its thanks and both error
   lines. The box's last clause, the form becoming a link to the app, can only
   happen when the app opens, so it is now its own box: 13 of 16.
+- **2026-10-04** — before closing, Peter asked for three things. The release
+  Sheet moved into the company folder of the owner's Drive, under a Tekiō
+  project folder; the script is bound to the Sheet and moved with it, so its
+  address did not change. The form now takes a bounded number of addresses
+  against floods (§5, `tekio.site` 0.1.5): its tests run the script against
+  stand-ins for Google's services, and the deployed script answered the same
+  three posts as before, a test address, a filled honeypot and a malformed
+  address, with the test row then deleted. Whether Cloudflare's Turnstile
+  goes on top is Peter's call. The third ask, that the page say what the app
+  believes, is drafted as a new first screen for him to check: a person can
+  adapt to almost anything, and what they do is what triggers it; the app is
+  for chasing the adaptations they want most, and this first version chases
+  all seven, muscle by muscle and for the whole body. Two new boxes: 14 of 18.
 
 ## Summary
 
@@ -378,7 +391,12 @@ form service, and the app's tables never see an address. On release day the
 Sheet is read by hand, the email goes out, and the Sheet is deleted.
 
 The script's address is public, as any form's endpoint is, so the form carries
-a hidden honeypot field and the script drops a submission that fills it.
+a hidden honeypot field and the script drops a submission that fills it. It
+also takes a bounded number of addresses, so a flood cannot fill the Sheet
+(Peter, 2026-10-04): at most 20 new ones a minute and 1,000 a UTC day, and
+none past 10,000 rows. An Apps Script web app never learns who is posting, so
+the limits count everyone together; past one, the form says to try again in a
+moment. Nothing in it sends email.
 Deploying the script needs the owner signed in. It is deployed from the
 site's repository with clasp, Google's Apps Script CLI (Peter's call,
 2026-10-02), so a later change keeps the same address. Its manifest lets it
@@ -386,6 +404,10 @@ touch only its own Sheet, which the owner allows once by running its `setup`
 in the editor. If the domain's sharing settings keep files inside it, the web
 app cannot be opened to anyone until an admin allows it in the Workspace Admin
 console.
+
+The Sheet lives in the company folder of the owner's Drive, in a Tekiō project
+folder beside the company's other projects (Peter, 2026-10-04). Moving it
+there changed nothing for the form, since the script is bound to the Sheet.
 
 ## Rationale
 
@@ -453,9 +475,16 @@ labelled, and nothing on it says whose app this was built around.
 - [x] Act two says it is an example week, not a program, on its title step and
       on every day's stage
 - [x] The page speaks to the reader as "you" throughout
+- [ ] The page says what the app believes: a person can adapt to almost
+      anything, and what they do is what triggers it; the app is for chasing
+      the adaptations they want most, and this first version chases all
+      seven, muscle by muscle and for the whole body
 - [x] The release form says what the address is used for; a test address
       lands as a row in the Workspace Sheet (and is then deleted), and a
       filled honeypot lands nowhere
+- [x] The form takes a bounded number of addresses: at most 20 new ones a
+      minute and 1,000 a UTC day, and none past 10,000 rows, shown by its
+      tests against stand-ins for Google's services
 - [ ] When the app opens, the form becomes a link to the app
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
@@ -467,7 +496,18 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Unresolved questions
 
-None. The six questions open on 2026-10-02 were settled by Peter that day:
-the repository and its name (§1), which app the page describes (§3), the voice
+Two, asked of Peter on 2026-10-04:
+
+- **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
+  mostly invisible check that the poster is a person, which the script would
+  then verify with Cloudflare on every post. It needs one more permission in
+  the script's editor.
+- **Where does the app's philosophy go, and in which words?** Drafted as the
+  page's new first screen, before "Tekiō tells you what's missing"; the other
+  place is between act one and act two. Once the words are settled, the same
+  lines are proposed for the doctrine's purpose.
+
+The six questions open on 2026-10-02 were settled by Peter that day: the
+repository and its name (§1), which app the page describes (§3), the voice
 (§4), where release addresses go (§5), how a release redeploys the site (§3),
 and creating `master` ahead of the site's first release (§2).
