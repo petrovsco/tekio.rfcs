@@ -11,7 +11,8 @@ Amended 2026-09-05: Habits deleted a month before its R2 expiry — a deliberate
 call, not the calendar's (execution: roadmap 035).
 Amended 2026-10-02: Program deleted, to be rebuilt later; the in-app assistant
 deleted (execution: RFCs 0087 and 0034).
-Amended 2026-10-04: Water deleted (execution: RFC 0089).
+Amended 2026-10-04: Water deleted (execution: RFC 0089). Admin deleted, to be
+rethought later (execution: RFC 0090).
 
 ---
 
@@ -132,11 +133,13 @@ Pending work lives in `docs/roadmap/`, never in this file (house rule
 | Donations | **Fold → Recovery** | Not training, but real: full-blood donation suppresses endurance performance for weeks, and eligibility windows are already tracked. A readiness input. |
 | Body Weight | **Fold → Home stat** | A trend, not a stimulus or readiness signal. Inline logging on Home; FRS needs the number anyway. |
 | Habits | **Deleted 2026-09-05** | Shelved 2026-08-26; deleted a month before the R2 date on Peter's call (roadmap 035). A checklist is an adherence tool; the app tells me what's missing, it does not make me do it. Sauna/cold/mobility/sleep are captured directly, so habits was a duplicate capture path. The table drops wait for the release in roadmap 025. |
-| Profile / Admin | **Exempt** | Infrastructure, not sections. Not counted against R1. |
+| Profile | **Exempt** | Infrastructure, not a section. Not counted against R1. |
+| Admin | **Deleted 2026-10-04** | Was Exempt, as infrastructure. Removed on Peter's call ([rfcs/done/0090-admin-out-mobility-in.md](rfcs/done/0090-admin-out-mobility-in.md)): an ungated screen any user could reach, which a real user must never see. Admin comes back rebuilt, with a real role gate, through §4. |
 
 **Two conditions attached to the Habits shelf**, and both are met:
 `ExerciseMuscleEditor.tsx` moved to Admin rather than being deleted with the
-section (roadmap 035), and `RECOVERY_WEIGHTS.habits` (0.10) was retired with
+section (roadmap 035; it left with Admin on 2026-10-04, RFC 0090), and
+`RECOVERY_WEIGHTS.habits` (0.10) was retired with
 the whole constant rather than dropped from it — the readiness number it fed
 measured adherence, not recovery. The sequencing and the grounding trap are in
 [rfcs/done/0014-doctrine-ledger-execution.md](rfcs/done/0014-doctrine-ledger-execution.md).

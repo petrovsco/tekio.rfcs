@@ -31,7 +31,10 @@ v2.1.17; the tables it leaves behind are queued in
 
 **Second round, 2026-10-04**: water logging removed, the Weights chips removed,
 and blood moved off the readiness card ([0089](done/0089-remove-water-and-weights-chips.md)),
-as v2.1.18; `water_logs` joins 0088's queue.
+as v2.1.18; `water_logs` joins 0088's queue. The same day Admin was removed,
+Mobility took Program's slot in the bottom bar, and the max heart rate inputs
+were levelled on phones ([0090](done/0090-admin-out-mobility-in.md)), as v2.1.19;
+no schema follows.
 
 [0082](done/0082-home-adaptations-line-weight.md) (done, v2.1.2–v2.1.4): the
 §6 verdict was recorded **not met** on 2026-09-30 because Home's adaptations line
