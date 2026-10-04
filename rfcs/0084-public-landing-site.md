@@ -502,10 +502,11 @@ Two, asked of Peter on 2026-10-04:
   mostly invisible check that the poster is a person, which the script would
   then verify with Cloudflare on every post. It needs one more permission in
   the script's editor.
-- **Where does the app's philosophy go, and in which words?** Drafted as the
-  page's new first screen, before "Tekiō tells you what's missing"; the other
-  place is between act one and act two. Once the words are settled, the same
-  lines are proposed for the doctrine's purpose.
+- **In which words does the page state the app's philosophy?** Peter put it
+  on the page's first screen, before "Tekiō tells you what's missing"
+  (2026-10-04, over the other place, between act one and act two); the
+  drafted words wait on his check. Once they are settled, the same lines are
+  proposed for the doctrine's purpose.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
