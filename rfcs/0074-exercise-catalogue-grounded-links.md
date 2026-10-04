@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-09-27
 last_updated: 2026-10-04
 status: in progress
-status_note: Picked as the next task on 2026-10-04. The four scout runs are in (31 patterns, see §Grounding); waiting on Peter for the catalogue size, what an unknown name does, and the fork defaults. Then provenance columns, the catalogue file and the audit.
+status_note: Picked as the next task on 2026-10-04. Grounded (31 patterns, fork defaults taken); waiting on Peter for the catalogue size, what an unknown name does, and a go for the provenance migration.
 label: feature
 ---
 
@@ -18,7 +18,9 @@ label: feature
   exercise gets links without a hand-written SQL edit. Four `/ground` runs
   (lower body, upper push, upper pull, trunk and carries) landed in
   [grounding/0074-exercise-catalogue.md](../grounding/0074-exercise-catalogue.md):
-  31 patterns, ten forks with a default each.
+  31 patterns, ten forks with a default each. Peter took all ten defaults
+  the same morning (inventory D46–D55); row 7.6 now reads partially
+  supported.
 
 ## Summary
 
@@ -239,7 +241,7 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
 - [ ] `exercise_muscle_groups` has `origin`, `created_at` and `source`; every
       path that writes a link sets all three (verified by reading back a row
       the seed wrote and, if the create flow writes links, one it wrote).
-- [ ] A `## Grounding` section in this RFC covers every movement pattern's link
+- [x] A `## Grounding` section in this RFC covers every movement pattern's link
       set, produced by `/ground`, and `grounding-inventory.md` row 7.6 is
       updated from it.
 - [ ] Every exercise in the database has a `movement_pattern_id`; every link
