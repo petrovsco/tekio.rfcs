@@ -21,6 +21,13 @@ depends: [85]
   with a "less certain" line; typed fields live in the recovery sheet; a source
   is connected when it delivered a night in the last 3 days; the connect
   button opens a how-to until a connect flow exists. Waiting on his word.
+- **2026-10-04** — `/ground` ran on the check-in lines and the two notes
+  (search only, no page opened, so every source rests on its title):
+  [grounding/0092-readiness-method.md](../grounding/0092-readiness-method.md).
+  Check-in: Steady below own mean − 1 SD and 2 points, Hold below − 2 SD and
+  4 points, 28-day baseline, 14 entries first, all convention. Resting HR note:
+  ≥ own 30-day mean + 1 SD and ≥ 5 bpm, convention. Short night: under 6 h
+  device sleep, partially supported.
 
 ## Summary
 
@@ -113,6 +120,17 @@ and a short night, print beside the verdict without moving it.
 4. **Honest shape:** one systemic number per day, from one method (P5).
 5. **Physiological number:** yes. The check-in's band lines and the two notes'
    thresholds need `/ground` before they ship.
+
+## Grounding
+
+The blocks are in
+[grounding/0092-readiness-method.md](../grounding/0092-readiness-method.md)
+(2026-10-04). In short: the check-in's form is McLean's 5 × 1–5 and its lines
+are **convention** (own mean − 1 SD → Steady, − 2 SD → Hold, with 2- and
+4-point floors, 28-day baseline, 14 entries first); the resting HR note is
+**convention** (≥ own 30-day mean + 1 SD and ≥ 5 bpm); the short-night note
+is **partially supported** at under 6 h of device sleep. Every source rests on
+its title this run; re-verify before quoting a figure.
 
 ## Acceptance
 
