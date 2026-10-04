@@ -12,7 +12,8 @@ call, not the calendar's (execution: roadmap 035).
 Amended 2026-10-02: Program deleted, to be rebuilt later; the in-app assistant
 deleted (execution: RFCs 0087 and 0034).
 Amended 2026-10-04: Water deleted (execution: RFC 0089). Admin deleted, to be
-rethought later (execution: RFC 0090).
+rethought later (execution: RFC 0090). Blood donation's ledger row follows its
+move to a Home stat tile (RFC 0089).
 
 ---
 
@@ -48,8 +49,8 @@ lie. When one picture can't answer two questions, use two reads.
 
 **P3 — Fold before you add.** A new signal is usually an *input to an existing
 read*, not a new destination. Blood donation isn't a section; it's a readiness
-input. Water isn't a section; it's hydration. Ask "which existing read does this
-sharpen?" before "where does this live?"
+input. Body weight isn't a section; it's a stat on Home. Ask "which existing
+read does this sharpen?" before "where does this live?"
 
 **P4 — Configurability is not a decision.** With one user, "you can hide it" is
 not a justification for building something. A feature earns its default-on place
@@ -62,7 +63,7 @@ less training. Every target has a *state* on two axes. Recovery is therefore nev
 destination; it is the second dimension of the muscle and adaptation reads, at two
 levels:
 
-- **Systemic** (sleep, sauna, cold, hydration, HRV / Garmin readiness, blood
+- **Systemic** (sleep, sauna, cold, HRV / Garmin readiness, blood
   donation) — one global number. Answers *can I push at all today?*
 - **Local** (hours since that muscle was last stimulated, recent volume load) —
   per muscle, computed from logged sets. Answers *what can I train today?*
@@ -95,7 +96,7 @@ forbidden — that is solving feature bloat by adding features.
 
 ## 4. Brief checklist
 
-A roadmap brief in `docs/roadmap/` is not ready until it answers all five:
+An RFC in `rfcs/` is not ready until it answers all five:
 
 1. **Which read does this sharpen?** Name the existing surface. If the answer is
    "a new one," justify against R1.
@@ -111,12 +112,14 @@ A roadmap brief in `docs/roadmap/` is not ready until it answers all five:
 
 ## 5. Ledger
 
-Status of every surface as of 2026-08-26. This table is the shelf; keep it current.
+Status of every surface, last brought current 2026-10-04. This table is the
+shelf; keep it current.
 
-**This ledger records verdicts, not steps.** Five surfaces below are ruled out
-of the menu and all five still ship — the work that closes the gap is
+**This ledger records verdicts, not steps.** Three surfaces below are folded
+into another read rather than given a menu slot, and still ship there — the work
+that carried out the folds is
 [rfcs/done/0014-doctrine-ledger-execution.md](rfcs/done/0014-doctrine-ledger-execution.md).
-Pending work lives in `docs/roadmap/`, never in this file (house rule
+Pending work lives in `rfcs/`, never in this file (house rule
 `pending-work-in-roadmap`).
 
 | Surface | Verdict | Note |
@@ -126,11 +129,11 @@ Pending work lives in `docs/roadmap/`, never in this file (house rule
 | Weights | **Core — capture** | Primary stimulus source. |
 | Cardio | **Core — capture** | Endurance / VO₂max / anaerobic stimulus. |
 | Mobility | **Core — capture** | Recovery-axis input with its own volume model. |
-| Program | **Deleted 2026-10-02** | Was Core — plan: the cycle and today's plan. Removed on Peter's call in the 0034 review, to be rebuilt later in a better way ([rfcs/0087-remove-program.md](rfcs/done/0087-remove-program.md)). Nothing ran on it, and Home and Adaptations never read it. A rebuilt Program comes back through §4 like any new surface. |
+| Program | **Deleted 2026-10-02** | Was Core — plan: the cycle and today's plan. Removed on Peter's call in the 0034 review, to be rebuilt later in a better way ([rfcs/done/0087-remove-program.md](rfcs/done/0087-remove-program.md)). Nothing ran on it, and Home and Adaptations never read it. A rebuilt Program comes back through §4 like any new surface. |
 | Recovery | **Core — read, Home-only** | Systemic readiness only (P5). Local recovery fuses into the muscle read rather than living here. Already has no tab — the precedent the folds follow. |
 | Sports | **Fold → Cardio** | Already classifies into cardio adaptations; a sport session is a cardio session with a name and a quality rating. UI folds first; the DB merge is its own brief. |
-| Water | **Deleted 2026-10-04** | Was Fold → Recovery. Removed on Peter's call ([rfcs/0089-remove-water-and-weights-chips.md](rfcs/done/0089-remove-water-and-weights-chips.md)): a capture asked for several times a day that no verdict read. It may return when the app can remind, through §4. |
-| Donations | **Fold → Recovery** | Not training, but real: full-blood donation suppresses endurance performance for weeks, and eligibility windows are already tracked. A readiness input. |
+| Water | **Deleted 2026-10-04** | Was Fold → Recovery. Removed on Peter's call ([rfcs/done/0089-remove-water-and-weights-chips.md](rfcs/done/0089-remove-water-and-weights-chips.md)): a capture asked for several times a day that no verdict read. It may return when the app can remind, through §4. |
+| Donations | **Fold → Home stat** | Not training, but real: full-blood donation suppresses endurance performance for weeks, and eligibility windows are already tracked. Still a readiness input: inside its acute window it holds the day's verdict. Shown since 2026-10-04 as the BLOOD tile beside Body Weight, no longer on the readiness card ([rfcs/done/0089-remove-water-and-weights-chips.md](rfcs/done/0089-remove-water-and-weights-chips.md)). |
 | Body Weight | **Fold → Home stat** | A trend, not a stimulus or readiness signal. Inline logging on Home; FRS needs the number anyway. |
 | Habits | **Deleted 2026-09-05** | Shelved 2026-08-26; deleted a month before the R2 date on Peter's call (roadmap 035). A checklist is an adherence tool; the app tells me what's missing, it does not make me do it. Sauna/cold/mobility/sleep are captured directly, so habits was a duplicate capture path. The table drops wait for the release in roadmap 025. |
 | Profile | **Exempt** | Infrastructure, not a section. Not counted against R1. |
