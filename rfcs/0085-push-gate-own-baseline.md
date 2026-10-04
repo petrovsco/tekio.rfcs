@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-04
 status: in progress
-status_note: "Part 1: the inputs are ranked (2026-10-04) and wait on Peter's pick: HRV first, typed wellness second, the device sleep score a convention. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
+status_note: "Part 1: Peter chose the ladder on 2026-10-04 (overnight HRV, then a typed morning HRV, then a how-you-feel check-in); the sleep score leaves the number. Next: the band lines on the HRV score. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
 label: feature
 ---
 
@@ -49,6 +49,10 @@ label: feature
 - **2026-10-04** — Peter asked for a chain: use the most efficient input a
   person has, and offer the easiest one when they have nothing. Proposed as a
   three-rung ladder (Proposal, part 1), waiting on his word.
+- **2026-10-04** — Peter chose "HRV first": the ladder stands, HRV is the
+  default, the device sleep score leaves the number, and the typed
+  how-you-feel check-in is the rung for people without a wearable. Next: the
+  band lines on the HRV score (Unresolved question 3).
 
 ## Summary
 
@@ -342,7 +346,8 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
 
 - [x] `/ground` has ranked the candidate readiness inputs, and its block is
       linked here
-- [ ] Peter has chosen the inputs and the default, recorded here
+- [x] Peter has chosen the inputs and the default, recorded here (2026-10-04:
+      the three-rung ladder, HRV first)
 - [ ] A person without a wearable can type an input, and the app marks it less
       certain and names a better one
 - [ ] The band lines and the middle verdict's name are confirmed on the chosen
