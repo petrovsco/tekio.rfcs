@@ -20,7 +20,10 @@ label: feature
   [grounding/0074-exercise-catalogue.md](../grounding/0074-exercise-catalogue.md):
   31 patterns, ten forks with a default each. Peter took all ten defaults
   the same morning (inventory D46–D55); row 7.6 now reads partially
-  supported.
+  supported. The movement patterns and the first 60 catalogue rows (every
+  lift already in the database) are committed in the code repo with the
+  standing check; the audit diff is in [0074/audit.md](0074/audit.md), not yet
+  applied.
 
 ## Summary
 
@@ -244,14 +247,14 @@ same class of error as *Lat Raises*; the audit splits it by its sessions.
 - [x] A `## Grounding` section in this RFC covers every movement pattern's link
       set, produced by `/ground`, and `grounding-inventory.md` row 7.6 is
       updated from it.
-- [ ] Every exercise in the database has a `movement_pattern_id`; every link
+- [ ] Every lift in the database has a `movement_pattern_id` (mobility and power drills are out of scope, listed in the audit); every link
       either matches its pattern or carries a written reason. The audit's diff
       is recorded in a sidecar (`0074/audit.md`).
 - [ ] The committed catalogue is seeded by a tracked migration; typing a
       catalogue name or one of its aliases in the Weights picker offers the
       mapped row, and logging it moves the Home map (verified in the browser).
 - [ ] *Leg Press* is mapped from the Squat pattern.
-- [ ] The standing check exists and fails on a planted bad link.
+- [x] The standing check exists and fails on a planted bad link.
 
 ## Unresolved questions
 
