@@ -4,9 +4,9 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: in progress
-status_note: The muscle sheet, map tap, draggable handle and the owner's first review fixes are on tekio branch claude/recovery-sheet-review-haueyj (v2.1.29), checked in emulation. Still open are the owner's phone check, in-sheet catalogue search (after 0074) and the recovery sheet (after 0092).
+status_note: Muscle sheet, map tap, draggable handle, recovery sheet in steps and the owner's review fixes are on tekio branch claude/recovery-sheet-review-haueyj (v2.1.30), checked in emulation. Open are the owner's phone check and in-sheet catalogue search, which waits for 0074.
 label: feature
-depends: [74, 92]
+depends: [74]
 release: 2.2.0
 ---
 
@@ -94,14 +94,19 @@ measured the following
    sheet. The verdict's plus glyph becomes a ring, so the footer button is
    the only thing that looks like an action. "Same again" becomes "Add a
    set", because the copy is only a starting point. The door to Adaptations
-   says where it leads.
+   is removed: it reopened the same sheet over Adaptations, and the sheet
+   already shows the four qualities. Home keeps its own link to Adaptations.
 6. **Search inside the sheet** covers only the exercises the app already
    links to the muscle until 0074 lands. After that it searches the whole
    catalogue, and a new name gets 0074's movement question in the sheet,
    so logging never leaves for Weights.
-7. **Recovery sheet**, after 0085 and 0092 land: the same pattern. The read
-   comes first, then rows for Sauna, Cold and Sleep, then one input per step,
-   ending in Undo.
+7. **Recovery sheet**, after 0085 and 0092 landed: the read, then a LOG list
+   (morning HRV or check-in when that is the chosen method, then Sauna, Cold
+   and Sleep), then one capture per step ending in "… saved · Undo". Sauna
+   and cold preselect the last bout's length. Undo on sleep is offered only
+   for a night that did not exist before, because a typed night replaces the
+   watch's. When today's reading is what is missing, the sheet opens on that
+   capture.
 
 ## Rationale
 
@@ -136,7 +141,7 @@ the read and should not change.
 - [x] PLACEHOLDER is not visible on any screen
 - [x] The handle drags the sheet: down past a quarter closes, up opens full screen when the content needs it and springs back when it does not
 - [ ] Search inside the sheet covers the full catalogue, with the movement question for a new name (after 0074)
-- [ ] Recovery sheet in the same steps, after 0085 and 0092 land
+- [x] Recovery sheet in the same steps, after 0085 and 0092 land
 - [ ] Verified on the owner's phone
 
 ## Unresolved questions
