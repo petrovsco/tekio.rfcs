@@ -53,7 +53,7 @@ waited on it.
 ### Part 2 — Stop staging from breaking production
 
 - **Migrations land once, from one path.** DDL is applied deliberately (see
-  [0016-supabase-migration-baseline.md](../0016-supabase-migration-baseline.md)),
+  [0016-supabase-migration-baseline.md](0016-supabase-migration-baseline.md)),
   never as a side effect of testing a branch. Write down that a migration is a
   production change no matter which branch inspired it.
 - **Decide what staging is allowed to do destructively.** Deletes and bulk

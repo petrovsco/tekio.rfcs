@@ -22,7 +22,7 @@ migration, now rather than at the 2.2.0 sweep.
 ## Motivation
 
 A table nobody reads still costs something. The schema baseline
-([0016](../0016-supabase-migration-baseline.md)) would pull it into the repo, the
+([0016](0016-supabase-migration-baseline.md)) would pull it into the repo, the
 advisors report on it, and a reader of the table list takes it for a feature.
 `nutrition_logs` and `blood_work_*` suggest surfaces the doctrine never ruled on,
 and `goals` reads like [0040](../0040-adaptation-goals.md) already exists.
