@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: in progress
-status_note: Everything but the owner's phone check is on develop as tekio v2.1.36, including in-sheet catalogue search with 0074's movement question.
+status_note: Everything but the owner's phone check is on develop as tekio v2.1.38, including in-sheet catalogue search and the keyboard fix.
 label: feature
 depends: [74]
 release: 2.2.0
@@ -99,6 +99,9 @@ measured the following
    His second pass, the same day: the close glyph on the menu, sheets and
    modals moves in to the 16px gutter, and an emptied kg or reps field stays
    empty instead of becoming 0 and putting a 0 in front of the next digit.
+   A third note: an open phone keyboard hid the field being typed. Android
+   Chrome now shrinks the layout for the keyboard, and where a browser
+   overlays it instead the sheet lifts by the keyboard's height.
 6. **Search inside the sheet**, after 0074 landed: the pick list offers the
    catalogue's lifts for the muscle after the ones logged and linked. Search
    covers every catalogue lift and everything on file, by any spelling, and a
