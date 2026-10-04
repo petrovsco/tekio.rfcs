@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-04
 status: in progress
-status_note: "Built 2026-10-04 on tekio branch claude/readiness-inputs-b9o2ks (v2.1.22): readiness is overnight HRV alone, in three bands on the distance from the own baseline. One box left: landing on develop."
+status_note: "Built 2026-10-04 on tekio branch claude/readiness-inputs-b9o2ks (v2.1.23): readiness is overnight HRV alone, in three bands on the distance from the own baseline. One box left: landing on develop."
 label: feature
 ---
 
@@ -63,6 +63,10 @@ label: feature
   interface, the overnight HRV calculator with the three fixes, HRV alone,
   the three bands; tests green, seen in the browser on invented data. The
   inventory rows landed with it. Waits on landing on develop.
+- **2026-10-04** — Peter: the numbers confuse, the words are enough, and one
+  tap should show where the state came from and where to change it. The card
+  shows the band word only; the readiness sheet explains it and links to
+  Profile (v2.1.23).
 
 ## Summary
 
@@ -190,7 +194,7 @@ the band beside its 0–100 number (50 = the person's own normal).
 The first build (2026-10-02, tekio branch `claude/project-thread-g3kirn`,
 0556b9b) drew 33 / 66 on the sleep + HRV blend and is superseded. Peter chose
 the trial tiers on 2026-10-04 (the grounding's option (b)). Built on tekio
-branch `claude/readiness-inputs-b9o2ks`, v2.1.22:
+branch `claude/readiness-inputs-b9o2ks`, v2.1.22 and v2.1.23:
 
 - `HRV_BAND_Z = { moderate: -0.5, low: -1 }` in `src/constants/app.ts`
   replaces `PUSH_THRESHOLD = 33`: z ≥ −0.5 ok (Push), −1 ≤ z < −0.5 moderate
@@ -201,7 +205,12 @@ branch `claude/readiness-inputs-b9o2ks`, v2.1.22:
   calculator (ln HRV, 7-night mean against the 60 nights before that week,
   14 baseline nights before a reading); `systemicReadiness()` reads it and
   no longer blends the sleep score; `fusedVerdict()` takes the band.
-- Home (`HomeTab.tsx`): the card prints LOW, MODERATE or OK before the number.
+- Home (`HomeTab.tsx`): the card prints LOW, MODERATE or OK and no number
+  (Peter, 2026-10-04: the digits confused; the 0–100 score is convention).
+  Tapping the card opens the readiness sheet (`RecoverySheet.tsx`), which leads
+  with where the band came from: the method, how far this week sits from the
+  person's own normal, the band rule, and a link to Profile, where
+  [0092](0092-readiness-method-in-profile.md) adds the method choice.
   A Steady day leads with "Steady." and its first fact is `STEADY_NOTE`:
   *Lighter today: no intervals or max efforts.* Only a Low day inverts the card
   and shows the banner, which lost `(PLACEHOLDER)`. Sleep still shows on the
@@ -395,7 +404,8 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
       4.18; D46, D47)
 - [x] `fusedVerdict()` holds, steadies or pushes by band, tested at the
       edges −0.5 and −1
-- [x] Home's card names the band, a Steady day has its own verdict, and the
+- [x] Home's card names the band without a number, one tap shows where it
+      came from and links to Profile, a Steady day has its own verdict, and the
       hold banner has no `(PLACEHOLDER)`: seen in the browser on invented data,
       all three bands, no console errors
 - [ ] It lands on develop and the staging app shows it
