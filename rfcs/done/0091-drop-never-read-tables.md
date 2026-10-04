@@ -3,8 +3,8 @@ title: Drop the tables no build reads
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
-status: blocked
-status_note: "Written and checked; waits on Peter's word to run the drop against the shared database. Nothing else blocks it: no build reads these tables and every one is empty."
+status: done
+status_note: "Applied 2026-10-04 through the Supabase connector as 20261004092442 drop_never_read_tables (tekio e854272, v2.1.21). All fourteen tables were empty and are gone. The staging bootstrap was not loaded in a browser; no source file in develop names any of the tables."
 label: infra
 ---
 
@@ -22,10 +22,10 @@ migration, now rather than at the 2.2.0 sweep.
 ## Motivation
 
 A table nobody reads still costs something. The schema baseline
-([0016](0016-supabase-migration-baseline.md)) would pull it into the repo, the
+([0016](../0016-supabase-migration-baseline.md)) would pull it into the repo, the
 advisors report on it, and a reader of the table list takes it for a feature.
 `nutrition_logs` and `blood_work_*` suggest surfaces the doctrine never ruled on,
-and `goals` reads like [0040](0040-adaptation-goals.md) already exists.
+and `goals` reads like [0040](../0040-adaptation-goals.md) already exists.
 
 ## Goals
 
@@ -35,9 +35,9 @@ and `goals` reads like [0040](0040-adaptation-goals.md) already exists.
 ## Non-Goals
 
 - Anything a build still reads, including the program tables and `water_logs`
-  that [0088](0088-release-2-2-0-schema-drops.md) queues for the 2.2.0 sweep.
+  that [0088](../0088-release-2-2-0-schema-drops.md) queues for the 2.2.0 sweep.
 - `movement_patterns`. It is out of this RFC for good: the exercise catalogue
-  ([0074](0074-exercise-catalogue-grounded-links.md)) makes it live, with the
+  ([0074](../0074-exercise-catalogue-grounded-links.md)) makes it live, with the
   grounded patterns every lift will point at.
 - `sport_types` and `sport_sessions`, which the sport sync and Cardio read.
 - `user_profiles`, which `develop` reads.
@@ -95,19 +95,19 @@ would only make that sweep larger, and the 0016 baseline would pull dead tables
 into the repo in the meantime.
 
 The alternative was to keep the sport drill tree for
-[0020](0020-skill-recommendations-per-exercise.md)'s technique tips. That RFC
+[0020](../0020-skill-recommendations-per-exercise.md)'s technique tips. That RFC
 names these tables as something it "could reuse — or delete". They are four
 empty tables shaped for logged drills, and 0020 explicitly writes no number, so
 a tips feature that comes back through §4 would design its own shape.
 
 ## Acceptance
 
-- [ ] Row counts re-checked at zero right before the migration
-- [ ] Migration applied with `apply_migration`, and the file committed to the code repo under the version `list_migrations` reports
-- [ ] The fourteen tables are absent from `public` afterwards
-- [ ] The staging app's bootstrap still loads against the live schema
-- [ ] `program_goal_links` is removed from 0088's queue, and 0020 notes that the drill tables are gone
+- [x] Row counts re-checked at zero right before the migration
+- [x] Migration applied with `apply_migration`, and the file committed to the code repo under the version `list_migrations` reports
+- [x] The fourteen tables are absent from `public` afterwards
+- [ ] The staging app's bootstrap still loads against the live schema — unverified: not loaded in a browser; `src`, `supabase/functions` and `scripts` on develop name none of the fourteen tables
+- [x] `program_goal_links` is removed from 0088's queue, and 0020 notes that the drill tables are gone
 
 ## Unresolved questions
 
-None. The one decision left is Peter's word to run it.
+None. Peter gave the word on 2026-10-04 and the drop ran the same day.
