@@ -3,8 +3,8 @@ title: Sheets in steps, sized for a thumb
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
-status: in progress
-status_note: Everything but the owner's phone check is on develop as tekio v2.1.38, including in-sheet catalogue search and the keyboard fix.
+status: done
+status_note: Shipped on develop by tekio v2.1.38 and confirmed on the owner's phone on 2026-10-04.
 label: feature
 depends: [74]
 release: 2.2.0
@@ -150,7 +150,7 @@ the read and should not change.
 - [x] The handle drags the sheet: down past a quarter closes, up opens full screen when the content needs it and springs back when it does not
 - [x] Search inside the sheet covers the full catalogue, with the movement question for a new name (after 0074)
 - [x] Recovery sheet in the same steps, after 0085 and 0092 land
-- [ ] Verified on the owner's phone
+- [x] Verified on the owner's phone (2026-10-04)
 
 ## Unresolved questions
 
