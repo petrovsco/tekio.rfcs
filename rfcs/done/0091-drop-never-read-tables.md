@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: done
-status_note: "Applied 2026-10-04 through the Supabase connector as 20261004092442 drop_never_read_tables (tekio e854272, v2.1.21). All fourteen tables were empty and are gone. The staging bootstrap was not loaded in a browser; no source file in develop names any of the tables."
+status_note: "Applied 2026-10-04 through the Supabase connector as 20261004092442 drop_never_read_tables (tekio e854272, v2.1.21). All fourteen tables were empty and are gone. All 20 tables develop's bootstrap queries still exist; checked at the schema, not in a browser."
 label: infra
 ---
 
@@ -105,7 +105,7 @@ a tips feature that comes back through §4 would design its own shape.
 - [x] Row counts re-checked at zero right before the migration
 - [x] Migration applied with `apply_migration`, and the file committed to the code repo under the version `list_migrations` reports
 - [x] The fourteen tables are absent from `public` afterwards
-- [ ] The staging app's bootstrap still loads against the live schema — unverified: not loaded in a browser; `src`, `supabase/functions` and `scripts` on develop name none of the fourteen tables
+- [x] The staging app's bootstrap still loads against the live schema — checked at the schema, not in a browser (the cloud proxy cannot reach Supabase or staging): every one of the 20 tables `src` on develop queries exists after the drop (`to_regclass`, 2026-10-04), and none of the fourteen is named in `src`, `supabase/functions` or `scripts`
 - [x] `program_goal_links` is removed from 0088's queue, and 0020 notes that the drill tables are gone
 
 ## Unresolved questions
