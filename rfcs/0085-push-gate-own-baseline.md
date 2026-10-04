@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-04
 status: in progress
-status_note: "Part 1: Peter chose the ladder on 2026-10-04 (overnight HRV, then a typed morning HRV, then a how-you-feel check-in); the sleep score leaves the number. Next: the band lines on the HRV score. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
+status_note: "Peter chose the HRV ladder on 2026-10-04; this RFC builds the overnight HRV rung and the bands, the other rungs moved to 0092. Next: Peter sets the band lines on the HRV score. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
 label: feature
 ---
 
@@ -55,6 +55,10 @@ label: feature
   band lines on the HRV score (Unresolved question 3).
 - **2026-10-04** — Peter asked for a separate calculation for each input.
   Added to Proposal part 1, with an acceptance box per calculator.
+- **2026-10-04** — Peter split the work: the method choice in Profile,
+  connecting a source, and the other rungs go to
+  [0092](0092-readiness-method-in-profile.md). This RFC finishes the overnight
+  HRV rung and the bands.
 
 ## Summary
 
@@ -122,7 +126,7 @@ today's blend, which the first decision may replace.
 
 ## Proposal
 
-### 1. Readiness inputs (ranked, waiting on the pick)
+### 1. Readiness inputs (ranked and chosen; this RFC builds the first rung)
 
 - A `/ground` run ranks the candidate inputs from the most evidence down: HRV
   against the person's own baseline (the method every trial used, D8), morning
@@ -173,12 +177,13 @@ today's blend, which the first decision may replace.
   4. *Notes, not inputs:* resting heart rate against its own baseline, and a
      short night under a set number of hours, each with a small calculation of
      its own. They print a line beside the verdict and never move the band.
-- Peter chooses a few from the ranking. One is the default, and the user can
-  change it (Unresolved question 4).
-- A person without a wearable types an input. The app says it is less certain
-  and names the better input they could add.
-- The bands in part 2 are then checked against the number those inputs make
-  (Unresolved question 3).
+- **Split 2026-10-04 (Peter):** this RFC builds the calculator interface and
+  the first rung, overnight HRV, which the app already syncs, with the three
+  fixes, and drops the sleep score from the number. The typed morning HRV, the
+  check-in, the two notes, the method choice in Profile and connecting a
+  source move to [0092](0092-readiness-method-in-profile.md).
+- The bands in part 2 are then checked against the HRV score (Unresolved
+  question 3).
 
 ### 2. Three bands (built, on a working branch)
 
@@ -371,14 +376,10 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
       linked here
 - [x] Peter has chosen the inputs and the default, recorded here (2026-10-04:
       the three-rung ladder, HRV first)
-- [ ] Each rung has its own calculator returning a band or nothing, with its
-      own tests: overnight HRV, typed morning HRV, how-you-feel check-in
-- [ ] The two notes (resting heart rate, short night) have their own
-      calculations and tests, and never change the band
-- [ ] The check-in's band lines have their own `/ground` run, or are labelled
-      convention
-- [ ] A person without a wearable can type an input, and the app marks it less
-      certain and names a better one
+- [ ] A calculator interface returns a band or nothing, and the overnight HRV
+      calculator implements it with its own tests: log of HRV, 14 nights
+      before a verdict, the current week kept out of the baseline
+- [ ] The device sleep score no longer moves readiness
 - [ ] The band lines and the middle verdict's name are confirmed on the chosen
       inputs (Unresolved question 3)
 - [x] `/ground` ran on the bands, and its block is above
@@ -393,13 +394,14 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
 
 ## Unresolved questions
 
-1. **Sleep's place.** Sleep is half the number and only one night of it, so a
-   single bad night can flip the band. Galpin's trend-first position argues
-   against acting on that, and no trial tested it. Under the grounding's
-   option (b), sleep would need a rule of its own instead.
+1. **Sleep's place.** *Answered 2026-10-04:* the device sleep score leaves
+   the number. A short night returns only as a note beside the verdict, in
+   [0092](0092-readiness-method-in-profile.md).
 2. **An HRV override.** Should a 7-day HRV mean more than 0.5 SD under
    baseline hold the day whatever the band (D8 as an override)? Under the bands
    alone it can read Steady, while the trials prescribed easy training there.
+   Moot if the trial tiers are chosen in question 3, since they hold beyond
+   1 SD down.
 3. **Where the lines sit.** 33 / 66 is Peter's decision, made before the
    grounding showed that a night at baseline HRV needs a sleep score of 83 to
    push. Put to him on 2026-10-02: keep them, take Garmin's lines whole (Hold
@@ -409,12 +411,5 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
    this RFC: the lines sit on whatever number the inputs make, so they are
    decided after part 1, together with the middle verdict's name (Steady, Go
    or Train).
-4. **A choice the user can change, and P4.** Doctrine P4 says configurability
-   is not a decision. The default should follow what a person can measure, the
-   best-evidenced input they have, so the choice exists for a different
-   device, not a different taste. Which inputs a user may switch between is
-   decided with the ranking.
-5. **How much a typed input is worth.** The working assumption is that it is
-   the weakest. 0010's grounding found self-reported wellness tracked training
-   load with better sensitivity and consistency than objective measures,
-   HRV included (Saw 2016), so the ranking may place it higher than expected.
+4. *Moved to [0092](0092-readiness-method-in-profile.md):* the choice in
+   Profile and P4, and how much a typed input is worth.
