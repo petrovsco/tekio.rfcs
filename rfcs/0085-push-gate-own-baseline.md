@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-02
 last_updated: 2026-10-04
 status: in progress
-status_note: "Peter chose the HRV ladder on 2026-10-04; this RFC builds the overnight HRV rung and the bands, the other rungs moved to 0092. Next: Peter sets the band lines on the HRV score. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
+status_note: "Built 2026-10-04 on tekio branch claude/readiness-inputs-b9o2ks (v2.1.22): readiness is overnight HRV alone, in three bands on the distance from the own baseline. One box left: landing on develop."
 label: feature
 ---
 
@@ -22,8 +22,8 @@ label: feature
   or Train.
 - **2026-10-02** — `/ground` ran on the bands: **convention only** for both
   lines, and the middle band's instruction is the trials' middle tier. The
-  block is below; the inventory and ledger rows it produced wait in
-  [0085/inventory-rows.md](0085/inventory-rows.md) until the code lands. It
+  block is below; the inventory and ledger rows it produced were rewritten for
+  the chosen tiers and landed with the code on 2026-10-04. It
   found the lines sit high on this blend: a night at baseline HRV needs a sleep
   score of 83 to push. The app change is built with 33 / 66 and tested;
   whether the lines stay is Peter's call (Unresolved question 3).
@@ -59,28 +59,28 @@ label: feature
   connecting a source, and the other rungs go to
   [0092](0092-readiness-method-in-profile.md). This RFC finishes the overnight
   HRV rung and the bands.
+- **2026-10-04** — Peter chose the trial tiers. Built: the calculator
+  interface, the overnight HRV calculator with the three fixes, HRV alone,
+  the three bands; tests green, seen in the browser on invented data. The
+  inventory rows landed with it. Waits on landing on develop.
 
 ## Summary
 
 Two decisions, in order. First, what readiness rests on: the candidate inputs
-ranked by evidence, a few chosen, one default the user can change, and a typed
-input for people without a wearable. Second, the three bands read on top of the
-number those inputs make. The bands are built; the inputs are not researched
-yet.
+ranked by evidence (HRV against the person's own baseline came first), as a
+ladder of methods with one calculator each. This RFC builds the first rung,
+overnight HRV, and the rest is [0092](0092-readiness-method-in-profile.md).
+Second, three bands read on that HRV distance, the tiers the trials used:
 
-Home's push-or-hold call compares one readiness number with one line. The
-number is 0–100, the mean of last night's sleep score and a baseline-relative
-HRV score; below 33 holds the day, and everything from 33 up pushes. Part 2
-reads the number in three bands:
-
-| Readiness | Band | Verdict |
+| HRV week vs own baseline | Band | Verdict |
 |---|---|---|
-| 0–33 | Low | **Hold** — walk or mobility only |
-| 34–66 | Moderate | **Steady** — the plan, lighter: no intervals or max efforts |
-| 67–100 | OK | **Push** — close the gaps |
+| more than 1 SD under | Low | **Hold** — walk or mobility only |
+| 0.5 to 1 SD under | Moderate | **Steady** — the plan, lighter: no intervals or max efforts |
+| within 0.5 SD under, or above | OK | **Push** — close the gaps |
 
-The readiness card prints the band beside the number. The bands are built over
-today's blend, which the first decision may replace.
+Before this RFC, readiness was the mean of last night's sleep score and a
+baseline-relative HRV score, and one line at 33 held the day. The card prints
+the band beside its 0–100 number (50 = the person's own normal).
 
 ## Motivation
 
@@ -185,32 +185,40 @@ today's blend, which the first decision may replace.
 - The bands in part 2 are then checked against the HRV score (Unresolved
   question 3).
 
-### 2. Three bands (built, on a working branch)
+### 2. Three bands, on the HRV distance (built 2026-10-04)
 
-Built and tested on the branch `claude/project-thread-g3kirn` of
-`petrovsco/tekio` (commit 0556b9b, v2.1.15), not on develop.
+The first build (2026-10-02, tekio branch `claude/project-thread-g3kirn`,
+0556b9b) drew 33 / 66 on the sleep + HRV blend and is superseded. Peter chose
+the trial tiers on 2026-10-04 (the grounding's option (b)). Built on tekio
+branch `claude/readiness-inputs-b9o2ks`, v2.1.22:
 
-- `READINESS_BANDS = { low: 33, moderate: 66 }` in `src/constants/app.ts`
-  replaces `PUSH_THRESHOLD = 33`. Each value is the top of its band, inclusive.
-- `readinessBand()` and `fusedVerdict()` in `src/lib/fusedRead.ts`: a low band
-  holds, a moderate band returns the new `steady` mode, an OK band pushes.
-  Missing readiness data still cannot gate.
+- `HRV_BAND_Z = { moderate: -0.5, low: -1 }` in `src/constants/app.ts`
+  replaces `PUSH_THRESHOLD = 33`: z ≥ −0.5 ok (Push), −1 ≤ z < −0.5 moderate
+  (Steady), z < −1 low (Hold). One-sided: HRV above baseline never lowers the
+  band, the recorded departure below.
+- `src/lib/fusedRead.ts`: `ReadinessReading` is what every calculator returns
+  (method, band, 0–100 score, z); `overnightHrvReading()` is the first
+  calculator (ln HRV, 7-night mean against the 60 nights before that week,
+  14 baseline nights before a reading); `systemicReadiness()` reads it and
+  no longer blends the sleep score; `fusedVerdict()` takes the band.
 - Home (`HomeTab.tsx`): the card prints LOW, MODERATE or OK before the number.
-  A Steady day leads with "Steady." and its first fact says what changes, the
-  effort and not the gaps: *Lighter today: no intervals or max efforts.* Only a
-  Low day inverts the card and shows the banner, and the banner loses
-  `(PLACEHOLDER)`.
-- Tests at 33, 34, 66 and 67, and the crashed-HRV case.
-- The `/ground` skill's gated table names `READINESS_BANDS` and `STEADY_NOTE`.
-- In the same change that brings the code onto develop: inventory row 4.12, a
-  new row 4.18 for the Steady line, two decisions-ledger rows and design-system
-  §11's PLACEHOLDER list, as prepared in
-  [0085/inventory-rows.md](0085/inventory-rows.md). Until then both documents
-  describe the line at 33, because that is what develop runs.
+  A Steady day leads with "Steady." and its first fact is `STEADY_NOTE`:
+  *Lighter today: no intervals or max efforts.* Only a Low day inverts the card
+  and shows the banner, which lost `(PLACEHOLDER)`. Sleep still shows on the
+  card as a fact and no longer moves the number.
+- Tests: the band edges, log space, the one-sided top, the current week kept
+  out of the baseline, a single bad night, 14 nights, no fresh HRV.
+- The `/ground` skill's gated table names `HRV_BAND_Z`, the calculator's
+  constants and `STEADY_NOTE`.
+- Same change, in this repo: inventory rows 4.11 (retired), 4.12, 4.17 and
+  4.18, decisions D46 and D47, D8 marked done, design-system §11's
+  PLACEHOLDER list.
 
-Measured on invented data at 390 × 900 against develop: a Push day is
-unchanged, a Steady day's verdict is one line longer (17 px), and a Low day's
-banner is one line shorter (14 px), because it lost `(PLACEHOLDER)`.
+Seen on invented data at 412 × 900, all three bands, no console errors:
+[Push](/mnt/project-files/readiness/0085-home-push.png),
+[Steady](/mnt/project-files/readiness/0085-home-steady.png),
+[Hold](/mnt/project-files/readiness/0085-home-hold.png) (project files, not
+in this repo).
 
 ## Rationale
 
@@ -376,20 +384,20 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
       linked here
 - [x] Peter has chosen the inputs and the default, recorded here (2026-10-04:
       the three-rung ladder, HRV first)
-- [ ] A calculator interface returns a band or nothing, and the overnight HRV
+- [x] A calculator interface returns a band or nothing, and the overnight HRV
       calculator implements it with its own tests: log of HRV, 14 nights
       before a verdict, the current week kept out of the baseline
-- [ ] The device sleep score no longer moves readiness
-- [ ] The band lines and the middle verdict's name are confirmed on the chosen
-      inputs (Unresolved question 3)
+- [x] The device sleep score no longer moves readiness
+- [x] The band lines and the middle verdict's name are confirmed on the chosen
+      inputs: the trial tiers on the HRV distance (Peter, 2026-10-04), Steady
 - [x] `/ground` ran on the bands, and its block is above
-- [ ] Its inventory and ledger rows land with the code
-      ([0085/inventory-rows.md](0085/inventory-rows.md))
-- [x] `fusedVerdict()` holds, steadies or pushes by band, tested at 33, 34, 66
-      and 67
+- [x] Its inventory and ledger rows land with the code (rows 4.11, 4.12, 4.17,
+      4.18; D46, D47)
+- [x] `fusedVerdict()` holds, steadies or pushes by band, tested at the
+      edges −0.5 and −1
 - [x] Home's card names the band, a Steady day has its own verdict, and the
       hold banner has no `(PLACEHOLDER)`: seen in the browser on invented data,
-      all three bands, no console errors (on the working branch)
+      all three bands, no console errors
 - [ ] It lands on develop and the staging app shows it
 
 ## Unresolved questions
@@ -402,7 +410,8 @@ For lifting, the direct evidence for any morning gate is thin: one mixed-modalit
    alone it can read Steady, while the trials prescribed easy training there.
    Moot if the trial tiers are chosen in question 3, since they hold beyond
    1 SD down.
-3. **Where the lines sit.** 33 / 66 is Peter's decision, made before the
+3. **Where the lines sit.** *Answered 2026-10-04:* the trial tiers on the HRV
+   distance, and the middle verdict stays Steady. The question as it stood: 33 / 66 is Peter's decision, made before the
    grounding showed that a night at baseline HRV needs a sleep score of 83 to
    push. Put to him on 2026-10-02: keep them, take Garmin's lines whole (Hold
    at 24 and under, Push from 50), or move the tiers onto HRV (option (b)). A
