@@ -2,9 +2,9 @@
 title: Readiness — inputs ranked by evidence, then three bands on top
 authors: [Peter Petrov]
 created: 2026-10-02
-last_updated: 2026-10-02
-status: backlog
-status_note: "Parked by Peter on 2026-10-02 for its own task: rank the candidate readiness inputs by evidence and choose them first, then set the bands on top. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
+last_updated: 2026-10-04
+status: in progress
+status_note: "Part 1 started 2026-10-04: /ground is ranking the candidate readiness inputs by evidence, then Peter picks. Three bands at 33 / 66 are built and tested on a working branch, not on develop."
 label: feature
 ---
 
