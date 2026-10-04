@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-04
 status: in progress
-status_note: Muscle sheet, map tap, draggable handle, recovery sheet in steps and the owner's review fixes are on tekio branch claude/recovery-sheet-review-haueyj (v2.1.30), checked in emulation. Open are the owner's phone check and in-sheet catalogue search, which waits for 0074.
+status_note: Muscle sheet, map tap, draggable handle, recovery sheet in steps and the owner's review fixes landed on develop as tekio v2.1.30 (staging). Open are the owner's phone check and in-sheet catalogue search, which waits for 0074.
 label: feature
 depends: [74]
 release: 2.2.0
