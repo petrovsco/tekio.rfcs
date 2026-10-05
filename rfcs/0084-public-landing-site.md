@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-05
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.5, served at stg.tekio.fyi behind the app's sign-in, and its release form keeps addresses in a Sheet in the company folder of the owner's Drive, a bounded number at a time. Three questions wait on Peter (Unresolved questions): the words of the philosophy screen, whether the form adds a human check, and which opening film, if any, plays on the first screen; then the site goes public on tekio.fyi on his word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.5, served at stg.tekio.fyi behind the app's sign-in, with its release form writing to a Sheet in the company folder of the owner's Drive. Peter picked Thin air to open the first screen and its full cut is being built for staging; the philosophy screen's words and the form's human check still wait on him (Unresolved questions), then the site goes public on tekio.fyi on his word."
 label: feature
 ---
 
@@ -133,6 +133,10 @@ label: feature
   chasing strength, then endurance, then all seven). Thin air is
   recommended. The storylines are kept in
   [0084/opening-film.md](0084/opening-film.md); the pick waits on him.
+- **2026-10-05** — Peter picked Thin air. Its full cut goes into the site as
+  the first screen, on staging only until the site goes public. Before it is
+  shown, its four numbers get their sources and its claim, that a body adapts
+  to each place, goes through `/ground`. One new box: 14 of 19.
 
 ## Summary
 
@@ -487,6 +491,11 @@ labelled, and nothing on it says whose app this was built around.
       anything, and what they do is what triggers it; the app is for chasing
       the adaptations they want most, and this first version chases all
       seven, muscle by muscle and for the whole body
+- [ ] The first screen opens on the Thin air film: drawn in code from the
+      time alone, it plays once, muted, and comes to rest on its last frame;
+      reduced motion shows only that frame; the read it ends on is the app's
+      own for the invented athlete; each of its numbers carries its source on
+      the page, and its claim is grounded
 - [x] The release form says what the address is used for; a test address
       lands as a row in the Workspace Sheet (and is then deleted), and a
       filled honeypot lands nowhere
@@ -504,7 +513,7 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Unresolved questions
 
-Three, asked of Peter on 2026-10-04 and 2026-10-05:
+Two, asked of Peter on 2026-10-04:
 
 - **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
   mostly invisible check that the poster is a person, which the script would
@@ -515,16 +524,10 @@ Three, asked of Peter on 2026-10-04 and 2026-10-05:
   (2026-10-04, over the other place, between act one and act two); the
   drafted words wait on his check. Once they are settled, the same lines are
   proposed for the doctrine's purpose.
-- **Does the first screen open on a film, and which one?** Peter asked for
-  one on 2026-10-05. Three storylines are in
-  [0084/opening-film.md](0084/opening-film.md), Thin air recommended. Each
-  would be drawn in code, play once muted and come to rest on the first
-  screen's words, with only the resting frame under reduced motion. Thin
-  air's four numbers (a mountain's height, the pressure ten metres down, a
-  marathon, an orbit) need sources, and its claim that a body adapts to each
-  place goes through `/ground` before it ships.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
 (§4), where release addresses go (§5), how a release redeploys the site (§3),
-and creating `master` ahead of the site's first release (§2).
+and creating `master` ahead of the site's first release (§2). The film asked
+for on 2026-10-05 was settled by him the same day: the first screen opens on
+Thin air ([0084/opening-film.md](0084/opening-film.md)).
