@@ -2,9 +2,9 @@
 title: A public landing site on tekio.fyi that explains how the reads are computed and cites their evidence
 authors: [Peter Petrov]
 created: 2026-10-01
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.5, served at stg.tekio.fyi behind the app's sign-in, and its release form keeps addresses in a Sheet in the company folder of the owner's Drive, a bounded number at a time. Two of Peter's 2026-10-04 asks wait on him (Unresolved questions): the app's philosophy as the page's first screen, and whether the form adds a human check; then the site goes public on tekio.fyi on his word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.5, served at stg.tekio.fyi behind the app's sign-in, and its release form keeps addresses in a Sheet in the company folder of the owner's Drive, a bounded number at a time. Three questions wait on Peter (Unresolved questions): the words of the philosophy screen, whether the form adds a human check, and which opening film, if any, plays on the first screen; then the site goes public on tekio.fyi on his word."
 label: feature
 ---
 
@@ -125,6 +125,14 @@ label: feature
   adapt to almost anything, and what they do is what triggers it; the app is
   for chasing the adaptations they want most, and this first version chases
   all seven, muscle by muscle and for the whole body. Two new boxes: 14 of 18.
+- **2026-10-05** — Peter asked for the first screen to open on a short film in
+  the style of the Opus-made "Prometheus" film, told in Tekiō's own subject
+  and look. Three storylines were drawn as live rough cuts and shown to him:
+  Thin air (four places no body was built for, then the read), The plate (one
+  set to the read, as an anatomical plate) and A year in ink (an invented year
+  chasing strength, then endurance, then all seven). Thin air is
+  recommended. The storylines are kept in
+  [0084/opening-film.md](0084/opening-film.md); the pick waits on him.
 
 ## Summary
 
@@ -496,7 +504,7 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Unresolved questions
 
-Two, asked of Peter on 2026-10-04:
+Three, asked of Peter on 2026-10-04 and 2026-10-05:
 
 - **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
   mostly invisible check that the poster is a person, which the script would
@@ -507,6 +515,14 @@ Two, asked of Peter on 2026-10-04:
   (2026-10-04, over the other place, between act one and act two); the
   drafted words wait on his check. Once they are settled, the same lines are
   proposed for the doctrine's purpose.
+- **Does the first screen open on a film, and which one?** Peter asked for
+  one on 2026-10-05. Three storylines are in
+  [0084/opening-film.md](0084/opening-film.md), Thin air recommended. Each
+  would be drawn in code, play once muted and come to rest on the first
+  screen's words, with only the resting frame under reduced motion. Thin
+  air's four numbers (a mountain's height, the pressure ten metres down, a
+  marathon, an orbit) need sources, and its claim that a body adapts to each
+  place goes through `/ground` before it ships.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
