@@ -51,7 +51,7 @@ work of the three.
 The grounding narrowed two of its lines for the full cut
 ([RFC 0084 §Grounding](../0084-public-landing-site.md#grounding)): "You can
 adapt to almost anything." became "Your body adapts to what it meets.", and
-"No gravity." became "Weightless."
+"No gravity." became "Weightless." Peter kept the narrowed line the same day.
 
 ## 2. The plate
 

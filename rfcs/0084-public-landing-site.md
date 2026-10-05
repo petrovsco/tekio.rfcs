@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-05
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.6, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, and its release form writes to a Sheet in the company folder of the owner's Drive. Three things wait on Peter (Unresolved questions): whether the film keeps its grounded line, the philosophy screen's words, and the form's human check; then the site goes public on tekio.fyi on his word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.6, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, and its release form writes to a Sheet in the company folder of the owner's Drive. Two things wait on Peter (Unresolved questions): the philosophy screen's words and the form's human check; then the site goes public on tekio.fyi on his word."
 label: feature
 ---
 
@@ -151,6 +151,12 @@ label: feature
   overflow and no console errors; it played through at the screen's frame
   rate, and reduced motion showed only the last frame. First paint is 37 kB
   compressed, under the 50 kB box. The film's box is ticked: 15 of 19.
+- **2026-10-05** — Peter kept the grounded line (D58): the film goes on
+  saying "Your body adapts to what it meets.", so nothing on staging changed.
+  The page's philosophy box now asks for that line instead of "a person can
+  adapt to almost anything", and the parked philosophy draft opens on it too,
+  reading the film's own copy. Its lead lost the sentence that repeated the
+  new heading; the words wait on Peter's check. Still 15 of 19.
 
 ## Summary
 
@@ -534,12 +540,12 @@ No practitioner disagreement was found on (b), and no roster member was found sa
 ### Source comment
 `// "Your body adapts to what it meets." / "What you do is what triggers it." / "Weightless." — adaptation is real, stimulus-specific and bounded, and in orbit it is loss (~89 % g at 400 km), see tekio.rfcs/rfcs/0084-public-landing-site.md#grounding`
 
-**Taken 2026-10-05, while Peter decides:** the first side of the split. The
-film's turn to the body says "Your body adapts to what it meets.", which reads
-as fitting the demand and holds in all four places, so orbit stays in the
-film; and orbit's caption is "Weightless." (D58). The run read search results
-only, so no study's n was checked; the block says so, and no number on the
-page rests on one.
+**Taken 2026-10-05, and kept by Peter the same day:** the first side of the
+split. The film's turn to the body says "Your body adapts to what it meets.",
+which reads as fitting the demand and holds in all four places, so orbit stays
+in the film; and orbit's caption is "Weightless." (D58). The run read search
+results only, so no study's n was checked; the block says so, and no number on
+the page rests on one.
 
 ## Acceptance
 
@@ -562,10 +568,10 @@ page rests on one.
 - [x] Act two says it is an example week, not a program, on its title step and
       on every day's stage
 - [x] The page speaks to the reader as "you" throughout
-- [ ] The page says what the app believes: a person can adapt to almost
-      anything, and what they do is what triggers it; the app is for chasing
-      the adaptations they want most, and this first version chases all
-      seven, muscle by muscle and for the whole body
+- [ ] The page says what the app believes: a body adapts to what it meets,
+      and what a person does is what triggers it; the app is for chasing the
+      adaptations they want most, and this first version chases all seven,
+      muscle by muscle and for the whole body
 - [x] The first screen opens on the Thin air film: drawn in code from the
       time alone, it plays once, muted, and comes to rest on its last frame;
       reduced motion shows only that frame; the read it ends on is the app's
@@ -588,7 +594,7 @@ page rests on one.
 
 ## Unresolved questions
 
-Three, two asked of Peter on 2026-10-04 and one on 2026-10-05:
+Two, both asked of Peter on 2026-10-04:
 
 - **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
   mostly invisible check that the poster is a person, which the script would
@@ -601,14 +607,11 @@ Three, two asked of Peter on 2026-10-04 and one on 2026-10-05:
   screen and says the draft's first two sentences, so the draft would follow
   the film. Once the words are settled, the same lines are proposed for the
   doctrine's purpose.
-- **Does the film keep its grounded line?** The grounding narrowed "You can
-  adapt to almost anything." to "Your body adapts to what it meets."
-  ([Grounding](#grounding), D58). The film on staging says the narrowed line;
-  the parked draft still says the first.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
 (§4), where release addresses go (§5), how a release redeploys the site (§3),
 and creating `master` ahead of the site's first release (§2). The film asked
 for on 2026-10-05 was settled by him the same day: the first screen opens on
-Thin air ([0084/opening-film.md](0084/opening-film.md)).
+Thin air ([0084/opening-film.md](0084/opening-film.md)), and the film keeps
+its grounded line, "Your body adapts to what it meets." (D58).
