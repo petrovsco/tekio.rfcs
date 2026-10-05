@@ -175,6 +175,9 @@ label: feature
   and played through in real time: the line appears only once the film stops,
   and one step down brings act one. The philosophy box narrows to what the
   page says and is ticked: 16 of 19.
+- **2026-10-05** — the doctrine question drafted and put to Peter, with
+  "premise only" recommended (Unresolved questions). The doctrine changes
+  only on his word. Still 16 of 19.
 
 ## Summary
 
@@ -619,19 +622,29 @@ the page rests on one.
 
 ## Unresolved questions
 
-Two, one asked of Peter on 2026-10-04 and one still to be put to him:
+Two, one asked of Peter on 2026-10-04 and one on 2026-10-05:
 
 - **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
   mostly invisible check that the poster is a person, which the script would
   then verify with Cloudflare on every post. It needs one more permission in
-  the script's editor.
-- **Do the page's lines join the doctrine's purpose?** The page now says what
-  the app believes in three lines: "Your body adapts to what it meets.",
-  "What you do is what triggers it." and "Tekiō is for chasing the
-  adaptations you want most." The doctrine's purpose says what Tekiō answers,
-  not what it believes, and it measures what's missing against all seven
-  adaptations, so the third line would be a deliberate amendment, drafted
-  for Peter to decide.
+  the script's editor. Offered with **both** recommended; his answer is typed,
+  because the set-up runs on his accounts.
+- **Do the page's lines join the doctrine's purpose?** The page says what the
+  app believes in three lines: "Your body adapts to what it meets.", "What you
+  do is what triggers it." and "Tekiō is for chasing the adaptations you want
+  most." The first two are the reason behind the purpose, and both rest on
+  this RFC's Grounding. The third goes further than the app does today, which
+  measures what's missing against all seven adaptations equally. Declaring
+  what a user chases is [RFC 0040](0040-adaptation-goals.md) (backlog, 3.0.0),
+  which still has to show that a goal is a training input rather than a
+  setting (P4). Three options, put to Peter on 2026-10-05:
+  - **Premise only** (recommended): §1 gains one paragraph, after the note on
+    who *me* is: "My body adapts to what it meets, and what I do is what
+    triggers it." The third line stays the page's own, and 0040 keeps the
+    question of goals.
+  - **All three**: §1 also says Tekiō is for chasing the adaptations I want
+    most, which commits the product to 0040's goals before the app has them.
+  - **Leave it**: the doctrine stays as it is.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
