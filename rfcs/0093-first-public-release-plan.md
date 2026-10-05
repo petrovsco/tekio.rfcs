@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: in progress
-status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps for Android and iOS, agent help outside the app first. The remaining forks go to Peter one at a time, the paid tier next."
+status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps for Android and iOS, agent help outside the app first, launch free with billing later. The free/paid line is next."
 label: infra
 ---
 
@@ -196,8 +196,9 @@ RFC named.
    ([0096](0096-mobile-apps.md)).
 3. ~~Agent order?~~ Answered 2026-10-05: outside first, as a remote MCP
    connector ([0099](0099-agent-access.md)).
-4. Paid tier: at launch, or after? And which side of the line each feature sits
-   on. ([0097](0097-free-and-paid-tiers.md))
+4. Paid tier: ~~at launch or after?~~ Answered 2026-10-05: free first, billing
+   later. Still open: which side of the line each feature sits on
+   ([0097](0097-free-and-paid-tiers.md)).
 5. Planned exercises on the body map: a separate layer, a switch, or not shown?
    ([0098](0098-planned-exercises.md))
 6. The release name, and the doctrine amendment's wording.

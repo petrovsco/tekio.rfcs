@@ -2,9 +2,9 @@
 title: Free and paid tiers — where the line falls
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 status: backlog
-status_note: "Scoped 2026-10-04 in the 0093 plan with a proposed principle. Which feature sits on which side is Peter's call; billing waits on accounts (0003) and the API (0094)."
+status_note: "Decided 2026-10-05 by Peter: launch free, with the tier check in the API from its first version, and billing in a later release. Which feature sits on which side is still open."
 label: backlog
 depends: [3, 94]
 ---
@@ -84,13 +84,12 @@ feature's tier in its own RFC. 3–4: not applicable. 5: no number.
 ## Acceptance
 
 - [ ] Peter's call on each row of the table is recorded
-- [ ] Peter's call on paid at launch or after is recorded
+- [x] Peter's call on paid at launch or after is recorded: free first (2026-10-05)
 - [ ] The API refuses a paid route for a free user, tested
 - [ ] A test purchase on each store and on web sets the entitlement
 
 ## Unresolved questions
 
 1. Is the principle right: the read free, the per-user costs paid?
-2. Paid at launch, or free first with the check in place and billing after?
-   Recommendation: free first.
+2. ~~Paid at launch or free first?~~ Answered 2026-10-05: free first.
 3. The two proposed rows: MCP access free with a limit, syncs paid.
