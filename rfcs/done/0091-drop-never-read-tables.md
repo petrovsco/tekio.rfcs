@@ -22,7 +22,7 @@ migration, now rather than at the 2.2.0 sweep.
 ## Motivation
 
 A table nobody reads still costs something. The schema baseline
-([0016](../0016-supabase-migration-baseline.md)) would pull it into the repo, the
+([0016](0016-supabase-migration-baseline.md)) would pull it into the repo, the
 advisors report on it, and a reader of the table list takes it for a feature.
 `nutrition_logs` and `blood_work_*` suggest surfaces the doctrine never ruled on,
 and `goals` reads like [0040](../0040-adaptation-goals.md) already exists.
@@ -37,7 +37,7 @@ and `goals` reads like [0040](../0040-adaptation-goals.md) already exists.
 - Anything a build still reads, including the program tables and `water_logs`
   that [0088](../0088-release-2-2-0-schema-drops.md) queues for the 2.2.0 sweep.
 - `movement_patterns`. It is out of this RFC for good: the exercise catalogue
-  ([0074](../0074-exercise-catalogue-grounded-links.md)) makes it live, with the
+  ([0074](0074-exercise-catalogue-grounded-links.md)) makes it live, with the
   grounded patterns every lift will point at.
 - `sport_types` and `sport_sessions`, which the sport sync and Cardio read.
 - `user_profiles`, which `develop` reads.

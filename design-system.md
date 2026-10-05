@@ -55,7 +55,7 @@ Two states asked for one and were refused, so the rule has teeth:
 | Card | `#ffffff`, 1px `#e2e2e0` border, 3px radius |
 | Hairline inside a card | `#eeeeec` |
 | Chrome hairline (nav border) | `#d6d6d4` |
-| Sheet / modal | `#ffffff`, 2px `#1a1a1a` border, 6px radius |
+| Sheet / modal | `#ffffff`, 6px radius; on a phone a 1px `#1a1a1a` top edge (the scrim says it is a sheet), as a centred card a 2px `#1a1a1a` border |
 | Scrim under a sheet | `rgba(26,26,26,0.34)` |
 | Page gutter | 16px; card padding 7–10px |
 
@@ -200,7 +200,11 @@ question a tap just asked, it is T2. Everything else is T3.
 Every number that claims physiological meaning and has not passed
 `/ground` is marked PLACEHOLDER on the boards and in code comments —
 currently the cycle target (60 sets), the recovery window (2 days), the
-push threshold, the per-quality staleness windows, and the blood-donation
-windows. The rule is: the mark stays visible until the number is
+per-quality staleness windows, and the blood-donation windows. The rule is: the mark stays until the number is
 grounded. The grounding work itself is tracked in the roadmap (018), not
 here.
+
+The mark never reaches the app's screens. It is a note for whoever builds
+the app, and a user has no use for it: the screen prints the number alone,
+and the mark lives in the code comment beside the constant and in the RFC
+that grounds it (owner's call, 2026-10-04, RFC 0100).
