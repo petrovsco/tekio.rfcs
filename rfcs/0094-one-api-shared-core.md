@@ -7,6 +7,7 @@ status: backlog
 status_note: "Scoped 2026-10-04 in the 0093 plan. Waits on the platform choice (0095) and on accounts (0003)."
 label: infra
 depends: [95, 3]
+release: 3.0.0
 ---
 
 # RFC 0094: One API and a shared domain core for every client

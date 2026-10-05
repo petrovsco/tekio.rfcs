@@ -6,6 +6,7 @@ last_updated: 2026-10-05
 status: backlog
 status_note: "Decided 2026-10-05: stay on Supabase (option A), Peter's call. Two boxes remain before launch: confirm the project's EU region and its data-processing agreement."
 label: infra
+release: 3.0.0
 ---
 
 # RFC 0095: Backend platform for the public release — stay on Supabase or move to AWS

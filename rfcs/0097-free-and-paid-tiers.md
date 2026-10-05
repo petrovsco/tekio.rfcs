@@ -4,9 +4,10 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: backlog
-status_note: "Decided 2026-10-05 by Peter: launch free, billing later. The proposed line (the read free, per-user costs paid) was sent back for a rethink the same day; the table below is parked until Peter says which features go on each side."
+status_note: "Launch free, billing later (Peter, 2026-10-05). The line itself is not drawn: Peter will refine it while 3.0.0 is built, in this RFC or a thread of its own. The table below is a parked draft."
 label: backlog
 depends: [3, 94]
+release: 3.0.0
 ---
 
 # RFC 0097: Free and paid tiers — where the line falls

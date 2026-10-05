@@ -7,6 +7,7 @@ status: backlog
 status_note: "Approach decided 2026-10-05 by Peter: native apps, Swift for iOS and Kotlin for Android, beside the web app. Waits on the API (0094), which now must serve the reads computed on the server."
 label: backlog
 depends: [94]
+release: 3.0.0
 ---
 
 # RFC 0096: Android and iOS apps beside the web app

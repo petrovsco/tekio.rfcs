@@ -7,6 +7,7 @@ status: backlog
 status_note: "Order decided 2026-10-05 by Peter: outside first, as a remote MCP connector on the API, then the in-app agent on the same tools. Waits on the API (0094)."
 label: backlog
 depends: [94]
+release: 3.0.0
 ---
 
 # RFC 0099: Agent access — the user's own assistant first, an in-app agent on the same tools

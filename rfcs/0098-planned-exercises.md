@@ -2,11 +2,11 @@
 title: Planned exercises — a state for work that has not happened yet
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 status: backlog
-status_note: "Raised 2026-10-04 from using an agent to plan a day's training. Scoped in the 0093 plan; how the body map shows planned work is Peter's call, deferred by him."
+status_note: "Tagged 2.3.0 by Peter on 2026-10-05, ahead of the rest of the public release plan. It is built on today's stack, without waiting for the API (0094). How the body map shows planned work must be decided before kickoff."
 label: backlog
-depends: [94]
+release: 2.3.0
 ---
 
 # RFC 0098: Planned exercises — a state for work that has not happened yet
@@ -51,8 +51,11 @@ piece any rebuilt Program needs, so it is built once here.
 1. **Data**: a status on the session-exercise and set rows (`planned` /
    `logged`), plus who planned it (`user` / `agent`), additive and nullable under
    the two-builds migration policy (`supabase/README.md` in the code repo). Every
-   read in the core package (0094) filters to `logged`, so the change cannot leak
-   into a number.
+   read (`src/lib/adaptations.ts`, `src/lib/fusedRead.ts`) filters to `logged`,
+   so the change cannot leak into a number. Built in 2.3.0 on today's stack
+   (Peter, 2026-10-05), before the API exists; when 0094 moves the reads into the
+   core package, the filter moves with them, and the agent's `plan_exercises`
+   tool (0099) writes the same rows.
 2. **Capture**: Weights shows today's planned exercises at the top, with their
    sets as targets; logging a set fills it in. Unlogged plans from earlier days
    expire to a history line, not into the read.
@@ -85,9 +88,9 @@ the same information behind a tap, against doctrine §6's "without tapping".
 ## Acceptance
 
 - [ ] Peter's call on how the map shows planned work is recorded
-- [ ] Planned rows never change Home or Adaptations, tested in the core package
-- [ ] A plan written through the API appears on Weights and becomes logged work
-      by logging it
+- [ ] Planned rows never change Home or Adaptations, tested in the reads' own tests
+- [ ] A plan entered in the app appears on Weights and becomes logged work by
+      logging it
 - [ ] The chosen map treatment is walked on a phone at 412 px
 
 ## Unresolved questions
