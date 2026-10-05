@@ -36,7 +36,7 @@ chapter.
 |---|---|
 | 0:00 | Paper and a horizon. TEKIŌ · 適応, Japanese for adaptation. |
 | 0:02 | I · ALTITUDO. A mountain in engraved cross-section; a route climbs it as the counter runs to 8,849 metres. "Thin air." |
-| 0:07 | II · PROFUNDUM. The frame drops through sea level; a plumb line sinks ten metres, where the water presses twice as hard as the air above it. "Deep water." |
+| 0:07 | II · PROFUNDUM. The frame drops through sea level; a plumb line sinks ten metres, where the pressure is twice that at the surface. "Deep water." |
 | 0:12 | III · VIA LONGA. The surface becomes the far end of a road; 42.195 kilometres go by. "The long road." |
 | 0:17 | IV · ORBITA. The horizon bends into the edge of the Earth as the counter climbs 400 kilometres. "No gravity." |
 | 0:22 | V · CORPUS. The app's body map draws itself. "You can adapt to almost anything." A squat, a row and a run land on it as ink. "What you do is what triggers it." |
@@ -47,6 +47,11 @@ Before it ships: each of the four numbers needs a source. None claims anything
 about training, but the film implies that a body adapts to each place, so that
 sentence goes through `/ground` like any other claim. It is the most drawing
 work of the three.
+
+The grounding narrowed two of its lines for the full cut
+([RFC 0084 §Grounding](../0084-public-landing-site.md#grounding)): "You can
+adapt to almost anything." became "Your body adapts to what it meets.", and
+"No gravity." became "Weightless."
 
 ## 2. The plate
 

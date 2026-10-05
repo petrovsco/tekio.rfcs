@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-05
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.5, served at stg.tekio.fyi behind the app's sign-in, with its release form writing to a Sheet in the company folder of the owner's Drive. Peter picked Thin air to open the first screen and its full cut is being built for staging; the philosophy screen's words and the form's human check still wait on him (Unresolved questions), then the site goes public on tekio.fyi on his word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.6, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, and its release form writes to a Sheet in the company folder of the owner's Drive. Three things wait on Peter (Unresolved questions): whether the film keeps its grounded line, the philosophy screen's words, and the form's human check; then the site goes public on tekio.fyi on his word."
 label: feature
 ---
 
@@ -137,6 +137,20 @@ label: feature
   the first screen, on staging only until the site goes public. Before it is
   shown, its four numbers get their sources and its claim, that a body adapts
   to each place, goes through `/ground`. One new box: 14 of 19.
+- **2026-10-05** — the full cut of Thin air opens the site on staging
+  (`tekio.site` 0.1.6, §4). Its read is act one's, so the film shows nothing
+  the app's own functions do not return. Each of its numbers carries its
+  source under the film, and its claim went through `/ground`
+  ([Grounding](#grounding)): partially supported. Two lines were narrowed:
+  "You can adapt to almost anything." became "Your body adapts to what it
+  meets.", because the summit is past where anyone lives and orbit adapts a
+  body by taking bone and muscle away; and "No gravity." became
+  "Weightless.", because gravity at 400 km is about 89 % of the surface's.
+  Whether the first narrowing stands is Peter's call (D58). Checked on a
+  local build in Chromium at eight sizes from 360 × 740 to 1920 × 1080: no
+  overflow and no console errors; it played through at the screen's frame
+  rate, and reduced motion showed only the last frame. First paint is 37 kB
+  compressed, under the 50 kB box. The film's box is ticked: 15 of 19.
 
 ## Summary
 
@@ -392,6 +406,23 @@ puts them in it; the doctrine's first person stays in the doctrine.
 The real site was built from round four in `petrovsco/tekio.site` on
 2026-10-02.
 
+**The first screen is a film** (Peter, 2026-10-05): Thin air, picked from
+three storylines ([0084/opening-film.md](0084/opening-film.md)). It takes its
+grammar from the Opus-made "Prometheus" film (Latin chapter marks that pin to
+the corner, a ticking timeline, a counter that climbs, line-work that redraws
+itself twelve times a second) and wears the page's paper, ink and one accent.
+Four places no body was built for, each counted to a sourced number: Everest's
+8,849 m, 10 m of seawater at 2 atmospheres, the marathon's 42.195 km and the
+station's 400 km. Then the edge of the Earth shrinks into the head of the
+app's body map, the invented fortnight lands on it a day at a time, and the
+film rests on act one's read and the word "Adapt." Its words are grounded
+([Grounding](#grounding)). It is drawn in code from the time alone, so the
+page plays it live with nothing to stream: once, muted, only while it is on
+screen, then at rest on its last frame, which is all that reduced motion
+shows. Phones get an upright cut. Its sources open from a button under it,
+and a transcript reads it to a screen reader. The film's words live in
+`src/lib/film.ts`, its drawing in `src/scripts/film.js`.
+
 ### 5. Where the release addresses go: a Sheet in Google Workspace
 
 Peter's call, 2026-10-02, in place of a table in the app's database. The form
@@ -466,6 +497,50 @@ there changed nothing for the form, since the script is bound to the Sheet.
 **No personal context.** The page is public. The example read is invented and
 labelled, and nothing on it says whose app this was built around.
 
+## Grounding
+
+**Claim:** Prose, no number. The opening film says a body adapts, with exposure, to the air on Everest's summit (8,849 m), 10 m of water (~2 atm), a marathon (42.195 km) and orbit (~400 km): "You can adapt to almost anything." It then says the stimulus decides the adaptation: "What you do is what triggers it." No training or recovery decision depends on it. It is the public page's stated philosophy, held to RFC 0084's "no new claim" rule.
+**Searched:** 2026-10-05 (search results only; no abstracts were opened, so no n below was checked) · **Verdict:** partially supported
+**Number to use:** no number; wording. Default: keep "What you do is what triggers it.", narrow "You can adapt to almost anything." to "Your body adapts to what it meets.", and change "No gravity." to "Weightless." Each place does change a body, but the first is where adaptation runs out (the highest city is ~3.5 km below the summit), the last is where it runs backwards (bone and muscle are lost), and gravity at 400 km is ~89 % of what it is at the surface.
+
+### Evidence
+- `[literature]` **Thin air.** One person really does acclimatize, and it reverses. Haemoglobin mass changes quickly in early acclimatization to 5,260 m and changes again on de-acclimatization. Population: healthy humans; design and n not checked. Source: [AltitudeOmics, PLOS One](https://journals.plos.org/plosone/article?id=10.1371%2Fjournal.pone.0108788). A meta-analysis of athletes' blood response to altitude also exists: [Am J Hematol](https://onlinelibrary.wiley.com/doi/10.1002/ajh.24941) (pooled estimates not checked).
+- `[literature]` **Thin air, the limit.** The highest city, [La Rinconada, is at 5,100–5,300 m](https://www.researchgate.net/figure/Localization-of-the-highest-city-in-the-World-La-Rinconada-Peru-5-100-5-300-m_fig1_342953893). Some of its residents develop [excessive erythrocytosis and chronic mountain sickness](https://www.researchgate.net/publication/342953893_Excessive_Erythrocytosis_and_Chronic_Mountain_Sickness_in_Dwellers_of_the_Highest_City_in_the_World), and a 2024 study there is titled for the [limits of human adaptations](https://physoc.onlinelibrary.wiley.com/doi/full/10.1113/JP284550) (J Physiol). Population: residents; design, n and prevalence not checked. The summit is studied as the edge of [human limits for hypoxia](https://pubmed.ncbi.nlm.nih.gov/10863526/). People cross it; nobody lives there.
+- `[literature]` **Deep water.** Humans have a [diving response](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1600-0838.2005.00440.x) (review, Scand J Med Sci Sports 2005). Long-term breath-hold training produces both [adaptations and maladaptations](https://pubmed.ncbi.nlm.nih.gov/33791844/) (state-of-the-art review, 2021). Novices show adaptations after [13 days of apnea training](https://pubmed.ncbi.nlm.nih.gov/40674174/) (training study, n not checked).
+- `[literature]` **Not the same thing.** The diving traits of sea nomads ([Cell 2018](https://pubmed.ncbi.nlm.nih.gov/29677510/)) and the altitude traits of highlanders ([review](https://pubmed.ncbi.nlm.nih.gov/11443005/)) include genetic adaptations, selected in whole populations over generations. One person's exposure cannot produce those. Population genetics; n not checked.
+- `[literature]` **The long road.** The best supported of the four: training for a first marathon reverses age-related stiffening of the aorta. Population: first-time marathon runners; design and n not checked. Source: [JACC 2020](https://www.jacc.org/doi/10.1016/j.jacc.2019.10.045).
+- `[literature]` **No gravity.** The body does adapt to orbit, mostly by shedding what weightlessness no longer asks for: [pathophysiological adaptations to the space environment](https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2017.00547/full) (review, Front Physiol 2017), [muscle and bone atrophy in space](https://www.nature.com/articles/s41526-021-00145-9) (npj Microgravity 2021), and [bone loss from unloading](https://pmc.ncbi.nlm.nih.gov/articles/PMC8862023/). Population: astronauts and ground-based stand-ins; n and sizes not checked.
+- `[literature]` **Reference facts, not studies.**
+  - Gravity at 400 km is ≈ 89 % of surface gravity (inverse-square law with Earth's 6,371 km radius, worked out here). Astronauts float because they are in free fall ([NASA](https://www.nasa.gov/learning-resources/for-kids-and-students/what-is-microgravity-grades-5-8/), page not opened).
+  - 10 m of seawater adds ≈ 1 atm (ρgh ≈ 101 kPa), so the total pressure is ≈ 2 atm ([NOAA](https://oceanservice.noaa.gov/facts/pressure.html), page not opened).
+  - Everest is [8,848.86 m](https://kathmandupost.com/national/2020/12/08/it-s-official-mount-everest-is-8-848-86-metres-tall) (2020 China–Nepal survey).
+  - The marathon is 42.195 km by definition ([World Athletics](https://worldathletics.org/disciplines/road-running/marathon)). The ISS orbits at roughly 400 km ([NASA](https://www.nasa.gov/reference/international-space-station/)). Neither page was opened.
+- `[literature]` **(b) Specific to the stimulus.** Strength gains are specific to [training mode](https://pubmed.ncbi.nlm.nih.gov/7674868/) and [velocity](https://pubmed.ncbi.nlm.nih.gov/8341872/) (reviews). A [2025 systematic review with meta-analysis](https://link.springer.com/article/10.1007/s40279-025-02225-2) (Sports Med) tests how much dynamic training carries over to untrained isometric strength (pooled estimate not checked).
+- `[literature]` **(b) Lost when the stimulus stops.** Training adaptations fade when the training stimulus is too small. This is the same rule that costs astronauts bone and muscle. Review: [Mujika & Padilla, Sports Med 2000](https://link.springer.com/article/10.2165/00007256-200030030-00001).
+- `[literature]` **(b) A trigger, not a guarantee.** How much VO₂max rises on the same programme runs in families ([HERITAGE, J Appl Physiol 1999](https://journals.physiology.org/doi/full/10.1152/jappl.1999.87.3.1003); family training study, n not checked). People who seemed not to respond did respond to more training ([Montero & Lundby, J Physiol 2017](https://physoc.onlinelibrary.wiley.com/doi/10.1113/JP273480); training study, n not checked).
+- `[practitioner consensus]` Adaptation is specific to what is trained. Galpin splits fitness into [nine adaptations](https://ai.hubermanlab.com/s/WwnlbVpN) to train for, and Israetel teaches [specificity](https://www.youtube.com/watch?v=h8oAKnIfOq4) as a named training principle. Held by Galpin and Israetel (only the titles were seen).
+
+### Where they split
+No practitioner disagreement was found on (b), and no roster member was found saying "adapt to almost anything" (Huberman, Attia and Patrick were not searched on it). Two splits in the evidence decide the copy:
+- **What "adapt" means.** In physiology, "adapt" covers any change that fits the body to what is asked of it, including loss. A reader hears "gets better". In orbit the body adapts by losing bone and muscle. Read as "fitting the demand", the orbit scene supports line (b). Read as "gets better", under "almost anything", it misleads. Tekiō has to choose: a first line that means fitting the demand ("adapts to what it meets"), or drop the orbit scene.
+- **Trigger versus size.** HERITAGE finds that part of the response runs in families. Montero & Lundby find that more training brings in the people who seemed not to respond. Both agree that the stimulus triggers adaptation. So the line can claim the trigger and the direction, but never equal results for everyone or a pace.
+
+### Caveats
+- Population mismatch: the extreme-place evidence comes from small, selected groups (highland residents, climbers, breath-hold divers, astronauts). The training evidence comes mostly from previously untrained adults. None of it describes one trained adult. That does no harm on a page that prescribes nothing, but no caption should promise how much or how fast a body adapts.
+- Storyboard wording: "the water presses twice as hard as the air above it" is wrong if it means the water's own pressure, because 10 m of water adds about one atmosphere, the same as the air. "The pressure is twice that at the surface" is correct.
+- If the film ever shows a place with the people native to it (Sherpa, Bajau), it stops being about acclimatization and becomes about evolution, which "you" cannot do.
+- What would change this: reading the abstracts would confirm the n and effect sizes but not change the verdict. A caption that states a rate or an amount ("in weeks", "doubles") would need its own grounding.
+
+### Source comment
+`// "Your body adapts to what it meets." / "What you do is what triggers it." / "Weightless." — adaptation is real, stimulus-specific and bounded, and in orbit it is loss (~89 % g at 400 km), see tekio.rfcs/rfcs/0084-public-landing-site.md#grounding`
+
+**Taken 2026-10-05, while Peter decides:** the first side of the split. The
+film's turn to the body says "Your body adapts to what it meets.", which reads
+as fitting the demand and holds in all four places, so orbit stays in the
+film; and orbit's caption is "Weightless." (D58). The run read search results
+only, so no study's n was checked; the block says so, and no number on the
+page rests on one.
+
 ## Acceptance
 
 - [x] `petrovsco/tekio.site` builds with `npm run build`, carries its own
@@ -491,7 +566,7 @@ labelled, and nothing on it says whose app this was built around.
       anything, and what they do is what triggers it; the app is for chasing
       the adaptations they want most, and this first version chases all
       seven, muscle by muscle and for the whole body
-- [ ] The first screen opens on the Thin air film: drawn in code from the
+- [x] The first screen opens on the Thin air film: drawn in code from the
       time alone, it plays once, muted, and comes to rest on its last frame;
       reduced motion shows only that frame; the read it ends on is the app's
       own for the invented athlete; each of its numbers carries its source on
@@ -513,7 +588,7 @@ labelled, and nothing on it says whose app this was built around.
 
 ## Unresolved questions
 
-Two, asked of Peter on 2026-10-04:
+Three, two asked of Peter on 2026-10-04 and one on 2026-10-05:
 
 - **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
   mostly invisible check that the poster is a person, which the script would
@@ -522,8 +597,14 @@ Two, asked of Peter on 2026-10-04:
 - **In which words does the page state the app's philosophy?** Peter put it
   on the page's first screen, before "Tekiō tells you what's missing"
   (2026-10-04, over the other place, between act one and act two); the
-  drafted words wait on his check. Once they are settled, the same lines are
-  proposed for the doctrine's purpose.
+  drafted words wait on his check. Since 2026-10-05 the film holds the first
+  screen and says the draft's first two sentences, so the draft would follow
+  the film. Once the words are settled, the same lines are proposed for the
+  doctrine's purpose.
+- **Does the film keep its grounded line?** The grounding narrowed "You can
+  adapt to almost anything." to "Your body adapts to what it meets."
+  ([Grounding](#grounding), D58). The film on staging says the narrowed line;
+  the parked draft still says the first.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
