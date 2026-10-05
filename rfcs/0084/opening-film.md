@@ -3,8 +3,8 @@
 Peter asked on 2026-10-05 for the page's first screen to open on a short film
 in the style of the Opus-made "Prometheus" film, telling Tekiō's own story in
 the app's look. These are the three storylines he was shown, each sketched as
-a live rough cut. Which one, if any, is his call
-([Unresolved questions](../0084-public-landing-site.md#unresolved-questions)).
+a live rough cut. He picked Thin air the same day, and its full cut opens the
+site ([RFC 0084 §4](../0084-public-landing-site.md#4-the-design)).
 
 ## The reference
 
@@ -27,7 +27,7 @@ app's colours is the nearer variant); captions in the page's sentence case; a
 printer's misregistration on moving numbers instead of chromatic aberration;
 and the last word is "Adapt."
 
-## 1. Thin air (recommended)
+## 1. Thin air (picked)
 
 The sweep, about 45 seconds in full. One line, the horizon, carries every
 chapter.
