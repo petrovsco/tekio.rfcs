@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: backlog
-status_note: "Decided 2026-10-05 by Peter: launch free, with the tier check in the API from its first version, and billing in a later release. Which feature sits on which side is still open."
+status_note: "Decided 2026-10-05 by Peter: launch free, billing later. The proposed line (the read free, per-user costs paid) was sent back for a rethink the same day; the table below is parked until Peter says which features go on each side."
 label: backlog
 depends: [3, 94]
 ---
@@ -40,6 +40,9 @@ routes that were built open.
 ## Proposal
 
 ### The principle
+
+> **Parked 2026-10-05.** Peter chose to rethink the line rather than take this
+> proposal. It stays as the starting draft until his own split replaces it.
 
 **The read is free; what costs money per user is paid.** The product's answer,
 *what's missing* (doctrine §1), is the free tier: hiding it would make the free
