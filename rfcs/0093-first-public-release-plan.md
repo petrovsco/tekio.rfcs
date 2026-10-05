@@ -2,9 +2,9 @@
 title: The first public release — the map of the work
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 status: in progress
-status_note: "Mapped on 2026-10-04: seven workstreams, their order and a recommendation for each. Nothing is built. The forks are being put to Peter one at a time, the backend platform first, because three workstreams wait on it."
+status_note: "Mapped 2026-10-04; nothing is built. The platform is decided (stay on Supabase, 2026-10-05). The remaining forks go to Peter one at a time, the mobile approach next."
 label: infra
 ---
 
@@ -177,7 +177,7 @@ answers it for itself.
 
 - [x] Every workstream named in the ask has an owner RFC or an owner amendment
 - [ ] The doctrine amendment for more than one user is written (Peter's words)
-- [ ] 0095's platform decision is recorded
+- [x] 0095's platform decision is recorded (stay on Supabase, 2026-10-05)
 - [ ] 0096's mobile approach is recorded
 - [ ] 0099's agent order is recorded
 - [ ] 0097's free/paid principle is recorded
@@ -190,8 +190,8 @@ answers it for itself.
 Each is put to Peter on its own, in this order, and its answer moves into the
 RFC named.
 
-1. Backend: stay on Supabase with our own API in front, or move to AWS now?
-   ([0095](0095-backend-platform-decision.md))
+1. ~~Backend: stay on Supabase or move to AWS?~~ Answered 2026-10-05: stay on
+   Supabase, with our own API in front ([0095](0095-backend-platform-decision.md)).
 2. Mobile: Capacitor around the web app, or React Native? ([0096](0096-mobile-apps.md))
 3. Agent: outside the app first, inside first, or both at once? ([0099](0099-agent-access.md))
 4. Paid tier: at launch, or after? And which side of the line each feature sits

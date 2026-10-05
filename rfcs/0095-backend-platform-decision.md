@@ -2,9 +2,9 @@
 title: Backend platform for the public release — stay on Supabase or move to AWS
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 status: backlog
-status_note: "Evaluated on paper 2026-10-04 in the 0093 plan; the recommendation is to stay on Supabase's Postgres with our own API in front. Waiting on Peter's call."
+status_note: "Decided 2026-10-05: stay on Supabase (option A), Peter's call. Two boxes remain before launch: confirm the project's EU region and its data-processing agreement."
 label: infra
 ---
 
@@ -108,12 +108,13 @@ touching a client.
 
 ## Acceptance
 
-- [ ] Peter's choice is recorded here, with the date
+- [x] Peter's choice is recorded here, with the date: **A, stay on Supabase**
+      (2026-10-05), with our own API in front (0094)
 - [ ] The Supabase project's region is confirmed (EU) and its data-processing
       agreement is in place, or the AWS equivalent if B wins
-- [ ] If B wins: a migration RFC is opened and 0003 and 0094 name AWS's auth and
+- [x] ~~If B wins:~~ not applicable, A won; a migration RFC is opened and 0003 and 0094 name AWS's auth and
       runtime
 
 ## Unresolved questions
 
-1. Stay (A) or move (B)? Recommendation: A, with the revisit triggers above.
+None. Answered 2026-10-05: A, with the revisit triggers above.
