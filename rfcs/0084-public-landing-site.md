@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-05
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.6, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, and its release form writes to a Sheet in the company folder of the owner's Drive. Two things wait on Peter (Unresolved questions): whether one line under the film's last word says what Tekiō is for, and the form's human check; then the site goes public on tekio.fyi on his word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.7, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, which rests on \"Adapt.\" and one line on what Tekiō is for, and its release form writes to a Sheet in the company folder of the owner's Drive. Two things wait on Peter (Unresolved questions): the form's human check, and whether the page's lines join the doctrine's purpose; then the site goes public on tekio.fyi on his word."
 label: feature
 ---
 
@@ -166,6 +166,15 @@ label: feature
   "Adapt.", shown once the film stops (unpushed, checked at six sizes and
   under reduced motion); whether it goes there or is left out is his call.
   Still 15 of 19.
+- **2026-10-05** — Peter kept the line under "Adapt." and cut its second
+  sentence, "This version chases all seven.": the page says nothing about
+  versions. Once the film stops, it says "Tekiō is for chasing the
+  adaptations you want most." (`tekio.site` 0.1.7, §4). The same rule takes
+  the release number out of the page's foot (Non-Goals). Checked on a local
+  build at six sizes from 360 × 740 to 1920 × 1080 and under reduced motion,
+  and played through in real time: the line appears only once the film stops,
+  and one step down brings act one. The philosophy box narrows to what the
+  page says and is ticked: 16 of 19.
 
 ## Summary
 
@@ -215,6 +224,9 @@ the app until it exists.
 - **No developer doctrine.** R1's section cap, R2's shelf expiry and other
   rules about how the app is built stay in this repo; the page states only
   what a user can feel.
+- **No versions.** The page names no app version, neither a release number
+  nor "this version" (Peter, 2026-10-05); it describes the released app
+  without saying which release that is.
 - **No live data.** The example athlete is invented and marked invented; the
   site never reads the app's data.
 - **No change to the app.** Its code, middleware and Vercel project are
@@ -438,6 +450,11 @@ shows. Phones get an upright cut. Its sources open from a button under it,
 and a transcript reads it to a screen reader. The film's words live in
 `src/lib/film.ts`, its drawing in `src/scripts/film.js`.
 
+Once the film stops, one line of the page's own text appears under "Adapt.":
+"Tekiō is for chasing the adaptations you want most." There is no separate
+philosophy screen after the film, and the page says nothing about versions
+(Peter, 2026-10-05).
+
 ### 5. Where the release addresses go: a Sheet in Google Workspace
 
 Peter's call, 2026-10-02, in place of a table in the app's database. The form
@@ -577,10 +594,9 @@ the page rests on one.
 - [x] Act two says it is an example week, not a program, on its title step and
       on every day's stage
 - [x] The page speaks to the reader as "you" throughout
-- [ ] The page says what the app believes: a body adapts to what it meets,
+- [x] The page says what the app believes: a body adapts to what it meets,
       and what a person does is what triggers it; the app is for chasing the
-      adaptations they want most, and this first version chases all seven,
-      muscle by muscle and for the whole body
+      adaptations they want most
 - [x] The first screen opens on the Thin air film: drawn in code from the
       time alone, it plays once, muted, and comes to rest on its last frame;
       reduced motion shows only that frame; the read it ends on is the app's
@@ -603,20 +619,19 @@ the page rests on one.
 
 ## Unresolved questions
 
-Two, one asked of Peter on 2026-10-04 and one on 2026-10-05:
+Two, one asked of Peter on 2026-10-04 and one still to be put to him:
 
 - **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
   mostly invisible check that the poster is a person, which the script would
   then verify with Cloudflare on every post. It needs one more permission in
   the script's editor.
-- **Does one line under "Adapt." say what Tekiō is for?** The film says
-  "Your body adapts to what it meets." and "What you do is what triggers it.",
-  then rests on "Adapt."; Peter dropped the separate philosophy screen that
-  followed it (2026-10-05). What it alone said can go in one line under
-  "Adapt." once the film stops: "Tekiō is for chasing the adaptations you
-  want most. This version chases all seven." Or it is left out, and the
-  page's philosophy box narrows to what the film says. Once the words are
-  settled, the same lines are proposed for the doctrine's purpose.
+- **Do the page's lines join the doctrine's purpose?** The page now says what
+  the app believes in three lines: "Your body adapts to what it meets.",
+  "What you do is what triggers it." and "Tekiō is for chasing the
+  adaptations you want most." The doctrine's purpose says what Tekiō answers,
+  not what it believes, and it measures what's missing against all seven
+  adaptations, so the third line would be a deliberate amendment, drafted
+  for Peter to decide.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
@@ -624,4 +639,6 @@ repository and its name (§1), which app the page describes (§3), the voice
 and creating `master` ahead of the site's first release (§2). The film asked
 for on 2026-10-05 was settled by him the same day: the first screen opens on
 Thin air ([0084/opening-film.md](0084/opening-film.md)), and the film keeps
-its grounded line, "Your body adapts to what it meets." (D58).
+its grounded line, "Your body adapts to what it meets." (D58). The
+philosophy's words were settled the same day: no screen after the film, one
+line under "Adapt.", and nothing about versions.
