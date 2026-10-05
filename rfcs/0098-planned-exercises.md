@@ -27,6 +27,8 @@ release: 2.2.0
   catalogue lift's links from the catalogue, the links its first log would
   write, and loads only on a day with an open plan. With a plan, Home runs
   about two lines past one 900 px screen.
+- 2026-10-05: Peter's review: the card is renamed Planned (Today, Later) and
+  plans are editable (tekio v2.1.41).
 
 ## Summary
 
@@ -77,12 +79,14 @@ piece any rebuilt Program needs, so it is built once here.
    stack (Peter, 2026-10-05); the agent's `plan_exercises` tool (0099) writes
    the same rows. In the app, a plan's type is not a `WeightEntry` (its sets are
    `targets`), so no read type-checks with one.
-2. **Capture**: Weights shows a Plan card above the log form: today's planned
+2. **Capture**: Weights shows a Planned card above the log form: today's planned
    exercises with their targets drawn dashed, later days under them, and one
    line naming last week's unlogged plans. **Log** fills the form with the
    plan's exercise and targets; saving the form logs the work and ticks the
    plan, whatever numbers were actually done. **Plan it** beside Save writes
-   the form as a plan for today or a later day. Unlogged plans from earlier days
+   the form as a plan for today or a later day. Each open plan has an edit
+   button that loads it into the form as **Edit plan**; Save plan rewrites the
+   plan, its day included, and logs nothing. Unlogged plans from earlier days
    expire to that line, never into the read.
 3. **The read**: Peter picked the layer on 2026-10-05. The options were:
    - **A layer (recommended)**: the body map shows logged work as today, and
