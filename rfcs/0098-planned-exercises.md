@@ -3,13 +3,18 @@ title: Planned exercises — a state for work that has not happened yet
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
-status: backlog
-status_note: "Tagged 2.3.0 by Peter on 2026-10-05, ahead of the rest of the public release plan. It is built on today's stack, without waiting for the API (0094). How the body map shows planned work must be decided before kickoff."
-label: backlog
-release: 2.3.0
+status: in progress
+status_note: "Moved to 2.2.0 and started by Peter on 2026-10-05, built on today's stack without waiting for the API (0094). The data and the reads' filter go first; the map treatment waits on Peter's call."
+label: feature
+release: 2.2.0
 ---
 
 # RFC 0098: Planned exercises — a state for work that has not happened yet
+
+## Progress log
+
+- 2026-10-05: tagged 2.3.0, ahead of the rest of the public release plan.
+- 2026-10-05: moved to 2.2.0 and started, at Peter's word. Relabelled feature.
 
 ## Summary
 
@@ -52,7 +57,7 @@ piece any rebuilt Program needs, so it is built once here.
    `logged`), plus who planned it (`user` / `agent`), additive and nullable under
    the two-builds migration policy (`supabase/README.md` in the code repo). Every
    read (`src/lib/adaptations.ts`, `src/lib/fusedRead.ts`) filters to `logged`,
-   so the change cannot leak into a number. Built in 2.3.0 on today's stack
+   so the change cannot leak into a number. Built in 2.2.0 on today's stack
    (Peter, 2026-10-05), before the API exists; when 0094 moves the reads into the
    core package, the filter moves with them, and the agent's `plan_exercises`
    tool (0099) writes the same rows.

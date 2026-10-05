@@ -64,15 +64,20 @@ the week-6 deload. It had been left out of 2.1.0 until a default program existed
 It was unparked because the app applies those numbers to every program. **Done
 2026-10-01**: two rows are convention, one is grounded, and no value moved.
 
+Moved in from 2.3.0 by Peter on 2026-10-05 and started the same day:
+[0098](0098-planned-exercises.md), planned exercises, a state for work that has
+not happened yet, which never counts toward the body map. It belongs to the
+public release plan ([0093](0093-first-public-release-plan.md)) but is built on
+today's stack.
+
 ## 2.3.0
 
 **Target:** TBC
 **Status:** planned
 
-Named by Peter on 2026-10-05, for planned exercises
-([0098](0098-planned-exercises.md)): a state for work that has not happened
-yet, which never counts toward the body map. Pulled ahead of the public release
-plan it belongs to, so it is built on today's stack. Comes after 2.2.0.
+Named by Peter on 2026-10-05 for planned exercises
+([0098](0098-planned-exercises.md)), which he moved into 2.2.0 the same day.
+Nothing is tagged here now. Comes after 2.2.0.
 
 ## 3.0.0
 

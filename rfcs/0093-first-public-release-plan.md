@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: in progress
-status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free. The plan is tagged 3.0.0, except planned exercises (0098), which Peter pulled forward to 2.3.0. The free/paid line is refined while 3.0.0 is built."
+status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free. The plan is tagged 3.0.0, except planned exercises (0098), which Peter pulled forward to 2.2.0 and started. The free/paid line is refined while 3.0.0 is built."
 label: infra
 release: 3.0.0
 ---
@@ -93,7 +93,7 @@ anywhere but the database, and Postgres moves.
 | 3 | One API and a shared domain core | [0094](0094-one-api-shared-core.md) | 1, 2 | The reads move into a TypeScript package; one HTTP API is the only door to the database for every client |
 | 4 | Android and iOS apps | [0096](0096-mobile-apps.md) | 3 | **Decided 2026-10-05: native apps** (Swift, Kotlin) beside the web, drawing reads the API computes; health data and notifications |
 | 5 | Agent access | [0099](0099-agent-access.md) | 3 | Outside the app first, as an MCP server on the same API; the in-app agent later, on the same tools |
-| 6 | Planned exercises (**2.3.0**, ahead of the rest) | [0098](0098-planned-exercises.md) | — | A `planned` state that never counts toward the body map, shown as its own layer rather than a switch |
+| 6 | Planned exercises (**2.2.0**, ahead of the rest) | [0098](0098-planned-exercises.md) | — | A `planned` state that never counts toward the body map, shown as its own layer rather than a switch |
 | 7 | Free and paid tiers | [0097](0097-free-and-paid-tiers.md) | 2, 3 | The read stays free; what costs us money per user (AI planning, automatic syncs) is paid. Entitlements in the API from day one, billing later |
 | 8 | Launch readiness | — (opened when 2–4 land) | 2, 4 | Privacy policy, account deletion and export in the app, store listings, the landing site going public (0084) |
 
@@ -184,7 +184,7 @@ answers it for itself.
 - [ ] 0097's free/paid principle is recorded
 - [ ] 0098's body-map treatment is recorded
 - [x] The release is named in `releases.md` and every workstream RFC carries its
-      `release:` field: 3.0.0, with 0098 in 2.3.0 (Peter, 2026-10-05)
+      `release:` field: 3.0.0, with 0098 in 2.2.0 (Peter, 2026-10-05)
 
 ## Unresolved questions
 
@@ -202,5 +202,5 @@ RFC named.
    ([0097](0097-free-and-paid-tiers.md)).
 5. Planned exercises on the body map: a separate layer, a switch, or not shown?
    ([0098](0098-planned-exercises.md))
-6. ~~The release name~~ 3.0.0, with 0098 in 2.3.0 (2026-10-05). Still open:
+6. ~~The release name~~ 3.0.0, with 0098 in 2.2.0 (2026-10-05). Still open:
    the doctrine amendment's wording.
