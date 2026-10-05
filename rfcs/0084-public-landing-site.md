@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-05
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.7, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, which rests on \"Adapt.\" and one line on what Tekiō is for, and its release form writes to a Sheet in the company folder of the owner's Drive. Two things wait on Peter (Unresolved questions): the form's human check, and whether the page's lines join the doctrine's purpose; then the site goes public on tekio.fyi on his word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.7, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, which rests on \"Adapt.\" and one line on what Tekiō is for, and its release form writes to a Sheet in the company folder of the owner's Drive. One thing waits on Peter (Unresolved questions): the form's human check; then the site goes public on tekio.fyi on his word."
 label: feature
 ---
 
@@ -178,6 +178,11 @@ label: feature
 - **2026-10-05** — the doctrine question drafted and put to Peter, with
   "premise only" recommended (Unresolved questions). The doctrine changes
   only on his word. Still 16 of 19.
+- **2026-10-05** — Peter took premise only. Doctrine §1 now says "My body
+  adapts to what it meets, and what I do is what triggers it." The page's
+  third line, chasing the adaptations you want most, stays the page's own,
+  and [RFC 0040](0040-adaptation-goals.md) keeps the question of goals.
+  Still 16 of 19.
 
 ## Summary
 
@@ -622,29 +627,13 @@ the page rests on one.
 
 ## Unresolved questions
 
-Two, one asked of Peter on 2026-10-04 and one on 2026-10-05:
+One, asked of Peter on 2026-10-04:
 
 - **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
   mostly invisible check that the poster is a person, which the script would
   then verify with Cloudflare on every post. It needs one more permission in
   the script's editor. Offered with **both** recommended; his answer is typed,
   because the set-up runs on his accounts.
-- **Do the page's lines join the doctrine's purpose?** The page says what the
-  app believes in three lines: "Your body adapts to what it meets.", "What you
-  do is what triggers it." and "Tekiō is for chasing the adaptations you want
-  most." The first two are the reason behind the purpose, and both rest on
-  this RFC's Grounding. The third goes further than the app does today, which
-  measures what's missing against all seven adaptations equally. Declaring
-  what a user chases is [RFC 0040](0040-adaptation-goals.md) (backlog, 3.0.0),
-  which still has to show that a goal is a training input rather than a
-  setting (P4). Three options, put to Peter on 2026-10-05:
-  - **Premise only** (recommended): §1 gains one paragraph, after the note on
-    who *me* is: "My body adapts to what it meets, and what I do is what
-    triggers it." The third line stays the page's own, and 0040 keeps the
-    question of goals.
-  - **All three**: §1 also says Tekiō is for chasing the adaptations I want
-    most, which commits the product to 0040's goals before the app has them.
-  - **Leave it**: the doctrine stays as it is.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
@@ -654,4 +643,9 @@ for on 2026-10-05 was settled by him the same day: the first screen opens on
 Thin air ([0084/opening-film.md](0084/opening-film.md)), and the film keeps
 its grounded line, "Your body adapts to what it meets." (D58). The
 philosophy's words were settled the same day: no screen after the film, one
-line under "Adapt.", and nothing about versions.
+line under "Adapt.", and nothing about versions. So was the doctrine
+question: Peter took **premise only**, and doctrine §1 now says "My body
+adapts to what it meets, and what I do is what triggers it." The third line
+stays the page's own, since the app still measures all seven adaptations
+equally and declaring what a user chases is
+[RFC 0040](0040-adaptation-goals.md)'s question.
