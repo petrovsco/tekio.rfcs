@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: in progress
-status_note: "Moved to 2.2.0 and started by Peter on 2026-10-05, built on today's stack without waiting for the API (0094). The data and the reads' filter go first; the map treatment waits on Peter's call."
+status_note: "Moved to 2.2.0 and started by Peter on 2026-10-05, built on today's stack. The plans table and the Weights side are built (v2.1.39, not yet on develop); applying the table waits on Peter's word, and the map treatment on his call."
 label: feature
 release: 2.2.0
 ---
@@ -15,6 +15,10 @@ release: 2.2.0
 
 - 2026-10-05: tagged 2.3.0, ahead of the rest of the public release plan.
 - 2026-10-05: moved to 2.2.0 and started, at Peter's word. Relabelled feature.
+- 2026-10-05: plans get their own table rather than a status column, so the
+  build on master cannot count them. The table, the Plan card on Weights and
+  the never-counted test are on tekio branch `claude/project-thread-p40di1`
+  (v2.1.39). The migration waits on Peter's word; the map treatment on his call.
 
 ## Summary
 
@@ -53,17 +57,25 @@ piece any rebuilt Program needs, so it is built once here.
 
 ## Proposal
 
-1. **Data**: a status on the session-exercise and set rows (`planned` /
-   `logged`), plus who planned it (`user` / `agent`), additive and nullable under
-   the two-builds migration policy (`supabase/README.md` in the code repo). Every
-   read (`src/lib/adaptations.ts`, `src/lib/fusedRead.ts`) filters to `logged`,
-   so the change cannot leak into a number. Built in 2.2.0 on today's stack
-   (Peter, 2026-10-05), before the API exists; when 0094 moves the reads into the
-   core package, the filter moves with them, and the agent's `plan_exercises`
-   tool (0099) writes the same rows.
-2. **Capture**: Weights shows today's planned exercises at the top, with their
-   sets as targets; logging a set fills it in. Unlogged plans from earlier days
-   expire to a history line, not into the read.
+1. **Data**: a table of its own, `planned_exercises` (date, exercise name,
+   target sets, who planned it, and the logged entry it became), not a status
+   column on the session rows. The build on `master` reads every
+   `session_exercises` row it finds, so a planned row there would count as done
+   on production until the release; a separate table that no read selects from
+   cannot leak into a number on either build. Expand only under the two-builds
+   migration policy (`supabase/README.md` in the code repo). The exercise is
+   kept as a name and resolved only when the plan is logged, so planning a new
+   lift writes no exercise row and no muscle links. Built in 2.2.0 on today's
+   stack (Peter, 2026-10-05); the agent's `plan_exercises` tool (0099) writes
+   the same rows. In the app, a plan's type is not a `WeightEntry` (its sets are
+   `targets`), so no read type-checks with one.
+2. **Capture**: Weights shows a Plan card above the log form: today's planned
+   exercises with their targets drawn dashed, later days under them, and one
+   line naming last week's unlogged plans. **Log** fills the form with the
+   plan's exercise and targets; saving the form logs the work and ticks the
+   plan, whatever numbers were actually done. **Plan it** beside Save writes
+   the form as a plan for today or a later day. Unlogged plans from earlier days
+   expire to that line, never into the read.
 3. **The read**, three options for Peter's call:
    - **A layer (recommended)**: the body map shows logged work as today, and
      planned work as an outline on the muscles it would reach, with Home's line
@@ -93,7 +105,9 @@ the same information behind a tap, against doctrine §6's "without tapping".
 ## Acceptance
 
 - [ ] Peter's call on how the map shows planned work is recorded
-- [ ] Planned rows never change Home or Adaptations, tested in the reads' own tests
+- [x] Planned rows never change Home or Adaptations, tested (tekio
+      `src/test/plans.test.ts`: planning leaves both reads equal, and no read
+      type-checks with a plan)
 - [ ] A plan entered in the app appears on Weights and becomes logged work by
       logging it
 - [ ] The chosen map treatment is walked on a phone at 412 px
