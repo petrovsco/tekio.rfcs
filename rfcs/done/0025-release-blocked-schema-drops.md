@@ -131,7 +131,7 @@ code apart from two docs-only patches, so that check covers both branches.
 - [x] `master` is running the code that stopped reading these columns and rows
       (2.0.0 released 2026-09-05, production deployment verified the same day).
 - [x] Each queued drop is applied as a tracked migration (per
-      [0016-supabase-migration-baseline.md](../0016-supabase-migration-baseline.md)),
+      [0016-supabase-migration-baseline.md](0016-supabase-migration-baseline.md)),
       and its row is ticked off above — one migration covers all five, see
       "Applied 2026-09-05".
 - [x] `select('*')` from the affected tables shows no leftover column, the
