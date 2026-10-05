@@ -19,6 +19,8 @@ release: 2.2.0
   build on master cannot count them. The table, the Plan card on Weights and
   the never-counted test are on tekio branch `claude/project-thread-p40di1`
   (v2.1.39). The migration waits on Peter's word; the map treatment on his call.
+- 2026-10-05: Peter picked the outline layer for the map, and asked for the Plan
+  card to read as pending (a contour or yellow); the style is put to him.
 
 ## Summary
 
@@ -76,7 +78,7 @@ piece any rebuilt Program needs, so it is built once here.
    plan, whatever numbers were actually done. **Plan it** beside Save writes
    the form as a plan for today or a later day. Unlogged plans from earlier days
    expire to that line, never into the read.
-3. **The read**, three options for Peter's call:
+3. **The read**: Peter picked the layer on 2026-10-05. The options were:
    - **A layer (recommended)**: the body map shows logged work as today, and
      planned work as an outline on the muscles it would reach, with Home's line
      saying what would still be missing after the plan.
@@ -104,7 +106,8 @@ the same information behind a tap, against doctrine §6's "without tapping".
 
 ## Acceptance
 
-- [ ] Peter's call on how the map shows planned work is recorded
+- [x] Peter's call on how the map shows planned work is recorded: the outline
+      layer (2026-10-05)
 - [x] Planned rows never change Home or Adaptations, tested (tekio
       `src/test/plans.test.ts`: planning leaves both reads equal, and no read
       type-checks with a plan)
@@ -114,5 +117,8 @@ the same information behind a tap, against doctrine §6's "without tapping".
 
 ## Unresolved questions
 
-1. Layer, switch or not on the map? Recommendation: layer. Peter called it a
-   decision for later.
+1. ~~Layer, switch or not on the map?~~ Layer (Peter, 2026-10-05).
+2. Dashed ink or yellow for planned work, on the Plan card and the map? Yellow
+   would amend design-system §1 with a second colour meaning *planned*. Put to
+   Peter 2026-10-05, after his review of the first Plan card asked for it to
+   read as pending.
