@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: in progress
-status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, and native apps for Android and iOS. The remaining forks go to Peter one at a time, the agent order next."
+status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps for Android and iOS, agent help outside the app first. The remaining forks go to Peter one at a time, the paid tier next."
 label: infra
 ---
 
@@ -179,7 +179,7 @@ answers it for itself.
 - [ ] The doctrine amendment for more than one user is written (Peter's words)
 - [x] 0095's platform decision is recorded (stay on Supabase, 2026-10-05)
 - [x] 0096's mobile approach is recorded (native apps, 2026-10-05)
-- [ ] 0099's agent order is recorded
+- [x] 0099's agent order is recorded (outside first, 2026-10-05)
 - [ ] 0097's free/paid principle is recorded
 - [ ] 0098's body-map treatment is recorded
 - [ ] The release is named in `releases.md` and every workstream RFC carries its
@@ -194,7 +194,8 @@ RFC named.
    Supabase, with our own API in front ([0095](0095-backend-platform-decision.md)).
 2. ~~Mobile: Capacitor or React Native?~~ Answered 2026-10-05: native apps
    ([0096](0096-mobile-apps.md)).
-3. Agent: outside the app first, inside first, or both at once? ([0099](0099-agent-access.md))
+3. ~~Agent order?~~ Answered 2026-10-05: outside first, as a remote MCP
+   connector ([0099](0099-agent-access.md)).
 4. Paid tier: at launch, or after? And which side of the line each feature sits
    on. ([0097](0097-free-and-paid-tiers.md))
 5. Planned exercises on the body map: a separate layer, a switch, or not shown?

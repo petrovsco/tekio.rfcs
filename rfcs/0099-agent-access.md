@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: backlog
-status_note: "Scoped 2026-10-04 in the 0093 plan; the recommendation is an MCP server first, an in-app agent later on the same tools. Waits on the API (0094) and on Peter's call on the order."
+status_note: "Order decided 2026-10-05 by Peter: outside first, as a remote MCP connector on the API, then the in-app agent on the same tools. Waits on the API (0094)."
 label: backlog
 depends: [94]
 ---
@@ -94,7 +94,7 @@ a model bill, which is why it belongs on the paid side.
 
 ## Acceptance
 
-- [ ] Peter's call on the order is recorded
+- [x] Peter's call on the order is recorded: outside first (2026-10-05)
 - [ ] An MCP client connects with a test account and gets the same "what's
       missing" as Home shows for it
 - [ ] An agent-written plan appears as planned on Weights and can be undone
@@ -102,4 +102,4 @@ a model bill, which is why it belongs on the paid side.
 
 ## Unresolved questions
 
-1. External first (recommended), in-app first, or both at once?
+None. Answered 2026-10-05: external first, then in-app on the same tools.
