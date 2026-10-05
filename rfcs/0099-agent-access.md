@@ -2,7 +2,7 @@
 title: Agent access — the user's own assistant first, an in-app agent on the same tools
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 status: backlog
 status_note: "Scoped 2026-10-04 in the 0093 plan; the recommendation is an MCP server first, an in-app agent later on the same tools. Waits on the API (0094) and on Peter's call on the order."
 label: backlog
@@ -55,6 +55,12 @@ than being a chat box beside them.
 2. **MCP server** hosted with the API, signed in through OAuth with the user's
    account (0003), so a user adds Tekiō to their assistant like any other
    connector. Rate-limited on the free tier (0097).
+   That means a *remote* MCP server: a URL over HTTPS with OAuth sign-in, which
+   is what assistants list as connectors. A user adds it by picking it from the
+   assistant's connector directory or pasting its URL, then signs in to Tekiō;
+   no config file. The JSON-configured, locally run kind of MCP server is for
+   developers and is not what ships. Getting listed in each assistant's
+   directory is its own submission, done once the server works.
 3. **In-app agent, later**: a chat surface reached from Home (not a menu section;
    R1 unchanged) that calls the same tools through the API, with the model call
    paid for by the paid tier.
