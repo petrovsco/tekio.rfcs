@@ -29,6 +29,9 @@ release: 2.2.0
   about two lines past one 900 px screen.
 - 2026-10-05: Peter's review: the card is renamed Planned (Today, Later) and
   plans are editable (tekio v2.1.41).
+- 2026-10-05: Peter picked yellow; design-system §1 gains it as *planned*. A
+  plan is added from "+ Add to plan" on the card, which puts the form in plan
+  mode; the form's Plan it button is gone (tekio v2.1.42).
 
 ## Summary
 
@@ -83,8 +86,8 @@ piece any rebuilt Program needs, so it is built once here.
    exercises with their targets drawn dashed, later days under them, and one
    line naming last week's unlogged plans. **Log** fills the form with the
    plan's exercise and targets; saving the form logs the work and ticks the
-   plan, whatever numbers were actually done. **Plan it** beside Save writes
-   the form as a plan for today or a later day. Each open plan has an edit
+   plan, whatever numbers were actually done. **+ Add to plan** on the card puts the
+   form in plan mode, for today or a later day. Each open plan has an edit
    button that loads it into the form as **Edit plan**; Save plan rewrites the
    plan, its day included, and logs nothing. Unlogged plans from earlier days
    expire to that line, never into the read.
@@ -128,7 +131,5 @@ the same information behind a tap, against doctrine §6's "without tapping".
 ## Unresolved questions
 
 1. ~~Layer, switch or not on the map?~~ Layer (Peter, 2026-10-05).
-2. Dashed ink or yellow for planned work, on the Plan card and the map? Yellow
-   would amend design-system §1 with a second colour meaning *planned*. Put to
-   Peter 2026-10-05, after his review of the first Plan card asked for it to
-   read as pending.
+2. ~~Dashed ink or yellow for planned work?~~ Yellow (Peter, 2026-10-05);
+   design-system §1 amended with it.
