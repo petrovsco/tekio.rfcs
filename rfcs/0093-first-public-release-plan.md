@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: in progress
-status_note: "Mapped 2026-10-04; nothing is built. The platform is decided (stay on Supabase, 2026-10-05). The remaining forks go to Peter one at a time, the mobile approach next."
+status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, and native apps for Android and iOS. The remaining forks go to Peter one at a time, the agent order next."
 label: infra
 ---
 
@@ -90,7 +90,7 @@ anywhere but the database, and Postgres moves.
 | 1 | Backend platform: Supabase or AWS | [0095](0095-backend-platform-decision.md) | — | Stay on Supabase's Postgres for the first release; put our own API in front so the move stays cheap later |
 | 2 | Accounts and data isolation | [0003](0003-lock-the-database.md) | 1 | Real logins, RLS on every table, `USER_ID` gone, the existing rows adopted by the first account |
 | 3 | One API and a shared domain core | [0094](0094-one-api-shared-core.md) | 1, 2 | The reads move into a TypeScript package; one HTTP API is the only door to the database for every client |
-| 4 | Android and iOS apps | [0096](0096-mobile-apps.md) | 3 | Wrap the existing web app with Capacitor, and add the native parts that earn the store listing: health data and notifications |
+| 4 | Android and iOS apps | [0096](0096-mobile-apps.md) | 3 | **Decided 2026-10-05: native apps** (Swift, Kotlin) beside the web, drawing reads the API computes; health data and notifications |
 | 5 | Agent access | [0099](0099-agent-access.md) | 3 | Outside the app first, as an MCP server on the same API; the in-app agent later, on the same tools |
 | 6 | Planned exercises | [0098](0098-planned-exercises.md) | 3 | A `planned` state that never counts toward the body map, shown as its own layer rather than a switch |
 | 7 | Free and paid tiers | [0097](0097-free-and-paid-tiers.md) | 2, 3 | The read stays free; what costs us money per user (AI planning, automatic syncs) is paid. Entitlements in the API from day one, billing later |
@@ -178,7 +178,7 @@ answers it for itself.
 - [x] Every workstream named in the ask has an owner RFC or an owner amendment
 - [ ] The doctrine amendment for more than one user is written (Peter's words)
 - [x] 0095's platform decision is recorded (stay on Supabase, 2026-10-05)
-- [ ] 0096's mobile approach is recorded
+- [x] 0096's mobile approach is recorded (native apps, 2026-10-05)
 - [ ] 0099's agent order is recorded
 - [ ] 0097's free/paid principle is recorded
 - [ ] 0098's body-map treatment is recorded
@@ -192,7 +192,8 @@ RFC named.
 
 1. ~~Backend: stay on Supabase or move to AWS?~~ Answered 2026-10-05: stay on
    Supabase, with our own API in front ([0095](0095-backend-platform-decision.md)).
-2. Mobile: Capacitor around the web app, or React Native? ([0096](0096-mobile-apps.md))
+2. ~~Mobile: Capacitor or React Native?~~ Answered 2026-10-05: native apps
+   ([0096](0096-mobile-apps.md)).
 3. Agent: outside the app first, inside first, or both at once? ([0099](0099-agent-access.md))
 4. Paid tier: at launch, or after? And which side of the line each feature sits
    on. ([0097](0097-free-and-paid-tiers.md))

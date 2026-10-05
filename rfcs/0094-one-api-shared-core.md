@@ -2,7 +2,7 @@
 title: One API and a shared domain core for every client
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 status: backlog
 status_note: "Scoped 2026-10-04 in the 0093 plan. Waits on the platform choice (0095) and on accounts (0003)."
 label: infra
@@ -43,6 +43,11 @@ client.
   RFC if a client needs it.
 
 ## Proposal
+
+**Since 2026-10-05 the server side is not optional.** The phone apps are native
+(0096), so they cannot import a TypeScript package: every read must be served
+by the API, computed by the core package on the server. The web app may still
+import the core for speed, but the API's answer is the reference.
 
 1. **`core` package** inside the tekio repo (a workspace, not a new repo):
    `adaptations.ts`, `fusedRead.ts`, `sets.ts`, `hrMax.ts` and the constants they

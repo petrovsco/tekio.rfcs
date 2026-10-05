@@ -2,9 +2,9 @@
 title: Android and iOS apps beside the web app
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 status: backlog
-status_note: "Scoped 2026-10-04 in the 0093 plan; the recommendation is Capacitor around the existing web app. Waits on the API (0094) and on Peter's call on the approach."
+status_note: "Approach decided 2026-10-05 by Peter: native apps, Swift for iOS and Kotlin for Android, beside the web app. Waits on the API (0094), which now must serve the reads computed on the server."
 label: backlog
 depends: [94]
 ---
@@ -13,9 +13,11 @@ depends: [94]
 
 ## Summary
 
-Ship Tekiō in the Play Store and the App Store while the web app stays. The
-recommendation is to wrap the existing React app with Capacitor, so one UI
-codebase serves all three, and to add the native pieces that make a store app
+Ship Tekiō in the Play Store and the App Store while the web app stays.
+**Decided 2026-10-05 (Peter): native apps**, Swift for iOS and Kotlin for
+Android, each calling the API (0094) for the reads and for capture. The
+recommendation had been a Capacitor wrap of the React app; the comparison is
+kept under Rationale. The native apps add the native pieces that make a store app
 worth installing: reading health data (Apple Health, Android Health Connect),
 notifications, and a home-screen widget later.
 
@@ -33,7 +35,8 @@ on 2026-10-04 partly because the app could not remind
   the web.
 - Readiness inputs arrive from the phone's health store for users without a
   Garmin, per user, with their consent.
-- One UI codebase.
+- One source of truth for the product: the reads are computed once, by the API,
+  and every client only draws them. Three UIs, one product.
 
 ## Non-Goals
 
@@ -45,9 +48,13 @@ on 2026-10-04 partly because the app could not remind
 
 ## Proposal
 
-1. **Capacitor shell** around the Vite build, one Android and one iOS project in
-   the tekio repo. The app calls the API (0094) like the web does.
-2. **Native plugins**: HealthKit and Health Connect (HRV, resting HR, sleep,
+1. **Two native apps**: iOS in Swift (SwiftUI), Android in Kotlin (Jetpack
+   Compose), with typed API clients generated from the API's OpenAPI description
+   (0094). No read is computed on the phone: the apps draw what the API returns,
+   so a grounded number cannot drift between clients. Where the two apps share
+   logic beyond the API calls (validation, a capture queue), Kotlin Multiplatform
+   is the candidate to keep it in one place; decided at kickoff.
+2. **Native features**: HealthKit and Health Connect (HRV, resting HR, sleep,
    workouts) feeding readiness through the API; push notifications (the companion
    idea in [0022](0022-companion-service-live-sync.md) moves here); sign in with
    Apple and Google (0003).
@@ -82,7 +89,7 @@ existing input goes through 0085's calculator, which says how it is weighed.
 
 ## Acceptance
 
-- [ ] Peter's call on the approach is recorded
+- [x] Peter's call on the approach is recorded: native apps (2026-10-05)
 - [ ] Both apps build in CI and run the same screens as the web
 - [ ] HRV and sleep arrive from each health store into readiness for a test
       account, with the consent screens shown
@@ -91,4 +98,7 @@ existing input goes through 0085's calculator, which says how it is weighed.
 
 ## Unresolved questions
 
-1. Capacitor (recommended) or React Native?
+1. ~~Capacitor or React Native?~~ Answered 2026-10-05: native apps.
+2. Where the apps' code lives: in the tekio repo, or one repo per app. To
+   decide at kickoff.
+3. Kotlin Multiplatform for shared app logic, or two independent apps.
