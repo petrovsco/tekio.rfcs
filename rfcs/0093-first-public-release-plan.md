@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-05
 status: in progress
-status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free. The plan is tagged 3.0.0, except planned exercises (0098), which Peter pulled forward to 2.3.0. The free/paid line is refined while 3.0.0 is built."
+status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free, the plan tagged 3.0.0, and the doctrine rewritten for every user. Planned exercises (0098) left the plan for 2.2.0 and its own thread. Open: the free/paid line, refined while 3.0.0 is built."
 label: infra
 release: 3.0.0
 ---
@@ -87,7 +87,7 @@ anywhere but the database, and Postgres moves.
 
 | # | Workstream | RFC | Depends on | Recommendation |
 |---|---|---|---|---|
-| 0 | Doctrine for more than one user | — (an amendment, Peter's) | — | Rewrite §1 and P4 from "me" to "the user" before anything ships to a second person |
+| 0 | Doctrine for more than one user | — (an amendment) | — | **Done 2026-10-05**: the first person is the user's voice, P4 no longer leans on one user, R3 places a paid tier |
 | 1 | Backend platform: Supabase or AWS | [0095](0095-backend-platform-decision.md) | — | Stay on Supabase's Postgres for the first release; put our own API in front so the move stays cheap later |
 | 2 | Accounts and data isolation | [0003](0003-lock-the-database.md) | 1 | Real logins, RLS on every table, `USER_ID` gone, the existing rows adopted by the first account |
 | 3 | One API and a shared domain core | [0094](0094-one-api-shared-core.md) | 1, 2 | The reads move into a TypeScript package; one HTTP API is the only door to the database for every client |
@@ -177,7 +177,8 @@ answers it for itself.
 ## Acceptance
 
 - [x] Every workstream named in the ask has an owner RFC or an owner amendment
-- [ ] The doctrine amendment for more than one user is written (Peter's words)
+- [x] The doctrine amendment for more than one user is written (2026-10-05, on
+      Peter's "fix the doctrine")
 - [x] 0095's platform decision is recorded (stay on Supabase, 2026-10-05)
 - [x] 0096's mobile approach is recorded (native apps, 2026-10-05)
 - [x] 0099's agent order is recorded (outside first, 2026-10-05)
@@ -203,4 +204,4 @@ RFC named.
 5. Planned exercises on the body map: a separate layer, a switch, or not shown?
    ([0098](0098-planned-exercises.md))
 6. ~~The release name~~ 3.0.0, with 0098 in 2.3.0 (2026-10-05). Still open:
-   the doctrine amendment's wording.
+   ~~the doctrine amendment's wording~~, written 2026-10-05.

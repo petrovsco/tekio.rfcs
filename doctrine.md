@@ -2,7 +2,7 @@
 
 The rules this app is built by. Short on purpose — it is meant to be re-read
 every time a feature is proposed, and it is only useful if it can say **no** to
-something I want.
+something we want.
 
 Established 2026-08-26. Amend it deliberately; don't drift past it.
 Amended 2026-08-29: nine adaptations → seven — Speed and Skill dropped,
@@ -14,12 +14,19 @@ deleted (execution: RFCs 0087 and 0034).
 Amended 2026-10-04: Water deleted (execution: RFC 0089). Admin deleted, to be
 rethought later (execution: RFC 0090). Blood donation's ledger row follows its
 move to a Home stat tile (RFC 0089).
+Amended 2026-10-05: written for every user, not one, ahead of the first public
+release (plan: RFC 0093). The first person is the user's voice; P4 no longer
+leans on there being one user; R3 says where a paid tier stands.
 
 ---
 
 ## 1. Purpose
 
 > **Tekiō tells me what's missing.**
+
+The *me* is whoever opens the app. Wherever this doctrine says *I* or *my*, it
+speaks in the user's voice, and a feature is judged by what it does for that
+user, never by whose data it was first built on.
 
 Whether my training is balanced across the seven adaptations and the muscles
 that serve them, and whether I'm recovered enough to close the gap today.
@@ -52,9 +59,10 @@ read*, not a new destination. Blood donation isn't a section; it's a readiness
 input. Body weight isn't a section; it's a stat on Home. Ask "which existing
 read does this sharpen?" before "where does this live?"
 
-**P4 — Configurability is not a decision.** With one user, "you can hide it" is
-not a justification for building something. A feature earns its default-on place
-or it doesn't ship.
+**P4 — Configurability is not a decision.** "You can hide it" is not a
+justification for building something. A feature earns its default-on place for
+every user or it doesn't ship. More users make this stricter, not looser: a
+setting hands the same decision to each of them, and most will never make it.
 
 **P5 — Stimulus and recovery are two dimensions of one read, not two places in
 the app.** Sustainable progress needs both sides: stimulus alone injures, recovery
@@ -91,6 +99,9 @@ load — a shelf without an expiry is just a slower way of keeping everything.
 editing this ledger and flipping existing config. Building new machinery to
 *manage* the feature set (tier fields, admin panels for section categories) is
 forbidden — that is solving feature bloat by adding features.
+A paid tier is packaging, not a shelf: what sits behind it is still Core or
+Fold here, and nothing shelved is kept alive by moving it there. Its line is
+drawn in [rfcs/0097-free-and-paid-tiers.md](rfcs/0097-free-and-paid-tiers.md).
 
 **R4 — Every roadmap brief answers the checklist in §4** before it becomes code.
 
