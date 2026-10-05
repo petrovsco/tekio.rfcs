@@ -17,6 +17,8 @@ move to a Home stat tile (RFC 0089).
 Amended 2026-10-05: written for every user, not one, ahead of the first public
 release (plan: RFC 0093). The first person is the user's voice; P4 no longer
 leans on there being one user; R3 says where a paid tier stands.
+Amended 2026-10-05: the purpose gains its premise, which the landing site's
+opening film also says (RFC 0084).
 
 ---
 
@@ -27,6 +29,8 @@ leans on there being one user; R3 says where a paid tier stands.
 The *me* is whoever opens the app. Wherever this doctrine says *I* or *my*, it
 speaks in the user's voice, and a feature is judged by what it does for that
 user, never by whose data it was first built on.
+
+My body adapts to what it meets, and what I do is what triggers it.
 
 Whether my training is balanced across the seven adaptations and the muscles
 that serve them, and whether I'm recovered enough to close the gap today.

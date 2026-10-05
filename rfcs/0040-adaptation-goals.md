@@ -2,7 +2,7 @@
 title: Adaptation goals — declaring what I am chasing this cycle
 authors: [Peter Petrov]
 created: 2026-09-02
-last_updated: 2026-09-30
+last_updated: 2026-10-05
 status: backlog
 status_note: "We're working on v2.2 now (3 comes later)."
 label: feature
@@ -61,3 +61,8 @@ Three reasons, and none of them is "it is hard":
 - Does a goal change the *target*, the *ranking* of gaps, or only Home's
   sentence? Only the last of those leaves the numbers grounded.
 - What happens at cycle rollover — does the goal expire with the cycle?
+- The landing site says "Tekiō is for chasing the adaptations you want
+  most." ([0084](0084-public-landing-site.md)). On 2026-10-05 the doctrine
+  took only that line's premise into §1 and left the chasing here: does a
+  goal make the line true of the app, or is the seven-way read already
+  enough to chase by?
