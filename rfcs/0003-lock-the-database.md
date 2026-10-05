@@ -2,10 +2,12 @@
 title: Lock the database — real logins, and rows only their owner can read
 authors: [Peter Petrov]
 created: 2026-07-08
-last_updated: 2026-10-02
+last_updated: 2026-10-05
 status: backlog
-status_note: explicitly post-MVP; nothing starts it before the general-use launch. Left in backlog at the 2.1.0 planning (Peter, 2026-09-05).
+status_note: "Workstream 2 of the first public release plan (0093, 2026-10-04): accounts come before the shared API, and wait on the platform choice in 0095 for the auth provider. Still backlog until Peter commits the release."
 label: infra
+depends: [95]
+release: 3.0.0
 ---
 
 # RFC 0003: Lock the database — real logins, and rows only their owner can read

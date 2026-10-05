@@ -64,6 +64,16 @@ the week-6 deload. It had been left out of 2.1.0 until a default program existed
 It was unparked because the app applies those numbers to every program. **Done
 2026-10-01**: two rows are convention, one is grounded, and no value moved.
 
+## 2.3.0
+
+**Target:** TBC
+**Status:** planned
+
+Named by Peter on 2026-10-05, for planned exercises
+([0098](0098-planned-exercises.md)): a state for work that has not happened
+yet, which never counts toward the body map. Pulled ahead of the public release
+plan it belongs to, so it is built on today's stack. Comes after 2.2.0.
+
 ## 3.0.0
 
 **Target:** TBC
@@ -79,6 +89,15 @@ grounding gate should fire when never-checked weights are rescaled. Split out of
 Peter, because no set of weights with that shape survives in the app: it belongs
 with however recovery gets measured next, which is when a real case returns to
 decide it against.
+
+**The first public release**, tagged by Peter on 2026-10-05: the plan is
+[0093](0093-first-public-release-plan.md). Accounts ([0003](0003-lock-the-database.md)),
+staying on Supabase ([0095](0095-backend-platform-decision.md)), one API that
+serves every read ([0094](0094-one-api-shared-core.md)), native Android and iOS
+apps ([0096](0096-mobile-apps.md)), agent help as a connector first
+([0099](0099-agent-access.md)), and a free tier at launch with billing later
+([0097](0097-free-and-paid-tiers.md)), whose free/paid line is refined while
+the release is built.
 
 ## 2.1.0
 

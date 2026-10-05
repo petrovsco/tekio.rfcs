@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-05
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.6, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, and its release form writes to a Sheet in the company folder of the owner's Drive. Two things wait on Peter (Unresolved questions): the philosophy screen's words and the form's human check; then the site goes public on tekio.fyi on his word."
+status_note: "The site is on petrovsco/tekio.site develop at 0.1.6, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, and its release form writes to a Sheet in the company folder of the owner's Drive. Two things wait on Peter (Unresolved questions): whether one line under the film's last word says what Tekiō is for, and the form's human check; then the site goes public on tekio.fyi on his word."
 label: feature
 ---
 
@@ -157,6 +157,15 @@ label: feature
   adapt to almost anything", and the parked philosophy draft opens on it too,
   reading the film's own copy. Its lead lost the sentence that repeated the
   new heading; the words wait on Peter's check. Still 15 of 19.
+- **2026-10-05** — Peter asked why the page needs a philosophy screen after
+  the film, and it does not: the film says the philosophy's first half and
+  comes to rest on "Adapt.", and the next step is act one, as staging already
+  has it. The drafted screen is dropped. The one point only it made, that
+  Tekiō is for chasing the adaptations you want most and this first version
+  chases all seven, is drafted as one line of the page's own text under
+  "Adapt.", shown once the film stops (unpushed, checked at six sizes and
+  under reduced motion); whether it goes there or is left out is his call.
+  Still 15 of 19.
 
 ## Summary
 
@@ -594,19 +603,20 @@ the page rests on one.
 
 ## Unresolved questions
 
-Two, both asked of Peter on 2026-10-04:
+Two, one asked of Peter on 2026-10-04 and one on 2026-10-05:
 
 - **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
   mostly invisible check that the poster is a person, which the script would
   then verify with Cloudflare on every post. It needs one more permission in
   the script's editor.
-- **In which words does the page state the app's philosophy?** Peter put it
-  on the page's first screen, before "Tekiō tells you what's missing"
-  (2026-10-04, over the other place, between act one and act two); the
-  drafted words wait on his check. Since 2026-10-05 the film holds the first
-  screen and says the draft's first two sentences, so the draft would follow
-  the film. Once the words are settled, the same lines are proposed for the
-  doctrine's purpose.
+- **Does one line under "Adapt." say what Tekiō is for?** The film says
+  "Your body adapts to what it meets." and "What you do is what triggers it.",
+  then rests on "Adapt."; Peter dropped the separate philosophy screen that
+  followed it (2026-10-05). What it alone said can go in one line under
+  "Adapt." once the film stops: "Tekiō is for chasing the adaptations you
+  want most. This version chases all seven." Or it is left out, and the
+  page's philosophy box narrows to what the film says. Once the words are
+  settled, the same lines are proposed for the doctrine's purpose.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
