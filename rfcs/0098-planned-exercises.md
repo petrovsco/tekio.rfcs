@@ -21,6 +21,12 @@ release: 2.2.0
   (v2.1.39). The migration waits on Peter's word; the map treatment on his call.
 - 2026-10-05: Peter picked the outline layer for the map, and asked for the Plan
   card to read as pending (a contour or yellow); the style is put to him.
+- 2026-10-05: the layer is built (tekio v2.1.40, same branch): planned muscles
+  get a dashed edge, never a fill, and one line under the map names the gaps
+  the plan reaches and what is left after it. The preview takes a never-logged
+  catalogue lift's links from the catalogue, the links its first log would
+  write, and loads only on a day with an open plan. With a plan, Home runs
+  about two lines past one 900 px screen.
 
 ## Summary
 
