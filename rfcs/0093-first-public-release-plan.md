@@ -183,7 +183,7 @@ answers it for itself.
 - [x] 0096's mobile approach is recorded (native apps, 2026-10-05)
 - [x] 0099's agent order is recorded (outside first, 2026-10-05)
 - [ ] 0097's free/paid principle is recorded
-- [ ] 0098's body-map treatment is recorded
+- [x] 0098's body-map treatment is recorded: the outline layer (Peter, 2026-10-05)
 - [x] The release is named in `releases.md` and every workstream RFC carries its
       `release:` field: 3.0.0, with 0098 in 2.2.0 (Peter, 2026-10-05)
 
