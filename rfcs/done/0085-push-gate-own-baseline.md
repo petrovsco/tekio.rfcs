@@ -13,7 +13,7 @@ label: feature
 ## Progress log
 
 - **2026-10-02** — opened from Peter's review of the landing prototype
-  ([0084](../0084-public-landing-site.md)), where he doubted that anyone at a
+  ([0084](0084-public-landing-site.md)), where he doubted that anyone at a
   readiness of 33 is fit to push. First proposal: replace the line with the
   baseline-relative HRV rule (D8).
 - **2026-10-02** — Peter decided instead: keep the readiness number and read it
@@ -130,7 +130,7 @@ the band beside its 0–100 number (50 = the person's own normal).
 - **The local recovery flag** (row 4.15) and **donation suppression** (row
   4.16). An acute donation still holds the day, whatever the band.
 - **The landing page.** It already shows readiness as a state, not a number
-  ([0084](../0084-public-landing-site.md), round four), and takes these three
+  ([0084](0084-public-landing-site.md), round four), and takes these three
   bands when its real site is built.
 
 ## Proposal

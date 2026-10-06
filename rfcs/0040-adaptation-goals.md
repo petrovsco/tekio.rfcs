@@ -62,7 +62,7 @@ Three reasons, and none of them is "it is hard":
   sentence? Only the last of those leaves the numbers grounded.
 - What happens at cycle rollover — does the goal expire with the cycle?
 - The landing site says "Tekiō is for chasing the adaptations you want
-  most." ([0084](0084-public-landing-site.md)). On 2026-10-05 the doctrine
+  most." ([0084](done/0084-public-landing-site.md)). On 2026-10-05 the doctrine
   took only that line's premise into §1 and left the chasing here: does a
   goal make the line true of the app, or is the seven-way read already
   enough to chase by?
