@@ -2,7 +2,7 @@
 title: Planned exercises — a state for work that has not happened yet
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-05
+last_updated: 2026-10-06
 status: in progress
 status_note: "Moved to 2.2.0 and started by Peter on 2026-10-05, built on today's stack. The plans table and the Weights side are built (v2.1.39, not yet on develop); applying the table waits on Peter's word, and the map treatment on his call."
 label: feature
@@ -32,6 +32,8 @@ release: 2.2.0
 - 2026-10-05: Peter picked yellow; design-system §1 gains it as *planned*. A
   plan is added from "+ Add to plan" on the card, which puts the form in plan
   mode; the form's Plan it button is gone (tekio v2.1.42).
+- 2026-10-06: at Peter's word, adding and editing a plan open a sheet over
+  Weights instead of using the log form (tekio v2.1.43).
 
 ## Summary
 
@@ -86,9 +88,9 @@ piece any rebuilt Program needs, so it is built once here.
    exercises with their targets drawn dashed, later days under them, and one
    line naming last week's unlogged plans. **Log** fills the form with the
    plan's exercise and targets; saving the form logs the work and ticks the
-   plan, whatever numbers were actually done. **+ Add to plan** on the card puts the
-   form in plan mode, for today or a later day. Each open plan has an edit
-   button that loads it into the form as **Edit plan**; Save plan rewrites the
+   plan, whatever numbers were actually done. **+ Add to plan** on the card opens a
+   sheet that writes a plan for today or a later day. Each open plan has an edit
+   button that opens the same sheet as **Edit plan**; Save plan rewrites the
    plan, its day included, and logs nothing. Unlogged plans from earlier days
    expire to that line, never into the read.
 3. **The read**: Peter picked the layer on 2026-10-05. The options were:
