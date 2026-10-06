@@ -3,8 +3,8 @@ title: Planned exercises — a state for work that has not happened yet
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-06
-status: in progress
-status_note: "On staging since 2026-10-06 (tekio v2.1.46). Logging from a plan is proven on a real workout; one box is left, the Home map outline walked on a phone."
+status: done
+status_note: "Shipped in 2.2.0. Peter checked it on his phone after the release (2026-10-06) and called it ok."
 label: feature
 release: 2.2.0
 ---
@@ -44,6 +44,8 @@ release: 2.2.0
   and each plan row now points at its logged exercise. At his word a logged
   plan leaves the Planned card instead of staying there marked Logged
   (tekio v2.1.46).
+- 2026-10-06: shipped in 2.2.0. Peter walked it on his phone after the release
+  and called it ok; the last box is ticked and the RFC moves to done/.
 
 ## Summary
 
@@ -61,7 +63,7 @@ or it stayed in the chat. The first is a lie on the screen that is the product
 (doctrine P2); the second leaves the plan out of the place where the gap is read.
 
 Program, the app's earlier home for plans, was deleted on 2026-10-02 to be
-rebuilt ([0087](done/0087-remove-program.md)). A planned set is the smallest
+rebuilt ([0087](0087-remove-program.md)). A planned set is the smallest
 piece any rebuilt Program needs, so it is built once here.
 
 ## Goals
@@ -138,7 +140,7 @@ the same information behind a tap, against doctrine §6's "without tapping".
       type-checks with a plan)
 - [x] A plan entered in the app appears on Weights and becomes logged work by
       logging it
-- [ ] The chosen map treatment is walked on a phone at 412 px
+- [x] The chosen map treatment is walked on a phone at 412 px
 
 ## Unresolved questions
 

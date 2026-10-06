@@ -93,7 +93,7 @@ anywhere but the database, and Postgres moves.
 | 3 | One API and a shared domain core | [0094](0094-one-api-shared-core.md) | 1, 2 | The reads move into a TypeScript package; one HTTP API is the only door to the database for every client |
 | 4 | Android and iOS apps | [0096](0096-mobile-apps.md) | 3 | **Decided 2026-10-05: native apps** (Swift, Kotlin) beside the web, drawing reads the API computes; health data and notifications |
 | 5 | Agent access | [0099](0099-agent-access.md) | 3 | Outside the app first, as an MCP server on the same API; the in-app agent later, on the same tools |
-| 6 | Planned exercises (**2.2.0**, ahead of the rest) | [0098](0098-planned-exercises.md) | — | A `planned` state that never counts toward the body map, shown as its own layer rather than a switch |
+| 6 | Planned exercises (**2.2.0**, ahead of the rest) | [0098](done/0098-planned-exercises.md) | — | A `planned` state that never counts toward the body map, shown as its own layer rather than a switch |
 | 7 | Free and paid tiers | [0097](0097-free-and-paid-tiers.md) | 2, 3 | The read stays free; what costs us money per user (AI planning, automatic syncs) is paid. Entitlements in the API from day one, billing later |
 | 8 | Launch readiness | — (opened when 2–4 land) | 2, 4 | Privacy policy, account deletion and export in the app, store listings, and the landing site's release form turning into a link to the app (the site itself goes public with 2.2.0, [0084](done/0084-public-landing-site.md)) |
 
@@ -202,6 +202,6 @@ RFC named.
    later. Still open: which side of the line each feature sits on
    ([0097](0097-free-and-paid-tiers.md)).
 5. Planned exercises on the body map: a separate layer, a switch, or not shown?
-   ([0098](0098-planned-exercises.md))
+   ([0098](done/0098-planned-exercises.md))
 6. ~~The release name~~ 3.0.0, with 0098 in 2.2.0 (2026-10-05). Still open:
    ~~the doctrine amendment's wording~~, written 2026-10-05.
