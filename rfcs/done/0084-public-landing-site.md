@@ -235,7 +235,7 @@ release: 2.2.0
   tags are pushed, because a build before them reads 2.1.0. Run through the
   app's new exercise catalogue instead of its own invented links, the example
   names other gaps from Thursday on; that is parked as
-  [RFC 0102](../0102-example-week-reads-catalogue.md). The Turnstile box is
+  [RFC 0102](0102-example-week-reads-catalogue.md). The Turnstile box is
   ticked and the readiness box restated for 2.2.0: 19 of 21.
 - **2026-10-06** — the site's first release, on Peter's word in the
   thread: `tekio.site` 0.1.13 deleted the `vercel.json` entry that kept

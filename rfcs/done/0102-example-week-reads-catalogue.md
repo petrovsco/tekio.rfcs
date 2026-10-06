@@ -3,8 +3,8 @@ title: The landing site's example week reads the app's exercise catalogue
 authors: [Peter Petrov]
 created: 2026-10-06
 last_updated: 2026-10-06
-status: in progress
-status_note: "Peter chose to switch and approved the four new day lines on 2026-10-06. Built on the site's develop branch (tekio.site 0.1.15, on staging); it waits only for his word to release the site onto tekio.fyi."
+status: done
+status_note: "Done 2026-10-06. The example week reads the app's catalogue links, in shape 2 with the four lines Peter approved, live on tekio.fyi as tekio.site 0.1.15."
 label: feature
 ---
 
@@ -23,6 +23,9 @@ label: feature
 - 2026-10-06: Peter approved the four new lines on a decision card, so shape 2
   stands as built. The link preview needs no re-take: it shows only "Adapt."
   and the line under it. Left: the site's release onto tekio.fyi, on his word.
+- 2026-10-06: released on Peter's word, `develop` to `master` (tekio.site
+  0.1.15, 8268424). On tekio.fyi all four new lines read as approved and the
+  old "Rotator and traps" wording is gone. Closed.
 
 ## Summary
 
@@ -30,14 +33,14 @@ The landing site plays an invented athlete's two weeks through the app's own
 functions, but which muscles each of its sixteen lifts trains comes from the
 site's own invented links. Since 2.2.0 the app links an exercise by its name,
 from its catalogue of grounded movement patterns
-([RFC 0074](done/0074-exercise-catalogue-grounded-links.md)). This RFC decides whether the
+([RFC 0074](0074-exercise-catalogue-grounded-links.md)). This RFC decides whether the
 example reads the catalogue's links too, and rewrites the lines that change
 if it does.
 
 ## Motivation
 
 The site says its example week reads the same as the app's own functions
-return for the same logs ([RFC 0084](done/0084-public-landing-site.md),
+return for the same logs ([RFC 0084](0084-public-landing-site.md),
 Acceptance). That held while an exercise's links were rows in the app's
 database, written by an editor: any set of links was somebody's, and the
 site's were marked invented. In 2.2.0 a name the catalogue knows gets the
@@ -137,7 +140,8 @@ app's rules.
       preview is re-taken (approved 2026-10-06; the preview shows only the
       film's last words, which did not change, so it needed no re-take)
 - [x] Walked at phone and desktop sizes
-- [ ] On tekio.fyi: the site released (`develop` to `master`) on Peter's word
+- [x] On tekio.fyi: the site released (`develop` to `master`) on Peter's word
+      (2026-10-06, tekio.site 0.1.15)
 
 ## Unresolved questions
 
