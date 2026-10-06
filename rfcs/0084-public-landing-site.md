@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-06
 status: in progress
-status_note: "The gate for app release 2.2.0. The site is on petrovsco/tekio.site develop at 0.1.9, served at stg.tekio.fyi behind the app's sign-in; SEO and performance are done (Lighthouse 100 for phone and desktop), and the form's Turnstile check, Peter's pick, is built and switched off until its set-up runs on tuxedo. Then the site's first release onto tekio.fyi, on his word."
+status_note: "The gate for app release 2.2.0, which went live on app.tekio.fyi on 2026-10-06. The form's Turnstile check is live and enforced, Peter gave the go for the site's first release, and the site is ported to 2.2.0 as tekio.site 0.1.12; it reaches staging and then tekio.fyi once the v2.2.0 tags are pushed, since its build reads the app at the newest release tag."
 label: feature
 release: 2.2.0
 ---
@@ -214,6 +214,29 @@ release: 2.2.0
   network cannot reach Cloudflare, so the real check is tried on staging.
   The set-up runs on tuxedo, which was offline for Remote Control. Still 18
   of 21.
+- **2026-10-06** — the bot check is done. Turnstile was set up from tuxedo:
+  the widget made with Cloudflare's CLI, its secret kept out of git, the site
+  key on staging. On the live form a post with no pass and one with a fake
+  pass were refused, the honeypot still landed nowhere and a broken address
+  was still turned away; Peter's own sign-up on staging landed, and its row
+  was deleted. He then gave the go for the site's first release. It waited on
+  the app: 2.2.0 went live the same morning, and the page reads the app at its
+  newest release tag, so it had to run on 2.2.0 before it could go public.
+  2.2.0 reads readiness from HRV alone in three bands
+  ([0085](done/0085-push-gate-own-baseline.md), D47), removed the program
+  cycle, gave Home new verdict words, and moved inventory rows the page cites
+  (4.11 retired, 4.12 and 7.6 grounded). The port is `tekio.site` 0.1.12: the
+  example week runs through 2.2.0's readiness and verdict, Saturday holds on
+  the week's lowest night, Sunday to Wednesday keep the plan, lighter, and act
+  one still ends on a push. Peter approved its four new lines the same day
+  (step 4, Saturday, Sunday, and the box's states Low, Moderate and OK); the
+  box's label is READINESS alone at every size, since "Moderate" outgrew the
+  desktop column beside SYSTEMIC. The port stays off staging until the v2.2.0
+  tags are pushed, because a build before them reads 2.1.0. Run through the
+  app's new exercise catalogue instead of its own invented links, the example
+  names other gaps from Thursday on; that is parked as
+  [RFC 0102](0102-example-week-reads-catalogue.md). The Turnstile box is
+  ticked and the readiness box restated for 2.2.0: 19 of 21.
 
 ## Summary
 
@@ -474,6 +497,14 @@ puts them in it; the doctrine's first person stays in the doctrine.
 The real site was built from round four in `petrovsco/tekio.site` on
 2026-10-02.
 
+**Revised for app release 2.2.0, 2026-10-06 (Peter).** Readiness now rests on
+HRV alone, over the last week against the athlete's own normal
+([0085](done/0085-push-gate-own-baseline.md), D47), so the card shows sleep
+beside it, never counted, and one of three states: Low, Moderate or OK. It
+still prints no score, whose scale is `convention` (row 4.17), and no band
+lines (row 4.12). A Low day holds to a walk or mobility; a Moderate day keeps
+the plan, lighter (row 4.18).
+
 **The first screen is a film** (Peter, 2026-10-05): Thin air, picked from
 three storylines ([0084/opening-film.md](0084/opening-film.md)). It takes its
 grammar from the Opus-made "Prometheus" film (Latin chapter marks that pin to
@@ -641,8 +672,9 @@ the page rests on one.
       and phone sizes
 - [x] The map keeps the same size and position on every step of an act, at
       desktop and phone sizes
-- [x] Readiness appears as its inputs and a state, never as a number or a line,
-      while inventory rows 4.11 and 4.12 are `convention`
+- [x] Readiness appears as its input and a state (Low, Moderate or OK), never
+      as its 0–100 score, whose scale is `convention` (inventory row 4.17), nor
+      as the bands' lines (row 4.12)
 - [x] Act two says it is an example week, not a program, on its title step and
       on every day's stage
 - [x] The page speaks to the reader as "you" throughout
@@ -660,7 +692,7 @@ the page rests on one.
 - [x] The form takes a bounded number of addresses: at most 20 new ones a
       minute and 1,000 a UTC day, and none past 10,000 rows, shown by its
       tests against stand-ins for Google's services
-- [ ] The form checks the poster is a person with Turnstile: a post without
+- [x] The form checks the poster is a person with Turnstile: a post without
       a token Cloudflare vouches for lands nowhere, shown by the script's tests
       and on staging, and a person's sign-up on staging still lands
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with

@@ -2,12 +2,11 @@
 title: Release-blocked schema drops for 2.2.0
 authors: [Peter Petrov]
 created: 2026-10-02
-last_updated: 2026-10-04
+last_updated: 2026-10-06
 status: blocked
-status_note: "Waits for 2.2.0 to reach master: the build there still reads every table queued below. Dropping the program tables also deletes the two stored programs (exported 2026-10-02), and dropping water_logs deletes the logged water, so the sweep needs Peter's word on both first."
+status_note: "2.2.0 reached master on 2026-10-06, so the build there no longer reads the queued tables once verified. The sweep still waits on Peter's word: dropping the program tables deletes the two stored programs (exported 2026-10-02), and dropping water_logs deletes the logged water."
 label: infra
 depends: [87, 89]
-release: 2.2.0
 ---
 
 # RFC 0088: Release-blocked schema drops for 2.2.0
