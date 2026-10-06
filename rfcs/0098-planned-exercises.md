@@ -34,6 +34,8 @@ release: 2.2.0
   mode; the form's Plan it button is gone (tekio v2.1.42).
 - 2026-10-06: at Peter's word, adding and editing a plan open a sheet over
   Weights instead of using the log form (tekio v2.1.43).
+- 2026-10-06: the Planned card folds from its header, showing how many plans
+  are open today, and remembers the fold on the device (tekio v2.1.44).
 
 ## Summary
 
