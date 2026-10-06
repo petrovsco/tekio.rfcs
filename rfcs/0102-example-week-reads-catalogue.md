@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-06
 last_updated: 2026-10-06
 status: in progress
-status_note: "Peter chose to switch on 2026-10-06. The example reads the catalogue on the site's develop branch (tekio.site 0.1.15, on staging); its four rewritten day lines wait for his OK before the site's next release."
+status_note: "Peter chose to switch and approved the four new day lines on 2026-10-06. Built on the site's develop branch (tekio.site 0.1.15, on staging); it waits only for his word to release the site onto tekio.fyi."
 label: feature
 ---
 
@@ -20,6 +20,9 @@ label: feature
   Sunday's lines are rewritten and wait for Peter's OK. Act one, the closing
   answer and the film still end on rotator and erectors; only the fourth
   numbered gap changes, traps to adductors.
+- 2026-10-06: Peter approved the four new lines on a decision card, so shape 2
+  stands as built. The link preview needs no re-take: it shows only "Adapt."
+  and the line under it. Left: the site's release onto tekio.fyi, on his word.
 
 ## Summary
 
@@ -89,7 +92,8 @@ Either way the site's `week.ts` reads `linksFor` for each name, as its
 citation of row 7.6 already does for the bench press, and the build fails
 when a catalogue change moves an example link.
 
-**Built: shape 2** (2026-10-06, tekio.site 0.1.15). It keeps the story with
+**Built: shape 2** (2026-10-06, tekio.site 0.1.15; its lines approved by
+Peter the same day). It keeps the story with
 one swap, where shape 1 would have changed the page's ending as well:
 
 - Every lift is logged under a name the catalogue knows; "Lateral raise" and
@@ -124,16 +128,18 @@ app's rules.
 
 ## Acceptance
 
-- [ ] Peter decides whether the example reads the catalogue, and in which
-      shape
+- [x] Peter decides whether the example reads the catalogue, and in which
+      shape (2026-10-06: it does, in shape 2)
 - [x] If it does: every example link comes from the app (the catalogue or a
       movement pattern), checked at build time and cited to inventory row 7.6
-- [ ] The day copy, act one's end, the closing answer and the film's last
+- [x] The day copy, act one's end, the closing answer and the film's last
       frame name what each read names, in lines Peter approves, and the link
-      preview is re-taken
+      preview is re-taken (approved 2026-10-06; the preview shows only the
+      film's last words, which did not change, so it needed no re-take)
 - [x] Walked at phone and desktop sizes
+- [ ] On tekio.fyi: the site released (`develop` to `master`) on Peter's word
 
 ## Unresolved questions
 
-- None open. Whether to read the catalogue was Peter's call (yes,
-  2026-10-06); the shape rides on his OK of the four lines above.
+- None open. Peter chose to read the catalogue and approved shape 2's four
+  lines (2026-10-06).
