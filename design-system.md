@@ -13,7 +13,8 @@ fix one of them deliberately.
 
 ## 1. What colour means
 
-The app is monochrome paper with **one accent**. Colour is a channel, and
+The app is monochrome paper with **one accent**, and one state colour for
+planned work. Colour is a channel, and
 every channel carries exactly one meaning:
 
 - **Accent `#c2410c`** = *action lives here / urgency*. It appears on: the
@@ -29,6 +30,12 @@ every channel carries exactly one meaning:
 - **The hatch** = *recovery*. A white 45° line pattern (4×4 tile, 1.6px
   line) overlays a muscle that is still recovering. Recovery never
   borrows the fill channel.
+- **Yellow `#d4a017`** = *planned, not done yet* (RFC 0098, Peter
+  2026-10-05). It appears on: the Planned card on Weights (ground
+  `#fdf6dc`, edge and dashed target chips in the yellow), the From today's
+  plan note on the log form, and the dashed outline on muscles today's plan
+  would reach on Home's map. The plan sheet stays white, like every sheet. It never fills a muscle: the fill is stimulus, and nothing
+  planned has happened.
 - **Systemic readiness never colours the map** (doctrine P5). It lives in
   its own card; on a held day that whole card inverts to ink (§2).
 

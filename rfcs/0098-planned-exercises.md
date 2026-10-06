@@ -2,14 +2,48 @@
 title: Planned exercises — a state for work that has not happened yet
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-05
-status: backlog
-status_note: "Tagged 2.3.0 by Peter on 2026-10-05, ahead of the rest of the public release plan. It is built on today's stack, without waiting for the API (0094). How the body map shows planned work must be decided before kickoff."
-label: backlog
-release: 2.3.0
+last_updated: 2026-10-06
+status: in progress
+status_note: "On staging since 2026-10-06 (tekio v2.1.46). Logging from a plan is proven on a real workout; one box is left, the Home map outline walked on a phone."
+label: feature
+release: 2.2.0
 ---
 
 # RFC 0098: Planned exercises — a state for work that has not happened yet
+
+## Progress log
+
+- 2026-10-05: tagged 2.3.0, ahead of the rest of the public release plan.
+- 2026-10-05: moved to 2.2.0 and started, at Peter's word. Relabelled feature.
+- 2026-10-05: plans get their own table rather than a status column, so the
+  build on master cannot count them. The table, the Plan card on Weights and
+  the never-counted test are on tekio branch `claude/project-thread-p40di1`
+  (v2.1.39). The migration waits on Peter's word; the map treatment on his call.
+- 2026-10-05: Peter picked the outline layer for the map, and asked for the Plan
+  card to read as pending (a contour or yellow); the style is put to him.
+- 2026-10-05: the layer is built (tekio v2.1.40, same branch): planned muscles
+  get a dashed edge, never a fill, and one line under the map names the gaps
+  the plan reaches and what is left after it. The preview takes a never-logged
+  catalogue lift's links from the catalogue, the links its first log would
+  write, and loads only on a day with an open plan. With a plan, Home runs
+  about two lines past one 900 px screen.
+- 2026-10-05: Peter's review: the card is renamed Planned (Today, Later) and
+  plans are editable (tekio v2.1.41).
+- 2026-10-05: Peter picked yellow; design-system §1 gains it as *planned*. A
+  plan is added from "+ Add to plan" on the card, which puts the form in plan
+  mode; the form's Plan it button is gone (tekio v2.1.42).
+- 2026-10-06: at Peter's word, adding and editing a plan open a sheet over
+  Weights instead of using the log form (tekio v2.1.43).
+- 2026-10-06: the Planned card folds from its header, showing how many plans
+  are open today, and remembers the fold on the device (tekio v2.1.44).
+- 2026-10-06: at Peter's word, `planned_exercises` applied to the shared
+  database (version 20261006041035, expand-only) and the build merged to
+  develop for staging (tekio v2.1.45). An agent-written session was planned for
+  that day so he could test logging from the plan.
+- 2026-10-06: Peter logged all five planned lifts from the card on his phone,
+  and each plan row now points at its logged exercise. At his word a logged
+  plan leaves the Planned card instead of staying there marked Logged
+  (tekio v2.1.46).
 
 ## Summary
 
@@ -48,18 +82,28 @@ piece any rebuilt Program needs, so it is built once here.
 
 ## Proposal
 
-1. **Data**: a status on the session-exercise and set rows (`planned` /
-   `logged`), plus who planned it (`user` / `agent`), additive and nullable under
-   the two-builds migration policy (`supabase/README.md` in the code repo). Every
-   read (`src/lib/adaptations.ts`, `src/lib/fusedRead.ts`) filters to `logged`,
-   so the change cannot leak into a number. Built in 2.3.0 on today's stack
-   (Peter, 2026-10-05), before the API exists; when 0094 moves the reads into the
-   core package, the filter moves with them, and the agent's `plan_exercises`
-   tool (0099) writes the same rows.
-2. **Capture**: Weights shows today's planned exercises at the top, with their
-   sets as targets; logging a set fills it in. Unlogged plans from earlier days
-   expire to a history line, not into the read.
-3. **The read**, three options for Peter's call:
+1. **Data**: a table of its own, `planned_exercises` (date, exercise name,
+   target sets, who planned it, and the logged entry it became), not a status
+   column on the session rows. The build on `master` reads every
+   `session_exercises` row it finds, so a planned row there would count as done
+   on production until the release; a separate table that no read selects from
+   cannot leak into a number on either build. Expand only under the two-builds
+   migration policy (`supabase/README.md` in the code repo). The exercise is
+   kept as a name and resolved only when the plan is logged, so planning a new
+   lift writes no exercise row and no muscle links. Built in 2.2.0 on today's
+   stack (Peter, 2026-10-05); the agent's `plan_exercises` tool (0099) writes
+   the same rows. In the app, a plan's type is not a `WeightEntry` (its sets are
+   `targets`), so no read type-checks with one.
+2. **Capture**: Weights shows a Planned card above the log form: today's planned
+   exercises with their targets drawn dashed, later days under them, and one
+   line naming last week's unlogged plans. **Log** fills the form with the
+   plan's exercise and targets; saving the form logs the work and ticks the
+   plan, whatever numbers were actually done. **+ Add to plan** on the card opens a
+   sheet that writes a plan for today or a later day. Each open plan has an edit
+   button that opens the same sheet as **Edit plan**; Save plan rewrites the
+   plan, its day included, and logs nothing. Unlogged plans from earlier days
+   expire to that line, never into the read.
+3. **The read**: Peter picked the layer on 2026-10-05. The options were:
    - **A layer (recommended)**: the body map shows logged work as today, and
      planned work as an outline on the muscles it would reach, with Home's line
      saying what would still be missing after the plan.
@@ -87,13 +131,17 @@ the same information behind a tap, against doctrine §6's "without tapping".
 
 ## Acceptance
 
-- [ ] Peter's call on how the map shows planned work is recorded
-- [ ] Planned rows never change Home or Adaptations, tested in the reads' own tests
-- [ ] A plan entered in the app appears on Weights and becomes logged work by
+- [x] Peter's call on how the map shows planned work is recorded: the outline
+      layer (2026-10-05)
+- [x] Planned rows never change Home or Adaptations, tested (tekio
+      `src/test/plans.test.ts`: planning leaves both reads equal, and no read
+      type-checks with a plan)
+- [x] A plan entered in the app appears on Weights and becomes logged work by
       logging it
 - [ ] The chosen map treatment is walked on a phone at 412 px
 
 ## Unresolved questions
 
-1. Layer, switch or not on the map? Recommendation: layer. Peter called it a
-   decision for later.
+1. ~~Layer, switch or not on the map?~~ Layer (Peter, 2026-10-05).
+2. ~~Dashed ink or yellow for planned work?~~ Yellow (Peter, 2026-10-05);
+   design-system §1 amended with it.
