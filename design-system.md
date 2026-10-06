@@ -32,8 +32,9 @@ every channel carries exactly one meaning:
   borrows the fill channel.
 - **Yellow `#d4a017`** = *planned, not done yet* (RFC 0098, Peter
   2026-10-05). It appears on: the Planned card on Weights (ground
-  `#fdf6dc`, edge and dashed target chips in the yellow), the plan sheet, and the dashed outline on muscles today's plan would reach
-  on Home's map. It never fills a muscle: the fill is stimulus, and nothing
+  `#fdf6dc`, edge and dashed target chips in the yellow), the From today's
+  plan note on the log form, and the dashed outline on muscles today's plan
+  would reach on Home's map. The plan sheet stays white, like every sheet. It never fills a muscle: the fill is stimulus, and nothing
   planned has happened.
 - **Systemic readiness never colours the map** (doctrine P5). It lives in
   its own card; on a held day that whole card inverts to ink (§2).
