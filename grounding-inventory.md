@@ -341,7 +341,7 @@ later. The grounding stays on record for that rebuild
 ([0013](rfcs/done/0013-cycle-deload-grounding.md#grounding)); a rebuilt Program
 that brings a cycle back re-enters its numbers here. The `programs` columns
 behind 5.7–5.9 wait for the 2.2.0 sweep
-([0088](rfcs/0088-release-2-2-0-schema-drops.md)).
+([0088](rfcs/done/0088-release-2-2-0-schema-drops.md)).
 
 **Three bugs here were fixed 2026-08-26** (struck-through rows). What remains is
 the claim itself: a 6-week block, deloading in week 6, at 70% of reps.

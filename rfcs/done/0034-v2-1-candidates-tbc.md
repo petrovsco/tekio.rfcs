@@ -47,7 +47,7 @@ Decided by Peter, one at a time, in the review session.
    edited setup (exercises, muscle links, program days). The button, panel,
    settings card and both edge functions' source go in v2.1.17. Its table and
    the two deployed functions wait for the release sweep
-   ([0088](../0088-release-2-2-0-schema-drops.md)).
+   ([0088](0088-release-2-2-0-schema-drops.md)).
 2. **Cardio secondary reads — the frequency chart is cut, the chips stay.**
    The type chips keep Progress on one pace scale, so they are load-bearing.
    The Sessions per week bars go: Home already reads sessions against their
