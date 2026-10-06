@@ -70,6 +70,22 @@ not happened yet, which never counts toward the body map. It belongs to the
 public release plan ([0093](0093-first-public-release-plan.md)) but is built on
 today's stack.
 
+**Named for release by Peter on 2026-10-06**, with the landing site
+([0084](0084-public-landing-site.md)) as its gate: the release form's bot check,
+an SEO and performance pass on the site, and the site public on `tekio.fyi`.
+Then 2.2.0 goes to `master` on his go. What it waits on:
+
+1. [0084](0084-public-landing-site.md) — the form's bot check (Peter's typed
+   "both" or "caps only"), the SEO and performance pass, then the site's own
+   first release onto `tekio.fyi`, so the app's release has a production
+   deployment to redeploy (step 4).
+2. [0098](0098-planned-exercises.md) — the Home map outline walked on a phone.
+3. The release itself, steps 1–7. Pre-flight (step 1) was green on `develop`
+   at v2.1.46 on 2026-10-06; it is re-run on the commit that ships.
+4. After it: [0088](0088-release-2-2-0-schema-drops.md), the schema drops,
+   which needs Peter's word on deleting the stored programs and the logged
+   water.
+
 ## 2.3.0
 
 **Target:** TBC
