@@ -16,11 +16,12 @@ Released 2026-10-06 on Peter's "we're good to release", after he tested the
 site's form: `develop` fast-forwarded onto `master` at v2.2.0, tag `v2.2.0` in
 both repositories. **At release:** everything below shipped. Two briefs ride
 out still tagged 2.2.0, because their code is in the release and what remains
-of each is a check on it: [0098](0098-planned-exercises.md)'s Home map outline
+of each is a check on it: [0098](done/0098-planned-exercises.md)'s Home map outline
 walked on a phone, and [0084](done/0084-public-landing-site.md)'s site going public
 on `tekio.fyi` (its own release, on its own repository) with this release's
 redeploy. It closed the same day: the site went public on `tekio.fyi`, its first
-build reading both repositories at `v2.2.0`.
+build reading both repositories at `v2.2.0`. 0098 closed the same day too, on
+Peter's phone walk.
 [0088](done/0088-release-2-2-0-schema-drops.md), the schema drops, was
 untagged, since it runs after this release (step 6). It ran the same day on
 Peter's word, as migration `20261006100000_release_2_2_0_schema_drops`.
@@ -78,7 +79,7 @@ It was unparked because the app applies those numbers to every program. **Done
 2026-10-01**: two rows are convention, one is grounded, and no value moved.
 
 Moved in from 2.3.0 by Peter on 2026-10-05 and started the same day:
-[0098](0098-planned-exercises.md), planned exercises, a state for work that has
+[0098](done/0098-planned-exercises.md), planned exercises, a state for work that has
 not happened yet, which never counts toward the body map. It belongs to the
 public release plan ([0093](0093-first-public-release-plan.md)) but is built on
 today's stack.
@@ -93,7 +94,7 @@ Then 2.2.0 goes to `master` on his go. What it waits on:
    on tuxedo), the SEO and performance pass (done, 0.1.8), then the site's own
    first release onto `tekio.fyi`, so the app's release has a production
    deployment to redeploy (step 4).
-2. [0098](0098-planned-exercises.md) — the Home map outline walked on a phone.
+2. [0098](done/0098-planned-exercises.md) — the Home map outline walked on a phone.
 3. The release itself, steps 1–7. Pre-flight (step 1) was green on `develop`
    at v2.1.46 on 2026-10-06; it is re-run on the commit that ships.
 4. After it: [0088](done/0088-release-2-2-0-schema-drops.md), the schema drops,
@@ -106,7 +107,7 @@ Then 2.2.0 goes to `master` on his go. What it waits on:
 **Status:** planned
 
 Named by Peter on 2026-10-05 for planned exercises
-([0098](0098-planned-exercises.md)), which he moved into 2.2.0 the same day.
+([0098](done/0098-planned-exercises.md)), which he moved into 2.2.0 the same day.
 Nothing is tagged here now. Comes after 2.2.0.
 
 ## 3.0.0
