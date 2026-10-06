@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-06
 status: in progress
-status_note: "Moved to 2.2.0 and started by Peter on 2026-10-05. Built and on staging since 2026-10-06 (tekio v2.1.45), with the plans table live; two boxes wait on Peter logging a plan on his phone."
+status_note: "On staging since 2026-10-06 (tekio v2.1.46). Logging from a plan is proven on a real workout; one box is left, the Home map outline walked on a phone."
 label: feature
 release: 2.2.0
 ---
@@ -40,6 +40,10 @@ release: 2.2.0
   database (version 20261006041035, expand-only) and the build merged to
   develop for staging (tekio v2.1.45). An agent-written session was planned for
   that day so he could test logging from the plan.
+- 2026-10-06: Peter logged all five planned lifts from the card on his phone,
+  and each plan row now points at its logged exercise. At his word a logged
+  plan leaves the Planned card instead of staying there marked Logged
+  (tekio v2.1.46).
 
 ## Summary
 
@@ -132,7 +136,7 @@ the same information behind a tap, against doctrine §6's "without tapping".
 - [x] Planned rows never change Home or Adaptations, tested (tekio
       `src/test/plans.test.ts`: planning leaves both reads equal, and no read
       type-checks with a plan)
-- [ ] A plan entered in the app appears on Weights and becomes logged work by
+- [x] A plan entered in the app appears on Weights and becomes logged work by
       logging it
 - [ ] The chosen map treatment is walked on a phone at 412 px
 
