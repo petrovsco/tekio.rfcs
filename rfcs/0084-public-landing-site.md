@@ -2,10 +2,11 @@
 title: A public landing site on tekio.fyi that explains how the reads are computed and cites their evidence
 authors: [Peter Petrov]
 created: 2026-10-01
-last_updated: 2026-10-05
+last_updated: 2026-10-06
 status: in progress
-status_note: "The site is on petrovsco/tekio.site develop at 0.1.7, served at stg.tekio.fyi behind the app's sign-in: it opens on the Thin air film, which rests on \"Adapt.\" and one line on what Tekiō is for, and its release form writes to a Sheet in the company folder of the owner's Drive. One thing waits on Peter (Unresolved questions): the form's human check; then the site goes public on tekio.fyi on his word."
+status_note: "The gate for app release 2.2.0. The site is on petrovsco/tekio.site develop at 0.1.8, served at stg.tekio.fyi behind the app's sign-in, and its SEO and performance pass is done: Lighthouse scores 100 for phone and desktop. Left: the form's bot check, waiting on Peter's typed answer (Unresolved questions), then the site's first release onto tekio.fyi on his word."
 label: feature
+release: 2.2.0
 ---
 
 # RFC 0084: A public landing site on tekio.fyi that explains how the reads are computed and cites their evidence
@@ -183,6 +184,27 @@ label: feature
   third line, chasing the adaptations you want most, stays the page's own,
   and [RFC 0040](0040-adaptation-goals.md) keeps the question of goals.
   Still 16 of 19.
+- **2026-10-06** — Peter named app release 2.2.0 with this site as its gate:
+  the form's bot check, an SEO and performance pass, then the site public on
+  `tekio.fyi` ([releases.md](releases.md)). The pass is done (`tekio.site`
+  0.1.8). Lighthouse on a local build had scored the phone 75 for
+  performance, with 1.2 s of blocking time: every frame of the film repainted
+  its whole paper, grain and warm edge, which on a phone drawing without a
+  graphics chip cost about five times the ink. The paper now lies over the
+  canvas as two layers, the grain moving by a transform, so a frame costs
+  about 10 ms instead of 60; stills at seven moments match the old ones
+  within a level or two of tone. With the film's controls hidden until they
+  are placed, the phone scores 100 with 30 ms of blocking time and no layout
+  shift, and the desktop stays at 100. A shared link now shows a card of the
+  film's last frame (`scripts/og.mjs`), and the page names the site and
+  carries structured data; SEO stays 100, and staging stays out of search
+  behind its 401 and its sign-in page's `noindex`. Accessibility stays 96:
+  the design system's label and aside greys are under the contrast small text
+  needs, on the site and in the app alike, parked as
+  [RFC 0101](0101-text-greys-contrast.md). Two boxes added and ticked, one
+  added for the bot check; the form's turn into a link to the app moves to
+  the first public release ([0093](0093-first-public-release-plan.md), launch
+  readiness), since the app opens after this ships: 18 of 21.
 
 ## Summary
 
@@ -384,7 +406,9 @@ act two and science bullets above. Prototype, round two:
   Saturday's planned session is held after a bad night, and the gap it was
   meant to close is still named on Sunday.
 - **The last step** is a release-notification form while the app is not
-  released, and a link to the app once it is.
+  released, and a link to the app once it is. That switch belongs to the
+  first public release, which opens the app after this ships
+  ([0093](0093-first-public-release-plan.md), launch readiness).
 - **The science page (B) is dropped for now,** until every number it would show
   has its source. In round one it counted 64 live numbers: 32 grounded, 14
   convention, 4 definitional and 14 not yet checked.
@@ -616,13 +640,19 @@ the page rests on one.
 - [x] The form takes a bounded number of addresses: at most 20 new ones a
       minute and 1,000 a UTC day, and none past 10,000 rows, shown by its
       tests against stand-ins for Google's services
-- [ ] When the app opens, the form becomes a link to the app
+- [ ] The form carries the bot check Peter settles (Unresolved questions);
+      with Turnstile, a post without a valid token lands nowhere, shown by the
+      script's tests and on staging
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
 - [x] `https://stg.tekio.fyi` serves the `develop` build behind the app's
       sign-in page, which the app's staging login opens
 - [x] Readable at 400 px wide, in the app's one light theme; first paint
       under 50 kB compressed
+- [x] Lighthouse on a local build scores performance at least 90 for phone
+      and for desktop, with no layout shift
+- [x] A shared link shows a preview card of the film's last frame, Lighthouse
+      scores SEO 100, and staging stays out of search
 - [x] The example read is marked invented and no personal data is on the page
 
 ## Unresolved questions
@@ -633,7 +663,8 @@ One, asked of Peter on 2026-10-04:
   mostly invisible check that the poster is a person, which the script would
   then verify with Cloudflare on every post. It needs one more permission in
   the script's editor. Offered with **both** recommended; his answer is typed,
-  because the set-up runs on his accounts.
+  because the set-up runs on his accounts. Since 2026-10-06 it is the last
+  thing the 2.2.0 gate waits on before the site's own release.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
