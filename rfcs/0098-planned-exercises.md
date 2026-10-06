@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-06
 status: in progress
-status_note: "Moved to 2.2.0 and started by Peter on 2026-10-05, built on today's stack. The plans table and the Weights side are built (v2.1.39, not yet on develop); applying the table waits on Peter's word, and the map treatment on his call."
+status_note: "Moved to 2.2.0 and started by Peter on 2026-10-05. Built and on staging since 2026-10-06 (tekio v2.1.45), with the plans table live; two boxes wait on Peter logging a plan on his phone."
 label: feature
 release: 2.2.0
 ---
@@ -36,6 +36,10 @@ release: 2.2.0
   Weights instead of using the log form (tekio v2.1.43).
 - 2026-10-06: the Planned card folds from its header, showing how many plans
   are open today, and remembers the fold on the device (tekio v2.1.44).
+- 2026-10-06: at Peter's word, `planned_exercises` applied to the shared
+  database (version 20261006041035, expand-only) and the build merged to
+  develop for staging (tekio v2.1.45). An agent-written session was planned for
+  that day so he could test logging from the plan.
 
 ## Summary
 
