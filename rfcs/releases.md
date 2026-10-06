@@ -10,7 +10,17 @@ the board.
 ## 2.2.0
 
 **Target:** TBC
-**Status:** planned
+**Status:** released 2026-10-06
+
+Released 2026-10-06 on Peter's "we're good to release", after he tested the
+site's form: `develop` fast-forwarded onto `master` at v2.2.0, tag `v2.2.0` in
+both repositories. **At release:** everything below shipped. Two briefs ride
+out still tagged 2.2.0, because their code is in the release and what remains
+of each is a check on it: [0098](0098-planned-exercises.md)'s Home map outline
+walked on a phone, and [0084](0084-public-landing-site.md)'s site going public
+on `tekio.fyi` (its own release, on its own repository) with this release's
+redeploy. [0088](0088-release-2-2-0-schema-drops.md), the schema drops, was
+untagged: it runs after this release (step 6) and waits on Peter's word.
 
 The open release since 2.1.0 shipped on 2026-09-30: what lands on `develop`
 now rides toward it as patches. A column or config row `develop` stops reading
