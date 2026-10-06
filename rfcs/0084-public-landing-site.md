@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-06
 status: in progress
-status_note: "The gate for app release 2.2.0. The site is on petrovsco/tekio.site develop at 0.1.8, served at stg.tekio.fyi behind the app's sign-in, and its SEO and performance pass is done: Lighthouse scores 100 for phone and desktop. Left: the form's bot check, waiting on Peter's typed answer (Unresolved questions), then the site's first release onto tekio.fyi on his word."
+status_note: "The gate for app release 2.2.0. The site is on petrovsco/tekio.site develop at 0.1.9, served at stg.tekio.fyi behind the app's sign-in; SEO and performance are done (Lighthouse 100 for phone and desktop), and the form's Turnstile check, Peter's pick, is built and switched off until its set-up runs on tuxedo. Then the site's first release onto tekio.fyi, on his word."
 label: feature
 release: 2.2.0
 ---
@@ -205,6 +205,15 @@ release: 2.2.0
   added for the bot check; the form's turn into a link to the app moves to
   the first public release ([0093](0093-first-public-release-plan.md), launch
   readiness), since the app opens after this ships: 18 of 21.
+- **2026-10-06** — Peter typed **both**: Turnstile on top of the honeypot
+  and the limits (§5). Built as `tekio.site` 0.1.9, switched off until its
+  two halves are set up: the page loads Cloudflare's check only as the form's
+  step comes near, and the script keeps an address only with a token
+  Cloudflare vouches for. Tested against stand-ins for Google and Cloudflare
+  (six new script tests, and the form walked in Chromium); the cloud's
+  network cannot reach Cloudflare, so the real check is tried on staging.
+  The set-up runs on tuxedo, which was offline for Remote Control. Still 18
+  of 21.
 
 ## Summary
 
@@ -504,6 +513,17 @@ also takes a bounded number of addresses, so a flood cannot fill the Sheet
 none past 10,000 rows. An Apps Script web app never learns who is posting, so
 the limits count everyone together; past one, the form says to try again in a
 moment. Nothing in it sends email.
+
+On top of those, Cloudflare's Turnstile checks that the poster is a person
+(Peter, 2026-10-06, "both"). It is free and mostly invisible: the page loads
+Cloudflare's script only as the form's step comes near, and the check shows
+itself only when it needs a click. Each post carries one token, and the script
+keeps an address only when Cloudflare vouches for it, earned on `tekio.fyi` or
+`stg.tekio.fyi` by this form. It turns on in two halves: the widget's site key
+in the site's Vercel project, and its secret in a git-ignored file the script
+reads, with one more permission (reaching Cloudflare) the owner allows once in
+the script's editor. The steps, in the order that keeps the live form working,
+are at the top of `apps-script/signup.gs`.
 Deploying the script needs the owner signed in. It is deployed from the
 site's repository with clasp, Google's Apps Script CLI (Peter's call,
 2026-10-02), so a later change keeps the same address. Its manifest lets it
@@ -640,9 +660,9 @@ the page rests on one.
 - [x] The form takes a bounded number of addresses: at most 20 new ones a
       minute and 1,000 a UTC day, and none past 10,000 rows, shown by its
       tests against stand-ins for Google's services
-- [ ] The form carries the bot check Peter settles (Unresolved questions);
-      with Turnstile, a post without a valid token lands nowhere, shown by the
-      script's tests and on staging
+- [ ] The form checks the poster is a person with Turnstile: a post without
+      a token Cloudflare vouches for lands nowhere, shown by the script's tests
+      and on staging, and a person's sign-up on staging still lands
 - [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
 - [x] `https://stg.tekio.fyi` serves the `develop` build behind the app's
@@ -657,14 +677,7 @@ the page rests on one.
 
 ## Unresolved questions
 
-One, asked of Peter on 2026-10-04:
-
-- **Does the form add Cloudflare's Turnstile on top of its limits?** A free,
-  mostly invisible check that the poster is a person, which the script would
-  then verify with Cloudflare on every post. It needs one more permission in
-  the script's editor. Offered with **both** recommended; his answer is typed,
-  because the set-up runs on his accounts. Since 2026-10-06 it is the last
-  thing the 2.2.0 gate waits on before the site's own release.
+None open.
 
 The six questions open on 2026-10-02 were settled by Peter that day: the
 repository and its name (§1), which app the page describes (§3), the voice
@@ -679,4 +692,6 @@ question: Peter took **premise only**, and doctrine §1 now says "My body
 adapts to what it meets, and what I do is what triggers it." The third line
 stays the page's own, since the app still measures all seven adaptations
 equally and declaring what a user chases is
-[RFC 0040](0040-adaptation-goals.md)'s question.
+[RFC 0040](0040-adaptation-goals.md)'s question. The last, asked on
+2026-10-04, was settled on 2026-10-06: Peter typed **both**, so Turnstile
+checks the form on top of its limits (§5).

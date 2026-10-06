@@ -75,8 +75,9 @@ today's stack.
 an SEO and performance pass on the site, and the site public on `tekio.fyi`.
 Then 2.2.0 goes to `master` on his go. What it waits on:
 
-1. [0084](0084-public-landing-site.md) — the form's bot check (Peter's typed
-   "both" or "caps only"), the SEO and performance pass, then the site's own
+1. [0084](0084-public-landing-site.md) — the form's bot check (Peter typed
+   "both" on 2026-10-06: Turnstile, built as `tekio.site` 0.1.9 and set up
+   on tuxedo), the SEO and performance pass (done, 0.1.8), then the site's own
    first release onto `tekio.fyi`, so the app's release has a production
    deployment to redeploy (step 4).
 2. [0098](0098-planned-exercises.md) — the Home map outline walked on a phone.
