@@ -41,14 +41,14 @@ and the reading load of a cycle model that shapes nothing on screen.
   went: both programs as JSON and as a page, day by day with every block and
   prescription.
 - No row is deleted here. The tables stay until `master` no longer reads them,
-  and what happens to them then is [0088](../0088-release-2-2-0-schema-drops.md)'s question.
+  and what happens to them then is [0088](0088-release-2-2-0-schema-drops.md)'s question.
 
 ## Non-Goals
 
 - Designing the rebuilt Program. That gets its own RFC when Peter asks for it,
   starting from the export and from doctrine §4.
 - Deleting rows. Program rows are real data; the release sweep removes schema
-  only, and only through [0088](../0088-release-2-2-0-schema-drops.md).
+  only, and only through [0088](0088-release-2-2-0-schema-drops.md).
 - Supersets in history. Logged supersets keep showing and stay editable; only
   the way to *start* one goes, because the program was its only entry point.
 
@@ -71,7 +71,7 @@ Code (tekio, v2.1.17):
 Plan (tekio.rfcs): doctrine §5 ledger row Program → deleted; inventory §5
 rows retired; [0070](0070-week-start-day-program-week.md) discarded;
 [0086](../0086-readiness-brings-deload-forward.md) waits on the rebuild; the
-tables queued in [0088](../0088-release-2-2-0-schema-drops.md).
+tables queued in [0088](0088-release-2-2-0-schema-drops.md).
 
 The export lives in the project's shared files, never in either repository,
 because it is one person's training plan (house rule `no-personal-context`).

@@ -23,7 +23,7 @@ if it does.
 ## Motivation
 
 The site says its example week reads the same as the app's own functions
-return for the same logs ([RFC 0084](0084-public-landing-site.md),
+return for the same logs ([RFC 0084](done/0084-public-landing-site.md),
 Acceptance). That held while an exercise's links were rows in the app's
 database, written by an editor: any set of links was somebody's, and the
 site's were marked invented. In 2.2.0 a name the catalogue knows gets the

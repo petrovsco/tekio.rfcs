@@ -46,7 +46,7 @@ readiness card: it keeps its tile beside bodyweight at the foot of Home.
 
 - Moving or changing blood donation's capture, its eligibility or its hold.
 - Deleting water rows. `water_logs` is queued in
-  [0088](../0088-release-2-2-0-schema-drops.md), which needs Peter's word because
+  [0088](0088-release-2-2-0-schema-drops.md), which needs Peter's word because
   a table drop takes its rows.
 
 ## Proposal

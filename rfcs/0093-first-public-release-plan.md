@@ -95,7 +95,7 @@ anywhere but the database, and Postgres moves.
 | 5 | Agent access | [0099](0099-agent-access.md) | 3 | Outside the app first, as an MCP server on the same API; the in-app agent later, on the same tools |
 | 6 | Planned exercises (**2.2.0**, ahead of the rest) | [0098](0098-planned-exercises.md) | — | A `planned` state that never counts toward the body map, shown as its own layer rather than a switch |
 | 7 | Free and paid tiers | [0097](0097-free-and-paid-tiers.md) | 2, 3 | The read stays free; what costs us money per user (AI planning, automatic syncs) is paid. Entitlements in the API from day one, billing later |
-| 8 | Launch readiness | — (opened when 2–4 land) | 2, 4 | Privacy policy, account deletion and export in the app, store listings, and the landing site's release form turning into a link to the app (the site itself goes public with 2.2.0, [0084](0084-public-landing-site.md)) |
+| 8 | Launch readiness | — (opened when 2–4 land) | 2, 4 | Privacy policy, account deletion and export in the app, store listings, and the landing site's release form turning into a link to the app (the site itself goes public with 2.2.0, [0084](done/0084-public-landing-site.md)) |
 
 Workstreams 4, 5 and 6 can run side by side once 3 lands. 7's principle (which
 feature goes where) can be decided at any time; only its billing waits.

@@ -17,10 +17,13 @@ site's form: `develop` fast-forwarded onto `master` at v2.2.0, tag `v2.2.0` in
 both repositories. **At release:** everything below shipped. Two briefs ride
 out still tagged 2.2.0, because their code is in the release and what remains
 of each is a check on it: [0098](0098-planned-exercises.md)'s Home map outline
-walked on a phone, and [0084](0084-public-landing-site.md)'s site going public
+walked on a phone, and [0084](done/0084-public-landing-site.md)'s site going public
 on `tekio.fyi` (its own release, on its own repository) with this release's
-redeploy. [0088](0088-release-2-2-0-schema-drops.md), the schema drops, was
-untagged: it runs after this release (step 6) and waits on Peter's word.
+redeploy. It closed the same day: the site went public on `tekio.fyi`, its first
+build reading both repositories at `v2.2.0`.
+[0088](done/0088-release-2-2-0-schema-drops.md), the schema drops, was
+untagged, since it runs after this release (step 6). It ran the same day on
+Peter's word, as migration `20261006100000_release_2_2_0_schema_drops`.
 
 The open release since 2.1.0 shipped on 2026-09-30: what lands on `develop`
 now rides toward it as patches. A column or config row `develop` stops reading
@@ -37,7 +40,7 @@ cut. Keepers become briefs; cuts execute from 034.
 the Weights chips capped to the 8 most recent, 003 renamed, and Program removed
 entirely to be rebuilt later ([0087](done/0087-remove-program.md)). Built as
 v2.1.17; the tables it leaves behind are queued in
-[0088](0088-release-2-2-0-schema-drops.md), this release's schema-drops brief.
+[0088](done/0088-release-2-2-0-schema-drops.md), this release's schema-drops brief.
 
 **Second round, 2026-10-04**: water logging removed, the Weights chips removed,
 and blood moved off the readiness card ([0089](done/0089-remove-water-and-weights-chips.md)),
@@ -81,11 +84,11 @@ public release plan ([0093](0093-first-public-release-plan.md)) but is built on
 today's stack.
 
 **Named for release by Peter on 2026-10-06**, with the landing site
-([0084](0084-public-landing-site.md)) as its gate: the release form's bot check,
+([0084](done/0084-public-landing-site.md)) as its gate: the release form's bot check,
 an SEO and performance pass on the site, and the site public on `tekio.fyi`.
 Then 2.2.0 goes to `master` on his go. What it waits on:
 
-1. [0084](0084-public-landing-site.md) — the form's bot check (Peter typed
+1. [0084](done/0084-public-landing-site.md) — the form's bot check (Peter typed
    "both" on 2026-10-06: Turnstile, built as `tekio.site` 0.1.9 and set up
    on tuxedo), the SEO and performance pass (done, 0.1.8), then the site's own
    first release onto `tekio.fyi`, so the app's release has a production
@@ -93,7 +96,7 @@ Then 2.2.0 goes to `master` on his go. What it waits on:
 2. [0098](0098-planned-exercises.md) — the Home map outline walked on a phone.
 3. The release itself, steps 1–7. Pre-flight (step 1) was green on `develop`
    at v2.1.46 on 2026-10-06; it is re-run on the commit that ships.
-4. After it: [0088](0088-release-2-2-0-schema-drops.md), the schema drops,
+4. After it: [0088](done/0088-release-2-2-0-schema-drops.md), the schema drops,
    which needs Peter's word on deleting the stored programs and the logged
    water.
 

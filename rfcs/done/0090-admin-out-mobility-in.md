@@ -42,7 +42,7 @@ label shrinks to one line so its input sits level with the birth date beside it.
 
 - Any database change. `adaptation_targets`, `muscle_groups`,
   `exercise_muscle_groups` and `exercises` all stay, and the app still reads
-  every one of them, so nothing joins [0088](../0088-release-2-2-0-schema-drops.md).
+  every one of them, so nothing joins [0088](0088-release-2-2-0-schema-drops.md).
 - A replacement admin surface. When it comes back it answers doctrine §4 as a
   new RFC, with a real role gate.
 

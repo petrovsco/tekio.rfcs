@@ -3,8 +3,8 @@ title: A public landing site on tekio.fyi that explains how the reads are comput
 authors: [Peter Petrov]
 created: 2026-10-01
 last_updated: 2026-10-06
-status: in progress
-status_note: "The gate for app release 2.2.0, which went live on app.tekio.fyi on 2026-10-06. The form's Turnstile check is live and enforced, Peter gave the go for the site's first release, and the site is ported to 2.2.0 as tekio.site 0.1.12; it reaches staging and then tekio.fyi once the v2.2.0 tags are pushed, since its build reads the app at the newest release tag."
+status: done
+status_note: "Shipped 2026-10-06 as the gate for app release 2.2.0: the site is public on tekio.fyi (www redirects to it), first released as tekio.site 0.1.13 and built after the v2.2.0 tags. The release form turning into a link to the app moves with the public launch, RFC 0093."
 label: feature
 release: 2.2.0
 ---
@@ -24,10 +24,10 @@ release: 2.2.0
 - **2026-10-02** — round four: readiness without its number or the line at 33,
   both convention; act two labelled an example week; the floor's pour slowed.
   Whether the app's own line should change went to
-  [0085](done/0085-push-gate-own-baseline.md).
+  [0085](0085-push-gate-own-baseline.md).
 - **2026-10-02** — Peter approved round four as it stands. The app's
   readiness is being reworked in its own task
-  ([0085](done/0085-push-gate-own-baseline.md): inputs ranked by evidence, then
+  ([0085](0085-push-gate-own-baseline.md): inputs ranked by evidence, then
   three bands), so the real site's card takes its inputs and states from the
   app's rules as they stand when it is built.
 - **2026-10-02** — Peter moved the site out of the code repo into a
@@ -182,11 +182,11 @@ release: 2.2.0
 - **2026-10-05** — Peter took premise only. Doctrine §1 now says "My body
   adapts to what it meets, and what I do is what triggers it." The page's
   third line, chasing the adaptations you want most, stays the page's own,
-  and [RFC 0040](0040-adaptation-goals.md) keeps the question of goals.
+  and [RFC 0040](../0040-adaptation-goals.md) keeps the question of goals.
   Still 16 of 19.
 - **2026-10-06** — Peter named app release 2.2.0 with this site as its gate:
   the form's bot check, an SEO and performance pass, then the site public on
-  `tekio.fyi` ([releases.md](releases.md)). The pass is done (`tekio.site`
+  `tekio.fyi` ([releases.md](../releases.md)). The pass is done (`tekio.site`
   0.1.8). Lighthouse on a local build had scored the phone 75 for
   performance, with 1.2 s of blocking time: every frame of the film repainted
   its whole paper, grain and warm edge, which on a phone drawing without a
@@ -201,9 +201,9 @@ release: 2.2.0
   behind its 401 and its sign-in page's `noindex`. Accessibility stays 96:
   the design system's label and aside greys are under the contrast small text
   needs, on the site and in the app alike, parked as
-  [RFC 0101](0101-text-greys-contrast.md). Two boxes added and ticked, one
+  [RFC 0101](../0101-text-greys-contrast.md). Two boxes added and ticked, one
   added for the bot check; the form's turn into a link to the app moves to
-  the first public release ([0093](0093-first-public-release-plan.md), launch
+  the first public release ([0093](../0093-first-public-release-plan.md), launch
   readiness), since the app opens after this ships: 18 of 21.
 - **2026-10-06** — Peter typed **both**: Turnstile on top of the honeypot
   and the limits (§5). Built as `tekio.site` 0.1.9, switched off until its
@@ -223,7 +223,7 @@ release: 2.2.0
   the app: 2.2.0 went live the same morning, and the page reads the app at its
   newest release tag, so it had to run on 2.2.0 before it could go public.
   2.2.0 reads readiness from HRV alone in three bands
-  ([0085](done/0085-push-gate-own-baseline.md), D47), removed the program
+  ([0085](0085-push-gate-own-baseline.md), D47), removed the program
   cycle, gave Home new verdict words, and moved inventory rows the page cites
   (4.11 retired, 4.12 and 7.6 grounded). The port is `tekio.site` 0.1.12: the
   example week runs through 2.2.0's readiness and verdict, Saturday holds on
@@ -235,8 +235,24 @@ release: 2.2.0
   tags are pushed, because a build before them reads 2.1.0. Run through the
   app's new exercise catalogue instead of its own invented links, the example
   names other gaps from Thursday on; that is parked as
-  [RFC 0102](0102-example-week-reads-catalogue.md). The Turnstile box is
+  [RFC 0102](../0102-example-week-reads-catalogue.md). The Turnstile box is
   ticked and the readiness box restated for 2.2.0: 19 of 21.
+- **2026-10-06** — the site's first release, on Peter's word in the
+  thread: `tekio.site` 0.1.13 deleted the `vercel.json` entry that kept
+  Vercel off `master`, and `develop` was pushed onto `master`. The cloud's
+  safety check would not push to production, so the push ran on tuxedo, and
+  Peter removed `tekio.fyi` and `www` from the app's Vercel project himself,
+  since that removal needs a confirmation the machine session may not skip.
+  Both were then added to `tekio-site`, `www` as a permanent redirect to
+  `tekio.fyi`, with no change to the Cloudflare records. Checked: `tekio.fyi`
+  answers 200 with no gate and no `noindex`, `robots.txt` lets every crawler
+  in and names the sitemap, `www` redirects with its path kept, and
+  `app.tekio.fyi` still answers with its sign-in. The v2.2.0 tags were pushed
+  before this first production build, so the page reads both repositories at
+  `v2.2.0`: it is 2.2.0's redeploy, and from the next release on, step 4 of
+  the app's release procedure redeploys this production deployment. No push
+  to the app deploys the site, since each Vercel project builds only from its
+  own repository. 21 of 21; done.
 
 ## Summary
 
@@ -440,7 +456,7 @@ act two and science bullets above. Prototype, round two:
 - **The last step** is a release-notification form while the app is not
   released, and a link to the app once it is. That switch belongs to the
   first public release, which opens the app after this ships
-  ([0093](0093-first-public-release-plan.md), launch readiness).
+  ([0093](../0093-first-public-release-plan.md), launch readiness).
 - **The science page (B) is dropped for now,** until every number it would show
   has its source. In round one it counted 64 live numbers: 32 grounded, 14
   convention, 4 definitional and 14 not yet checked.
@@ -484,7 +500,7 @@ round four.
   of the example week gets the same call from the app's rule and from the
   baseline-relative rule the evidence supports (D8), so the page does not lean
   on 33. Whether the app's own gate should change is
-  [0085](done/0085-push-gate-own-baseline.md).
+  [0085](0085-push-gate-own-baseline.md).
 - **Act two is an example week, not a program.** Its title step says so, and
   the stage head reads "Example week" on every day.
 - **The floor pours slower:** 650 ms a day instead of 300, so each day's label
@@ -499,7 +515,7 @@ The real site was built from round four in `petrovsco/tekio.site` on
 
 **Revised for app release 2.2.0, 2026-10-06 (Peter).** Readiness now rests on
 HRV alone, over the last week against the athlete's own normal
-([0085](done/0085-push-gate-own-baseline.md), D47), so the card shows sleep
+([0085](0085-push-gate-own-baseline.md), D47), so the card shows sleep
 beside it, never counted, and one of three states: Low, Moderate or OK. It
 still prints no score, whose scale is `convention` (row 4.17), and no band
 lines (row 4.12). A Low day holds to a walk or mobility; a Moderate day keeps
@@ -665,7 +681,7 @@ the page rests on one.
       broken citation)
 - [x] The build reads both repositories at the last release's tag; this repo
       carries `v2.1.0`, and the release procedure tags it at every release
-- [ ] Each app release redeploys the site, and no other push to the app does
+- [x] Each app release redeploys the site, and no other push to the app does
 - [x] Every number on the page traces to an inventory row, and the example
       week reads the same as the app's own functions return for the same logs
 - [x] One wheel gesture, key press or swipe moves exactly one step, at desktop
@@ -695,7 +711,7 @@ the page rests on one.
 - [x] The form checks the poster is a person with Turnstile: a post without
       a token Cloudflare vouches for lands nowhere, shown by the script's tests
       and on staging, and a person's sign-up on staging still lands
-- [ ] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
+- [x] Deployed as its own Vercel project; `https://tekio.fyi` returns 200 with
       no gate, is indexable, and `www.tekio.fyi` redirects to it
 - [x] `https://stg.tekio.fyi` serves the `develop` build behind the app's
       sign-in page, which the app's staging login opens
@@ -724,6 +740,6 @@ question: Peter took **premise only**, and doctrine §1 now says "My body
 adapts to what it meets, and what I do is what triggers it." The third line
 stays the page's own, since the app still measures all seven adaptations
 equally and declaring what a user chases is
-[RFC 0040](0040-adaptation-goals.md)'s question. The last, asked on
+[RFC 0040](../0040-adaptation-goals.md)'s question. The last, asked on
 2026-10-04, was settled on 2026-10-06: Peter typed **both**, so Turnstile
 checks the form on top of its limits (§5).
