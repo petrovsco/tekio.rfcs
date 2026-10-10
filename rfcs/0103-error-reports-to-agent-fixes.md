@@ -1,22 +1,22 @@
 ---
-title: Error reports the user sends, which an agent turns into fixes
+title: Error reports, sent automatically, which an agent turns into fixes
 authors: [Peter Petrov]
 created: 2026-10-08
 last_updated: 2026-10-10
 status: backlog
-status_note: "Direction decided 2026-10-10 by Peter: own table plus a private repo, and the agent stops at a PR. Not scheduled for a release; nothing built."
+status_note: "Direction decided 2026-10-10 by Peter: own table plus a private repo, reports sent automatically, and the agent stops at a PR. Not scheduled for a release; nothing built."
 label: backlog
 ---
 
-# RFC 0103: Error reports the user sends, which an agent turns into fixes
+# RFC 0103: Error reports, sent automatically, which an agent turns into fixes
 
 ## Summary
 
-When the app hits an error, it offers the user a one-tap report. The report
-lands in a private inbox with what an engineer needs to reproduce it, and a
+When the app hits an unexpected error, it sends a technical report on its own
+and lets the user add a note if they want. The report lands in a private inbox with what an engineer needs to reproduce it, and a
 scheduled agent reads new reports, groups duplicates, reproduces the fault, and
 opens a fix as a pull request against `develop`. A person still merges. Three
-stages, each useful on its own: catch and offer, store and file, fix by agent.
+stages, each useful on its own: catch and send, store and file, fix by agent.
 
 ## Motivation
 
@@ -29,8 +29,8 @@ that stops working: they will not write to the developer, they will leave.
 
 ## Goals
 
-- Every uncaught error and every failed write can be reported in one tap, with a
-  free-text line that is optional.
+- Every uncaught error and every failed write is reported without a tap; a
+  free-text note is optional and only ever sent by the user.
 - A report carries enough to reproduce: app version, screen, the error and its
   stack, browser, and the last few actions, with no logged values in it.
 - Reports land somewhere private and are deduplicated by their error signature.
@@ -48,25 +48,38 @@ that stops working: they will not write to the developer, they will leave.
   `bug`.
 - **Performance monitoring, session replay, analytics.** Not the read; not
   shown; not built.
+- **Known field errors.** A validation message the app already shows (an
+  invalid set's red line, a blocked Save) is expected behaviour and is never
+  reported. Only the unexpected is: a crash, a write the database rejects, an
+  error nothing caught.
 - **A new menu section or screen.** The offer appears where the error happened
   (P1) and nowhere else.
 
 ## Proposal
 
-### Stage 1: catch and offer (web app, small)
+### Stage 1: catch and send (web app, small)
 
 - One `reportError(error, context)` helper fed from three places:
   `ErrorBoundary.componentDidCatch`, `window` `error` and
   `unhandledrejection`, and the store's shared catch that today ends in a toast.
-- The boundary screen gains **Send report** beside **Reload**. A failed write's
-  toast gains **Report** for its few seconds. Both open a small sheet: what will
-  be sent, shown in full, an optional line of text, and Send. Nothing is sent
-  without the tap.
+- **Sent automatically** (Peter, 2026-10-10). The technical payload below goes
+  as soon as the error happens; no tap. The boundary screen says "Reported"
+  beside **Reload**, with an **Add a note** link; a failed write's toast carries
+  the same link for its few seconds. The link opens a small sheet showing what
+  was sent, in full, and a line of text; the note is attached to the same row
+  only when the user taps Send.
+- **Why automatic is allowed.** The payload holds no personal or health data, so
+  under GDPR it rests on legitimate interest and needs no consent, but it must
+  be stated in the privacy policy (0093's launch readiness). Health data is the
+  line that needs explicit consent: logged values are never in the payload, and
+  the free-text note, which a user might fill with something about their body,
+  stays opt-in for that reason. To be confirmed before the public launch; this
+  is a reading of the rule, not legal advice.
 - The payload is built from a whitelist, never by serialising state: version
   (`package.json`), build (`origin` tag), tab, error name, message, stack, user
   agent, and the last ~10 navigation and action names (names only, no values).
   The signature is a hash of the error name plus the top frames of the stack,
-  so the same fault from many taps is one report.
+  so the same fault seen many times is one report.
 
 ### Stage 2: store and file
 
@@ -101,7 +114,7 @@ that stops working: they will not write to the developer, they will leave.
 | | Own pipe (recommended) | Sentry, with its Seer agent |
 |---|---|---|
 | Where user data goes | our database and a private repo | a third party that then holds error context from a health app |
-| First-paint cost | a few kB, the sheet lazy-loaded | its SDK, lazy-loadable, still the largest new dependency |
+| First-paint cost | a few kB, the note sheet lazy-loaded | its SDK, lazy-loadable, still the largest new dependency |
 | Native apps later | same table through the API | its Swift and Kotlin SDKs, a real advantage |
 | Agent | Claude Code with this repo's rules: modus, `/ground`, versioning, `code-review.md` | Seer opens PRs, but knows none of those rules |
 | Grouping and stack mapping | ours to build (signature hash; source maps uploaded or read by the agent) | done well, out of the box |
@@ -120,7 +133,7 @@ the routine reading issues does not change.
    Infrastructure, like Profile: no menu slot, R1 unchanged.
 2. *What does it let me stop doing?* Describing faults from memory in chat, and
    finding them by hand.
-3. *Input or destination?* An input, offered inline where the error happened.
+3. *Input or destination?* An input, captured where the error happened.
 4. *Honest shape of the data?* A list of distinct faults with counts; never
    shown to the user beyond their own report.
 5. *Does it write a number claiming physiological meaning?* No. The agent is
@@ -130,9 +143,13 @@ the routine reading issues does not change.
 
 - [x] Peter's call on where reports land is recorded: own pipe (2026-10-10)
 - [x] Peter's call on how far the agent goes is recorded: PR only (2026-10-10)
-- [ ] A thrown render error shows Send report; the sheet shows the full payload;
-      Send creates one row; a second identical error bumps its count
-- [ ] A failed write's toast offers Report and files the same way
+- [x] Peter's call on sending is recorded: automatic, note opt-in (2026-10-10)
+- [ ] A thrown render error creates one row with no tap and shows "Reported";
+      a second identical error bumps its count
+- [ ] A failed write files the same way; its toast offers Add a note
+- [ ] Add a note shows the full payload and attaches the note to the same row
+- [ ] A validation error the app already shows creates no row
+- [ ] The privacy policy states the error reports before the public launch
 - [ ] The payload contains no logged values (a test asserts the whitelist)
 - [ ] A new signature opens one issue in the private repo; a repeat comments
 - [ ] The routine turns a seeded report into a PR on `develop` with a failing
@@ -143,6 +160,6 @@ the routine reading issues does not change.
 ## Unresolved questions
 
 - Answered 2026-10-10 (Peter): own pipe, not Sentry; the agent opens a PR to
-  `develop` and never merges.
+  `develop` and never merges; reports send automatically, the note is opt-in.
 - Whether stage 1 and 2 wait for accounts (0003). They need not: the table can
   ship insert-only under today's open policies and tighten with 0003.
