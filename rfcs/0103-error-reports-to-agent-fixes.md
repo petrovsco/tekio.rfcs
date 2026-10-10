@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-08
 last_updated: 2026-10-10
 status: in progress
-status_note: "Stage 1 built on tekio branch claude/error-reports-stage-1-tmsxfh (v2.2.10), waiting on Peter's word to apply the error_reports migration before it merges to develop. Stages 2 and 3 not started."
+status_note: "Stage 1 built on tekio branch claude/error-reports-stage-1-tmsxfh (v2.2.11), waiting on Peter's word to apply the error_reports migration before it merges to develop. Stages 2 and 3 not started."
 label: feature
 ---
 
@@ -12,7 +12,7 @@ label: feature
 
 ## Progress log
 
-- 2026-10-10: stage 1 built (tekio v2.2.10, branch `claude/error-reports-stage-1-tmsxfh`).
+- 2026-10-10: stage 1 built (tekio v2.2.11, branch `claude/error-reports-stage-1-tmsxfh`).
   The `error_reports` table moved forward from stage 2, because stage 1's
   acceptance needs a row to land: closed to the browser (RLS on, no policy),
   written only through `report_error` and `add_error_report_note`. Two calls
