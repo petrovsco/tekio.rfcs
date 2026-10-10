@@ -2,9 +2,9 @@
 title: Error reports the user sends, which an agent turns into fixes
 authors: [Peter Petrov]
 created: 2026-10-08
-last_updated: 2026-10-08
+last_updated: 2026-10-10
 status: backlog
-status_note: "Feasibility researched 2026-10-08: all three stages are buildable with tools already in reach. Waits on Peter's call on where reports land and how far the agent may go."
+status_note: "Direction decided 2026-10-10 by Peter: own table plus a private repo, and the agent stops at a PR. Not scheduled for a release; nothing built."
 label: backlog
 ---
 
@@ -128,8 +128,8 @@ the routine reading issues does not change.
 
 ## Acceptance
 
-- [ ] Peter's call on where reports land (own pipe or Sentry) is recorded
-- [ ] Peter's call on how far the agent goes (PR only, or more) is recorded
+- [x] Peter's call on where reports land is recorded: own pipe (2026-10-10)
+- [x] Peter's call on how far the agent goes is recorded: PR only (2026-10-10)
 - [ ] A thrown render error shows Send report; the sheet shows the full payload;
       Send creates one row; a second identical error bumps its count
 - [ ] A failed write's toast offers Report and files the same way
@@ -142,7 +142,7 @@ the routine reading issues does not change.
 
 ## Unresolved questions
 
-- Own pipe or Sentry for capture and storage (recommended: own pipe now).
-- How far the agent goes: a PR to `develop` (recommended), or merge on green.
+- Answered 2026-10-10 (Peter): own pipe, not Sentry; the agent opens a PR to
+  `develop` and never merges.
 - Whether stage 1 and 2 wait for accounts (0003). They need not: the table can
   ship insert-only under today's open policies and tighten with 0003.
