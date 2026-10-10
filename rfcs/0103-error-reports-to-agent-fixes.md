@@ -3,12 +3,25 @@ title: Error reports, sent automatically, which an agent turns into fixes
 authors: [Peter Petrov]
 created: 2026-10-08
 last_updated: 2026-10-10
-status: backlog
-status_note: "Direction decided 2026-10-10 by Peter: own table plus a private repo, reports sent automatically, and the agent stops at a PR. Not scheduled for a release; nothing built."
-label: backlog
+status: in progress
+status_note: "Stage 1 built on tekio branch claude/error-reports-stage-1-tmsxfh (v2.2.10), waiting on Peter's word to apply the error_reports migration before it merges to develop. Stages 2 and 3 not started."
+label: feature
 ---
 
 # RFC 0103: Error reports, sent automatically, which an agent turns into fixes
+
+## Progress log
+
+- 2026-10-10: stage 1 built (tekio v2.2.10, branch `claude/error-reports-stage-1-tmsxfh`).
+  The `error_reports` table moved forward from stage 2, because stage 1's
+  acceptance needs a row to land: closed to the browser (RLS on, no policy),
+  written only through `report_error` and `add_error_report_note`. Two calls
+  made while building: the Home sheets await their writes with no catch, so an
+  uncaught error now also shows a "Something went wrong. Reported" toast; and
+  the failure toast stays six seconds when it offers a note, above any open
+  sheet. Checked in a browser against a stubbed database: a refused write, a
+  render crash and an uncaught error each sent one report, and a note reached
+  the same signature. Not yet against the real table.
 
 ## Summary
 
