@@ -3,8 +3,8 @@ title: Planned sessions on Cardio and Mobility
 authors: [Peter Petrov]
 created: 2026-10-11
 last_updated: 2026-10-11
-status: in progress
-status_note: "Table live and the code on develop as tekio v2.2.13; waits on a check on staging from a phone."
+status: done
+status_note: "Shipped to develop as tekio v2.2.13 and v2.2.15; Peter checked it on staging (2026-10-11) and called it ok. Goes out with the next release."
 label: feature
 ---
 
@@ -14,7 +14,7 @@ label: feature
 
 - 2026-10-11: Raised by Peter. A day planned ahead by an agent had lifts,
   a mobility block and a sport game in it; only the lifts had somewhere to go,
-  because the Planned card ([0098](done/0098-planned-exercises.md)) exists on
+  because the Planned card ([0098](0098-planned-exercises.md)) exists on
   Weights alone and its table holds an exercise name plus kg × reps targets.
 - 2026-10-11: Built and walked at 412 px against stubbed data. Peter picked
   a new table over widening `planned_exercises`, and said "create it": applied
@@ -23,6 +23,7 @@ label: feature
   deletion a week past due, removing one by hand) and for a synced session to
   merge with a logged one whichever lands first. Built as tekio v2.2.15, on all
   three Planned cards, Weights included.
+- 2026-10-11: Peter checked it on staging: "Looks ok." Closed.
 
 ## Summary
 
@@ -96,17 +97,17 @@ production untouched and keeps their shapes honest.
 ## Acceptance
 
 - [x] `planned_sessions` exists live, created with Peter's word.
-- [ ] Mobility shows a Planned card; a plan logged from it leaves the card and
+- [x] Mobility shows a Planned card; a plan logged from it leaves the card and
       the session appears in History.
-- [ ] Cardio shows a Planned card with cardio and sport plans; logging one from
+- [x] Cardio shows a Planned card with cardio and sport plans; logging one from
       the card leaves it, and a Garmin-synced session of the same type that day
       clears it too.
-- [ ] Weights' Planned card behaves as before, plus the Missed list.
-- [ ] A missed plan can be rescheduled or removed from its card, and is gone
+- [x] Weights' Planned card behaves as before, plus the Missed list.
+- [x] A missed plan can be rescheduled or removed from its card, and is gone
       a week after its day.
-- [ ] Logging a game or run the watch already synced updates that session
+- [x] Logging a game or run the watch already synced updates that session
       rather than adding a second one.
-- [ ] Checked on staging on a 412 px phone.
+- [x] Checked on staging on a 412 px phone.
 
 ## Unresolved questions
 
