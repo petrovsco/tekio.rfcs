@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-11
 last_updated: 2026-10-11
 status: in progress
-status_note: "Code built on branch claude/planned-mobility-cardio-svmg5c; waits on Peter's word to create the planned_sessions table before it can reach develop."
+status_note: "Table live and the code on develop as tekio v2.2.13; waits on a check on staging from a phone."
 label: feature
 ---
 
@@ -16,6 +16,9 @@ label: feature
   a mobility block and a sport game in it; only the lifts had somewhere to go,
   because the Planned card ([0098](done/0098-planned-exercises.md)) exists on
   Weights alone and its table holds an exercise name plus kg × reps targets.
+- 2026-10-11: Built and walked at 412 px against stubbed data. Peter picked
+  a new table over widening `planned_exercises`, and said "create it": applied
+  live as migration 20261011055206. Merged to develop as tekio v2.2.13.
 
 ## Summary
 
@@ -75,7 +78,7 @@ production untouched and keeps their shapes honest.
 
 ## Acceptance
 
-- [ ] `planned_sessions` exists live, created with Peter's word.
+- [x] `planned_sessions` exists live, created with Peter's word.
 - [ ] Mobility shows a Planned card; a plan logged from it leaves the card and
       the session appears in History.
 - [ ] Cardio shows a Planned card with cardio and sport plans; logging one from
