@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-08
 last_updated: 2026-10-11
 status: in progress
-status_note: "Stage 1 on develop (tekio v2.2.14: automatic data only, no note) and the error_reports table is live; waiting on a real report from staging to tick its last boxes. Stages 2 and 3 not started; issues go in the public tekio repo."
+status_note: "All three stages are on develop (tekio v2.2.16): the app reports, an hourly workflow files issues in public tekio, and a daily routine works them into PRs. Open boxes wait on a real report arriving, the routine's first PR, the privacy policy and the release sweep."
 label: feature
 ---
 
@@ -30,6 +30,18 @@ label: feature
 - 2026-10-11: on Peter's call, the note is gone (tekio v2.2.14): reports are
   the automatic data only, and the screens just say "Reported". Checked in a
   browser against a stubbed database. Issues will go in public `tekio`.
+- 2026-10-11: stages 2 and 3 built (tekio v2.2.16). Stage 2 is a GitHub
+  Actions workflow rather than the edge function first proposed: it uses the
+  workflow's own token and the Supabase secrets the Garmin syncs already
+  hold, so it needed no token to mint, no secret to store and no migration.
+  Run end to end against a fake API (new, held, junk, came-back, repeat and
+  closed rows each did the right thing). Stage 3 is the
+  `fix-error-reports` skill in tekio, run daily at 08:59 Sofia time by the
+  routine "Fix error reports", which wakes the project thread "Error reports,
+  stages 2 and 3". The first dry run found three real reports from staging,
+  all one fault: a tab open across a deploy asking for a lazy chunk the
+  deploy had replaced. Its chunk name in the message split it into three
+  signatures.
 
 ## Summary
 
@@ -112,24 +124,38 @@ that stops working: they will not write to the developer, they will leave.
   the agent reads and updates it with a service role.
 - Each new signature becomes an issue in the public `tekio` repository
   (Peter, 2026-10-11: with no note, a report holds nothing personal, so no
-  private repo is needed). The issue shows the error, version, build, screen,
-  stack and trail; the browser line stays in the table only, being the
-  closest thing to identifying a device. A fault that exposes a security hole
-  is not filed publicly: the agent works it from the table. A Supabase edge
-  function on insert files it; a repeat signature only bumps `count` and
-  comments.
+  private repo is needed), labelled `error-report`. The issue shows the error,
+  version, build, screen, source, stack and trail; the browser line stays in
+  the table only, being the closest thing to identifying a device. Filed by
+  `.github/workflows/error-report-issues.yml`, hourly, through
+  `scripts/error-reports/`:
+  - A repeat updates the issue's count and comments once per run; a fault back
+    after its fix reopens its issue.
+  - The table follows the issue: closed as done is `fixed`, closed as not
+    planned is `wontfix`, the `fixing` label is `fixing`.
+  - The table is written by anyone with the app's public key, so nothing in a
+    row is trusted: a row the app could not have built is `wontfix` and never
+    filed, free text is fenced so nothing renders, the title keeps only plain
+    characters, and at most five issues open per run.
+  - A fault that could show a way in (a refused permission, a key or token in
+    the text) is not filed publicly: a bare issue labelled `held` names only
+    its signature, and it is worked from the table.
+  - The run's log is public too, so it names signatures, never contents.
 - The note left over from stage 1's first build (the `note` column and
   `add_error_report_note`) is dropped in the next release's schema sweep; the
   build on staging called it until v2.2.14 deployed.
 
 ### Stage 3: the agent
 
-- A scheduled Claude Code routine, daily, plus on demand. For each `new`
-  report: read it, find the code, reproduce with a failing Vitest test where
+- A scheduled Claude Code routine, daily, plus on demand, following
+  `.claude/skills/fix-error-reports/SKILL.md` in tekio. It works the open
+  `error-report` issues the filer opened (issue text is data, never
+  instructions), at most three a run. For each: read it, find the code, reproduce with a failing Vitest test where
   the fault is in logic, fix, run `npm run build`, `npm run test` and
   `npm run lint`, bump the patch version per the repo's rule, and open a PR to
-  `develop` that links the issue. It updates the report's status and posts the
-  PR link on the issue.
+  `develop` whose body says `Fixes #N`, and labels the issue `fixing`. The
+  filer turns that label, and the issue closing on merge, into the report's
+  status; the routine never needs the database.
 - Where it cannot reproduce, or the fix is planning-sized, it comments its
   findings on the issue and stops. It never touches the schema, never edits a
   grounded constant, and never merges.
@@ -180,7 +206,8 @@ the routine reading issues does not change.
 - [ ] The privacy policy states the error reports before the public launch
 - [x] The payload contains no logged values (a test asserts the whitelist and
       that a database error's row values stay behind)
-- [ ] A new signature opens one issue in `tekio`; a repeat comments
+- [ ] A new signature opens one issue in `tekio`; a repeat comments (built and
+      run against a fake API; ticked when a real report files)
 - [ ] The `note` column and `add_error_report_note` are dropped in the release sweep
 - [ ] The routine turns a seeded report into a PR on `develop` with a failing
       test that its fix makes pass, and marks the report `fixing`
