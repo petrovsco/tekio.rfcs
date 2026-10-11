@@ -59,7 +59,7 @@ capture.
 | Planned exercises, entered by the user (0098) | free | capture |
 | Agents that plan workouts from the training history, connected or in-app (0099) | **paid, decided 2026-10-11** | a model reads the history and writes plans, every use |
 | Agent onboarding: a goal walk-through that refines which adaptations the user chases (with 0040) | **paid, decided 2026-10-11** | a model conversation per user; not built yet |
-| Agent access from the user's own assistant (MCP, 0099) | free, rate-limited (proposed) | the user pays for their own model; it brings users in |
+| Read-only agent access from the user's own assistant (MCP, 0099) | **free, decided 2026-10-11** | the user's own model does the work; it brings users in |
 | Automatic syncs: Garmin, Apple Health, Health Connect (0096) | paid (proposed) | servers and integrations per user; the biggest saving in capture |
 | History beyond a window (for example 90 days of reads) | open | a lever if the line above is too thin |
 
