@@ -2,9 +2,9 @@
 title: Error reports, sent automatically, which an agent turns into fixes
 authors: [Peter Petrov]
 created: 2026-10-08
-last_updated: 2026-10-10
+last_updated: 2026-10-11
 status: in progress
-status_note: "Stage 1 built on tekio branch claude/error-reports-stage-1-tmsxfh (v2.2.11), waiting on Peter's word to apply the error_reports migration before it merges to develop. Stages 2 and 3 not started."
+status_note: "Stage 1 on develop as tekio v2.2.11 and the error_reports table is live (migration 20261011042312); waiting on a real report from staging to tick its boxes. Stages 2 and 3 not started."
 label: feature
 ---
 
@@ -22,6 +22,11 @@ label: feature
   sheet. Checked in a browser against a stubbed database: a refused write, a
   render crash and an uncaught error each sent one report, and a note reached
   the same signature. Not yet against the real table.
+- 2026-10-11: on Peter's yes, the `error_reports` migration was applied through
+  the Supabase connector (stamped 20261011042312). Checked in a rolled-back
+  transaction as the browser's role: two reports counted 2 on one row, a note
+  attached to it, and a direct read returned nothing. Stage 1 merged to
+  `develop` as v2.2.11.
 
 ## Summary
 
