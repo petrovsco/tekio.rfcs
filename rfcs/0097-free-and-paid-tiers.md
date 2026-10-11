@@ -2,9 +2,9 @@
 title: Free and paid tiers — where the line falls
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-05
+last_updated: 2026-10-11
 status: backlog
-status_note: "Launch free, billing later (Peter, 2026-10-05). The line itself is not drawn: Peter will refine it while 3.0.0 is built, in this RFC or a thread of its own. The table below is a parked draft."
+status_note: "Launch free, billing later (Peter, 2026-10-05). The line is being drawn while 3.0.0 is built: on 2026-10-11 Peter put agent planning from training history and the agent-led goal onboarding on the paid side. The other rows are still a draft."
 label: backlog
 depends: [3, 94]
 release: 3.0.0
@@ -42,8 +42,9 @@ routes that were built open.
 
 ### The principle
 
-> **Parked 2026-10-05.** Peter chose to rethink the line rather than take this
-> proposal. It stays as the starting draft until his own split replaces it.
+> **Parked 2026-10-05; being drawn since 2026-10-11.** Peter chose to rethink
+> the line rather than take this proposal. Rows marked **decided** are his; the
+> rest stay a draft until he places them.
 
 **The read is free; what costs money per user is paid.** The product's answer,
 *what's missing* (doctrine §1), is the free tier: hiding it would make the free
@@ -56,7 +57,8 @@ capture.
 | Home, Adaptations, the body map, readiness | free | the product |
 | Manual capture on every client | free | the read needs it |
 | Planned exercises, entered by the user (0098) | free | capture |
-| AI planning and the in-app agent (0099) | paid | a model call per use costs us |
+| Agents that plan workouts from the training history, connected or in-app (0099) | **paid, decided 2026-10-11** | a model reads the history and writes plans, every use |
+| Agent onboarding: a goal walk-through that refines which adaptations the user chases (with 0040) | **paid, decided 2026-10-11** | a model conversation per user; not built yet |
 | Agent access from the user's own assistant (MCP, 0099) | free, rate-limited (proposed) | the user pays for their own model; it brings users in |
 | Automatic syncs: Garmin, Apple Health, Health Connect (0096) | paid (proposed) | servers and integrations per user; the biggest saving in capture |
 | History beyond a window (for example 90 days of reads) | open | a lever if the line above is too thin |
