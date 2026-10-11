@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-08
 last_updated: 2026-10-11
 status: in progress
-status_note: "Stage 1 on develop as tekio v2.2.11 and the error_reports table is live (migration 20261011042312); waiting on a real report from staging to tick its boxes. Stages 2 and 3 not started."
+status_note: "Stage 1 on develop (tekio v2.2.14: automatic data only, no note) and the error_reports table is live; waiting on a real report from staging to tick its last boxes. Stages 2 and 3 not started; issues go in the public tekio repo."
 label: feature
 ---
 
@@ -27,11 +27,15 @@ label: feature
   transaction as the browser's role: two reports counted 2 on one row, a note
   attached to it, and a direct read returned nothing. Stage 1 merged to
   `develop` as v2.2.11.
+- 2026-10-11: on Peter's call, the note is gone (tekio v2.2.14): reports are
+  the automatic data only, and the screens just say "Reported". Checked in a
+  browser against a stubbed database. Issues will go in public `tekio`.
 
 ## Summary
 
-When the app hits an unexpected error, it sends a technical report on its own
-and lets the user add a note if they want. The report lands in a private inbox with what an engineer needs to reproduce it, and a
+When the app hits an unexpected error, it sends a technical report on its own,
+with nothing the user typed or logged in it. The report lands with what an
+engineer needs to reproduce it, and a
 scheduled agent reads new reports, groups duplicates, reproduces the fault, and
 opens a fix as a pull request against `develop`. A person still merges. Three
 stages, each useful on its own: catch and send, store and file, fix by agent.
@@ -47,11 +51,11 @@ that stops working: they will not write to the developer, they will leave.
 
 ## Goals
 
-- Every uncaught error and every failed write is reported without a tap; a
-  free-text note is optional and only ever sent by the user.
+- Every uncaught error and every failed write is reported without a tap, and
+  the report carries only what the app gathers on its own.
 - A report carries enough to reproduce: app version, screen, the error and its
   stack, browser, and the last few actions, with no logged values in it.
-- Reports land somewhere private and are deduplicated by their error signature.
+- Reports are stored privately and deduplicated by their error signature.
 - An agent works new reports without being asked and opens a fix PR, or says
   why it could not.
 
@@ -82,16 +86,16 @@ that stops working: they will not write to the developer, they will leave.
   `unhandledrejection`, and the store's shared catch that today ends in a toast.
 - **Sent automatically** (Peter, 2026-10-10). The technical payload below goes
   as soon as the error happens; no tap. The boundary screen says "Reported"
-  beside **Reload**, with an **Add a note** link; a failed write's toast carries
-  the same link for its few seconds. The link opens a small sheet showing what
-  was sent, in full, and a line of text; the note is attached to the same row
-  only when the user taps Send.
+  beside **Reload**, and a failed write's toast says "Reported." too.
+- **No note** (Peter, 2026-10-11). A report is the error, not a conversation.
+  A user who wants to say more has other channels (suggesting RFCs, the GitHub
+  repo) and decides there what to share. This replaces the opt-in note decided
+  on 2026-10-10.
 - **Why automatic is allowed.** The payload holds no personal or health data, so
   under GDPR it rests on legitimate interest and needs no consent, but it must
   be stated in the privacy policy (0093's launch readiness). Health data is the
-  line that needs explicit consent: logged values are never in the payload, and
-  the free-text note, which a user might fill with something about their body,
-  stays opt-in for that reason. To be confirmed before the public launch; this
+  line that needs explicit consent: logged values are never in the payload,
+  and there is no free text in it. To be confirmed before the public launch; this
   is a reading of the rule, not legal advice.
 - The payload is built from a whitelist, never by serialising state: version
   (`package.json`), build (`origin` tag), tab, error name, message, stack, user
@@ -101,16 +105,22 @@ that stops working: they will not write to the developer, they will leave.
 
 ### Stage 2: store and file
 
-- An `error_reports` table: signature, payload, note, count, first and last
+- An `error_reports` table (built in stage 1, because stage 1 needs a row to
+  land): signature, payload, count, first and last
   seen, status (`new` · `triaged` · `fixing` · `fixed` · `wontfix`), and a link
   to the issue or PR. Insert-only for the client once 0003 locks the database;
   the agent reads and updates it with a service role.
-- Each new signature becomes an issue in a **private** repository (proposed
-  `petrovsco/tekio.reports`, created by hand: the GitHub integration cannot
-  create repos in the org). Not in `tekio` or `tekio.rfcs`: both face the
-  world, and a user's note about an error in a health app may carry health
-  data. A Supabase edge function on insert files it; a repeat signature only
-  bumps `count` and comments.
+- Each new signature becomes an issue in the public `tekio` repository
+  (Peter, 2026-10-11: with no note, a report holds nothing personal, so no
+  private repo is needed). The issue shows the error, version, build, screen,
+  stack and trail; the browser line stays in the table only, being the
+  closest thing to identifying a device. A fault that exposes a security hole
+  is not filed publicly: the agent works it from the table. A Supabase edge
+  function on insert files it; a repeat signature only bumps `count` and
+  comments.
+- The note left over from stage 1's first build (the `note` column and
+  `add_error_report_note`) is dropped in the next release's schema sweep; the
+  build on staging called it until v2.2.14 deployed.
 
 ### Stage 3: the agent
 
@@ -131,8 +141,8 @@ that stops working: they will not write to the developer, they will leave.
 
 | | Own pipe (recommended) | Sentry, with its Seer agent |
 |---|---|---|
-| Where user data goes | our database and a private repo | a third party that then holds error context from a health app |
-| First-paint cost | a few kB, the note sheet lazy-loaded | its SDK, lazy-loadable, still the largest new dependency |
+| Where user data goes | our database, and issues holding no personal data | a third party that then holds error context from a health app |
+| First-paint cost | a few kB | its SDK, lazy-loadable, still the largest new dependency |
 | Native apps later | same table through the API | its Swift and Kotlin SDKs, a real advantage |
 | Agent | Claude Code with this repo's rules: modus, `/ground`, versioning, `code-review.md` | Seer opens PRs, but knows none of those rules |
 | Grouping and stack mapping | ours to build (signature hash; source maps uploaded or read by the agent) | done well, out of the box |
@@ -161,15 +171,17 @@ the routine reading issues does not change.
 
 - [x] Peter's call on where reports land is recorded: own pipe (2026-10-10)
 - [x] Peter's call on how far the agent goes is recorded: PR only (2026-10-10)
-- [x] Peter's call on sending is recorded: automatic, note opt-in (2026-10-10)
+- [x] Peter's call on sending is recorded: automatic (2026-10-10), no note (2026-10-11)
 - [ ] A thrown render error creates one row with no tap and shows "Reported";
       a second identical error bumps its count
-- [ ] A failed write files the same way; its toast offers Add a note
-- [ ] Add a note shows the full payload and attaches the note to the same row
-- [ ] A validation error the app already shows creates no row
+- [ ] A failed write files the same way; its toast says "Reported."
+- [x] A validation error the app already shows creates no row (a test throws a
+      `KnownError` through `withToast` and asserts nothing is sent)
 - [ ] The privacy policy states the error reports before the public launch
-- [ ] The payload contains no logged values (a test asserts the whitelist)
-- [ ] A new signature opens one issue in the private repo; a repeat comments
+- [x] The payload contains no logged values (a test asserts the whitelist and
+      that a database error's row values stay behind)
+- [ ] A new signature opens one issue in `tekio`; a repeat comments
+- [ ] The `note` column and `add_error_report_note` are dropped in the release sweep
 - [ ] The routine turns a seeded report into a PR on `develop` with a failing
       test that its fix makes pass, and marks the report `fixing`
 - [ ] A report the routine cannot reproduce gets its findings as a comment and
@@ -178,6 +190,8 @@ the routine reading issues does not change.
 ## Unresolved questions
 
 - Answered 2026-10-10 (Peter): own pipe, not Sentry; the agent opens a PR to
-  `develop` and never merges; reports send automatically, the note is opt-in.
+  `develop` and never merges; reports send automatically.
+- Answered 2026-10-11 (Peter): no note at all, and so issues in the public
+  `tekio` repo rather than a private one.
 - Whether stage 1 and 2 wait for accounts (0003). They need not: the table can
   ship insert-only under today's open policies and tighten with 0003.
