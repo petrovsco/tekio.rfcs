@@ -19,6 +19,10 @@ label: feature
 - 2026-10-11: Built and walked at 412 px against stubbed data. Peter picked
   a new table over widening `planned_exercises`, and said "create it": applied
   live as migration 20261011055206. Merged to develop as tekio v2.2.13.
+- 2026-10-11: Peter asked for three things on missed plans (reschedule, a
+  deletion a week past due, removing one by hand) and for a synced session to
+  merge with a logged one whichever lands first. Built as tekio v2.2.15, on all
+  three Planned cards, Weights included.
 
 ## Summary
 
@@ -45,6 +49,13 @@ day is in one place.
 - "Log" prefills the tab's form; saving links the plan to the entry it became.
 - A Garmin-synced cardio or sport session of the same type or sport on the
   plan's day also takes the plan off the card, since that work did happen.
+- A synced session and a logged one are one session, whichever arrives first.
+  The sync already claims a hand-logged row of the same day and type or sport;
+  logging a session the watch already synced merges into that row the same
+  way, a typed value winning and an empty field keeping the watch's.
+- A missed plan (unlogged, its day past) is listed as Missed on every Planned
+  card, Weights included, with Reschedule and Remove. A week after its day it is
+  deleted.
 
 ## Non-Goals
 
@@ -68,6 +79,12 @@ day is in one place.
    with their own rows. One sheet per kind writes the plans.
 3. **Matching**: a plan is off the card when it is linked, or (cardio and
    sport only) when a session of the same type or sport is logged that day.
+4. **Missed plans**: Reschedule opens the plan's sheet on today; Remove deletes
+   it. At startup the app deletes the unlinked plans dated more than
+   `MISSED_PLAN_KEPT_DAYS` (7) days ago, in both plan tables. The previous
+   "Not logged" line, display only, goes.
+5. **Merging**: the cardio and sport forms look for a Garmin row of the same
+   day and type or sport before inserting, and update it instead.
 
 ## Rationale
 
@@ -84,7 +101,11 @@ production untouched and keeps their shapes honest.
 - [ ] Cardio shows a Planned card with cardio and sport plans; logging one from
       the card leaves it, and a Garmin-synced session of the same type that day
       clears it too.
-- [ ] Weights' Planned card behaves exactly as before.
+- [ ] Weights' Planned card behaves as before, plus the Missed list.
+- [ ] A missed plan can be rescheduled or removed from its card, and is gone
+      a week after its day.
+- [ ] Logging a game or run the watch already synced updates that session
+      rather than adding a second one.
 - [ ] Checked on staging on a 412 px phone.
 
 ## Unresolved questions
