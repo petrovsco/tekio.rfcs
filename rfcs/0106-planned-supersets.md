@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-12
 last_updated: 2026-10-12
 status: in progress
-status_note: Peter chose "Group + log as one" on 2026-10-12; built on the branch at tekio v2.2.18. The new column waits on his go before anything reaches develop.
+status_note: Column live (20261012174417). Peter raised lost sets mid-superset and on leaving the page; on-device drafts with one tab per lift are built on the branch while he picks the direction. Nothing on develop yet.
 label: feature
 ---
 
@@ -47,6 +47,10 @@ circuit would fall apart there too.
   every lift in it.
 - Rescheduling a grouped lift moves its whole open group, so a group never
   splits across days.
+- Typed sets are never lost before Save: the log form is a draft kept on the
+  device, surviving a tab change or a reload, and a superset opens on the form
+  with one tab per lift, so sets entered A1, B1, A2, B2 stay where they were
+  typed. One Save logs every lift that has sets.
 
 ## Non-Goals
 
@@ -78,6 +82,15 @@ with the SS badge and the word Superset or Circuit, its lifts as rows inside it
 with their own Log, edit and remove. Colours stay those of the Planned card
 (design-system §1); nothing new is introduced.
 
+**Draft** — the Weights log form is held in `localStorage`
+(`tekio.weightsDraft`) until Save: the date and one or more lifts, each with
+its typed sets and, if it came from a plan, the plan and superset ids. Log on a
+grouped plan puts its open group on the form as tabs; Log on a lift already
+there switches to it. A form with typing keeps it when another plan joins.
+Save writes each lift with sets and takes it off the form; an empty lift stays.
+Nothing is written to the database before Save, so a half-done lift never
+counts on Home.
+
 **Sheet** — a "Superset with" choice lists the other open lifts planned for the
 same day, plus None. Picking one joins its group, or starts a new group of the
 two.
@@ -94,15 +107,20 @@ two.
 
 ## Acceptance
 
-- [ ] Migration adding `planned_exercises.superset_group_id` applied on Peter's word, file named after its stamped version.
+- [x] Migration adding `planned_exercises.superset_group_id` applied on Peter's word (2026-10-12, version 20261012174417).
 - [ ] The plan sheet joins a lift to another lift of the same day and takes it out again.
 - [ ] The Planned card draws a group of two as Superset and of three as Circuit, at 412 px.
-- [ ] Logging a group fills its lifts one after another, and Recent shows them as one block with every lift.
+- [ ] Logging a group puts its lifts on the form as tabs that keep their sets, one Save logs them, and Recent shows them as one block with every lift.
+- [ ] Typed sets survive leaving Weights and reloading the app, until Save.
 - [ ] Rescheduling a missed grouped lift moves the whole open group to the new day.
 - [ ] Tests cover grouping on the card, the logged group id, and Recent's groups of three.
 - [ ] Peter has checked it on staging.
 
 ## Unresolved questions
 
-None open: Peter chose this direction ("Group + log as one") on a decision card
-on 2026-10-12.
+- How the form keeps sets until Save: put to Peter as a decision card on
+  2026-10-12 (drafts on the phone with a tab per lift, recommended; saving every
+  set as it is ticked; or drafts without tabs). The recommended option is built
+  on the branch until he picks.
+
+Peter chose the grouping direction ("Group + log as one") on 2026-10-12.
