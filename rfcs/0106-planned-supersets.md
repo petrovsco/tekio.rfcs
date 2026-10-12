@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-12
 last_updated: 2026-10-12
 status: in progress
-status_note: Direction offered to Peter as a decision card, recommended option being built on the branch. The new column waits on his go before anything reaches develop.
+status_note: Peter chose "Group + log as one" on 2026-10-12; built on the branch at tekio v2.2.18. The new column waits on his go before anything reaches develop.
 label: feature
 ---
 
@@ -104,5 +104,5 @@ two.
 
 ## Unresolved questions
 
-None open: the direction was put to Peter as a decision card on 2026-10-12, and
-this RFC follows the recommended option until he answers.
+None open: Peter chose this direction ("Group + log as one") on a decision card
+on 2026-10-12.
