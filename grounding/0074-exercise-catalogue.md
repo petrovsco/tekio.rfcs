@@ -55,6 +55,9 @@ its own set and a one-line reason.
 | 30 | Carry | farmer walk, trap-bar carry | Forearms 1, Upper Back / Traps 2, Obliques 3, Erectors 3, Lats 3 | convention | T |
 | 31 | Olympic lift | power clean, hang clean, clean pull, high pull | Glutes 1, Quadriceps 1, Hamstrings 2, Upper Back / Traps 2, Erectors 2 | convention | T |
 
+A 32nd pattern, shoulder external rotation (Rotator Cuff 1), was grounded later in
+[RFC 0105](../rfcs/0105-shoulder-external-rotation.md#grounding).
+
 **Overrides the runs named** (an exercise row with its own set and reason):
 Single-leg RDL (Erectors 3: unilateral load); round-back back extension
 (Erectors 1, Glutes 2, Hamstrings 2: the spine moves); Nordic (adds Glutes 3);
