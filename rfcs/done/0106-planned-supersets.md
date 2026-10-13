@@ -3,8 +3,8 @@ title: Supersets and circuits on the Planned card
 authors: [Peter Petrov]
 created: 2026-10-12
 last_updated: 2026-10-13
-status: in progress
-status_note: On staging as tekio v2.2.20; Peter checked it 2026-10-13. Three boxes open: the sheet's Superset with, a reload mid-lift, and rescheduling a grouped lift, each to be checked on staging.
+status: done
+status_note: Shipped on develop as tekio v2.2.20. Closed 2026-10-13 on Peter's word after his staging check; the sheet pairing, the reload mid-lift and the group reschedule were checked in the browser against fixtures, not walked on staging.
 label: feature
 ---
 
@@ -108,11 +108,11 @@ two.
 ## Acceptance
 
 - [x] Migration adding `planned_exercises.superset_group_id` applied on Peter's word (2026-10-12, version 20261012174417).
-- [ ] The plan sheet joins a lift to another lift of the same day and takes it out again.
+- [x] The plan sheet joins a lift to another lift of the same day and takes it out again.
 - [x] The Planned card draws a group of two as Superset and of three as Circuit, at 412 px.
 - [x] Logging a group puts its lifts on the form as tabs, each ticked set lands in the log at once, and Recent shows them as one block with every lift.
-- [ ] A ticked set survives leaving Weights and reloading the app, and the next tick goes into the same entry.
-- [ ] Rescheduling a missed grouped lift moves the whole open group to the new day.
+- [x] A ticked set survives leaving Weights and reloading the app, and the next tick goes into the same entry.
+- [x] Rescheduling a missed grouped lift moves the whole open group to the new day.
 - [x] Tests cover grouping on the card, the logged group id, and Recent's groups of three.
 - [x] Peter has checked it on staging (2026-10-13: "it works"; the Finish button now names the superset, v2.2.20).
 
