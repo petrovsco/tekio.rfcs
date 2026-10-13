@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-12
 last_updated: 2026-10-13
 status: in progress
-status_note: On staging as tekio v2.2.20; Peter checked it 2026-10-13. Two boxes open: the sheet's Superset with, and rescheduling a grouped lift.
+status_note: On staging as tekio v2.2.20; Peter checked it 2026-10-13. Three boxes open: the sheet's Superset with, a reload mid-lift, and rescheduling a grouped lift, each to be checked on staging.
 label: feature
 ---
 
