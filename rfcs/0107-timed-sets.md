@@ -4,13 +4,14 @@ authors: [Peter Petrov]
 created: 2026-10-14
 last_updated: 2026-10-14
 status: in progress
-status_note: Built on branch claude/time-based-sets-fdai3p as tekio v2.2.24 and checked in the browser against fixtures; waits on Peter's word to apply the duration_s column, then the dead hang rewrite and the merge to develop.
+status_note: On develop as tekio v2.2.24 with the column live (20261014074911) and the dead hang rewritten; waits on Peter's phone check on staging.
 label: feature
 ---
 
 ## Progress log
 
 - 2026-10-14: drafted and grounded; Peter chose ask-once over a switch on every log, then said go and asked that existing hold logs be rewritten (the 8 Oct dead hang: 30 s a set). Built as tekio v2.2.24 on the branch; walked at 412 px against fixtures (plan log, tick write with duration_s, new-name question, plan sheet, Recent, Home read).
+- 2026-10-14: on Peter's yes, duration_s applied live (20261014074911); the 8 Oct dead hang rewritten to 3 × 30 s and today's open Dead Hang plan to 2 × 30 s; v2.2.24 pushed to develop.
 
 # RFC 0107: Timed sets for holds
 
@@ -165,8 +166,8 @@ endurance-time coefficients.
 
 ## Acceptance
 
-- [ ] `session_sets.duration_s` exists live (migration applied on Peter's word).
-- [ ] The 8 Oct dead hang reads 3 × 30 s, and today's open dead hang plan is in
+- [x] `session_sets.duration_s` exists live (migration applied on Peter's word).
+- [x] The 8 Oct dead hang reads 3 × 30 s, and today's open dead hang plan is in
       seconds.
 - [ ] A plank logged as 3 × 45 s shows as seconds on Last, Recent, the edit form
       and the muscle sheet, at 412 px.
