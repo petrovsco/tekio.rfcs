@@ -3,8 +3,8 @@ title: A minimum dose before a muscle reads as recovering
 authors: [Peter Petrov]
 created: 2026-10-14
 last_updated: 2026-10-14
-status: in progress
-status_note: On develop with the threshold at 2 weighted sets a day; waits on Peter's check on staging.
+status: done
+status_note: Shipped in tekio v2.2.26; Peter checked it on staging on 2026-10-14.
 label: bug
 ---
 
@@ -13,6 +13,7 @@ label: bug
 - 2026-10-14 — Peter saw a muscle marked "still recovering" after a single
   set and asked whether a minimum should apply first. Scouted; Peter took
   2 weighted sets a day on the decision card (D60). Shipped to develop.
+- 2026-10-14 — Peter checked it on staging: working. Done.
 
 # RFC 0108: A minimum dose before a muscle reads as recovering
 
@@ -26,7 +27,7 @@ from that day. One set on its own no longer flags anything.
 
 ## Motivation
 
-`RECOVER_DAYS` was grounded in [0010](done/0010-home-fused-reads.md#grounding)
+`RECOVER_DAYS` was grounded in [0010](0010-home-fused-reads.md#grounding)
 as dose-blind by design, with dose modulation named as the upgrade path (D6).
 In practice that meant any linked set started the 48 h flag, including one set
 where the muscle was only a synergist. The map then greyed out a muscle the
@@ -138,7 +139,7 @@ cutoff.
       not.
 - [x] `RECOVER_MIN_SETS` carries its source comment; D60 and inventory row
       4.22 record it.
-- [ ] Peter checks on staging that a one-set muscle no longer reads as
+- [x] Peter checks on staging that a one-set muscle no longer reads as
       recovering.
 
 ## Unresolved questions
