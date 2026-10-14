@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-14
 last_updated: 2026-10-14
 status: backlog
-status_note: Drafted with a mockup and grounded (duration bands, convention); waits on Peter's direction before building.
+status_note: Grounded; design changed to ask-once on Peter's call. Waits on his go to build from the updated mockup.
 label: backlog
 ---
 
@@ -15,8 +15,9 @@ label: backlog
 Let a set be measured in seconds instead of reps, for holds such as the plank,
 side plank, hollow hold, Copenhagen plank, dead hang, wall sit and L-sit. A
 timed set is stored as one rep held for a number of seconds (a new nullable
-`session_sets.duration_s`), entered through a **Reps / Time** switch over the
-sets grid, planned the same way on the Planned card, shown as seconds wherever
+`session_sets.duration_s`). Timed is a property of the exercise: catalogue
+holds are timed, and a new name is asked once, beside the movement question;
+the sets grid then reads *Added kg* and *Seconds*. Timed sets are planned the same way on the Planned card, shown as seconds wherever
 sets are listed, and classified into the muscle-linked qualities by its
 duration rather than by its single rep.
 
@@ -34,8 +35,8 @@ say "3 × 1".
 
 - An exercise can be logged in seconds, set by set, with optional added load,
   through the same form, ticks and drafts as any lift (RFC 0106 behaviour kept).
-- Catalogue holds open on Time; any other exercise opens the way it was last
-  logged, and the switch changes it.
+- Catalogue holds are timed; a name the app does not know asks "reps or
+  time?" once, and the answer sticks to that exercise. No switch on the form.
 - A plan can carry timed targets (`{"weight": 0, "seconds": 45}` in
   `target_sets`), and Log from a timed plan opens the form on Time. Timed lifts
   work inside supersets and circuits.
@@ -73,13 +74,17 @@ helper `fmtSet(s)` renders a set everywhere (`45 s`, `10kg · 30 s`,
 
 **Which exercises are timed.** A `TIMED_EXERCISES` set in the catalogue
 (Plank, Side Plank, Hollow Hold, Copenhagen Plank, Dead Hang, Wall Sit, L-sit)
-gives the default; the last logged entry of that exercise overrides it; the
-switch on the form overrides both for this log. No column on `exercises`.
+marks the known holds. Any other exercise is timed when its logged sets carry
+`duration_s` (or its plan's targets carry `seconds`), so the answer to the
+question below sticks from the first logged set with no column on
+`exercises`. The few lifts that go both ways (Pallof press and hold, a glute
+bridge for reps or held) get two names.
 
-**Form.** A two-option segmented switch, Reps / Time, above the sets grid. On
-Time the columns read *Added kg* and *Seconds*. Switching clears the column
-that no longer applies on rows not yet ticked; ticked rows lock the switch.
-The plan sheet carries the same switch.
+**Form.** The `MovementQuestion` panel for an unknown name gains a second
+question, "Is it counted in reps or held for time?", Reps / Time chips,
+defaulting to Reps. On Time the grid's columns read *Added kg* and *Seconds*.
+The plan sheet asks the same for a new name. A known exercise shows no
+question and no switch.
 
 **Reads.** `classifyWeightSet` takes the set, not its reps; a timed set is
 classified by `duration_s` against duration bands set by the Grounding below.
@@ -145,10 +150,11 @@ endurance-time coefficients.
   also an expand, but the build on `master` would then read `null` reps. One
   rep held for N seconds is literally what a hold is, and it keeps every old
   read valid.
-- **A switch remembered per exercise, not a flag on `exercises`.** A column
-  would need a migration, an editor and a backfill, and some lifts go both
-  ways (a Copenhagen plank held, or pulsed for reps). The catalogue list plus
-  history gets the default right without new machinery.
+- **Ask once, not a switch on every log** (Peter, 2026-10-14). Almost no
+  exercise is logged both ways: holds have names of their own, and their rep
+  versions are other exercises. A switch would be a control on every log for a
+  case that barely exists. Deriving "timed" from history rather than a column
+  on `exercises` avoids a second migration, an editor and a backfill.
 - **Classify by duration, not count holds as "no quality".** Leaving holds out
   of every quality would hide real work from Adaptations; counting them by
   their one rep is the bug this RFC fixes.
@@ -158,8 +164,8 @@ endurance-time coefficients.
 - [ ] `session_sets.duration_s` exists live (migration applied on Peter's word).
 - [ ] A plank logged as 3 × 45 s shows as seconds on Last, Recent, the edit form
       and the muscle sheet, at 412 px.
-- [ ] Catalogue holds open on Time; a custom exercise logged on Time reopens on
-      Time.
+- [ ] Catalogue holds show Seconds with no question; a new name asks reps or
+      time once, and a custom hold logged on Time reopens on Time.
 - [ ] A timed plan from an agent (`seconds` in `target_sets`) shows as seconds on
       the Planned card and logs on Time, inside a superset too.
 - [ ] A timed set never appears as a personal best, 1RM or volume; the longest
@@ -170,10 +176,5 @@ endurance-time coefficients.
 
 ## Unresolved questions
 
-- Switch on every log, or timed as a property of the exercise? Few exercises
-  go both ways (Copenhagen plank, Pallof press/hold, glute bridge), and none in
-  the log so far, so the leaner alternative is: catalogue holds are timed, a new
-  name asks "Reps or time?" once beside the movement question, and both-ways
-  lifts get two names. Raised 2026-10-14, waiting on Peter.
-- Peter's direction on the switch-and-remember design (mockup:
-  [0107/timed-sets-mockup.png](0107/timed-sets-mockup.png)).
+- Peter's go to build from the updated mockup:
+  [0107/timed-sets-mockup.png](0107/timed-sets-mockup.png).
