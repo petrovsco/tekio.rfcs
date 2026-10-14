@@ -3,10 +3,14 @@ title: Timed sets for holds
 authors: [Peter Petrov]
 created: 2026-10-14
 last_updated: 2026-10-14
-status: backlog
-status_note: Grounded; design changed to ask-once on Peter's call. Waits on his go to build from the updated mockup.
-label: backlog
+status: in progress
+status_note: Built on branch claude/time-based-sets-fdai3p as tekio v2.2.24 and checked in the browser against fixtures; waits on Peter's word to apply the duration_s column, then the dead hang rewrite and the merge to develop.
+label: feature
 ---
+
+## Progress log
+
+- 2026-10-14: drafted and grounded; Peter chose ask-once over a switch on every log, then said go and asked that existing hold logs be rewritten (the 8 Oct dead hang: 30 s a set). Built as tekio v2.2.24 on the branch; walked at 412 px against fixtures (plan log, tick write with duration_s, new-name question, plan sheet, Recent, Home read).
 
 # RFC 0107: Timed sets for holds
 
@@ -162,19 +166,20 @@ endurance-time coefficients.
 ## Acceptance
 
 - [ ] `session_sets.duration_s` exists live (migration applied on Peter's word).
+- [ ] The 8 Oct dead hang reads 3 × 30 s, and today's open dead hang plan is in
+      seconds.
 - [ ] A plank logged as 3 × 45 s shows as seconds on Last, Recent, the edit form
       and the muscle sheet, at 412 px.
 - [ ] Catalogue holds show Seconds with no question; a new name asks reps or
       time once, and a custom hold logged on Time reopens on Time.
 - [ ] A timed plan from an agent (`seconds` in `target_sets`) shows as seconds on
       the Planned card and logs on Time, inside a superset too.
-- [ ] A timed set never appears as a personal best, 1RM or volume; the longest
+- [x] A timed set never appears as a personal best, 1RM or volume; the longest
       hold shows instead.
-- [ ] A 45 s hold no longer counts as a strength set; its qualities follow the
+- [x] A 45 s hold no longer counts as a strength set; its qualities follow the
       grounded duration bands, with tests.
-- [ ] Seconds of 0, a fraction or empty block the save with a message.
+- [x] Seconds of 0, a fraction or empty block the save with a message.
 
 ## Unresolved questions
 
-- Peter's go to build from the updated mockup:
-  [0107/timed-sets-mockup.png](0107/timed-sets-mockup.png).
+None. Mockup: [0107/timed-sets-mockup.png](0107/timed-sets-mockup.png).
