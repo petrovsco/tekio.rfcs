@@ -190,7 +190,10 @@ marks the one thing being pointed at. It never becomes a second palette.
   are second-series dots under its line.
 - **Tooltip**: white, 1px `#e2e2e0`, 3px radius, 11px, no shadow. A chart
   read by touch may print the touched day in an 11px line under itself
-  instead, where a finger does not cover it.
+  instead, where a finger does not cover it. That line is printed over the
+  legend, which keeps its room, and the day stays when the finger lifts; a
+  second tap on it, or a tap anywhere outside the chart, puts it away and
+  the legend comes back.
 
 Charts are never T1 (§10) — the five-second answer does not need one.
 

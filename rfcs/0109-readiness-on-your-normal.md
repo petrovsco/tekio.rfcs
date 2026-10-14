@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-14
 last_updated: 2026-10-14
 status: in progress
-status_note: On develop as tekio v2.2.30, the chart narrowed to the 60 nights the normal comes from; waits on Peter's phone check on staging.
+status_note: On develop as tekio v2.2.31, the chart showing the 60 nights the normal comes from and a touched day able to be put away; waits on Peter's phone check on staging.
 label: feature
 ---
 
@@ -36,6 +36,13 @@ label: feature
   (for the check-in, the 28 days and today), with today's normal drawn across
   it as one band. Built as tekio v2.2.30, walked the same way, pushed to
   develop.
+- 2026-10-14 — Peter: a day read by touch stayed on the readout and nothing
+  brought the legend back. A finger lifting kept it on purpose, and only a
+  scroll cleared it. A second tap on the day, or a tap anywhere outside the
+  chart, now puts it away; the legend keeps its room under the readout, so
+  the sheet no longer jumps a line when they swap. Built as tekio v2.2.31,
+  walked at 412 px with a simulated finger and a mouse on all three
+  methods, pushed to develop.
 
 # RFC 0109: Readiness as a point on your normal, with its history
 
@@ -134,7 +141,12 @@ design-system §9: today's normal as one band across the window, the read as
 the ink line, single readings as second-series dots behind it, the check-in
 as ink dots, the window's first day and today at the ends of the axis with
 the months between, and two to four gridlines. Touching a day prints it
-under the chart: "Wed 8 Oct · night N · 7‑night average N ms".
+under the chart: "Wed 8 Oct · night N · 7‑night average N ms", with "tap
+again to clear". It stays when the finger lifts, so it can be read; a second
+tap on it, within 16 px of its day because a day can be narrower than a
+fingertip, or a tap anywhere outside the chart puts it away. The readout is
+printed over the legend, which keeps its room, so nothing below moves. A
+mouse reads the day under it and drops it on leaving.
 
 **The sync** (`scripts/garmin-sync/sync_sleep.py`). Rows go up in groups of
 one key shape, so a long backfill writes.
@@ -198,7 +210,11 @@ one key shape, so a long backfill writes.
 - [x] The chart covers the 60 nights before this week and the week (the
       check-in: 28 days and today), with today's normal across it, and its
       last day is today's reading (`readinessTrend` tests).
-- [x] First paint inside the perf budget: 347.35 kB against 353.21 kB.
+- [x] A day read by touch can be put away, by a second tap on it or a tap
+      outside the chart, and the legend comes back without the sheet
+      moving; walked at 412 px with a simulated finger and a mouse for every
+      method.
+- [x] First paint inside the perf budget: 347.38 kB against 353.21 kB.
 - [x] A one-year Garmin sleep backfill writes.
 - [ ] Peter checks the card and the sheet on his phone on staging.
 
