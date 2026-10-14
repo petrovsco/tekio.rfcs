@@ -170,5 +170,10 @@ endurance-time coefficients.
 
 ## Unresolved questions
 
+- Switch on every log, or timed as a property of the exercise? Few exercises
+  go both ways (Copenhagen plank, Pallof press/hold, glute bridge), and none in
+  the log so far, so the leaner alternative is: catalogue holds are timed, a new
+  name asks "Reps or time?" once beside the movement question, and both-ways
+  lifts get two names. Raised 2026-10-14, waiting on Peter.
 - Peter's direction on the switch-and-remember design (mockup:
   [0107/timed-sets-mockup.png](0107/timed-sets-mockup.png)).
