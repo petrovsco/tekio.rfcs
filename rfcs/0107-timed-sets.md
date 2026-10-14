@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-14
 last_updated: 2026-10-14
 status: backlog
-status_note: Drafted with a mockup; waits on Peter's direction and on the grounding of how a hold counts in the reads.
+status_note: Drafted with a mockup and grounded (duration bands, convention); waits on Peter's direction before building.
 label: backlog
 ---
 
@@ -88,10 +88,56 @@ check and volume load skip timed sets.
 
 ## Grounding
 
-Pending. A hold's seconds-to-quality mapping writes a classification claim,
-so `/ground` runs before code. The science-scout is asked: which qualities a
-sustained submaximal hold of ~20–90 s trains, whether short maximal holds
-belong to strength, and whether a hold is one hard set toward weekly volume.
+**Claim:** a timed set is classified by the seconds held, in overlapping bands
+like `repRange`, and each hold is one set toward the weekly per-muscle targets.
+**Searched:** 2026-10-14 (science-scout) · **Verdict:** partially supported;
+the cut-points and the one-hold-one-set rule are **convention only**.
+
+**Numbers to use (`HOLD_BANDS_S`):** strength [1, 10] s · hypertrophy
+[10, 60] s · muscular endurance [30, ∞) s. A hold counts in full for every band
+it falls in, so a 45 s plank is one hypertrophy set and one muscular-endurance
+set, never a strength set. The cut-points carry the existing rep bands across
+at roughly 2–3 s per rep (5 reps ≈ 10–20 s, 15 reps ≈ 30–45 s, 30 reps ≈
+60–90 s); no study measured seconds bands directly. Convention ranges: the
+strength edge 5–15 s, the hypertrophy top 60–90 s, the endurance floor 30–45 s.
+
+**Hard-set assumption.** As with the rep bands (039 S3), a hold is assumed to
+be taken near failure. The app does not capture effort for any set, so holds
+get the same assumption rather than a new field.
+
+### Evidence
+
+- `[literature]` Isometric training grew muscle and raised maximal force at
+  every intensity studied; longer muscle lengths grew more. Systematic review,
+  23 outputs — [Oranchuk et al. 2019](https://pubmed.ncbi.nlm.nih.gov/30580468/).
+- `[literature]` At 70 % MVC, 4 × 30 s holds beat 4 × 10 × 3 s for strength,
+  and only the long holds grew cross-sectional area. n = 7, 14 weeks —
+  [Schott, McCully & Rutherford 1995](https://link.springer.com/doi/10.1007/bf00240414).
+- `[literature]` At 70 % MVC, 4 × 20 s holds and 50 × 1 s contractions gave the
+  same strength and volume gains. n = 8, 12 weeks —
+  [Kubo, Kanehisa & Fukunaga 2001](https://pmc.ncbi.nlm.nih.gov/articles/PMC2278867/).
+- `[literature]` Easy, unloaded 30 s holds between sets added little: holds
+  far from failure are not hard sets. RCT, 27 trained men —
+  [Schoenfeld et al. 2020](https://www.frontiersin.org/journals/physiology/articles/10.3389/fphys.2019.01571/pdf).
+- `[literature]` Time to failure of a static hold falls as a power function of
+  %MVC, so seconds-to-failure proxies intensity the way reps-to-failure do; the
+  curve is joint-specific (trunk and grip differ from shoulder) —
+  [Frey-Law & Avin 2010](https://iro.uiowa.edu/esploro/outputs/journalArticle/Endurance-time-is-joint-specific-A-modelling/9984046821002771).
+- `[literature]` Isometric and dynamic strength gains agree poorly (pooled ES
+  0.13), so a hold credited to strength is a looser claim than one credited to
+  size — meta-analysis, 11 studies, IJSPP 2024 vol. 19(1).
+
+### Caveats
+
+Every positive trial used high-intensity, dynamometer-measured, single-joint
+holds in untrained or recreational young adults; none covers plank, dead hang
+or L-sit. What would move the numbers: a trial of near-failure bodyweight holds
+of different lengths, a volume model that counts isometric sets, or per-joint
+endurance-time coefficients.
+
+### Source comment
+
+`// HOLD_BANDS_S — strength [1,10], hypertrophy [10,60], endurance [30,∞) s, 1 hold = 1 hard set: convention mapping rep bands to time under tension; long holds grow muscle (Schott 1995, Kubo 2001, Oranchuk 2019), time to failure tracks %MVC per joint (Frey-Law 2010), see tekio.rfcs/rfcs/0107-timed-sets.md#grounding`
 
 ## Rationale
 
@@ -124,6 +170,5 @@ belong to strength, and whether a hold is one hard set toward weekly volume.
 
 ## Unresolved questions
 
-- The duration bands (Grounding, pending).
 - Peter's direction on the switch-and-remember design (mockup:
   [0107/timed-sets-mockup.png](0107/timed-sets-mockup.png)).
