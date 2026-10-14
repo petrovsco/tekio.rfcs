@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-14
 last_updated: 2026-10-14
 status: in progress
-status_note: On develop as tekio v2.2.29; waits on Peter's phone check on staging.
+status_note: On develop as tekio v2.2.30, the chart narrowed to the 60 nights the normal comes from; waits on Peter's phone check on staging.
 label: feature
 ---
 
@@ -30,6 +30,12 @@ label: feature
   overnight HRV inside, under and held, a baseline still building, morning
   HRV and the check-in, each with the chart scrubbed. No console errors.
   Pushed to develop.
+- 2026-10-14 — Peter: six months was too much, and what he was looking for
+  was the 60 nights the sheet's sentence names. The chart now covers the
+  reading's own window, the 60 nights before this week and the week itself
+  (for the check-in, the 28 days and today), with today's normal drawn across
+  it as one band. Built as tekio v2.2.30, walked the same way, pushed to
+  develop.
 
 # RFC 0109: Readiness as a point on your normal, with its history
 
@@ -39,10 +45,10 @@ Home's readiness column draws the recent read as a dot placed on the
 person's normal, a grey band in the middle of the track, instead of a fill,
 and prints numbers that agree with where the dot sits. The readiness sheet one
 tap away draws the same gauge larger with its numbers, says what the single
-reading behind the week was and where the normal comes from, and charts up to
-six months: what the verdict read each day against the normal as it stood
-that day. Overnight HRV, morning HRV and the check-in all read this way, each
-against its own normal.
+reading behind the week was and where the normal comes from, and charts those
+days: for HRV the 60 nights before this week and the week itself, with
+today's normal drawn across them. Overnight HRV, morning HRV and the check-in
+all read this way, each against its own normal.
 
 ## Motivation
 
@@ -56,8 +62,8 @@ against its own normal.
   as the normal's first value. Invented figures: a 61.6 ms week against an
   edge at 62.07 printed "62 ms · your normal 62–71 ms" on a Steady day.
 - The sheet gave the band's source in one line. The next questions had no
-  answer on screen: was last night good, is this one week or a slide, is the
-  normal itself moving.
+  answer on screen: was last night good, which nights the normal comes from,
+  and whether this week is one bad week or a slide.
 
 ## Goals
 
@@ -66,7 +72,8 @@ against its own normal.
 - Under, inside and above the normal are three positions anyone can tell
   apart, and the band's edges are where the verdict's are.
 - The sheet answers the next three questions: the single reading behind the
-  week, how the read moved over months, and how the normal moved.
+  week, which nights the normal comes from, and where this week sits among
+  them.
 - Morning HRV and the check-in read the same way on their own normals; a
   person who does not use HRV sees nothing about HRV.
 - First paint stays inside the perf budget, and the chart loads with the
@@ -113,18 +120,21 @@ why it does not decide ("Last night N ms. One night is too noisy to act on, so
 the 7‑night average decides.", or the morning's); where the normal comes from
 ("Your normal comes from the 60 nights before this week."); then the history.
 
-**The history** (`readinessTrend` in `fusedRead.ts`; `ReadinessTrend.tsx`).
-The last 182 days (`TREND_DAYS`), from the first day with a reading. Each day
+**The chart** (`readinessTrend` in `fusedRead.ts`; `ReadinessTrend.tsx`).
+The reading's own window: for HRV the 60 days its normal comes from and the 7
+it reads (67 days), for the check-in the 28 days and today, headed
+"HRV · 60 NIGHTS + THIS WEEK" or "CHECK-IN · 28 DAYS + TODAY". A history
+shorter than the window starts at its first reading ("SINCE 3 OCT"). Each day
 carries its single reading, the read (the 7-day geometric mean for HRV, the
-day's total for the check-in), the normal's exact edges as they stood that day
-(none until its baseline has enough readings), and the numbers the card would
-have printed. It runs the reading's own windows and band tests day by day, so
-its last day is today's reading, and a test holds it there. Hand-drawn SVG in
-the sheet's lazy chunk, per design-system §9: the normal as a band, the read
-as the ink line, single readings as second-series dots behind it, the
-check-in as ink dots, month labels and two to four gridlines. Touching a day
-prints it under the chart: "Wed 8 Oct · night N · 7‑night average N · normal
-L–H ms".
+day's total for the check-in) and the read as the screen prints it, on its own
+side of today's normal. The window carries today's normal, from the reading's
+own baseline, edges and side test, so the last day is today's reading and a
+test holds it there. Hand-drawn SVG in the sheet's lazy chunk, per
+design-system §9: today's normal as one band across the window, the read as
+the ink line, single readings as second-series dots behind it, the check-in
+as ink dots, the window's first day and today at the ends of the axis with
+the months between, and two to four gridlines. Touching a day prints it
+under the chart: "Wed 8 Oct · night N · 7‑night average N ms".
 
 **The sync** (`scripts/garmin-sync/sync_sleep.py`). Rows go up in groups of
 one key shape, so a long backfill writes.
@@ -141,10 +151,14 @@ one key shape, so a long backfill writes.
   different pictures, and most of the axis would be empty for both.
 - **Linear in ln ms.** The reading is computed on ln HRV (0085), so the dot is
   placed in the same space, where equal distances are equal z.
-- **Six months, not the 60-day baseline.** The question asked was longer
-  than the baseline: is the normal itself moving, and how long did past dips
-  last. 182 days holds a season, a training block and an illness; a longer
-  span would crush them at phone width.
+- **The reading's own window, not six months.** Six months shipped first, in
+  v2.2.29, and was too much: what Peter looked for was the 60 nights the
+  sentence above the chart names. Showing exactly those nights and the week
+  read against them makes the chart and the sentence say the same thing.
+- **Today's normal as one band.** The v2.2.29 band was the normal as it stood
+  each day. Across the window today's normal is built from, that drew a
+  normal the sentence does not describe. One band shows the nights scattered
+  around the normal they make, and this week against it.
 - **The average as the line, single readings as dots.** The line is what
   decides; the dots show why one reading does not. Single readings as the
   main series would be noise.
@@ -169,7 +183,7 @@ one key shape, so a long backfill writes.
 4. **Honest shape:** a position against a personal range, not an amount (P2).
    One systemic read (P5), never split per adaptation.
 5. **Physiological number:** none new. Every window, edge and floor drawn is
-   0085's or 0092's. The gauge's geometry and the six-month span are display
+   0085's or 0092's. The gauge's geometry and the chart's window are display
    choices, so `/ground` Step 0 does not fire.
 
 ## Acceptance
@@ -181,7 +195,9 @@ one key shape, so a long backfill writes.
 - [x] The sheet shows the larger gauge, the single reading behind the week,
       the normal's source and the history; walked at 412 px on invented data
       for every method and state, with no console errors.
-- [x] The history's last day is today's reading (`readinessTrend` tests).
+- [x] The chart covers the 60 nights before this week and the week (the
+      check-in: 28 days and today), with today's normal across it, and its
+      last day is today's reading (`readinessTrend` tests).
 - [x] First paint inside the perf budget: 347.35 kB against 353.21 kB.
 - [x] A one-year Garmin sleep backfill writes.
 - [ ] Peter checks the card and the sheet on his phone on staging.

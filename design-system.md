@@ -183,8 +183,8 @@ marks the one thing being pointed at. It never becomes a second palette.
   value the card is about.
 - **Reference lines** (a target, a cap): `#c9c9c7`, 1px, dashed. This is the
   only dash in the system.
-- **A reference band** (a range that moves over time, such as a person's
-  normal): `#e2e2e0` fill behind the series, no edge.
+- **A reference band** (a range, such as a person's normal): `#e2e2e0` fill
+  behind the series, no edge.
 - **Dots, not a line,** where each point is read on its own: a daily
   check-in is ink r2 dots, and the single readings behind a rolling average
   are second-series dots under its line.
