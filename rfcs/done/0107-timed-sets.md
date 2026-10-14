@@ -3,8 +3,8 @@ title: Timed sets for holds
 authors: [Peter Petrov]
 created: 2026-10-14
 last_updated: 2026-10-14
-status: in progress
-status_note: On develop as tekio v2.2.24 with the column live (20261014074911) and the dead hang rewritten; waits on Peter's phone check on staging.
+status: done
+status_note: Shipped on develop as tekio v2.2.24; Peter checked it on staging ("it's ok") on 2026-10-14. The browser walk was against fixtures; the staging check is his.
 label: feature
 ---
 
@@ -12,6 +12,7 @@ label: feature
 
 - 2026-10-14: drafted and grounded; Peter chose ask-once over a switch on every log, then said go and asked that existing hold logs be rewritten (the 8 Oct dead hang: 30 s a set). Built as tekio v2.2.24 on the branch; walked at 412 px against fixtures (plan log, tick write with duration_s, new-name question, plan sheet, Recent, Home read).
 - 2026-10-14: on Peter's yes, duration_s applied live (20261014074911); the 8 Oct dead hang rewritten to 3 × 30 s and today's open Dead Hang plan to 2 × 30 s; v2.2.24 pushed to develop.
+- 2026-10-14: Peter checked it on staging ("it's ok"). Done.
 
 # RFC 0107: Timed sets for holds
 
@@ -169,11 +170,11 @@ endurance-time coefficients.
 - [x] `session_sets.duration_s` exists live (migration applied on Peter's word).
 - [x] The 8 Oct dead hang reads 3 × 30 s, and today's open dead hang plan is in
       seconds.
-- [ ] A plank logged as 3 × 45 s shows as seconds on Last, Recent, the edit form
+- [x] A plank logged as 3 × 45 s shows as seconds on Last, Recent, the edit form
       and the muscle sheet, at 412 px.
-- [ ] Catalogue holds show Seconds with no question; a new name asks reps or
+- [x] Catalogue holds show Seconds with no question; a new name asks reps or
       time once, and a custom hold logged on Time reopens on Time.
-- [ ] A timed plan from an agent (`seconds` in `target_sets`) shows as seconds on
+- [x] A timed plan from an agent (`seconds` in `target_sets`) shows as seconds on
       the Planned card and logs on Time, inside a superset too.
 - [x] A timed set never appears as a personal best, 1RM or volume; the longest
       hold shows instead.
