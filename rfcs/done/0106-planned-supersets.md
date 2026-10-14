@@ -2,7 +2,7 @@
 title: Supersets and circuits on the Planned card
 authors: [Peter Petrov]
 created: 2026-10-12
-last_updated: 2026-10-13
+last_updated: 2026-10-14
 status: done
 status_note: Shipped on develop as tekio v2.2.20. Closed 2026-10-13 on Peter's word after his staging check; the sheet pairing, the reload mid-lift and the group reschedule were checked in the browser against fixtures, not walked on staging.
 label: feature
@@ -21,7 +21,7 @@ ticked, under one superset, so Recent shows the session the way it was planned.
 
 ## Motivation
 
-A plan is one lift per row ([0098](done/0098-planned-exercises.md)). Workout
+A plan is one lift per row ([0098](0098-planned-exercises.md)). Workout
 plans written by agents keep pairing lifts (a hinge with a hamstring curl, a
 press with a raise) and running three-way circuits, and the card had no way to
 say so: the rows sat apart and the pairing lived only in the chat that wrote
@@ -31,7 +31,7 @@ where it was needed.
 Logged supersets already exist underneath: `session_exercises.superset_group_id`
 has been in the schema since the start, and Recent draws a pair with the SS
 badge. Nothing in the app has created one since Program left
-([0087](done/0087-remove-program.md)), and Recent pairs only two entries, so a
+([0087](0087-remove-program.md)), and Recent pairs only two entries, so a
 circuit would fall apart there too.
 
 ## Goals
@@ -53,7 +53,7 @@ circuit would fall apart there too.
 
 ## Non-Goals
 
-- Cardio, sport and mobility plans ([0104](done/0104-planned-cardio-and-mobility.md)).
+- Cardio, sport and mobility plans ([0104](0104-planned-cardio-and-mobility.md)).
   A circuit there is one session, already described by its own fields.
 - Rest timers, rounds counters or any in-workout mode. The log form stays the
   log form.
