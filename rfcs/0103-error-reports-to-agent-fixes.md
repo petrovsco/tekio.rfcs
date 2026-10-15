@@ -2,9 +2,9 @@
 title: Error reports, sent automatically, which an agent turns into fixes
 authors: [Peter Petrov]
 created: 2026-10-08
-last_updated: 2026-10-11
+last_updated: 2026-10-15
 status: in progress
-status_note: "All three stages are on develop (tekio v2.2.16): the app reports, an hourly workflow files issues in public tekio, and a daily routine works them into PRs. Open boxes wait on a real report arriving, the routine's first PR, the privacy policy and the release sweep."
+status_note: "All three stages run on develop. The first real fault (a stale tab after a deploy, 16 reports) was filed, fixed and merged as tekio PR #7 (v2.2.33). Open boxes wait on a render crash, a refused save and a repeat reaching the table, a report the routine cannot fix, the privacy policy and the release sweep."
 label: feature
 ---
 
@@ -12,6 +12,12 @@ label: feature
 
 ## Progress log
 
+- 2026-10-15: tekio PR #7 merged into develop (v2.2.33, on Peter's word): a
+  stale tab no longer reports the background loads that fail while it reloads.
+  It closes issues #2 to #18, all 16 real reports so far, every one that fault
+  on staging. GitHub closes at most ten issues from one PR, so the other seven
+  were closed by hand. The chunk hash in the message split one fault into 16
+  signatures; worth grouping in the filer if it ever recurs.
 - 2026-10-10: stage 1 built (tekio v2.2.11, branch `claude/error-reports-stage-1-tmsxfh`).
   The `error_reports` table moved forward from stage 2, because stage 1's
   acceptance needs a row to land: closed to the browser (RLS on, no policy),
@@ -209,8 +215,9 @@ the routine reading issues does not change.
 - [ ] A new signature opens one issue in `tekio`; a repeat comments (built and
       run against a fake API; ticked when a real report files)
 - [ ] The `note` column and `add_error_report_note` are dropped in the release sweep
-- [ ] The routine turns a seeded report into a PR on `develop` with a failing
-      test that its fix makes pass, and marks the report `fixing`
+- [x] The routine turns a seeded report into a PR on `develop` with a failing
+      test that its fix makes pass, and marks the report `fixing` (met by a real
+      report rather than a seeded one: tekio PR #7, merged 2026-10-15)
 - [ ] A report the routine cannot reproduce gets its findings as a comment and
       no PR
 
