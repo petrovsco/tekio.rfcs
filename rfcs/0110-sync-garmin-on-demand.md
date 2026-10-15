@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-15
 last_updated: 2026-10-15
 status: in progress
-status_note: Built on tekio branch claude/sync-on-demand-3znoa4 (v2.2.34, PR #19); migration applied. Waits on the merge and a phone check on staging.
+status_note: On develop as tekio v2.2.34; Peter's tap on staging synced in 15 s. One box left, the 08:00 runs writing their own rows, checked after tomorrow's run.
 label: feature
 ---
 
@@ -24,6 +24,9 @@ label: feature
   stubbed data, with no live database reachable from the build session.
 - 2026-10-15 — Migration applied on Peter's word through the Supabase
   connector, stamped 20261015061111.
+- 2026-10-15 — Merged as tekio v2.2.34. The first run (started by hand) and
+  Peter's tap from his phone on staging both closed their rows `ok`; the tap
+  took 15 s from request to finish.
 
 ## Summary
 
@@ -127,9 +130,10 @@ Nothing on screen said how old the synced data was, either.
 - [x] `syncWhen` and `syncStale` are unit-tested.
 - [x] The `sync_runs` migration is applied to the live database
       (stamped 20261015061111, 2026-10-15).
-- [ ] A tap on staging starts `garmin-sync-now.yml` and closes its row.
+- [x] A tap on staging starts `garmin-sync-now.yml` and closes its row
+      (run 2, 2026-10-15: requested to `ok` in 15 s).
 - [ ] The 08:00 runs write `schedule` rows.
-- [ ] Peter checks the line on his phone on staging.
+- [x] Peter checks the line on his phone on staging.
 
 ## Unresolved questions
 
