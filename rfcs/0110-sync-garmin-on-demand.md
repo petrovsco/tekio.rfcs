@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-15
 last_updated: 2026-10-15
 status: in progress
-status_note: Built on tekio branch claude/sync-on-demand-3znoa4 (v2.2.32). Waits on Peter applying the sync_runs migration, merging, and a phone check on staging.
+status_note: Built on tekio branch claude/sync-on-demand-3znoa4 (v2.2.32, PR #19); migration applied. Waits on the merge and a phone check on staging.
 label: feature
 ---
 
@@ -22,6 +22,8 @@ label: feature
   `request_garmin_sync` function, the combined `garmin-sync-now.yml` workflow,
   and a closing step on all three Garmin workflows. Checked at 412 px against
   stubbed data, with no live database reachable from the build session.
+- 2026-10-15 — Migration applied on Peter's word through the Supabase
+  connector, stamped 20261015061111.
 
 ## Summary
 
@@ -123,7 +125,8 @@ Nothing on screen said how old the synced data was, either.
       "Garmin · just now" when the run closes `ok` (stubbed data, 412 px).
 - [x] A day without a sync prints the line in the accent (stubbed data).
 - [x] `syncWhen` and `syncStale` are unit-tested.
-- [ ] The `sync_runs` migration is applied to the live database.
+- [x] The `sync_runs` migration is applied to the live database
+      (stamped 20261015061111, 2026-10-15).
 - [ ] A tap on staging starts `garmin-sync-now.yml` and closes its row.
 - [ ] The 08:00 runs write `schedule` rows.
 - [ ] Peter checks the line on his phone on staging.
