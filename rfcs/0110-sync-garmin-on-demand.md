@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-15
 last_updated: 2026-10-15
 status: in progress
-status_note: Built on tekio branch claude/sync-on-demand-3znoa4 (v2.2.32, PR #19); migration applied. Waits on the merge and a phone check on staging.
+status_note: Built on tekio branch claude/sync-on-demand-3znoa4 (v2.2.34, PR #19); migration applied. Waits on the merge and a phone check on staging.
 label: feature
 ---
 
