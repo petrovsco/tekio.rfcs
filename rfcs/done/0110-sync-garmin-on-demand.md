@@ -2,9 +2,9 @@
 title: Sync Garmin on demand from Home
 authors: [Peter Petrov]
 created: 2026-10-15
-last_updated: 2026-10-15
-status: in progress
-status_note: On develop as tekio v2.2.34; Peter's tap on staging synced in 15 s. One box left, the 08:00 runs writing their own rows, checked after tomorrow's run.
+last_updated: 2026-10-16
+status: done
+status_note: Shipped on develop as tekio v2.2.34; taps from the app and the 08:00 runs all record their rows. Rides into the next release.
 label: feature
 ---
 
@@ -27,6 +27,11 @@ label: feature
 - 2026-10-15 — Merged as tekio v2.2.34. The first run (started by hand) and
   Peter's tap from his phone on staging both closed their rows `ok`; the tap
   took 15 s from request to finish.
+- 2026-10-16 — The 08:00 activity and 08:10 sleep runs each closed a
+  `schedule` row `ok`. An early tap had synced before the watch had uploaded
+  the night, so Home showed the night before's sleep score as if it were last
+  night's; tekio v2.2.35–36 labels it "last night not in yet", with "last
+  night" turning over at 04:00. Done.
 
 ## Summary
 
@@ -132,7 +137,8 @@ Nothing on screen said how old the synced data was, either.
       (stamped 20261015061111, 2026-10-15).
 - [x] A tap on staging starts `garmin-sync-now.yml` and closes its row
       (run 2, 2026-10-15: requested to `ok` in 15 s).
-- [ ] The 08:00 runs write `schedule` rows.
+- [x] The 08:00 runs write `schedule` rows (16 Oct: activity 08:00, sleep
+      08:10 Sofia time, both `ok`).
 - [x] Peter checks the line on his phone on staging.
 
 ## Unresolved questions
