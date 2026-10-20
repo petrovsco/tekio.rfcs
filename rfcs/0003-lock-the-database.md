@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-07-08
 last_updated: 2026-10-20
 status: in progress
-status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted and signed in on the preview with its full history. Merging to develop comes next. The lock, step 4, waits until the build with sign-in runs on master."
+status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted and signed in with its full history, and sign-in is on develop (staging) since v2.2.42. Open: a custom email sender before public sign-up, then the lock (step 4) when sign-in reaches master. The lock, step 4, waits until the build with sign-in runs on master."
 label: infra
 release: 3.0.0
 ---
@@ -45,6 +45,8 @@ release: 3.0.0
 - 2026-10-20 — first real sign-in on the PR #26 preview, 15:29 UTC: the link
   verified, `/auth/v1/user` answered, and Home's reads all returned under the
   adopted id. Peter confirmed it worked on his phone.
+- 2026-10-20 — PR #26 merged to `develop` as v2.2.42 on Peter's word: staging
+  asks for a sign-in link; production still runs without accounts.
 
 ## Summary
 
