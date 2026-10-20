@@ -23,6 +23,9 @@ release: 3.0.0
   database (expand now, lock after the release). It waited on 0095 only for
   the platform, decided 2026-10-05; 0095's two open boxes (region,
   data-processing agreement) do not touch this work, so `depends` is dropped.
+- 2026-10-20 — step 2 built: tekio PR #26 (draft, v2.2.42), checked in a
+  browser against a mocked Supabase only. Step 1's migration waits on Peter's
+  word; the Auth URL settings and the adoption come before the PR merges.
 
 ## Summary
 
