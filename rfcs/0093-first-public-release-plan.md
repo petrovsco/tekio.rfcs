@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-20
 status: in progress
-status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free, the plan tagged 3.0.0, and the doctrine rewritten for every user. Planned exercises (0098) left the plan for 2.2.0 and its own thread. The free/paid principle decided 2026-10-20: manual free, automatic paid. Both repos licensed Apache 2.0 the same day."
+status_note: "Mapped 2026-10-04. Building started 2026-10-20 with accounts (0003) and the shared core (0094). Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free, the plan tagged 3.0.0, and the doctrine rewritten for every user. Planned exercises (0098) left the plan for 2.2.0 and its own thread. The free/paid principle decided 2026-10-20: manual free, automatic paid. Both repos licensed Apache 2.0 the same day."
 label: infra
 release: 3.0.0
 ---
