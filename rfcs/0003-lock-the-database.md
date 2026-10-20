@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-07-08
 last_updated: 2026-10-20
 status: in progress
-status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted and signed in with its full history, and sign-in is on develop (staging) since v2.2.42. Open: a custom email sender before public sign-up, then the lock (step 4) when sign-in reaches master. The lock, step 4, waits until the build with sign-in runs on master."
+status_note: "Sign-in is on develop (staging) since v2.2.42 and works for the first account, with its full history. Open: a custom email sender before public sign-up, a second-account check, then the lock (step 4) and verification when sign-in reaches master."
 label: infra
 release: 3.0.0
 ---
@@ -48,7 +48,9 @@ release: 3.0.0
 - 2026-10-20 — PR #26 merged to `develop` as v2.2.42 on Peter's word: staging
   asks for a sign-in link; production still runs without accounts.
 - 2026-10-20 — *Sign out* checked for real on the preview (15:52 UTC: the
-  session ended, and the sign-in screen asked for a new link).
+  session ended, and the sign-in screen asked for a new link). Reload keeps
+  the session, confirmed by Peter. The built-in email limit stays for now, on
+  his call; the custom sender is still due before public sign-up.
 
 ## Summary
 
@@ -220,7 +222,7 @@ build that signs in.
 - [x] `app.current_user_id()` exists, and every user, child and catalogue table
       has its `TO authenticated` policy (step 1)
 - [x] With no session the app shows the sign-in screen and loads no data
-- [ ] A sign-in link signs the person in, and they stay signed in across reloads
+- [x] A sign-in link signs the person in, and they stay signed in across reloads
 - [x] *Sign out* in Profile returns to the sign-in screen
 - [x] `USER_ID` no longer appears in `src/`
 - [x] The first account sees the full existing history after adoption (step 3)
