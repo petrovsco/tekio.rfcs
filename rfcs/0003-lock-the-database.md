@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-07-08
 last_updated: 2026-10-20
 status: in progress
-status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted and the Auth URL settings are saved; a real sign-in on the preview comes next. The lock, step 4, waits until the build with sign-in runs on master."
+status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted, the Auth URL settings are saved and the gate's blank page after a link is fixed; a real sign-in on the preview comes next. The lock, step 4, waits until the build with sign-in runs on master."
 label: infra
 release: 3.0.0
 ---
@@ -33,6 +33,12 @@ release: 3.0.0
   thread. Auth URL settings saved the same afternoon: Site URL
   `https://app.tekio.fyi`; redirects for staging, production, the Vercel
   previews (`tekio-*-petrovsco-projects.vercel.app`) and local dev.
+- 2026-10-20 — the first real link ended on a blank page behind the staging
+  gate. Its cookie was `SameSite=Strict`, so a link from a mail app arrived
+  without it and the gate showed; the gate's form then posted *with* it, the
+  gate passed the POST to the static files, and Vercel answered with an empty
+  405. Fixed on the PR: the cookie is `Lax`, so the link skips the gate, and a
+  POST from a known visitor is redirected back as a GET.
 
 ## Summary
 
