@@ -2,9 +2,9 @@
 title: Free and paid tiers — where the line falls
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-11
+last_updated: 2026-10-20
 status: backlog
-status_note: "Launch free, billing later (Peter, 2026-10-05). The line is being drawn while 3.0.0 is built: on 2026-10-11 Peter put agent planning from training history and the agent-led goal onboarding on the paid side. The other rows are still a draft."
+status_note: "Launch free, billing later (Peter, 2026-10-05). Principle decided 2026-10-20: what a person types by hand is free; what writes data automatically (AI generation, linked assistants, syncs) carries a small charge. Open: whether the read-only connector stays free, and the history row."
 label: backlog
 depends: [3, 94]
 release: 3.0.0
@@ -42,25 +42,26 @@ routes that were built open.
 
 ### The principle
 
-> **Parked 2026-10-05; being drawn since 2026-10-11.** Peter chose to rethink
-> the line rather than take this proposal. Rows marked **decided** are his; the
-> rest stay a draft until he places them.
+> **Decided 2026-10-20 (Peter).** Rows marked **decided** are his.
 
-**The read is free; what costs money per user is paid.** The product's answer,
-*what's missing* (doctrine §1), is the free tier: hiding it would make the free
-app a logging app, which is the part doctrine calls overhead. What the paid tier
-sells is what costs Tekiō money for each user, or saves the user the most
-capture.
+**Manual is free; automatic is paid.** What a person types by hand cannot grow
+fast, so it costs little to keep and helps many people: manual capture and the
+reads over it are free for everyone. What writes data on its own (an AI that
+generates plans, an assistant linked to the account, in-house or outside, and
+syncs from other apps) can produce a lot of data quickly, and that is what costs
+money. Those carry a small charge. The product's answer, *what's missing*
+(doctrine §1), stays on the free side: hiding it would make the free app a
+logging app, which is the part doctrine calls overhead.
 
 | Feature | Tier | Why |
 |---|---|---|
 | Home, Adaptations, the body map, readiness | free | the product |
-| Manual capture on every client | free | the read needs it |
+| Manual capture on every client | **free, decided 2026-10-20** | typed by hand, so it stays small; the read needs it |
 | Planned exercises, entered by the user (0098) | free | capture |
-| Agents that plan workouts from the training history, connected or in-app (0099) | **paid, decided 2026-10-11** | a model reads the history and writes plans, every use |
+| Agents that plan workouts from the training history, connected or in-app (0099) | **paid, decided 2026-10-11, confirmed 2026-10-20** | AI generation: a model reads the history and writes plans, every use |
 | Agent onboarding: a goal walk-through that refines which adaptations the user chases (with 0040) | **paid, decided 2026-10-11** | a model conversation per user; not built yet |
-| Read-only agent access from the user's own assistant (MCP, 0099) | **free, decided 2026-10-11** | the user's own model does the work; it brings users in |
-| Automatic syncs: Garmin, Apple Health, Health Connect (0096) | paid (proposed) | servers and integrations per user; the biggest saving in capture |
+| Read-only agent access from the user's own assistant (MCP, 0099) | free (decided 2026-10-11; **to reconfirm**) | it writes nothing, so it adds no data; but 2026-10-20 puts "linking an assistant" on the paid side |
+| Automatic syncs: Garmin, Apple Health, Health Connect (0096) | **paid, decided 2026-10-20** | another app writes data on its own, and a lot of it |
 | History beyond a window (for example 90 days of reads) | open | a lever if the line above is too thin |
 
 ### Mechanics
@@ -80,6 +81,10 @@ capture.
 - **Rejected: deciding feature by feature as each ships.** Each argument is
   won by whoever is building that feature, the way R1's cap exists to prevent for
   sections.
+- **Rejected: "the read is free, per-user cost is paid" (2026-10-05 draft).**
+  Peter redrew it by data volume instead: manual is free, automatic is paid.
+  The two mostly agree; the new line is easier to apply to a feature nobody has
+  thought of yet.
 - **Syncs on the paid side is the debatable row.** It is the strongest reason to
   pay, and also what makes the free read honest without typing. If free users
   drop off for lack of data, sync of a single source moves to free.
@@ -96,6 +101,9 @@ feature's tier in its own RFC. 3–4: not applicable. 5: no number.
 
 ## Unresolved questions
 
-1. Is the principle right: the read free, the per-user costs paid?
+1. ~~Is the principle right?~~ Answered 2026-10-20: manual free, automatic paid.
 2. ~~Paid at launch or free first?~~ Answered 2026-10-05: free first.
-3. The two proposed rows: MCP access free with a limit, syncs paid.
+3. Does the read-only connector stay free (2026-10-11), or does every linked
+   assistant sit on the paid side (2026-10-20)? ~~Syncs paid?~~ Answered
+   2026-10-20: paid.
+4. History beyond a window: a lever, or not used?
