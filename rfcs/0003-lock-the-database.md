@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-07-08
 last_updated: 2026-10-20
 status: in progress
-status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted, the Auth URL settings are saved and the gate's blank page after a link is fixed; a real sign-in on the preview comes next. The lock, step 4, waits until the build with sign-in runs on master."
+status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted and signed in on the preview with its full history. Merging to develop comes next. The lock, step 4, waits until the build with sign-in runs on master."
 label: infra
 release: 3.0.0
 ---
@@ -42,6 +42,9 @@ release: 3.0.0
 - 2026-10-20 — the next link was refused with a 429: Supabase's built-in email
   sender allows two emails an hour for the whole project. Enough for testing,
   not for a public sign-up; a custom SMTP sender is now an acceptance box.
+- 2026-10-20 — first real sign-in on the PR #26 preview, 15:29 UTC: the link
+  verified, `/auth/v1/user` answered, and Home's reads all returned under the
+  adopted id. Peter confirmed it worked on his phone.
 
 ## Summary
 
@@ -212,11 +215,11 @@ build that signs in.
 
 - [x] `app.current_user_id()` exists, and every user, child and catalogue table
       has its `TO authenticated` policy (step 1)
-- [ ] With no session the app shows the sign-in screen and loads no data
+- [x] With no session the app shows the sign-in screen and loads no data
 - [ ] A sign-in link signs the person in, and they stay signed in across reloads
 - [ ] *Sign out* in Profile returns to the sign-in screen
-- [ ] `USER_ID` no longer appears in `src/`
-- [ ] The first account sees the full existing history after adoption (step 3)
+- [x] `USER_ID` no longer appears in `src/`
+- [x] The first account sees the full existing history after adoption (step 3)
 - [ ] A second account signs in to an empty app and can log a set of its own
 - [ ] Sign-in links go out through a custom SMTP sender (Supabase *Auth → SMTP
       settings*), with the email rate limit raised past the built-in two an
