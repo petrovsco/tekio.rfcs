@@ -3,14 +3,28 @@ title: One API and a shared domain core for every client
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-20
-status: backlog
-status_note: "Scoped 2026-10-04 in the 0093 plan. Waits on the platform choice (0095) and on accounts (0003)."
+status: in progress
+status_note: "Step 1 (the core package) is up as tekio PR #25, waiting on Peter's word to merge. Step 2 on, the API, waits on accounts (0003)."
 label: infra
 depends: [95, 3]
 release: 3.0.0
 ---
 
 # RFC 0094: One API and a shared domain core for every client
+
+## Progress log
+
+- 2026-10-20: step 1 built, tekio PR #25 (v2.2.43). `packages/core` is an npm
+  workspace, `@tekio/core`, holding `adaptations.ts`, `fusedRead.ts`,
+  `sets.ts`, `hrMax.ts`, the read constants (`constants/reads.ts`,
+  `constants/adaptations.ts`), the calendar helpers and `LEVEL_WEIGHT`
+  (`utils.ts`) and the domain types (`types.ts`). Its tsconfig has no DOM lib.
+  The four reads moved verbatim, so every line the grounding inventory cites in
+  them holds; the inventory rows on the moved constants were repointed. 329
+  tests pass with only their import lines changed, and every production chunk
+  is the same size as before. The tests still run from the app's `src/test/`:
+  some of them exercise app code beside the reads, and splitting them is not
+  needed until the API has its own runner.
 
 ## Summary
 
@@ -22,8 +36,8 @@ who is asking (0003) and what they may use (0097).
 ## Motivation
 
 Today the browser talks straight to Postgres and computes the product itself:
-the coverage read (`src/lib/adaptations.ts`) and the fused readiness read
-(`src/lib/fusedRead.ts`) run over rows the client fetched. A second client would
+the coverage read (`packages/core/src/adaptations.ts`) and the fused readiness read
+(`packages/core/src/fusedRead.ts`) run over rows the client fetched. A second client would
 need a copy of both, and the agent a third. A paid tier cannot be enforced in a
 client at all. And a client that talks to the platform ties the platform to every
 client.

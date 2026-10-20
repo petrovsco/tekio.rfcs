@@ -100,7 +100,7 @@ all read this way, each against its own normal.
 
 **The gauge** (`src/components/tabs/home/ReadinessGauge.tsx`, T1). One track
 with the normal fixed at its middle 40 % (`GAUGE_NORMAL` in
-`src/lib/fusedRead.ts`) and the reading as a dot. The dot is placed linearly
+`packages/core/src/fusedRead.ts`) and the reading as a dot. The dot is placed linearly
 from the unrounded values, in the unit the method computes in: ln ms for HRV,
 points for the check-in. A reading under or over the normal keeps at least
 2 % of the track off the band's edge, so a hair under never draws inside, and

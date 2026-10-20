@@ -7,7 +7,7 @@ one `###` per run, in landing order — each pasted after its citations were
 checked through NCBI eutils or Crossref, and each closing with the **Decision**
 paragraph the run forced. What every decision changed is recorded in the brief
 and in the [grounding inventory](../grounding-inventory.md) ledger (D33
-onward); the source comments in `src/lib/adaptations.ts` point at this file's
+onward); the source comments in `packages/core/src/adaptations.ts` point at this file's
 `#grounding` anchor. The file does not move when the brief retires. Pending
 work never lives here — it goes to the brief.
 

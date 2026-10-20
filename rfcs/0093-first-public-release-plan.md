@@ -68,7 +68,7 @@ data has to move with it.
   Postgres through `@supabase/postgrest-js` from the browser; there is no server
   of ours in between. Supabase Auth, Storage and Realtime are not used.
 - **The reads live in the client.** What the product *is* — the coverage read in
-  `src/lib/adaptations.ts` and the fused readiness read in `src/lib/fusedRead.ts`,
+  `packages/core/src/adaptations.ts` and the fused readiness read in `packages/core/src/fusedRead.ts`,
   about 1,100 lines — runs in the browser over rows it fetched itself. A second
   client would have to carry a copy of both.
 - **One user, by constant.** `USER_ID` in `src/constants/app.ts` filters every

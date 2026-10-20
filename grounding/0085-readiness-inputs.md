@@ -16,7 +16,7 @@ were read here or in the 0010 and 0085 blocks.
 
 ## Grounding
 
-**Claim:** This is a ranking, not one number. It orders the inputs that Tekiō's daily systemic readiness verdict (push / lighter / hold) should rest on, for a trained adult who lifts and does interval plus zone-2 cardio. It drives what `systemicReadiness()` in `src/lib/fusedRead.ts` reads and how it weights them. Today that is mean(device sleep score, HRV score = 50 + 50 × z, 7-day overnight HRV against the person's own 60-day baseline), gated by `PUSH_THRESHOLD = 33`. It also decides which input a user without a wearable can type.
+**Claim:** This is a ranking, not one number. It orders the inputs that Tekiō's daily systemic readiness verdict (push / lighter / hold) should rest on, for a trained adult who lifts and does interval plus zone-2 cardio. It drives what `systemicReadiness()` in `packages/core/src/fusedRead.ts` reads and how it weights them. Today that is mean(device sleep score, HRV score = 50 + 50 × z, 7-day overnight HRV against the person's own 60-day baseline), gated by `PUSH_THRESHOLD = 33`. It also decides which input a user without a wearable can type.
 **Searched:** 2026-10-04 · **Verdict:** partially supported. Baseline-relative HRV is the only input that trials have used to prescribe training. The 50/50 sleep-score + HRV blend is **convention only**: no study validates it, or any composite.
 **Ranking:**
 

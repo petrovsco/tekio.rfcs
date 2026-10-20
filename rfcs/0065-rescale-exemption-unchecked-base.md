@@ -71,7 +71,7 @@ situation that has not arrived:
 |---|---|
 | The five readiness weights — sleep .45 / mobility .15 / sauna .15 / cold .15 / habits .10 | **Deleted 2026-08-31** with `RecoveryCard` ([0014](done/0014-doctrine-ledger-execution.md)). This was the case §13.7 was written about. It was retired, not rescaled, so the trap never sprang. |
 | The Food Recovery Score's six weighted sub-scores | **Discarded 2026-09-01** ([0007](done/0007-nutrition-food-recovery-score.md)). |
-| `LEVEL_WEIGHT = { 1: 1, 2: 0.5, 3: 0 }` in `src/lib/utils.ts` — how much credit a muscle gets as a primary vs. secondary mover | **Alive**, and the nearest thing to this shape. It does not add to 1, but it is a set of relative weights and would face the same question if level 3 were dropped and the rest rescaled. Already `convention` with sources (039 S1, decision D13), so option (a) would wave it through untouched. |
+| `LEVEL_WEIGHT = { 1: 1, 2: 0.5, 3: 0 }` in `packages/core/src/utils.ts` — how much credit a muscle gets as a primary vs. secondary mover | **Alive**, and the nearest thing to this shape. It does not add to 1, but it is a set of relative weights and would face the same question if level 3 were dropped and the rest rescaled. Already `convention` with sources (039 S1, decision D13), so option (a) would wave it through untouched. |
 
 So both options cost zero scout runs today, and no shipped number changes either
 way. Deciding now would mean writing spec for a hypothetical.
@@ -86,7 +86,7 @@ set of weights returns, decide (a) or (b) with that real set in front of us.
 Practically, this brief wakes up when any of these lands:
 
 - Systemic readiness gains a third input, so `systemicReadiness()`
-  (`src/lib/fusedRead.ts`) stops being a plain
+  (`packages/core/src/fusedRead.ts`) stops being a plain
   50/50 mean of sleep and HRV and needs weights.
 - Any new score is built from weighted sub-scores.
 - `LEVEL_WEIGHT` is restructured — e.g. by [0046](done/0046-retire-tracked-muscle-groups.md)
