@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-20
 status: in progress
-status_note: "Step 1, 2a and 2b are on develop (v2.2.43-45). 2c, the API with the three reads, is tekio PR #29 (v2.2.46); 2d, the capture routes, is next."
+status_note: "Step 1, 2a and 2b are on develop (v2.2.43-45). 2c, the API with the three reads, is on develop too (v2.2.46). 2d, the capture routes, is next."
 label: infra
 depends: [95, 3]
 release: 3.0.0
@@ -49,6 +49,7 @@ release: 3.0.0
   app itself stays behind the cookie gate. The response schemas name only
   their top-level fields so far; each field's full shape is still to come
   before a client is generated from the description.
+- 2026-10-20: 2c merged to develop as v2.2.46 (tekio #29).
 
 ## Summary
 
