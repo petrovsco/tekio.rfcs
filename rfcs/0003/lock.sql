@@ -7,7 +7,7 @@
 -- after the version Supabase stamps on it, under code repo supabase/README.md.
 --
 -- Before running: the owner policies of step 1 are live (migration
--- `accounts_owner_policies`), and master's build signs in.
+-- 20261020141914 `accounts_owner_policies`), and master's build signs in.
 
 -- ── The open policies ──────────────────────────────────────────────────────
 do $$
@@ -26,6 +26,25 @@ begin
 end $$;
 
 drop policy if exists "MVP open — read only" on public.exercise_aliases;
+
+-- The older owner policies compared with auth.uid() directly; the owner
+-- policies of step 1 replaced them. Moved here from step 1 on 2026-10-20, so
+-- that step only added.
+do $$
+declare t text;
+begin
+  foreach t in array array[
+    'blood_donations', 'bodyweight_logs', 'cardio_sessions', 'mobility_sessions',
+    'sleep_logs', 'sport_sessions', 'training_sessions', 'exercises', 'sport_types'
+  ] loop
+    execute format('drop policy if exists "Users see own data" on public.%I', t);
+    execute format('drop policy if exists "Users modify own data" on public.%I', t);
+  end loop;
+end $$;
+drop policy if exists "Users see own profile" on public.user_profiles;
+drop policy if exists "Users modify own profile" on public.user_profiles;
+drop policy if exists "Users see own section config" on public.user_section_config;
+drop policy if exists "Users modify own section config" on public.user_section_config;
 drop policy if exists "Everyone reads movement_patterns" on public.movement_patterns;
 drop policy if exists "Everyone reads muscle_groups" on public.muscle_groups;
 

@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-07-08
 last_updated: 2026-10-20
 status: in progress
-status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 (owner policies beside the open ones) and step 2 (sign-in in the app) are being built; the lock itself, step 4, waits until the build with sign-in runs on master."
+status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted; the Auth URL settings and a real sign-in on the preview come next. The lock, step 4, waits until the build with sign-in runs on master."
 label: infra
 release: 3.0.0
 ---
@@ -26,6 +26,11 @@ release: 3.0.0
 - 2026-10-20 — step 2 built: tekio PR #26 (draft, v2.2.42), checked in a
   browser against a mocked Supabase only. Step 1's migration waits on Peter's
   word; the Auth URL settings and the adoption come before the PR merges.
+- 2026-10-20 — step 1 applied as migration 20261020141914 on Peter's word
+  (purely additive; the drops of the old `auth.uid()` policies moved to the
+  lock). Step 3's adoption done: the first login, made 14:15 UTC, carries
+  `app_metadata.user_id` for the existing rows, set on Peter's word in the
+  thread. The Auth URL settings wait on Peter in the dashboard.
 
 ## Summary
 
@@ -145,11 +150,13 @@ build that signs in.
 
 1. **Expand — owner policies beside the open ones** (migration
    `accounts_owner_policies`). Creates schema `app` and `app.current_user_id()`,
-   replaces the nine `auth.uid()` policies, and adds an owner policy to every
+   and adds an owner policy to every
    user table, a parent-reaching policy to the three child tables and a
    signed-in read policy to the catalogue — all `TO authenticated`. Postgres
    ORs permissive policies, so with the open ones still in place nothing changes
-   for either build. Applied on Peter's word.
+   for either build. Applied on Peter's word. It only adds: the nine old
+   `auth.uid()` policies are dropped by the lock, because the connector holds
+   any `DROP` for a confirmation it never surfaced.
 2. **Sign-in in the app.** `@supabase/auth-js` joins the PostgREST client; every
    request carries the session's token instead of the anon key. With no session
    the app shows one screen: an email field and *Send sign-in link*. Profile
@@ -159,7 +166,8 @@ build that signs in.
    Auth URL settings first (Site URL and redirect URLs for staging, production,
    the Vercel previews and local dev), which are set in the Supabase dashboard.
 4. **Contract — the lock** ([0003/lock.sql](0003/lock.sql)). Drops every
-   `MVP open` policy and the two public `Everyone reads` policies, makes
+   `MVP open` policy, the two public `Everyone reads` policies and the old
+   `auth.uid()` ones, makes
    `request_garmin_sync` refuse any id but the caller's, and revokes it and the
    note function from anon. Runs as the release sweep of the release that puts
    step 2 on `master`, never before: the open policies are what keep the
@@ -191,7 +199,7 @@ build that signs in.
 
 ## Acceptance
 
-- [ ] `app.current_user_id()` exists, and every user, child and catalogue table
+- [x] `app.current_user_id()` exists, and every user, child and catalogue table
       has its `TO authenticated` policy (step 1)
 - [ ] With no session the app shows the sign-in screen and loads no data
 - [ ] A sign-in link signs the person in, and they stay signed in across reloads
