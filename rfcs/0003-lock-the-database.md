@@ -39,6 +39,9 @@ release: 3.0.0
   gate passed the POST to the static files, and Vercel answered with an empty
   405. Fixed on the PR: the cookie is `Lax`, so the link skips the gate, and a
   POST from a known visitor is redirected back as a GET.
+- 2026-10-20 — the next link was refused with a 429: Supabase's built-in email
+  sender allows two emails an hour for the whole project. Enough for testing,
+  not for a public sign-up; a custom SMTP sender is now an acceptance box.
 
 ## Summary
 
@@ -215,6 +218,9 @@ build that signs in.
 - [ ] `USER_ID` no longer appears in `src/`
 - [ ] The first account sees the full existing history after adoption (step 3)
 - [ ] A second account signs in to an empty app and can log a set of its own
+- [ ] Sign-in links go out through a custom SMTP sender (Supabase *Auth → SMTP
+      settings*), with the email rate limit raised past the built-in two an
+      hour, before the release that opens sign-up to the public
 - [ ] The lock runs at the release sweep, after `master` signs in (step 4)
 - [ ] `get_advisors(security)` lists no `rls_policy_always_true`
 - [ ] The anon key alone reads zero rows from `cardio_sessions`, and the second
