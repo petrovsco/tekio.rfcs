@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-20
 status: in progress
-status_note: "Step 1 (the core package) is up as tekio PR #25, waiting on Peter's word to merge. Step 2 on, the API, waits on accounts (0003)."
+status_note: "Step 1 (the core package) is on develop as v2.2.43. Accounts (0003) is on staging, so step 2, the API, has started at 2a."
 label: infra
 depends: [95, 3]
 release: 3.0.0
@@ -25,6 +25,8 @@ release: 3.0.0
   is the same size as before. The tests still run from the app's `src/test/`:
   some of them exercise app code beside the reads, and splitting them is not
   needed until the API has its own runner.
+- 2026-10-20: step 1 merged to develop as v2.2.43 (tekio #25) on Peter's word;
+  step 2 planned as 2a–2d below and started at 2a.
 
 ## Summary
 
@@ -76,6 +78,28 @@ import the core for speed, but the API's answer is the reference.
      sleep, body weight, donations, and planned items (0098)
    - an OpenAPI description generated from the route definitions, from which the
      clients' typed calls and the agent's tools (0099) are generated.
+   Step 2 lands in four patches, each leaving the app working (planned
+   2026-10-20, once 0003 was on staging):
+   - **2a, a `db` package.** The row loaders and their row ↔ entry mappers move
+     out of `src/lib/db/` into `packages/db`, taking the database client and the
+     user id as arguments instead of reading the app's. The web app calls them
+     with its own client; the API calls them with one carrying the caller's
+     token. One mapping, so the two cannot read a row differently.
+   - **2b, the reads as whole answers.** What Home, Adaptations and the
+     readiness sheet compose from the core calls today (inside `HomeTab.tsx`
+     and its siblings) becomes one function per read in core,
+     `homeRead(rows, date)` and its two siblings, returning plain data. The
+     screens call them, so the API's answer and the screen's are the same call.
+   - **2c, the API with the three reads.** `packages/api`: Hono, deployed as a
+     Vercel function under `/api` on the same project. Every request carries the
+     Supabase access token as a bearer token; the API verifies it, then reads
+     with a client that sends that same token, so the policies still decide what
+     it may touch. The staging cookie gate in `middleware.ts` lets `/api/` pass,
+     because the token is that route's door and a phone app has no cookie.
+     Routes are declared with `@hono/zod-openapi`, so the OpenAPI description
+     is generated from the same definitions from the first route on.
+   - **2d, capture routes**, one domain per patch, in the order the phone app
+     will need them: weights first.
 3. **Identity** from the auth provider's token (0003), checked on every request;
    the database is reached with the user's identity so RLS stays a second lock.
 4. **The web app** moves from `src/lib/db/` to the API one domain at a time,
@@ -110,8 +134,8 @@ untouched.
 
 ## Unresolved questions
 
-1. The API's first host: Vercel functions (recommended, next to the web app) or
-   wherever 0095 lands. Decided by 0095.
+1. ~~The API's first host?~~ Vercel functions, next to the web app: 0095
+   stayed on Supabase with the API on Vercel (2026-10-05).
 2. ~~The API's language: TypeScript or Rust?~~ Answered 2026-10-20 by Peter:
    TypeScript. The reads move as they are and the web app shares the core;
    Rust stays an option for a hot path that is measured slow.
