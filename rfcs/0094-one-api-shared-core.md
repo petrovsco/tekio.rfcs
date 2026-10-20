@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-20
 status: in progress
-status_note: "Step 1 (the core package) is on develop as v2.2.43. Accounts (0003) is on staging, so step 2, the API, has started at 2a."
+status_note: "Step 1 is on develop (v2.2.43), and 2a (v2.2.44). 2b is tekio PR #28 (v2.2.45); 2c, the API itself, is next."
 label: infra
 depends: [95, 3]
 release: 3.0.0
@@ -27,6 +27,14 @@ release: 3.0.0
   needed until the API has its own runner.
 - 2026-10-20: step 1 merged to develop as v2.2.43 (tekio #25) on Peter's word;
   step 2 planned as 2a–2d below and started at 2a.
+- 2026-10-20: 2a merged to develop as v2.2.44 (tekio #27). `packages/db`,
+  `@tekio/db`, holds the row loaders the reads stand on, each taking a `Db`
+  (a PostgREST client and the caller's user id); the app passes `appDb()`.
+- 2026-10-20: 2b built, tekio PR #28 (v2.2.45). `homeRead`, `adaptationsRead`
+  and `readinessRead` in core take the rows and the person's own day; Home and
+  Adaptations call them. Screens pixel-identical to v2.2.44 against mocked
+  rows; first paint re-baselined to 353.78 kB (about 0.6 kB of it this step,
+  the rest sign-in).
 
 ## Summary
 
