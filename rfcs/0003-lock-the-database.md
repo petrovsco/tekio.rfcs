@@ -2,7 +2,7 @@
 title: Lock the database — real logins, and rows only their owner can read
 authors: [Peter Petrov]
 created: 2026-07-08
-last_updated: 2026-10-05
+last_updated: 2026-10-20
 status: backlog
 status_note: "Workstream 2 of the first public release plan (0093, 2026-10-04): accounts come before the shared API, and wait on the platform choice in 0095 for the auth provider. Still backlog until Peter commits the release."
 label: infra
@@ -13,6 +13,12 @@ release: 3.0.0
 # RFC 0003: Lock the database — real logins, and rows only their owner can read
 
 **Kickoff:** start a fresh session with this file as the brief.
+
+**Keep the database movable (2026-10-20).** A move to another Postgres host such
+as Neon was raised. So policies call one function, `app.current_user_id()`,
+which wraps `auth.uid()` today; a move rewrites that function, not every policy.
+User ids stay plain UUIDs that no table ties to Supabase's `auth` schema beyond
+that function.
 **Origin:** 2026-07-08 Supabase security alert (`rls_disabled_in_public`). The critical error was cleared (RLS enabled on `adaptation_targets`), but the underlying open-access posture below remains and is the real work.
 
 ## Problem

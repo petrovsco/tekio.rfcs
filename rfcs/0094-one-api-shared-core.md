@@ -2,7 +2,7 @@
 title: One API and a shared domain core for every client
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-05
+last_updated: 2026-10-20
 status: backlog
 status_note: "Scoped 2026-10-04 in the 0093 plan. Waits on the platform choice (0095) and on accounts (0003)."
 label: infra
@@ -98,3 +98,8 @@ untouched.
 
 1. The API's first host: Vercel functions (recommended, next to the web app) or
    wherever 0095 lands. Decided by 0095.
+2. The API's language: TypeScript (Hono, this RFC's proposal) or Rust, as in
+   another project of ours on Neon. Raised 2026-10-20. Rust means rewriting the
+   reads, which the Non-Goals rule out, and the web app could no longer import
+   the core; TypeScript is recommended, with Rust kept for a hot path that is
+   measured slow.
