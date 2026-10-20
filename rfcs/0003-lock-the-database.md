@@ -47,6 +47,8 @@ release: 3.0.0
   adopted id. Peter confirmed it worked on his phone.
 - 2026-10-20 — PR #26 merged to `develop` as v2.2.42 on Peter's word: staging
   asks for a sign-in link; production still runs without accounts.
+- 2026-10-20 — *Sign out* checked for real on the preview (15:52 UTC: the
+  session ended, and the sign-in screen asked for a new link).
 
 ## Summary
 
@@ -219,7 +221,7 @@ build that signs in.
       has its `TO authenticated` policy (step 1)
 - [x] With no session the app shows the sign-in screen and loads no data
 - [ ] A sign-in link signs the person in, and they stay signed in across reloads
-- [ ] *Sign out* in Profile returns to the sign-in screen
+- [x] *Sign out* in Profile returns to the sign-in screen
 - [x] `USER_ID` no longer appears in `src/`
 - [x] The first account sees the full existing history after adoption (step 3)
 - [ ] A second account signs in to an empty app and can log a set of its own
