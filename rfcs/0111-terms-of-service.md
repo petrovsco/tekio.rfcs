@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-20
 last_updated: 2026-10-20
 status: in progress
-status_note: "A first draft is in the app on staging (Profile → Legal → Terms of Service, v2.2.40), marked as a draft. Waits on Peter's review of the wording, the operator's details and the governing law."
+status_note: "A first draft is in the app on staging (Profile → Legal → Terms of Service, v2.2.41), marked as a draft. Waits on Peter's review of the wording, the operator's details and the governing law."
 label: infra
 release: 3.0.0
 ---
