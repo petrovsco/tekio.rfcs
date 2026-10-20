@@ -98,8 +98,6 @@ untouched.
 
 1. The API's first host: Vercel functions (recommended, next to the web app) or
    wherever 0095 lands. Decided by 0095.
-2. The API's language: TypeScript (Hono, this RFC's proposal) or Rust, as in
-   another project of ours on Neon. Raised 2026-10-20. Rust means rewriting the
-   reads, which the Non-Goals rule out, and the web app could no longer import
-   the core; TypeScript is recommended, with Rust kept for a hot path that is
-   measured slow.
+2. ~~The API's language: TypeScript or Rust?~~ Answered 2026-10-20 by Peter:
+   TypeScript. The reads move as they are and the web app shares the core;
+   Rust stays an option for a hot path that is measured slow.
