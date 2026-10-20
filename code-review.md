@@ -16,13 +16,13 @@ suggests goes to `rfcs/`, never into this file.
 
 These look like defects on every first read and are all decisions:
 
-- **One hardcoded user.** `USER_ID` in `src/constants/app.ts`; every query
-  filters by it; there is no sign-in. Multi-user is [roadmap
-  003](rfcs/0003-lock-the-database.md), and opening the app to other people is the
-  standing goal — so *new* code should not add fresh single-user shortcuts, but
-  the existing ones are not bugs.
-- **RLS is wide open on purpose** — `USING (true)` while there is no auth. A
-  `rls_policy_always_true` advisory is expected; only Supabase *errors* matter.
+- **Owner policies beside open ones.** Since accounts
+  ([0003](rfcs/0003-lock-the-database.md)) every query filters by `userId()`
+  from the session, and every table has a `TO authenticated` owner policy. The
+  old `USING (true)` policies still stand beside them until the lock runs at a
+  release sweep, because the build on `master` signs nobody in — so a
+  `rls_policy_always_true` advisory is expected until then; only Supabase
+  *errors* matter. New code must not add single-user shortcuts.
 - **No router.** Navigation is `tab` state in `App.tsx`. Do not propose React
   Router; it was removed in 2.0.58 for carrying zero routes.
 - **The database client is a `PostgrestClient`**, not `supabase-js`. Only
