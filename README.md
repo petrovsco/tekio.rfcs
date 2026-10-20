@@ -27,3 +27,7 @@ read back. The 71 briefs kept their numbers and gained a fourth digit.
 Links that used to point into the code (`../../src/...`) are now plain code
 spans: the file is in another repository, and a link that cannot resolve is
 worse than a name that can be searched.
+
+## License
+
+Apache License 2.0. See [LICENSE](LICENSE) and [NOTICE](NOTICE).

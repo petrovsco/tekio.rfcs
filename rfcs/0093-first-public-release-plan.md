@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-20
 status: in progress
-status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free, the plan tagged 3.0.0, and the doctrine rewritten for every user. Planned exercises (0098) left the plan for 2.2.0 and its own thread. The free/paid principle decided 2026-10-20: manual free, automatic paid."
+status_note: "Mapped 2026-10-04; nothing is built. Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free, the plan tagged 3.0.0, and the doctrine rewritten for every user. Planned exercises (0098) left the plan for 2.2.0 and its own thread. The free/paid principle decided 2026-10-20: manual free, automatic paid. Both repos licensed Apache 2.0 the same day."
 label: infra
 release: 3.0.0
 ---
@@ -133,6 +133,11 @@ feature goes where) can be decided at any time; only its billing waits.
   exempt before 0098 becomes code.
 
 ### Earlier decisions this plan meets
+
+- **Licence: Apache 2.0, decided 2026-10-20.** Both repos carry `LICENSE` and
+  `NOTICE`. Anyone may run their own copy, including for money; the copyright
+  notice travels with every copy, and section 6 grants no right to the name or
+  logo. The hosted service charges under 0097's line regardless of the licence.
 
 - **The in-app assistant was deleted on 2026-10-02** ([0087](done/0087-remove-program.md),
   from the 0034 review). 0099 is the place it may come back, and it has to say

@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-20
 status: backlog
-status_note: "Launch free, billing later (Peter, 2026-10-05). Principle decided 2026-10-20: what a person types by hand is free; what writes data automatically (AI generation, linked assistants, syncs) carries a small charge. Open: whether the read-only connector stays free, and the history row."
+status_note: "Launch free, billing later (Peter, 2026-10-05). Principle decided 2026-10-20: what a person types by hand is free; what writes data automatically (AI generation, linked assistants, syncs) carries a small charge. The read-only connector stays free. Open: the history row."
 label: backlog
 depends: [3, 94]
 release: 3.0.0
@@ -60,7 +60,7 @@ logging app, which is the part doctrine calls overhead.
 | Planned exercises, entered by the user (0098) | free | capture |
 | Agents that plan workouts from the training history, connected or in-app (0099) | **paid, decided 2026-10-11, confirmed 2026-10-20** | AI generation: a model reads the history and writes plans, every use |
 | Agent onboarding: a goal walk-through that refines which adaptations the user chases (with 0040) | **paid, decided 2026-10-11** | a model conversation per user; not built yet |
-| Read-only agent access from the user's own assistant (MCP, 0099) | free (decided 2026-10-11; **to reconfirm**) | it writes nothing, so it adds no data; but 2026-10-20 puts "linking an assistant" on the paid side |
+| Read-only agent access from the user's own assistant (MCP, 0099) | **free, decided 2026-10-11, confirmed 2026-10-20** | it writes nothing, so it adds no data; an assistant that writes is on the paid side |
 | Automatic syncs: Garmin, Apple Health, Health Connect (0096) | **paid, decided 2026-10-20** | another app writes data on its own, and a lot of it |
 | History beyond a window (for example 90 days of reads) | open | a lever if the line above is too thin |
 
@@ -103,7 +103,6 @@ feature's tier in its own RFC. 3–4: not applicable. 5: no number.
 
 1. ~~Is the principle right?~~ Answered 2026-10-20: manual free, automatic paid.
 2. ~~Paid at launch or free first?~~ Answered 2026-10-05: free first.
-3. Does the read-only connector stay free (2026-10-11), or does every linked
-   assistant sit on the paid side (2026-10-20)? ~~Syncs paid?~~ Answered
-   2026-10-20: paid.
+3. ~~Read-only connector free? Syncs paid?~~ Answered 2026-10-20: the
+   read-only connector stays free; syncs are paid.
 4. History beyond a window: a lever, or not used?
