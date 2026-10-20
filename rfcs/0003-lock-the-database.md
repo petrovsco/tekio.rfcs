@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-07-08
 last_updated: 2026-10-20
 status: in progress
-status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted; the Auth URL settings and a real sign-in on the preview come next. The lock, step 4, waits until the build with sign-in runs on master."
+status_note: "Started 2026-10-20 as the first build step of 3.0.0. Step 1 is live, step 2 is tekio PR #26, the first login is adopted and the Auth URL settings are saved; a real sign-in on the preview comes next. The lock, step 4, waits until the build with sign-in runs on master."
 label: infra
 release: 3.0.0
 ---
@@ -30,7 +30,9 @@ release: 3.0.0
   (purely additive; the drops of the old `auth.uid()` policies moved to the
   lock). Step 3's adoption done: the first login, made 14:15 UTC, carries
   `app_metadata.user_id` for the existing rows, set on Peter's word in the
-  thread. The Auth URL settings wait on Peter in the dashboard.
+  thread. Auth URL settings saved the same afternoon: Site URL
+  `https://app.tekio.fyi`; redirects for staging, production, the Vercel
+  previews (`tekio-*-petrovsco-projects.vercel.app`) and local dev.
 
 ## Summary
 
