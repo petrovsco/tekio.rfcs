@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-20
 status: in progress
-status_note: "Step 1 is on develop (v2.2.43), and 2a (v2.2.44). 2b is tekio PR #28 (v2.2.45); 2c, the API itself, is next."
+status_note: "Step 1, 2a and 2b are on develop (v2.2.43-45). 2c, the API with the three reads, is tekio PR #29 (v2.2.46); 2d, the capture routes, is next."
 label: infra
 depends: [95, 3]
 release: 3.0.0
@@ -35,6 +35,20 @@ release: 3.0.0
   Adaptations call them. Screens pixel-identical to v2.2.44 against mocked
   rows; first paint re-baselined to 353.78 kB (about 0.6 kB of it this step,
   the rest sign-in).
+- 2026-10-20: 2b merged to develop as v2.2.45 (tekio #28).
+- 2026-10-20: 2c built, tekio PR #29 (v2.2.46). `packages/api`, Hono with
+  `@hono/zod-openapi`, serves `GET /api/read/home`, `/api/read/adaptations`
+  and `/api/read/readiness` (each with a required `date`) and
+  `/api/openapi.json`. Rows load through `loadReadRows` with the caller's
+  token while Supabase Auth checks it. One Vercel function, `api/index.ts`,
+  takes every `/api/*` address through a rewrite (a catch-all filename matches
+  only one segment outside Next.js), and imports an esbuild bundle that
+  `npm run build` writes, because Vercel compiles a function file by file and
+  Node cannot follow the packages' extensionless TypeScript imports. Checked on
+  the preview: the OpenAPI description is served, routes reach Hono, and the
+  app itself stays behind the cookie gate. The response schemas name only
+  their top-level fields so far; each field's full shape is still to come
+  before a client is generated from the description.
 
 ## Summary
 
@@ -132,7 +146,7 @@ untouched.
 
 ## Acceptance
 
-- [ ] `core` package exists, the web app imports the reads from it, and the test
+- [x] `core` package exists, the web app imports the reads from it, and the test
       suite passes unchanged
 - [ ] The API serves the three reads and every capture route, behind a checked
       token
