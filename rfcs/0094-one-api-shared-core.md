@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-21
 status: in progress
-status_note: "Step 1, 2a and 2b are on develop (v2.2.43-45). 2c, the API with the three reads, is on develop too (v2.2.46). 2d started with weights, tekio PR #30 (v2.2.47); the other domains follow."
+status_note: "Step 1, 2a and 2b are on develop (v2.2.43-45). 2c, the API with the three reads, is on develop too (v2.2.46). 2d started with weights, on develop since tekio #30 (v2.2.47); cardio is next, then the other domains."
 label: infra
 depends: [95, 3]
 release: 3.0.0
@@ -51,6 +51,7 @@ release: 3.0.0
   before a client is generated from the description.
 - 2026-10-20: 2c merged to develop as v2.2.46 (tekio #29).
 - 2026-10-21: 2d started with weights, tekio PR #30 (v2.2.47).
+- 2026-10-21: 2d weights on develop: tekio #30 merged as v2.2.47, POST /api/weights, PATCH and DELETE /api/weights/{id}; the app logs a lift through the same code.
   `POST /api/weights`, `PATCH` and `DELETE /api/weights/{id}`. The weights
   writes and the exercise-name resolver moved into `@tekio/db`, taking a
   `WriteDb` (the read `Db` plus the row origin and a lazy catalogue loader);
