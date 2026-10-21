@@ -152,6 +152,7 @@ Pending work lives in `rfcs/`, never in this file (house rule
 | Body Weight | **Fold → Home stat** | A trend, not a stimulus or readiness signal. Inline logging on Home; FRS needs the number anyway. |
 | Habits | **Deleted 2026-09-05** | Shelved 2026-08-26; deleted a month before the R2 date on Peter's call (roadmap 035). A checklist is an adherence tool; the app tells me what's missing, it does not make me do it. Sauna/cold/mobility/sleep are captured directly, so habits was a duplicate capture path. The table drops wait for the release in roadmap 025. |
 | Profile | **Exempt** | Infrastructure, not a section. Not counted against R1. |
+| Settings | **Exempt** | Infrastructure, not a section. Not counted against R1. Split out of Profile 2026-10-21: Profile is who uses the app, Settings is how it behaves. |
 | Admin | **Deleted 2026-10-04** | Was Exempt, as infrastructure. Removed on Peter's call ([rfcs/done/0090-admin-out-mobility-in.md](rfcs/done/0090-admin-out-mobility-in.md)): an ungated screen any user could reach, which a real user must never see. Admin comes back rebuilt, with a real role gate, through §4. |
 
 **Two conditions attached to the Habits shelf**, and both are met:
