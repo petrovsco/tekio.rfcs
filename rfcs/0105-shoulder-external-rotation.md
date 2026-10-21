@@ -2,7 +2,7 @@
 title: Shoulder external rotation in the catalogue
 authors: [Peter Petrov]
 created: 2026-10-12
-last_updated: 2026-10-12
+last_updated: 2026-10-21
 status: in progress
 status_note: Pattern, four catalogue lifts and the patterns row shipped in tekio v2.2.17 on develop; waiting on the first logged set to check the Rotator Cuff fills on Home.
 label: feature
@@ -46,10 +46,10 @@ acted on.
 
 ## Proposal
 
-- `src/constants/movementPatterns.ts`: `shoulderExternalRotation` with
+- `packages/core/src/catalogue/movementPatterns.ts`: `shoulderExternalRotation` with
   Rotator Cuff 1, Posterior Deltoid 3, Upper Back / Traps 3, Rhomboids 3,
   verdict *partially supported*, carrying the source comment below.
-- `src/constants/exerciseCatalogue.ts`: Cable External Rotation, Band External
+- `packages/core/src/catalogue/exerciseCatalogue.ts`: Cable External Rotation, Band External
   Rotation, Side-Lying Dumbbell External Rotation, Machine External Rotation.
 - `src/constants/movementQuestion.ts`: "External rotation" under Pull.
 - Migration `20261012041557_shoulder_external_rotation_pattern.sql`: one
