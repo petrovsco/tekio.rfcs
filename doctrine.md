@@ -19,6 +19,7 @@ release (plan: RFC 0093). The first person is the user's voice; P4 no longer
 leans on there being one user; R3 says where a paid tier stands.
 Amended 2026-10-05: the purpose gains its premise, which the landing site's
 opening film also says (RFC 0084).
+Amended 2026-10-21: Settings split out of Profile; both are Exempt.
 
 ---
 
