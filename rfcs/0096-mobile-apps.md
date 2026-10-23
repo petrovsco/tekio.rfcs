@@ -2,9 +2,9 @@
 title: Android and iOS apps beside the web app
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-05
+last_updated: 2026-10-23
 status: backlog
-status_note: "Approach decided 2026-10-05 by Peter: native apps, Swift for iOS and Kotlin for Android, beside the web app. Waits on the API (0094), which now must serve the reads computed on the server."
+status_note: "Approach decided 2026-10-05 by Peter: native apps, Swift for iOS and Kotlin for Android, beside the web app. The API (0094) is done since 2026-10-23 and serves the reads computed on the server, so nothing outside this RFC blocks it."
 label: backlog
 depends: [94]
 release: 3.0.0

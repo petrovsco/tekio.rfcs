@@ -129,7 +129,7 @@ decide it against.
 **The first public release**, tagged by Peter on 2026-10-05: the plan is
 [0093](0093-first-public-release-plan.md). Accounts ([0003](0003-lock-the-database.md)),
 staying on Supabase ([0095](0095-backend-platform-decision.md)), one API that
-serves every read ([0094](0094-one-api-shared-core.md)), native Android and iOS
+serves every read ([0094](done/0094-one-api-shared-core.md)), native Android and iOS
 apps ([0096](0096-mobile-apps.md)), agent help as a connector first
 ([0099](0099-agent-access.md)), and a free tier at launch with billing later
 ([0097](0097-free-and-paid-tiers.md)), whose free/paid line is refined while
