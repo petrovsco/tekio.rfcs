@@ -103,3 +103,5 @@ existing input goes through 0085's calculator, which says how it is weighed.
 2. Where the apps' code lives: in the tekio repo, or one repo per app. To
    decide at kickoff.
 3. Kotlin Multiplatform for shared app logic, or two independent apps.
+4. ~~Which app first?~~ Answered 2026-10-23 by Peter: Android first, then iOS
+   on the same API. Started side by side with the connector (0099).
