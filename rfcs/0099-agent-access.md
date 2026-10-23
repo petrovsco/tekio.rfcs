@@ -3,14 +3,30 @@ title: Agent access — the user's own assistant first, an in-app agent on the s
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-23
-status: backlog
-status_note: "Order decided 2026-10-05 by Peter: outside first, as a remote MCP connector on the API, then the in-app agent on the same tools. The API (0094) is done since 2026-10-23, so nothing outside this RFC blocks it."
-label: backlog
+status: in progress
+status_note: "The connector is built on a branch (MCP server at /api/mcp, consent page, undo); it waits on the Supabase OAuth server being switched on and on the agent-writes migration, then a first real connect from Claude."
+label: feature
 depends: [94]
 release: 3.0.0
 ---
 
 # RFC 0099: Agent access — the user's own assistant first, an in-app agent on the same tools
+
+## Progress log
+
+- 2026-10-23: started on Peter's word in the release plan. Built on branch
+  `claude/project-thread-jd80ft` of the code repo: Home's words moved into the
+  core read so the API sends them (`HomeRead.words`); `GET /api/history`; the
+  MCP server at `/api/mcp` with eleven tools generated from the API's own
+  routes; the OAuth protected-resource metadata at
+  `/.well-known/oauth-protected-resource`; the consent page at
+  `/oauth/consent`; writes marked from the token's `client_id`; the
+  `agent_changes` record and undo; the entitlement check, free for every account
+  at launch, and a cap of 60 assistant changes an hour. Waiting on Peter: the
+  Supabase OAuth 2.1 server switched on with dynamic client registration and
+  the authorization path `/oauth/consent`, and the additive migration
+  (`written_by` on the four logs an assistant may write, the `agent_changes`
+  table).
 
 ## Summary
 
@@ -49,13 +65,24 @@ than being a chat box beside them.
 
 ## Proposal
 
-1. **Tools, generated from the API's description (0094)**: `get_whats_missing`,
-   `get_readiness`, `get_recent_training`, `plan_exercises` (writes planned rows,
-   0098), `log_session`, `undo_last_agent_change`. The reads return the app's
-   wording, so the agent repeats the product's answer.
+1. **Tools, generated from the API's description (0094)**: each tool is one
+   route, its input read off the route's OpenAPI description and its call made
+   through the route itself with the assistant's token. Reads:
+   `get_whats_missing` (Home), `get_readiness`, `get_adaptation`,
+   `get_recent_training` (`GET /api/history`). Writes: `plan_lifts` (several in
+   one call, 0098), `plan_session` (0104), `log_lift`, `log_cardio`,
+   `log_sport`, `log_mobility`. And `undo_last_agent_change`. The reads return
+   the app's wording: the Home read carries the sentences Home prints
+   (`words`), made by one helper in the core, so the agent repeats the
+   product's answer.
 2. **MCP server** hosted with the API, signed in through OAuth with the user's
    account (0003), so a user adds Tekiō to their assistant like any other
    connector. Rate-limited on the free tier (0097).
+   The OAuth server is Supabase Auth's own (OAuth 2.1, with dynamic client
+   registration, so an assistant registers itself); the app supplies only the
+   consent page. The token an assistant gets is the person's, carrying the
+   assistant's `client_id`, so the database policies apply unchanged and the API
+   knows a write is an agent's without being told.
    That means a *remote* MCP server: a URL over HTTPS with OAuth sign-in, which
    is what assistants list as connectors. A user adds it by picking it from the
    assistant's connector directory or pasting its URL, then signs in to Tekiō;
@@ -67,6 +94,12 @@ than being a chat box beside them.
    paid for by the paid tier.
 4. **Guardrails**: agents write `planned` rows and logs marked as written by an agent (a `written_by` field, separate from the existing `origin` build tag);
    nothing an agent writes deletes logged work; every write has an undo.
+   Built as: `planned_by = 'agent'` on plans (already there, 0098) and
+   `written_by = 'agent'` on the logs, both set by the API from the token; the
+   assistant has no edit or delete tool; each call that writes leaves one
+   `agent_changes` row listing what it wrote, and undo takes those entries out
+   through the API's own delete routes, newest call first. Writing is gated by
+   one entitlement check (paid side of 0097, open to every account at launch).
 
 ## Rationale
 
