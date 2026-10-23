@@ -11,6 +11,7 @@ what landed.
    generated at build time from `packages/client/openapi.json`, the SIGNAL
    theme (`design-system.md`), and a GitHub Actions build that leaves a test
    APK to sideload. Sign-in, then Home drawn from `GET /api/view/home`.
+   *(tekio #48, with step 1: the app compiles only in CI)*
 3. **Home's sheets.** The muscle drill-in, the readiness sheet with sleep,
    sauna and cold capture, the whole-body quality sheet, weight and blood.
 4. **Capture.** Weights (sets, plans, supersets), Cardio with sport, Mobility.

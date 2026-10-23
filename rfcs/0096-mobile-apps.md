@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-23
 status: in progress
-status_note: "Android first (Peter, 2026-10-23), built in steps listed in 0096/android.md. Step 1, the API the apps need, is up as tekio PR #48; the Android scaffold is next."
+status_note: "Android first (Peter, 2026-10-23), built in steps listed in 0096/android.md. Steps 1 and 2 (the API the apps need; sign-in and Home on Android) are up together as tekio PR #48; Home's sheets are next."
 label: feature
 depends: [94]
 release: 3.0.0
@@ -22,6 +22,13 @@ release: 3.0.0
   build carries the project's key while the open policies stand (0003); every
   operation has an `operationId` for the generated client. The cloud sessions
   cannot download the Android SDK, so the app builds in GitHub Actions.
+- 2026-10-23: Step 2 joined the same PR, because the app compiles only in CI.
+  `android/` is one Gradle build: `:api` is plain Kotlin (the generated client,
+  the PKCE sign-in with token refresh, the body map read from core's JSON;
+  tests run anywhere), `:app` is Compose (the sign-in screen, and Home drawn
+  from the view in the SIGNAL language). The view gained each map zone's fill
+  and the window length, so the phone decides nothing. The workflow
+  `android.yml` uploads a debug APK pointed at staging, to sideload.
 
 ## Summary
 
