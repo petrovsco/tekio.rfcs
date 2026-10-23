@@ -3,14 +3,25 @@ title: Android and iOS apps beside the web app
 authors: [Peter Petrov]
 created: 2026-10-04
 last_updated: 2026-10-23
-status: backlog
-status_note: "Approach decided 2026-10-05 by Peter: native apps, Swift for iOS and Kotlin for Android, beside the web app. The API (0094) is done since 2026-10-23 and serves the reads computed on the server, so nothing outside this RFC blocks it."
-label: backlog
+status: in progress
+status_note: "Android first (Peter, 2026-10-23), built in steps listed in 0096/android.md. Step 1, the API the apps need, is up as tekio PR #48; the Android scaffold is next."
+label: feature
 depends: [94]
 release: 3.0.0
 ---
 
 # RFC 0096: Android and iOS apps beside the web app
+
+## Progress log
+
+- 2026-10-23: Android started, in the steps of [0096/android.md](0096/android.md).
+  Step 1 (tekio PR #48, v2.2.64): Home's words and the body map's geometry
+  moved into `@tekio/core` so every client prints and draws the same Home; `GET
+  /api/view/home` serves it; `POST /api/sign-in/link`, `/session`, `/refresh`
+  sign a phone in by email link in the PKCE flow through the API, so no app
+  build carries the project's key while the open policies stand (0003); every
+  operation has an `operationId` for the generated client. The cloud sessions
+  cannot download the Android SDK, so the app builds in GitHub Actions.
 
 ## Summary
 
