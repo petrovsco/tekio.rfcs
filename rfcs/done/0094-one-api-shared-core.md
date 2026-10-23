@@ -2,9 +2,9 @@
 title: One API and a shared domain core for every client
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-22
-status: in progress
-status_note: "Steps 1 and 2 are done, and every web-app write runs through the API (v2.2.52-57). Home's start-up through the API is built beside the direct one (v2.2.58) and waits on the user timing both; then the profile, section order, sync and error reports move, and postgrest-js leaves the web app."
+last_updated: 2026-10-23
+status: done
+status_note: "Done 2026-10-23 (v2.2.62): every read and write of the web app goes through the API, which serves the reads computed by the core package; postgrest-js left the web app and first paint was re-baselined at 322.26 kB."
 label: infra
 depends: [95, 3]
 release: 3.0.0
@@ -68,6 +68,9 @@ release: 3.0.0
 - 2026-10-22: the user chose to move everything, measured: the function next to the database, the web app's domains one patch at a time, Home last after it is timed, then postgrest-js out of the web app.
 - 2026-10-22: tekio #35 (v2.2.52) runs the API function in dub1, beside the database in eu-west-1. #36–#40 (v2.2.53–57) move every web-app write onto the API: body weight; cardio, sport, sleep, sauna, cold and donations; mobility and the morning's HRV and check-in; lifts; plans, with `DELETE /api/plans/missed` sent off the start path. Each move sent byte-identical database writes before and after, in the browser against mocked rows. An edit or delete now reads that the entry is the caller's while Auth checks the token.
 - 2026-10-22: tekio #41 (v2.2.58): `GET /api/start`, every row the web app opens with in one answer, and `?start=api` to open the app through it, so the two start-ups can be timed against each other on one staging build. `perf:startup` could not time Home since sign-in (it stopped at the sign-in screen); it now uses a profile signed in once and `--url … --roads` times both roads turn about. Waiting on that timing from the user's machine; the slower road is then deleted.
+- 2026-10-22: tekio #42 (v2.2.59): the profile and section settings, the Garmin sync on demand and error reports through the API (`PATCH /api/profile`, `PUT /api/sections`, `PATCH /api/sections/{key}`, `GET`/`POST /api/sync/garmin`, `GET /api/sync/runs/{id}`, `POST /api/error-reports`).
+- 2026-10-23: tekio #44 (v2.2.60): the Vercel function exported only `GET`, so every write the web app sent since v2.2.53 was refused with a 405 on deployed builds; the dev server, which passes every method, had hidden it. It now exports every method, and a test fails when a route uses one it does not.
+- 2026-10-23: timed without a sign-in, from the database's own edge logs of real start-ups: from a phone, the direct road's 21 queries each waited a median 170–570 ms on the round trip to eu-west-1, about 650 ms per start-up; from the Dublin function the same queries answer in 10–30 ms each, and a device's round trip to the function measured about 200 ms. tekio #46 (v2.2.62) keeps the API road only: `GET /api/start` also answers the profile and sections, writing their defaults on a first sign-in once Auth accepts the token, nothing in the web app queries the database, `@supabase/postgrest-js` left it, and first paint went from 350.76 kB to 322.26 kB, re-baselined. Proposal step 5, the Garmin syncs writing through the API, is 0096's health-data half.
 
 ## Summary
 
@@ -169,9 +172,9 @@ untouched.
       suite passes unchanged
 - [x] The API serves the three reads and every capture route, behind a checked
       token
-- [ ] The web app no longer imports `@supabase/postgrest-js`
+- [x] The web app no longer imports `@supabase/postgrest-js`
 - [x] The OpenAPI description is generated and a typed client is generated from it
-- [ ] The first-paint budget (`npm run perf`) holds or is re-baselined with a reason
+- [x] The first-paint budget (`npm run perf`) holds or is re-baselined with a reason
 
 ## Unresolved questions
 

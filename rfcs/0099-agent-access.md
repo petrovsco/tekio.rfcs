@@ -2,9 +2,9 @@
 title: Agent access — the user's own assistant first, an in-app agent on the same tools
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-05
+last_updated: 2026-10-23
 status: backlog
-status_note: "Order decided 2026-10-05 by Peter: outside first, as a remote MCP connector on the API, then the in-app agent on the same tools. Waits on the API (0094)."
+status_note: "Order decided 2026-10-05 by Peter: outside first, as a remote MCP connector on the API, then the in-app agent on the same tools. The API (0094) is done since 2026-10-23, so nothing outside this RFC blocks it."
 label: backlog
 depends: [94]
 release: 3.0.0

@@ -2,7 +2,7 @@
 title: The first public release — the map of the work
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-20
+last_updated: 2026-10-23
 status: in progress
 status_note: "Mapped 2026-10-04. Building started 2026-10-20 with accounts (0003) and the shared core (0094). Decided 2026-10-05: stay on Supabase, native apps, agent help outside the app first, launch free, the plan tagged 3.0.0, and the doctrine rewritten for every user. Planned exercises (0098) left the plan for 2.2.0 and its own thread. The free/paid principle decided 2026-10-20: manual free, automatic paid. Both repos licensed Apache 2.0 the same day."
 label: infra
@@ -90,7 +90,7 @@ anywhere but the database, and Postgres moves.
 | 0 | Doctrine for more than one user | — (an amendment) | — | **Done 2026-10-05**: the first person is the user's voice, P4 no longer leans on one user, R3 places a paid tier |
 | 1 | Backend platform: Supabase or AWS | [0095](0095-backend-platform-decision.md) | — | Stay on Supabase's Postgres for the first release; put our own API in front so the move stays cheap later |
 | 2 | Accounts and data isolation | [0003](0003-lock-the-database.md) | 1 | Real logins, RLS on every table, `USER_ID` gone, the existing rows adopted by the first account |
-| 3 | One API and a shared domain core | [0094](0094-one-api-shared-core.md) | 1, 2 | The reads move into a TypeScript package; one HTTP API is the only door to the database for every client |
+| 3 | One API and a shared domain core | [0094](done/0094-one-api-shared-core.md) | 1, 2 | The reads move into a TypeScript package; one HTTP API is the only door to the database for every client |
 | 4 | Android and iOS apps | [0096](0096-mobile-apps.md) | 3 | **Decided 2026-10-05: native apps** (Swift, Kotlin) beside the web, drawing reads the API computes; health data and notifications |
 | 5 | Agent access | [0099](0099-agent-access.md) | 3 | Outside the app first, as an MCP server on the same API; the in-app agent later, on the same tools |
 | 6 | Planned exercises (**2.2.0**, ahead of the rest) | [0098](done/0098-planned-exercises.md) | — | A `planned` state that never counts toward the body map, shown as its own layer rather than a switch |

@@ -2,7 +2,7 @@
 title: Lock the database — real logins, and rows only their owner can read
 authors: [Peter Petrov]
 created: 2026-07-08
-last_updated: 2026-10-20
+last_updated: 2026-10-23
 status: in progress
 status_note: "Sign-in is on develop (staging) since v2.2.42 and works for the first account, with its full history. Open: a custom email sender before public sign-up, a second-account check, then the lock (step 4) and verification when sign-in reaches master."
 label: infra
@@ -71,7 +71,7 @@ read, edit and delete every row. Supabase reports these as
 
 That was tolerable while the app had one user, a hardcoded `USER_ID` and a cookie
 gate in front of it. It is not tolerable for a public release, and every other
-workstream of 3.0.0 — the API ([0094](0094-one-api-shared-core.md)), the mobile
+workstream of 3.0.0 — the API ([0094](done/0094-one-api-shared-core.md)), the mobile
 apps, the agent connector, the paid tier — needs to know who is asking.
 
 ## Goals
@@ -100,7 +100,7 @@ apps, the agent connector, the paid tier — needs to know who is asking.
   ([0097](0097-free-and-paid-tiers.md)).
 - The Admin role gate ([0090](done/0090-admin-out-mobility-in.md)). It needs
   accounts but is its own brief.
-- The API in front of the database ([0094](0094-one-api-shared-core.md)). It
+- The API in front of the database ([0094](done/0094-one-api-shared-core.md)). It
   will run under the same policies, with the caller's token.
 
 ## Proposal
