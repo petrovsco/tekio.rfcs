@@ -2,7 +2,7 @@
 title: Android and iOS apps beside the web app
 authors: [Peter Petrov]
 created: 2026-10-04
-last_updated: 2026-10-23
+last_updated: 2026-10-24
 status: in progress
 status_note: "Android first (Peter, 2026-10-23), built in steps listed in 0096/android.md. Steps 1 and 2 (the API the apps need; sign-in and Home on Android) are up together as tekio PR #48; Home's sheets are next."
 label: feature
@@ -15,7 +15,7 @@ release: 3.0.0
 ## Progress log
 
 - 2026-10-23: Android started, in the steps of [0096/android.md](0096/android.md).
-  Step 1 (tekio PR #48, v2.2.64): Home's words and the body map's geometry
+  Step 1 (tekio PR #48, now v2.2.67): Home's words and the body map's geometry
   moved into `@tekio/core` so every client prints and draws the same Home; `GET
   /api/view/home` serves it; `POST /api/sign-in/link`, `/session`, `/refresh`
   sign a phone in by email link in the PKCE flow through the API, so no app
