@@ -15,7 +15,7 @@ release: 3.0.0
 ## Progress log
 
 - 2026-10-23: Android started, in the steps of [0096/android.md](0096/android.md).
-  Step 1 (tekio PR #48, now v2.2.67): Home's words and the body map's geometry
+  Step 1 (tekio PR #48, now v2.2.69): Home's words and the body map's geometry
   moved into `@tekio/core` so every client prints and draws the same Home; `GET
   /api/view/home` serves it; `POST /api/sign-in/link`, `/session`, `/refresh`
   sign a phone in by email link in the PKCE flow through the API, so no app
