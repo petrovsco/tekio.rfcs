@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-11-03
 last_updated: 2026-11-03
 status: in progress
-status_note: built and checked in a 412 px browser on branch claude/project-thread-5qo7ft (tekio v2.2.76); waits on a check on a real phone and Peter's word to merge.
+status_note: on develop as tekio v2.2.76 (PR #57), merged at Peter's word so he can test on staging; waits on his phone check there.
 label: feature
 ---
 
