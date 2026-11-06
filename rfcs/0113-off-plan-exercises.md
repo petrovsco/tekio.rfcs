@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-11-06
 last_updated: 2026-11-06
 status: in progress
-status_note: built as tekio v2.2.77 on a pull request to develop; waits on Peter's word to merge, then his phone check on staging.
+status_note: on develop as tekio v2.2.77 (PR #58), merged at Peter's word; waits on his phone check on staging.
 label: feature
 ---
 
