@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-11-07
 last_updated: 2026-11-10
 status: in progress
-status_note: Peter picked direction B (the week sheet) on 2026-11-10. Built as tekio v2.2.83 in a PR to develop; it waits on his review, then on a phone check on staging.
+status_note: on develop as tekio v2.2.83 (PR #65), merged at Peter's word on 2026-11-10; waits on his phone check on staging.
 label: feature
 ---
 
@@ -105,7 +105,7 @@ machinery that a user whose week changes would never set up (P4). Peter's pick,
   Sport on Cardio, Mobility on Mobility.
 - [x] The preview line names what the week's open lifts leave short
   (`week.test.ts`, and on screen).
-- [ ] Peter's review of the PR.
+- [x] Peter's review of the PR (merged 2026-11-10).
 - [ ] Peter's phone check on staging.
 
 ## Unresolved questions
