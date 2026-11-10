@@ -2,125 +2,112 @@
 title: Plan the week ahead
 authors: [Peter Petrov]
 created: 2026-11-07
-last_updated: 2026-11-07
-status: backlog
-status_note: three directions mocked at 412 px against invented data; waits on Peter's pick before anything is built.
-label: backlog
+last_updated: 2026-11-10
+status: in progress
+status_note: Peter picked direction B (the week sheet) on 2026-11-10. Built as tekio v2.2.83 in a PR to develop; it waits on his review, then on a phone check on staging.
+label: feature
 ---
 
 # RFC 0114: Plan the week ahead
 
+## Progress log
+
+- 2026-11-07: three directions mocked at 412 px against invented data
+  (project files `week-plan/`): A, a week strip in the Planned card; B, the
+  week in one sheet with every kind; C, a repeating week of named workouts.
+- 2026-11-10: Peter picked **B**. A and C are not built. C can come back as its
+  own RFC on top of B. Built as tekio v2.2.83, with screens in `week-plan/built/`.
+
 ## Summary
 
-The Planned card plans one day well. Someone who knows their week (lower body
-on Monday, a run on Tuesday, tennis on Saturday) needs to see the days ahead
-side by side, change them, and have the same week come back without writing
-it out again. Their agent needs the same: somewhere to queue workouts on
-future days so the week meets its goals. This RFC sets out three directions,
-each mocked on the real app, so one can be picked before building.
+Every Planned card (Weights, Cardio, Mobility) gets a **Week** door. It opens
+a sheet with seven days of plans of every kind: lifts, cardio, sport and
+mobility, whichever tab plans them. Arrows move between weeks. Tapping a day
+opens it, so each plan can be moved to another day and the tab's own kinds
+can be added to it. Over the days still to come, one line says what the
+week's plan would leave short.
 
 ## Motivation
 
 - Plans for later days already exist (`plan_date` on `planned_exercises` and
   `planned_sessions`), but the card lists them as one flat Later list, one row
-  per lift with its date on the right. A week of planned lifts is a long scroll
-  in which the days cannot be told apart (mockup `0`).
-- Each tab shows only its own kinds. Lifts are on Weights, runs and sports on
-  Cardio, stretches on Mobility. Nothing shows a whole week at once.
-- A structured week is written out again every week, by hand or by the agent.
+  per lift. A week of planned lifts is a long scroll in which the days cannot
+  be told apart (mockup `week-plan/0-today-the-later-list.png`).
+- Each tab shows only its own kinds, so nothing shows a whole week at once.
+- Someone with a structured week, and the agent that plans for them, needs to
+  see the days side by side and move work between them.
 
 ## Goals
 
-- See any day's plan, this week or next, in one or two taps.
-- See the whole week together, lifts and sessions both, at least in one place.
-- Optionally (direction C) keep a standing week that fills itself in ahead.
-- The agent's plans stay marked Agent wherever they show.
-- Today's plan is still logged as now, from its tab's card.
+- From any Planned card, one tap shows this week's plans, every kind together.
+- Next week and later weeks are one arrow away.
+- A plan moves to another day of the week in two taps.
+- A day can be given a new plan of the tab's kinds, with the plan sheet
+  opening on that day.
+- The agent's plans stay marked Agent. A logged day reads as logged, and a
+  past day with open plans reads as missed.
+- One line says what the week's open lifts would leave short.
 
 ## Non-Goals
 
-- No new menu section (doctrine R1). Every direction lives inside the Planned
-  card or in a sheet opened from it.
-- No change to Home's read. A plan stays a prefill: it is never counted as
-  work and never fills a muscle (design-system §1).
-- No automatic progression of weights from week to week.
-- No calendar sync with outside calendars.
+- No new menu section, and no door on Home, which has no room on its one
+  900 px screen (RFC 0082). The cards are the doors.
+- No repeating week or named workouts (direction C). That would be a later RFC.
+- No logging from the sheet. Today's plans are logged from their card, as now.
+- Adding a plan of another tab's kind from the sheet. Each tab adds its own
+  kinds, in the sheet it already has.
+- No schema or API change.
 
 ## Proposal
 
-**Checklist (doctrine §4).** 1: it sharpens the Planned cards, the input the
-day's plan line on Home already reads; direction B also asks the existing
-muscle read what the week's plan would leave short. 2: no longer scrolling a
-flat Later list, and (C) no longer rewriting a known week each week.
-3: input, never a destination. 4: plans are per day and per kind, so the
-honest shape is a week of days; a muscle preview stays an outline and a
-sentence, never a fill. 5: no new number with physiological meaning. B's line
-reuses `planPreview` (RFC 0098) over a week's plans; its gap rule is the
-existing one, so no new claim is made.
+**Checklist (doctrine §4).** 1: it sharpens the Planned cards, and through its
+line, the muscle read the day's plan line on Home already previews.
+2: no more scrolling a flat Later list, or opening three tabs to see one week.
+3: input: it moves and adds plans and logs nothing. 4: plans are per day and
+per kind, so the honest shape is a list of seven days with each day's kinds
+apart. The muscle preview stays a sentence and never a fill
+(design-system §1). 5: no new number. The line runs `planPreview`
+(RFC 0098) over the week's open lifts, with the existing gap rule, so
+`/ground` Step 0 makes no new claim.
 
-The mockups are in the project's files under `week-plan/`, rendered on the app
-at 412 px from invented data. A structured week is shown: lower, run, upper,
-mobility, full body, tennis, volleyball.
-
-### A: a week strip in the Planned card
-
-`A1-strip-today.png`, `A2-strip-monday.png`. The card opens with a row of the
-week's seven days, with arrows to the week before and after. Each day carries
-a mark: a yellow dot for planned on this tab, a tick for logged, a ring for
-missed, and a grey dot for a plan on another tab. Tapping a day lists its
-plans under the strip, with "+ Add to Mon 9 Nov". A line names what is planned
-on the other tabs that day ("Also that day: Tennis on Cardio"). It replaces
-the Later and Missed lists. No schema change.
-
-### B: the week in one sheet, every kind
-
-`B1-week-sheet.png`, `B2-next-week-a-day-open.png`. A Week door on every
-Planned card opens a sheet listing the seven days. Each day shows its lifts,
-cardio, sport and mobility by name, with logged, missed and Agent marks, and
-today is outlined in ink. The pager moves between weeks. Over a week still to
-come, one line says what the week's plan would leave short ("If you do the
-week's plan: still short on forearms, obliques, posterior deltoid"). Tapping a
-day opens it: each plan gets Move, and the day gets "+ Lift / Cardio / Sport /
-Mobility". The card stays as it is for today. No schema change.
-
-### C: a repeating week of named workouts
-
-`C1-your-week.png`, `C2-a-workout.png`, `C3-planned-by-workout.png`. A
-workout is a named group of plans ("Lower A": squat, RDL, calf raise) set to
-repeat on chosen weekdays. "Your week" lists them by weekday. The app writes
-each workout's plans two weeks ahead, as ordinary plan rows. A day changed in
-the plan stays changed; a change to the workout reaches the weeks ahead. On
-the card, later days group under the workout's name and fold open. The agent
-can write a workout as well as single plans. This needs new tables (a workout,
-its items, its weekdays) and a step that writes the rows ahead, so it is the
-largest of the three. It can sit on top of A or B rather than replace them.
+- `src/lib/week.ts` lists every plan of the week as one item, with kind,
+  name, targets, Agent and logged. A session counts as logged by the cards'
+  own rule, `sessionPlanLogged`, now shared with `SessionPlanCard`.
+- `src/components/ui/WeekSheet.tsx` is the sheet. It is a lazy chunk opened
+  from `PlannedCard`'s header, so neither it nor the preview loads before the
+  door is tapped (P1). Its weeks start on the profile's week start.
+- **Move** shows the shown week's days from today on. A tap writes the new day
+  through the existing plan routes. Moving a lift of a superset takes its
+  group along, as the plan sheet already does.
+- **Add** closes the sheet and opens the tab's plan sheet on that day. The
+  sheets take an `initialDate`.
+- The line: "If you do the week's plan: still short on forearms, obliques and
+  posterior deltoid." It reads the open lifts from today to the week's end, as
+  though done together.
 
 ## Rationale
 
-- A is the smallest change and keeps each tab to its own kinds. It shows one
-  day at a time, so a whole week is never in view.
-- B answers "what does my week look like" in one screen. It is the only one
-  that shows every kind together, and the only one that asks the read about
-  the week, which is the product's question (doctrine §1). It costs one sheet
-  and no schema.
-- C serves the structured user best over time. It is also new machinery, and
-  doctrine P4 asks that it earn its place for every user. A user whose week
-  changes, the first user's case, would never set one up.
-- Recommended: **B**, with A's strip as a later option for the card itself,
-  and C as its own RFC once B is in use.
+Of the three mockups, B is the only one that shows the whole week together
+and asks the read about it, which is the product's question (doctrine §1). It
+needs no schema. A showed one day and one tab at a time. C would be new
+machinery that a user whose week changes would never set up (P4). Peter's pick,
+2026-11-10.
 
 ## Acceptance
 
-- [ ] Peter picks a direction, or a mix of them.
-- [ ] This RFC is relabelled `feature` and rewritten to the picked direction,
-  with testable boxes.
+- [x] The Week door on all three Planned cards opens the sheet. The sheet shows
+  seven days of every kind, with logged, missed and Agent marks, and today
+  outlined. Checked at 412 px against mocked data (`week-plan/built/`).
+- [x] Arrows move between weeks, labelled This week and Next week.
+- [x] Move puts a plan on another day from today on, through the plan's own
+  route (`PUT /api/plans/lifts/{id}` was seen with the new date).
+- [x] Add opens the tab's plan sheet on that day: Lift on Weights, Cardio and
+  Sport on Cardio, Mobility on Mobility.
+- [x] The preview line names what the week's open lifts leave short
+  (`week.test.ts`, and on screen).
+- [ ] Peter's review of the PR.
+- [ ] Peter's phone check on staging.
 
 ## Unresolved questions
 
-- Which direction, or which mix.
-- B: where else the Week door goes. Home has no room on its one 900 px screen
-  (RFC 0082), so the cards and the More drawer are the candidates.
-- B and A: is Move a drag between days, or a day picker? The mockup shows a
-  button.
-- C: does a missed workout move to the next free day, or stay missed? Is
-  "two weeks ahead" right?
+None blocking. Whether a later RFC adds C's repeating week is Peter's call.
