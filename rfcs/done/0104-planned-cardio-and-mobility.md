@@ -2,7 +2,7 @@
 title: Planned sessions on Cardio and Mobility
 authors: [Peter Petrov]
 created: 2026-10-11
-last_updated: 2026-10-11
+last_updated: 2026-11-12
 status: done
 status_note: "Shipped to develop as tekio v2.2.13 and v2.2.15; Peter checked it on staging (2026-10-11) and called it ok. Goes out with the next release."
 label: feature
@@ -82,7 +82,7 @@ day is in one place.
    sport only) when a session of the same type or sport is logged that day.
 4. **Missed plans**: Reschedule opens the plan's sheet on today; Remove deletes
    it. At startup the app deletes the unlinked plans dated more than
-   `MISSED_PLAN_KEPT_DAYS` (7) days ago, in both plan tables. The previous
+   `MISSED_PLAN_KEPT_DAYS` (7 then; 3 since tekio 2.2.86, on Peter's call) days ago, in both plan tables. The previous
    "Not logged" line, display only, goes.
 5. **Merging**: the cardio and sport forms look for a Garmin row of the same
    day and type or sport before inserting, and update it instead.
