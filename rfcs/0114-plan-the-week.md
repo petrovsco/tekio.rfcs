@@ -19,6 +19,10 @@ label: feature
   own RFC on top of B. Built as tekio v2.2.83, with screens in `week-plan/built/`.
 - 2026-11-12: Peter asked for A's strip on the yellow card as well, beside the
   sheet. It was built as tekio v2.2.85, with screens in `week-plan/strip/`.
+- 2026-11-12: Peter found the Missed list crowding the card. In the same PR it
+  became one line of missed days as chips, each opening its day on the strip
+  (screens `week-plan/strip/7-` and `8-`). How long a missed plan is kept is
+  RFC 0104's constant, set in its own PR.
 
 ## Summary
 
@@ -92,8 +96,10 @@ apart. The muscle preview stays a sentence and never a fill
   tapped. Today keeps Log. Another day lists its plans to edit or remove, and a
   past one offers Reschedule. A line names what the other tabs plan that day,
   and "+ Add to Fri 13 Nov" plans on the picked day. The Later list is gone,
-  because the strip and the sheet show later days. Missed stays, for missed
-  plans outside the picked day.
+  because the strip and the sheet show later days. Missed plans are not
+  listed either: one line, "Missed: Mon 9 Nov · Wed 11 Nov", names each missed
+  day still kept as a chip that picks it, paging the strip to its week, and
+  that day's rows offer Reschedule and Remove.
 - The line: "If you do the week's plan: still short on forearms, obliques and
   posterior deltoid." It reads the open lifts from today to the week's end, as
   though done together.
