@@ -4,7 +4,7 @@ authors: [Peter Petrov]
 created: 2026-11-07
 last_updated: 2026-11-12
 status: in progress
-status_note: the week sheet is on develop as tekio v2.2.83 (PR #65); the strip on the card, which Peter asked for on 2026-11-12, is in a PR as v2.2.85. Both wait on his phone check on staging.
+status_note: the week sheet (tekio v2.2.83, PR #65) and the strip on the card (v2.2.85, PR #67) are on develop. Both wait on Peter's phone check on staging.
 label: feature
 ---
 
@@ -128,7 +128,7 @@ machinery that a user whose week changes would never set up (P4). Peter's pick,
 - [x] The strip on all three cards marks each day and lists the picked one,
   with Log only on today and Add on today or later. Checked at 412 px
   against mocked data (`week-plan/strip/`, `week.test.ts` for the marks).
-- [ ] Peter's review of the strip's PR.
+- [x] Peter's review of the strip's PR (merged 2026-11-12).
 - [ ] Peter's phone check on staging.
 
 ## Unresolved questions
